@@ -18,7 +18,7 @@ class ViewController: UIViewController,
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var selectPhoto: UIButton!
     
     @IBOutlet weak var openCamera: UIButton!
     // Declaring Variables
@@ -41,7 +41,13 @@ class ViewController: UIViewController,
         // Dispose of any resources that can be recreated.
     }
     
+    // Make the eye icon blink when touched
+    @IBAction func cameraDown(_ sender: UIButton) {
+        openCamera.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
+    }
+    
     @IBAction func openCamera(_ sender: Any) {
+        openCamera.setImage(UIImage(named: "snapoetry_camera"), for: .normal)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -53,7 +59,14 @@ class ViewController: UIViewController,
         }
     }
     
-    @IBAction func buttonPressed(_ sender: UIButton) {
+    @IBAction func selectPhotoDown(_ sender: UIButton) {
+         selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
+    }
+
+    // Select a photo from the album
+    @IBAction func selectPhoto(_ sender: UIButton) {
+        
+        selectPhoto.setImage(UIImage(named: "snapoetry_photos"), for: .normal)
         // Show a UIImagePickerController to let the user pick an image from their library.
         picker.allowsEditing = false;
         picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
@@ -88,7 +101,7 @@ class ViewController: UIViewController,
             textView.text = "Recognizing..."
             
             // Disable buttons while recognizing
-            button.isEnabled = false
+            selectPhoto.isEnabled = false
             openCamera.isEnabled = false
         }
     }
@@ -129,7 +142,7 @@ class ViewController: UIViewController,
                     
                     DispatchQueue.main.async {
                         // Reset select photo button for multiple selections.
-                        self.button.isEnabled = true;
+                        self.selectPhoto.isEnabled = true;
                         self.openCamera.isEnabled = true;
                     }
                 })

@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,61 +27,63 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6ad-Dm-riO">
-                                <rect key="frame" x="71" y="712" width="626" height="193"/>
+                                <rect key="frame" x="71" y="712" width="626" height="101"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="101" id="mwR-pn-j8W"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypi-BQ-4qY">
-                                <rect key="frame" x="531" y="941" width="205" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypi-BQ-4qY">
+                                <rect key="frame" x="604" y="860" width="144" height="144"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="205" id="rj4-3q-WGa"/>
+                                    <constraint firstAttribute="width" constant="144" id="0hq-O6-nTd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Select Photo">
+                                <state key="normal" image="snapoetry_photos">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5hl-Ho-31n"/>
+                                    <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="opC-F4-Wil"/>
+                                    <action selector="selectPhotoDown:" destination="BYZ-38-t0r" eventType="touchDown" id="7SU-zu-8lw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-w0-RNI">
-                                <rect key="frame" x="4" y="941" width="249" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-w0-RNI">
+                                <rect key="frame" x="20" y="860" width="144" height="144"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2wJ-6i-Z2C"/>
-                                    <constraint firstAttribute="width" constant="249" id="qxw-98-lCe"/>
+                                    <constraint firstAttribute="width" constant="144" id="xkr-Rh-mYR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Open Camera">
+                                <state key="normal" image="snapoetry_camera">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="cameraDown:" destination="BYZ-38-t0r" eventType="touchDown" id="awe-I3-pV6"/>
                                     <action selector="openCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Qi-FA-dtP"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078431372547" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Joh-w0-RNI" firstAttribute="top" secondItem="6ad-Dm-riO" secondAttribute="bottom" constant="36" id="6NB-Bu-wlu"/>
-                            <constraint firstItem="jCi-61-fUj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="AII-Pw-c7G"/>
-                            <constraint firstItem="Joh-w0-RNI" firstAttribute="firstBaseline" secondItem="ypi-BQ-4qY" secondAttribute="baseline" id="Ilm-IP-cGQ"/>
-                            <constraint firstItem="Joh-w0-RNI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="L2V-OU-UnH"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Joh-w0-RNI" secondAttribute="bottom" constant="53" id="Zct-ec-QRN"/>
-                            <constraint firstItem="Joh-w0-RNI" firstAttribute="baseline" secondItem="ypi-BQ-4qY" secondAttribute="firstBaseline" id="buW-0d-OYZ"/>
-                            <constraint firstItem="jCi-61-fUj" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="gIx-gO-546"/>
-                            <constraint firstItem="6ad-Dm-riO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="692" id="jAl-jq-EeX"/>
-                            <constraint firstItem="jCi-61-fUj" firstAttribute="centerX" secondItem="6ad-Dm-riO" secondAttribute="centerX" id="mYQ-lc-JYt"/>
-                            <constraint firstAttribute="trailing" secondItem="jCi-61-fUj" secondAttribute="trailing" id="o9b-63-Eog"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ypi-BQ-4qY" secondAttribute="trailing" constant="12" id="pFI-L2-X24"/>
-                            <constraint firstItem="6ad-Dm-riO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="s09-jx-VEp"/>
-                            <constraint firstItem="jCi-61-fUj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="u9I-y6-v6j"/>
-                            <constraint firstItem="Joh-w0-RNI" firstAttribute="top" secondItem="ypi-BQ-4qY" secondAttribute="top" id="zg7-6D-OBE"/>
+                            <constraint firstItem="ypi-BQ-4qY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="023-0r-Swi"/>
+                            <constraint firstItem="jCi-61-fUj" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="5dM-M3-qOt"/>
+                            <constraint firstItem="Joh-w0-RNI" firstAttribute="top" secondItem="6ad-Dm-riO" secondAttribute="bottom" constant="47" id="LVA-mX-vDU"/>
+                            <constraint firstItem="6ad-Dm-riO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="WCT-E5-WFs"/>
+                            <constraint firstAttribute="bottom" secondItem="Joh-w0-RNI" secondAttribute="bottom" constant="20" symbolic="YES" id="XGV-qn-UQH"/>
+                            <constraint firstItem="6ad-Dm-riO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="692" id="Z0w-LR-JEw"/>
+                            <constraint firstItem="jCi-61-fUj" firstAttribute="centerX" secondItem="6ad-Dm-riO" secondAttribute="centerX" id="bEK-ig-vgP"/>
+                            <constraint firstItem="Joh-w0-RNI" firstAttribute="firstBaseline" secondItem="ypi-BQ-4qY" secondAttribute="firstBaseline" id="cQk-Rw-a33"/>
+                            <constraint firstItem="jCi-61-fUj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ft3-1z-sqT"/>
+                            <constraint firstItem="Joh-w0-RNI" firstAttribute="top" secondItem="ypi-BQ-4qY" secondAttribute="top" id="hho-G5-ZtY"/>
+                            <constraint firstItem="jCi-61-fUj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pnk-f5-tci"/>
+                            <constraint firstItem="Joh-w0-RNI" firstAttribute="baseline" secondItem="ypi-BQ-4qY" secondAttribute="baseline" id="upb-vk-ShE"/>
+                            <constraint firstAttribute="trailing" secondItem="jCi-61-fUj" secondAttribute="trailing" id="vWJ-Tu-m90"/>
+                            <constraint firstItem="Joh-w0-RNI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ysR-Kr-pSd"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="ypi-BQ-4qY" id="lL0-QP-4Pv"/>
                         <outlet property="imageView" destination="jCi-61-fUj" id="dnn-Ha-ga7"/>
                         <outlet property="openCamera" destination="Joh-w0-RNI" id="bUo-rK-sN1"/>
+                        <outlet property="selectPhoto" destination="ypi-BQ-4qY" id="mg7-rF-nkt"/>
                         <outlet property="textView" destination="6ad-Dm-riO" id="9AQ-Al-ckj"/>
                     </connections>
                 </viewController>
@@ -91,4 +92,8 @@
             <point key="canvasLocation" x="16.40625" y="43.359375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="snapoetry_camera" width="356" height="356"/>
+        <image name="snapoetry_photos" width="356" height="356"/>
+    </resources>
 </document>
