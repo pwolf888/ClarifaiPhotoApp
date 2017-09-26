@@ -103,6 +103,8 @@ class ViewController: UIViewController,
             // Disable buttons while recognizing
             selectPhoto.isEnabled = false
             openCamera.isEnabled = false
+            selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
+            openCamera.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
         }
     }
     
@@ -144,6 +146,8 @@ class ViewController: UIViewController,
                         // Reset select photo button for multiple selections.
                         self.selectPhoto.isEnabled = true;
                         self.openCamera.isEnabled = true;
+                        self.selectPhoto.setImage(UIImage(named: "snapoetry_photos"), for: .normal)
+                        self.openCamera.setImage(UIImage(named: "snapoetry_camera"), for: .normal)
                     }
                 })
             })
