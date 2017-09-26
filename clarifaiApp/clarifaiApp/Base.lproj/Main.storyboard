@@ -80,6 +80,7 @@
                     <connections>
                         <outlet property="button" destination="ypi-BQ-4qY" id="lL0-QP-4Pv"/>
                         <outlet property="imageView" destination="jCi-61-fUj" id="dnn-Ha-ga7"/>
+                        <outlet property="openCamera" destination="Joh-w0-RNI" id="bUo-rK-sN1"/>
                         <outlet property="textView" destination="6ad-Dm-riO" id="9AQ-Al-ckj"/>
                     </connections>
                 </viewController>

@@ -20,6 +20,7 @@ class ViewController: UIViewController,
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var button: UIButton!
     
+    @IBOutlet weak var openCamera: UIButton!
     // Declaring Variables
     var app:ClarifaiApp?
     let picker = UIImagePickerController()
@@ -29,7 +30,7 @@ class ViewController: UIViewController,
         // Do any additional setup after loading the view, typically from a nib.
         
         //Declare my api key
-        app = ClarifaiApp(apiKey: "INSERT API KEY HERE")
+        app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
     
     }
 
@@ -64,6 +65,7 @@ class ViewController: UIViewController,
             recognizeImage(image: image)
             textView.text = "Recognizing..."
             button.isEnabled = false
+            openCamera.isEnabled = false
         }
     }
     
@@ -104,6 +106,7 @@ class ViewController: UIViewController,
                     DispatchQueue.main.async {
                         // Reset select photo button for multiple selections.
                         self.button.isEnabled = true;
+                        self.openCamera.isEnabled = true;
                     }
                 })
             })
