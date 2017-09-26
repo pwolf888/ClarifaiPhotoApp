@@ -31,6 +31,11 @@ class ViewController: UIViewController,
         
         //Declare my api key
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
+        
+        var imageframewidth = imageView.frame.size.width
+        print(imageframewidth)
+        var imageframeheight = imageView.frame.size.height
+        print(imageframeheight)
     
     }
 
@@ -45,6 +50,8 @@ class ViewController: UIViewController,
             imagePicker.delegate = self
             imagePicker.sourceType = .camera;
             imagePicker.allowsEditing = false
+            
+           
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
@@ -57,13 +64,33 @@ class ViewController: UIViewController,
         present(picker, animated: true, completion: nil)
     }
     
+    // Pick an image from the users library
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // The user picked an image. Send it to Clarifai for recognition.
         dismiss(animated: true, completion: nil)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            // Set image to the UIImageView
             imageView.image = image
+            
+            // Get Width and Height of Chosen Image
+            let imageWidth = image.size.width
+            let imageHeight = image.size.height
+            
+            // Create a new frame for the image to sit in
+            imageView.frame = CGRect(x: 0.0, y: 0.0, width: imageWidth, height: imageHeight)
+            
+            // Automatically resizes the height of the image
+            imageView.autoresizingMask = UIViewAutoresizing.flexibleHeight
+            
+            // Scales the image to fit on the screen
+            self.imageView.contentMode = UIViewContentMode.scaleAspectFit
+            
+            // Recognizes the image
             recognizeImage(image: image)
             textView.text = "Recognizing..."
+            
+            // Disable buttons while recognizing
             button.isEnabled = false
             openCamera.isEnabled = false
         }
