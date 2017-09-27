@@ -32,8 +32,6 @@ class ViewController: UIViewController,
         //Declare my api key
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
         
-        
-    
     }
 
     override func didReceiveMemoryWarning() {

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,10 +28,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.30196078431372547" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="atd-1K-g9L" secondAttribute="bottom" constant="184" id="9dy-Pe-Ges"/>
-                            <constraint firstItem="atd-1K-g9L" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="107" id="Chs-xS-EV9"/>
-                            <constraint firstItem="atd-1K-g9L" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="9" id="FQh-nF-XzA"/>
-                            <constraint firstAttribute="trailing" secondItem="atd-1K-g9L" secondAttribute="trailing" constant="10" id="NYF-6j-Xgg"/>
+                            <constraint firstItem="atd-1K-g9L" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-11" id="G6D-a3-a3t"/>
+                            <constraint firstItem="atd-1K-g9L" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="j0T-GI-slU"/>
+                            <constraint firstItem="atd-1K-g9L" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="107" id="j0m-9o-ecI"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="atd-1K-g9L" secondAttribute="bottom" constant="184" id="rjf-rV-rLd"/>
                         </constraints>
                     </view>
                 </viewController>
