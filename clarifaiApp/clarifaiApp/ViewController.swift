@@ -20,10 +20,13 @@ class ViewController: UIViewController,
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var selectPhoto: UIButton!
     
+    @IBOutlet weak var poeticText: UITextView!
+    
     @IBOutlet weak var openCamera: UIButton!
     // Declaring Variables
     var app:ClarifaiApp?
     let picker = UIImagePickerController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,6 +138,10 @@ class ViewController: UIViewController,
                         DispatchQueue.main.async {
                             // Update the new tags in the UI.
                             self.textView.text = String(format: "Tags:\n%@", tags.componentsJoined(by: ", "))
+                            var tagOne = "\(tags[0] as! CVarArg)"
+                            
+                            self.getRequest(poemName: tagOne)
+                            
                         }
                     }
                     
@@ -148,12 +155,13 @@ class ViewController: UIViewController,
                 })
             })
         }
-        getRequest()
+        
     }
     
     //https://nameless-gorge-75596.herokuapp.com/poems?poem=cat
-    func getRequest() {
-        guard let url = URL(string: "https://nameless-gorge-75596.herokuapp.com/poems?poem=cat") else {
+    func getRequest(poemName : String) {
+        guard let url = URL(string: "https://nameless-gorge-75596.herokuapp.com/poems?poem=\(poemName)")
+            else {
             return }
         
         let session = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -166,7 +174,7 @@ class ViewController: UIViewController,
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     print(json)
-                    
+                    //poeticText.text =
                     
                 } catch {
                     print(error)
