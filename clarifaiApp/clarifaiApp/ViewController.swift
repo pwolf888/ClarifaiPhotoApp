@@ -8,7 +8,7 @@
 
 import UIKit
 import Clarifai
-
+//import Alamofire
 
 
 
@@ -49,10 +49,8 @@ class ViewController: UIViewController,
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = .camera;
+            imagePicker.sourceType = .camera
             imagePicker.allowsEditing = false
-            
-           
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
@@ -96,7 +94,7 @@ class ViewController: UIViewController,
             
             // Recognizes the image
             recognizeImage(image: image)
-            textView.text = "Recognizing..."
+            textView.text = "Hmmmm..."
             
             // Disable buttons while recognizing
             selectPhoto.isEnabled = false
@@ -150,6 +148,35 @@ class ViewController: UIViewController,
                 })
             })
         }
+        getRequest()
+    }
+    
+    //https://nameless-gorge-75596.herokuapp.com/poems?poem=cat
+    func getRequest() {
+        guard let url = URL(string: "https://nameless-gorge-75596.herokuapp.com/poems?poem=cat") else {
+            return }
+        
+        let session = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let response = response {
+                print(response)
+            }
+            
+            if let data = data {
+                print(data)
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    
+                } catch {
+                    print(error)
+                }
+                
+            }
+        
+        
+        }.resume()
+        
     }
 }
 

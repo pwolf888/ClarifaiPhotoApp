@@ -7,4 +7,5 @@ target 'clarifaiApp' do
 
   # Pods for clarifaiApp
 	pod 'Clarifai'
+    
 end
