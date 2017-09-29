@@ -26,7 +26,7 @@ class ViewController: UIViewController,
     // Declaring Variables
     var app:ClarifaiApp?
     let picker = UIImagePickerController()
-    
+    var poems = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,7 +141,8 @@ class ViewController: UIViewController,
                             var tagOne = "\(tags[0] as! CVarArg)"
                             
                             self.getRequest(poemName: tagOne)
-                            //self.printPoetry(poemName: tagOne)
+                            self.poeticText.text = "\(self.poems.first)"
+                            
                             
                         }
                     }
@@ -152,11 +153,12 @@ class ViewController: UIViewController,
                         self.openCamera.isEnabled = true;
                         self.selectPhoto.setImage(UIImage(named: "snapoetry_photos"), for: .normal)
                         self.openCamera.setImage(UIImage(named: "snapoetry_camera"), for: .normal)
+                        
                     }
                 })
             })
         }
-        
+       
     }
     
     //https://nameless-gorge-75596.herokuapp.com/poems?poem=cat
@@ -168,6 +170,8 @@ class ViewController: UIViewController,
             else {
             return }
         
+//        let session = URLSession.shared.dataTask(with: url, completionHandler: (Data?, URLResponse?, Error?) -> Void)
+        
         let session = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let response = response {
                 print(response)
@@ -177,21 +181,29 @@ class ViewController: UIViewController,
                 print(data)
                 do {
                     let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
+                    let poem = json[0]["poem"]
                     
+                    self.poems.append(poem as! String)
                     
-                    print(json[0]["poem"])
-                    
+                    print(self.poems)
                     
                 } catch {
                     print(error)
                 }
-                
-                
-                
+          
             }
         
         
         }.resume()
+        
+    }
+    func dataTask(with url: URL,
+                  completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        
+        
+        
+    }
+    func finishedLoading() {
         
     }
     
