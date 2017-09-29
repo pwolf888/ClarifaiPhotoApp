@@ -141,6 +141,7 @@ class ViewController: UIViewController,
                             var tagOne = "\(tags[0] as! CVarArg)"
                             
                             self.getRequest(poemName: tagOne)
+                            //self.printPoetry(poemName: tagOne)
                             
                         }
                     }
@@ -160,6 +161,9 @@ class ViewController: UIViewController,
     
     //https://nameless-gorge-75596.herokuapp.com/poems?poem=cat
     func getRequest(poemName : String) {
+        
+        
+        
         guard let url = URL(string: "https://nameless-gorge-75596.herokuapp.com/poems?poem=\(poemName)")
             else {
             return }
@@ -172,13 +176,17 @@ class ViewController: UIViewController,
             if let data = data {
                 print(data)
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    print(json)
-                    //poeticText.text =
+                    let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
+                    
+                    
+                    print(json[0]["poem"])
+                    
                     
                 } catch {
                     print(error)
                 }
+                
+                
                 
             }
         
@@ -186,7 +194,6 @@ class ViewController: UIViewController,
         }.resume()
         
     }
+    
 }
-
-
 

@@ -100,6 +100,7 @@
                     <connections>
                         <outlet property="imageView" destination="jCi-61-fUj" id="dnn-Ha-ga7"/>
                         <outlet property="openCamera" destination="Joh-w0-RNI" id="bUo-rK-sN1"/>
+                        <outlet property="poeticText" destination="oCH-tU-4uz" id="upV-xf-1JP"/>
                         <outlet property="selectPhoto" destination="ypi-BQ-4qY" id="mg7-rF-nkt"/>
                         <outlet property="textView" destination="6ad-Dm-riO" id="9AQ-Al-ckj"/>
                     </connections>
