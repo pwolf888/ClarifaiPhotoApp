@@ -66,6 +66,7 @@ class ViewController: UIViewController,
             if poems.capacity != 0 {
                 poems.remove(at: 0)
             }
+            poeticText.text.removeAll()
         }
     }
     
@@ -96,7 +97,7 @@ class ViewController: UIViewController,
         if poems.capacity != 0 {
             poems.remove(at: 0)
         }
-        
+        poeticText.text.removeAll()
         
     }
     
