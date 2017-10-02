@@ -1,6 +1,9 @@
 //
 //  ViewController.swift
-//  clarifaiApp
+//  Snapoetry
+//  
+//  An app that can take a photo, recognize the image with tags,
+//  then display hardcoded poetry from another api using the first tag.
 //
 //  Created by Jonathan Turnbull on 18/08/2017.
 //  Copyright © 2017 partywolfAPPS. All rights reserved.
@@ -9,26 +12,25 @@
 import UIKit
 import Clarifai
 
-
-
 class ViewController: UIViewController,
         UIImagePickerControllerDelegate,
         UINavigationControllerDelegate {
     
+    // Declared Variables - IBOutlet
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var selectPhoto: UIButton!
-    
     @IBOutlet weak var poeticText: UITextView!
-    
     @IBOutlet weak var openCamera: UIButton!
-    // Declaring Variables
+    
+    // Declaring Variables - Globals
     var app:ClarifaiApp?
     let picker = UIImagePickerController()
     var poems = [String]()
     var loaded = false
     var tagOne = "no poem"
     
+    // Load Clarifai API
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,7 +39,7 @@ class ViewController: UIViewController,
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,6 +50,7 @@ class ViewController: UIViewController,
         openCamera.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
     }
     
+    // Open the devices camera
     @IBAction func openCamera(_ sender: Any) {
         openCamera.setImage(UIImage(named: "snapoetry_camera"), for: .normal)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -55,22 +58,32 @@ class ViewController: UIViewController,
             imagePicker.delegate = self
             imagePicker.sourceType = .camera
             imagePicker.allowsEditing = false
+            
+            // Present it to screen
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
     
+    // select photo icon blinks
     @IBAction func selectPhotoDown(_ sender: UIButton) {
          selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
     }
-
+    
+    
     // Select a photo from the album
     @IBAction func selectPhoto(_ sender: UIButton) {
         
+        // Open the eye on touch up
         selectPhoto.setImage(UIImage(named: "snapoetry_photos"), for: .normal)
+        
         // Show a UIImagePickerController to let the user pick an image from their library.
         picker.allowsEditing = false;
+        
+        // Open Users device photo library
         picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         picker.delegate = self;
+        
+        // present photo to screen
         present(picker, animated: true, completion: nil)
     }
     
@@ -108,6 +121,7 @@ class ViewController: UIViewController,
         }
     }
     
+    // Recognize the Image with Clarifai
     func recognizeImage(image: UIImage) {
         
         // Check that the application was initialized correctly.
@@ -136,20 +150,25 @@ class ViewController: UIViewController,
                             tags.add(concept.conceptName)
                         }
                         
+                        // Wait for the API to load before outputing to screen
                         DispatchQueue.main.async {
                             // Update the new tags in the UI.
                             self.textView.text = String(format: "Tags:\n%@", tags.componentsJoined(by: ", "))
+                            
+                            // Take the first tag from the list
                             self.tagOne = "\(tags[0] as! CVarArg)"
                             
-                       
+                            // Send tag to our API to generate poetry
                             self.getRequest(poemName: self.tagOne)
                         
                         }
                         
                     }
                     
+                    // Once finished enable buttons again
                     DispatchQueue.main.async {
-                        // Reset select photo button for multiple selections.
+                        
+                        // Enable buttons
                         self.selectPhoto.isEnabled = true;
                         self.openCamera.isEnabled = true;
                         self.selectPhoto.setImage(UIImage(named: "snapoetry_photos"), for: .normal)
@@ -167,28 +186,47 @@ class ViewController: UIViewController,
     // Gets a poem from our heroku api
     func getRequest(poemName: String) {
         
+        // Url to our API
         let todoEndpoint: String = "https://nameless-gorge-75596.herokuapp.com/poems?poem=\(poemName)"
+        
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
         }
+        
+        // Turn it into a request
         let urlRequest = URLRequest(url: url)
         
+        // Begin the session
         let session = URLSession.shared
         
+        // Session becomes a data task with a completion handler
         let task = session.dataTask(with: urlRequest, completionHandler:{ data, response, error in
+            
+            // Wait for a 200 OK code
             if let response = response {
                 print(response)
             }
+            
+            // Turn data into JSON Object
             if let data = data {
                 print(data)
+                
+                // Serialise Data
                 do {
                     let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
+                    
+                    // If data is the first poem in the list
                     if let poem = json[0]["poem"] {
+                        
+                        // Wait for the request to load before output
                         DispatchQueue.main.async {
+                            
+                            // Store poem into a string array
                             self.poems.append(poem as! String)
                             print(self.poems)
                             
+                            // Output to text view element
                             self.poeticText.text = "\(self.poems[0])"
                             
                         }
