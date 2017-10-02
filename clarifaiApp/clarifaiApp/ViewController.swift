@@ -8,7 +8,6 @@
 
 import UIKit
 import Clarifai
-//import Alamofire
 
 
 
@@ -142,12 +141,8 @@ class ViewController: UIViewController,
                             self.textView.text = String(format: "Tags:\n%@", tags.componentsJoined(by: ", "))
                             self.tagOne = "\(tags[0] as! CVarArg)"
                             
-
-                            //self.poeticText.text = "\(self.poems.first)"
-                            //self.poeticText.text = "Pussy cat, pussy cat Where have u been?  I've been to London To look at the Queen."
                        
                             self.getRequest(poemName: self.tagOne)
-//                            self.poeticText.text = "\(self.poems.first)"
                         
                         }
                         
@@ -168,43 +163,8 @@ class ViewController: UIViewController,
     
     }
     
-//    //https://nameless-gorge-75596.herokuapp.com/poems?poem=cat
-//    func getRequest(poemName : String) {
-//        
-//        
-//        guard let url = URL(string: "https://nameless-gorge-75596.herokuapp.com/poems?poem=\(poemName)")
-//            else {
-//            return }
-//        
-//        
-//        let session = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//            if let response = response {
-//                print(response)
-//            }
-//            
-//            if let data = data {
-//                print(data)
-//                do {
-//                    let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
-//                    let poem = json[0]["poem"]
-//                    
-//                    self.poems.append(poem as! String)
-//                    
-//                    print(self.poems)
-//                    
-//                } catch {
-//                    print(error)
-//                }
-//                
-//                
-//            }
-//            
-//        
-//        }.resume()
-//        
-//    }
-//    
-    
+
+    // Gets a poem from our heroku api
     func getRequest(poemName: String) {
         
         let todoEndpoint: String = "https://nameless-gorge-75596.herokuapp.com/poems?poem=\(poemName)"
