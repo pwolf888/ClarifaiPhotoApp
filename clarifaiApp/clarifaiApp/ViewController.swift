@@ -27,6 +27,8 @@ class ViewController: UIViewController,
     var app:ClarifaiApp?
     let picker = UIImagePickerController()
     var poems = [String]()
+    var loaded = false
+    var tagOne = "no poem"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,13 +140,17 @@ class ViewController: UIViewController,
                         DispatchQueue.main.async {
                             // Update the new tags in the UI.
                             self.textView.text = String(format: "Tags:\n%@", tags.componentsJoined(by: ", "))
-                            var tagOne = "\(tags[0] as! CVarArg)"
+                            self.tagOne = "\(tags[0] as! CVarArg)"
                             
-                            self.getRequest(poemName: tagOne)
-                            self.poeticText.text = "\(self.poems.first)"
-                            
-                            
+
+                            //self.poeticText.text = "\(self.poems.first)"
+                            //self.poeticText.text = "Pussy cat, pussy cat Where have u been?  I've been to London To look at the Queen."
+                       
+                            self.getRequest(poemName: self.tagOne)
+//                            self.poeticText.text = "\(self.poems.first)"
+                        
                         }
+                        
                     }
                     
                     DispatchQueue.main.async {
@@ -155,55 +161,89 @@ class ViewController: UIViewController,
                         self.openCamera.setImage(UIImage(named: "snapoetry_camera"), for: .normal)
                         
                     }
+                    
                 })
             })
         }
-       
+    
     }
     
-    //https://nameless-gorge-75596.herokuapp.com/poems?poem=cat
-    func getRequest(poemName : String) {
+//    //https://nameless-gorge-75596.herokuapp.com/poems?poem=cat
+//    func getRequest(poemName : String) {
+//        
+//        
+//        guard let url = URL(string: "https://nameless-gorge-75596.herokuapp.com/poems?poem=\(poemName)")
+//            else {
+//            return }
+//        
+//        
+//        let session = URLSession.shared.dataTask(with: url) { (data, response, error) in
+//            if let response = response {
+//                print(response)
+//            }
+//            
+//            if let data = data {
+//                print(data)
+//                do {
+//                    let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
+//                    let poem = json[0]["poem"]
+//                    
+//                    self.poems.append(poem as! String)
+//                    
+//                    print(self.poems)
+//                    
+//                } catch {
+//                    print(error)
+//                }
+//                
+//                
+//            }
+//            
+//        
+//        }.resume()
+//        
+//    }
+//    
+    
+    func getRequest(poemName: String) {
         
+        let todoEndpoint: String = "https://nameless-gorge-75596.herokuapp.com/poems?poem=\(poemName)"
+        guard let url = URL(string: todoEndpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        let urlRequest = URLRequest(url: url)
         
+        let session = URLSession.shared
         
-        guard let url = URL(string: "https://nameless-gorge-75596.herokuapp.com/poems?poem=\(poemName)")
-            else {
-            return }
-        
-//        let session = URLSession.shared.dataTask(with: url, completionHandler: (Data?, URLResponse?, Error?) -> Void)
-        
-        let session = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = session.dataTask(with: urlRequest, completionHandler:{ data, response, error in
             if let response = response {
                 print(response)
             }
-            
             if let data = data {
                 print(data)
                 do {
                     let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
-                    let poem = json[0]["poem"]
-                    
-                    self.poems.append(poem as! String)
-                    
-                    print(self.poems)
+                    if let poem = json[0]["poem"] {
+                        DispatchQueue.main.async {
+                            self.poems.append(poem as! String)
+                            print(self.poems)
+                            
+                            self.poeticText.text = "\(self.poems[0])"
+                            
+                        }
+                    }
                     
                 } catch {
                     print(error)
                 }
-          
+            }
+            if let error = error {
+                print(error)
             }
         
-        
-        }.resume()
-        
-    }
-    func dataTask(with url: URL,
-                  completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        
-        
-        
-    }
-    func finishedLoading() {
+        })
+        task.resume()
         
     }
     
