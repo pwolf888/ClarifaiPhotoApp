@@ -61,6 +61,11 @@ class ViewController: UIViewController,
             
             // Present it to screen
             self.present(imagePicker, animated: true, completion: nil)
+            
+            // Clear poem array
+            if poems.capacity != 0 {
+                poems.remove(at: 0)
+            }
         }
     }
     
@@ -85,6 +90,14 @@ class ViewController: UIViewController,
         
         // present photo to screen
         present(picker, animated: true, completion: nil)
+        
+        
+        // Clear poem array
+        if poems.capacity != 0 {
+            poems.remove(at: 0)
+        }
+        
+        
     }
     
     // Pick an image from the users library
@@ -118,6 +131,8 @@ class ViewController: UIViewController,
             openCamera.isEnabled = false
             selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
             openCamera.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
+            
+            
         }
     }
     
