@@ -16,14 +16,17 @@ PODS:
     - AFNetworking/NSURLSession
   - Clarifai (2.3.2):
     - AFNetworking (~> 3.1)
+  - SnapKit (3.0.2)
 
 DEPENDENCIES:
   - Clarifai
+  - SnapKit (~> 3.0.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Clarifai: 6d6cce2b31aefcf33893f2c3a18588b266771d11
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
 
-PODFILE CHECKSUM: 36bb4b93c889b802987f8026f3df9efbfb8f1e78
+PODFILE CHECKSUM: 3c685f0811fc0ec5a103e8bb1dacbf0cf5fb1ba2
 
 COCOAPODS: 1.2.1
