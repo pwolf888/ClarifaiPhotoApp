@@ -11,6 +11,8 @@
 
 import UIKit
 import Clarifai
+import SnapKit
+
 
 class ViewController: UIViewController,
         UIImagePickerControllerDelegate,
