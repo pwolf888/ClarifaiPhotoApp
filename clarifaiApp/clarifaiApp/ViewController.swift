@@ -205,8 +205,9 @@ class ViewController: UIViewController,
     func getRequest(poemName: String) {
         
         // Url to our API
-        let todoEndpoint: String = "https://nameless-gorge-75596.herokuapp.com/poems?poem=\(poemName)"
-        
+        let todoEndpoint: String = "https://radiant-lake-85816.herokuapp.com/poems?poem=\(poemName)"
+        // new API link: https://radiant-lake-85816.herokuapp.com/poems?poem=
+        // old API link: https://nameless-gorge-75596.herokuapp.com/poems?poem=
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
