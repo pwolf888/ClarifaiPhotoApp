@@ -283,12 +283,31 @@ class ViewController: UIViewController,
         
         contentView.addSubview(snapoetryTitle)
         snapoetryTitle.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(00)
+            make.top.equalToSuperview().offset(20)
             make.height.equalTo(90)
             make.width.equalTo(327)
         }
         
-        //** CONFIGURE NAV ICONS VIEW
+        //** CONFIGURE CAMERA ICON VIEW
+         contentView.addSubview(openCamera)
+        openCamera.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(20)
+            make.left.equalToSuperview().offset(20)
+            make.height.equalTo(75)
+            make.width.equalTo(100)
+            
+        }
+        
+        //** CONFIGURE PHOTO LIBRARY ICON VIEW
+        contentView.addSubview(selectPhoto)
+        selectPhoto.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(20)
+            make.height.equalTo(75)
+            make.width.equalTo(100)
+            
+        }
+        
         
     }
     
