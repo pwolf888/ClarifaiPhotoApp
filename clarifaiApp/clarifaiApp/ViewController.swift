@@ -24,6 +24,7 @@ class ViewController: UIViewController,
     @IBOutlet weak var selectPhoto: UIButton!
     @IBOutlet weak var poeticText: UITextView!
     @IBOutlet weak var openCamera: UIButton!
+    @IBOutlet weak var snapoetryTitle: UIImageView!
     
     // Declaring Variables - Globals
     var app:ClarifaiApp?
@@ -34,6 +35,8 @@ class ViewController: UIViewController,
     
     // Load Clarifai API
     override func viewDidLoad() {
+        
+        setupUI()
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -261,6 +264,31 @@ class ViewController: UIViewController,
         
         })
         task.resume()
+        
+    }
+    
+    func setupUI(){
+        
+         //declare global variables to use for layout.
+        
+        //** CONFIGURE OVERALL LAYOUT
+        let contentView = UIView()
+        view.addSubview(contentView)
+        contentView.backgroundColor = .safeBlue
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
+        
+        //** CONFIGURE TITLE VIEW
+        
+        contentView.addSubview(snapoetryTitle)
+        snapoetryTitle.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(00)
+            make.height.equalTo(90)
+            make.width.equalTo(327)
+        }
+        
+        //** CONFIGURE NAV ICONS VIEW
         
     }
     
