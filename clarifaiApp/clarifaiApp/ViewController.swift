@@ -274,7 +274,7 @@ class ViewController: UIViewController,
         //** CONFIGURE OVERALL LAYOUT
         let contentView = UIView()
         view.addSubview(contentView)
-        contentView.backgroundColor = .safeBlue
+        contentView.backgroundColor = .snapoetryBackground
         contentView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
@@ -308,6 +308,19 @@ class ViewController: UIViewController,
             
         }
         
+        
+         //** CONFIGURE POEM TEXT VIEW
+        contentView.addSubview(poeticText)
+        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
+        poeticText.textAlignment = NSTextAlignment.center
+        poeticText.textColor = .whiteColour
+        
+        poeticText.snp.makeConstraints { (make) in
+            make.center.equalTo(contentView)
+            make.height.equalTo(128)
+            make.width.equalTo(240)
+            
+        }
         
     }
     
