@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,11 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jCi-61-fUj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jCi-61-fUj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypi-BQ-4qY">
-                                <rect key="frame" x="670" y="860" width="144" height="356"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypi-BQ-4qY">
+                                <rect key="frame" x="259" y="547" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="snapoetry_photos">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -35,8 +36,9 @@
                                     <action selector="selectPhotoDown:" destination="BYZ-38-t0r" eventType="touchDown" id="7SU-zu-8lw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-w0-RNI">
-                                <rect key="frame" x="20" y="860" width="356" height="356"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-w0-RNI">
+                                <rect key="frame" x="16" y="547" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="snapoetry_camera">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -45,42 +47,26 @@
                                     <action selector="openCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Qi-FA-dtP"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="snapoetry_title" translatesAutoresizingMaskIntoConstraints="NO" id="xPH-7k-Yio">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="snapoetry_title" translatesAutoresizingMaskIntoConstraints="NO" id="xPH-7k-Yio">
                                 <rect key="frame" x="-139.5" y="28" width="655" height="181"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.59999999999999998" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6ad-Dm-riO">
-                                <rect key="frame" x="459" y="860" width="114" height="211"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCH-tU-4uz">
-                                <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6ad-Dm-riO">
+                                <rect key="frame" x="459" y="335" width="114" height="291"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078431372547" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Joh-w0-RNI" secondAttribute="bottom" constant="20" symbolic="YES" id="4q5-AA-Lhk"/>
-                            <constraint firstItem="Joh-w0-RNI" firstAttribute="centerY" secondItem="6ad-Dm-riO" secondAttribute="centerY" constant="10.5" id="8ok-ch-RKt"/>
-                            <constraint firstItem="ypi-BQ-4qY" firstAttribute="leading" secondItem="6ad-Dm-riO" secondAttribute="trailing" constant="97" id="AsG-sg-PdF"/>
-                            <constraint firstItem="Joh-w0-RNI" firstAttribute="bottom" secondItem="ypi-BQ-4qY" secondAttribute="bottom" id="KMf-Lj-fLU"/>
-                            <constraint firstItem="6ad-Dm-riO" firstAttribute="leading" secondItem="Joh-w0-RNI" secondAttribute="trailing" constant="83" id="Kbr-le-mXs"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6ad-Dm-riO" secondAttribute="bottom" constant="41" id="NEw-5D-HW1"/>
-                            <constraint firstItem="xPH-7k-Yio" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="O1A-BN-diJ"/>
-                            <constraint firstItem="Joh-w0-RNI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="840" id="OAi-OZ-MS2"/>
-                            <constraint firstItem="ypi-BQ-4qY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="P4Z-OO-FU4"/>
-                            <constraint firstItem="jCi-61-fUj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="R60-8I-VrT"/>
-                            <constraint firstItem="jCi-61-fUj" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="VBe-ht-Zcy"/>
-                            <constraint firstItem="Joh-w0-RNI" firstAttribute="top" secondItem="ypi-BQ-4qY" secondAttribute="top" id="e7T-Nc-tMp"/>
-                            <constraint firstAttribute="trailing" secondItem="jCi-61-fUj" secondAttribute="trailing" id="gFC-ZX-Cha"/>
-                            <constraint firstItem="jCi-61-fUj" firstAttribute="centerX" secondItem="xPH-7k-Yio" secondAttribute="centerX" id="juD-dd-MRo"/>
-                            <constraint firstItem="Joh-w0-RNI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="osT-d6-NLm"/>
-                            <constraint firstItem="jCi-61-fUj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="r6y-jY-hWF"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="jCi-61-fUj" id="dnn-Ha-ga7"/>
@@ -93,12 +79,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="16.40625" y="43.359375"/>
+            <point key="canvasLocation" x="15.199999999999999" y="42.728635682158924"/>
         </scene>
     </scenes>
     <resources>
-        <image name="snapoetry_camera" width="356" height="356"/>
-        <image name="snapoetry_photos" width="356" height="356"/>
+        <image name="snapoetry_camera" width="312" height="312"/>
+        <image name="snapoetry_photos" width="312" height="312"/>
         <image name="snapoetry_title" width="655" height="181"/>
     </resources>
 </document>
