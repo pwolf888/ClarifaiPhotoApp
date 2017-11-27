@@ -112,6 +112,7 @@ class ViewController: UIViewController,
         dismiss(animated: true, completion: nil)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
+            // Needs a fix
             // Set image to the UIImageView
             imageView.image = image
             
