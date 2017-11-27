@@ -24,6 +24,7 @@ class ViewController: UIViewController,
     @IBOutlet weak var selectPhoto: UIButton!
     @IBOutlet weak var poeticText: UITextView!
     @IBOutlet weak var openCamera: UIButton!
+    @IBOutlet weak var snapoetryTitle: UIImageView!
     
     // Declaring Variables - Globals
     var app:ClarifaiApp?
@@ -34,6 +35,8 @@ class ViewController: UIViewController,
     
     // Load Clarifai API
     override func viewDidLoad() {
+        
+        setupUI()
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -261,6 +264,109 @@ class ViewController: UIViewController,
         
         })
         task.resume()
+        
+    }
+    
+    func setupUI(){
+                
+        //** CONFIGURE OVERALL LAYOUT
+        let contentView = UIView()
+        view.addSubview(contentView)
+        contentView.backgroundColor = .snapoetryBackground
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
+        
+        
+        //** CONFIGURE TITLE VIEW
+        let titleView = UIView()
+        view.addSubview(titleView)
+        self.view.bringSubview(toFront: titleView)
+        titleView.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(view)
+            make.height.equalTo(100)
+        }
+        
+        //** CONFIGURE TITLE TEXT
+        titleView.addSubview(snapoetryTitle)
+        snapoetryTitle.snp.makeConstraints { (make) in
+            make.centerX.equalTo(titleView.snp.centerX)
+            make.top.equalTo(titleView).offset(10)
+            make.height.equalTo(83)
+           make.width.equalTo(300)
+        }
+        
+        
+        //** CONFIGURE ICON VIEW
+        let iconView = UIView()
+        view.addSubview(iconView)
+        iconView.snp.makeConstraints { (make) in
+            make.bottom.left.right.equalTo(view)
+            make.height.equalTo(self.view.snp.height).multipliedBy(0.10)
+        }
+        
+        //** CONFIGURE PHOTO VIEW
+        let photoView = UIView()
+        view.addSubview(photoView)
+        photoView.snp.makeConstraints { (make) in
+            make.top.equalTo(titleView.snp.bottom)
+            make.left.right.equalTo(view)
+            make.bottom.equalTo(iconView.snp.top)
+        }
+        
+        //** CONFIGURE CAMERA ICON
+        iconView.addSubview(openCamera)
+        openCamera.snp.makeConstraints { (make) in
+            make.centerY.equalTo(iconView.snp.centerY)
+            make.left.equalTo(iconView.snp.left).offset(10)
+            make.height.equalTo(iconView).multipliedBy(0.95)
+            make.width.equalTo(iconView.snp.height)
+            
+        }
+        
+        //** CONFIGURE PHOTO LIBRARY ICON
+        iconView.addSubview(selectPhoto)
+        selectPhoto.snp.makeConstraints { (make) in
+            make.centerY.equalTo(iconView.snp.centerY)
+            make.right.equalTo(iconView.snp.right).offset(-10)
+            make.height.equalTo(iconView).multipliedBy(0.9)
+            make.width.equalTo(iconView.snp.height)
+            
+        }
+        
+        //** CONFIGURE POEM VIEW
+        let poemView = UIView()
+        view.addSubview(poemView)
+        self.view.bringSubview(toFront: poemView)
+        poemView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(view)
+            make.bottom.equalTo(iconView.snp.top)
+            make.top.equalTo(titleView.snp.bottom)
+        }
+        
+         //** CONFIGURE POEM TEXT
+        poemView.addSubview(poeticText)
+       // self.view.bringSubview(toFront: poeticText)
+        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
+        poeticText.textAlignment = NSTextAlignment.center
+        poeticText.textColor = .whiteColour
+       
+        
+        poeticText.snp.makeConstraints { (make) in
+            make.center.equalTo(poemView)
+            make.height.equalTo(128)
+            make.width.equalTo(240)
+            
+        }
+        
+        //** CONFIGURE PHOTO DISPLAYED VIEW
+        photoView.addSubview(imageView)
+        imageView.snp.makeConstraints { (make) in
+            make.top.equalTo(photoView.snp.top)
+            make.bottom.equalTo(photoView.snp.bottom)
+            //make.width.equalTo(200)
+            make.center.equalTo(photoView.snp.center)
+        }
         
     }
     
