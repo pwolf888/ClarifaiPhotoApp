@@ -447,7 +447,7 @@ class MainViewController: UIViewController,
         contentView.addSubview(photoView)
         photoView.snp.makeConstraints { (make) in
             make.top.equalTo(navBar.snp.bottom)
-            make.bottom.equalTo(iconView.snp.top)
+            make.bottom.equalTo(contentView.snp.bottom)
             make.left.right.equalTo(contentView)
         }
         
