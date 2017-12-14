@@ -230,19 +230,26 @@ class MainViewController: UIViewController,
     
     //identify word class for each word in sentence
     func getWordClass(text: String, language: String = "en")->[String:[String]]{
-
+        
+        // Disregards the unimportant things inside the text ie. gaps, puncuation etc..
         let options: NSLinguisticTagger.Options = [.omitWhitespace, .omitPunctuation, .joinNames]
+        // Chooses a language english
         let schemes = NSLinguisticTagger.availableTagSchemes(forLanguage: language)
+        // Tags will be english and the options will be disregarded.
         let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
-
+        
         var words = [String:[String]]()
-
+        
+        // Text perameter becomes a tagger string
         tagger.string = text
+        // Text is then converted to NSString
         let tmpString = text as NSString
+        // The range is the max length of tmpString
         let range = NSRange(location: 0, length: tmpString.length)
-        //let scheme = NSLinguisticTagScheme.nameTypeOrLexicalClass
-
+    
+        // The tagger beginners classing the words inside the tmpString with Noun, Verb, Adj etc
         tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
+            
             let token = tmpString.substring(with: tokenRange)
 
             if(words[tag] == nil){
@@ -253,9 +260,6 @@ class MainViewController: UIViewController,
 
         return words
     }
-    
-    
-    
     
     
     //if there aren't enough  adj/verb/adverb in image tags for us to choose from, we can use those supplement
