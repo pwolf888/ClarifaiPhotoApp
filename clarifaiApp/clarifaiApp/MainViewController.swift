@@ -179,9 +179,12 @@ class MainViewController: UIViewController,
                         // Loop through predicted concepts (tags), and display them on the screen.
                         let tags = NSMutableArray()
                         for concept in caiOutput.concepts {
-                            if ( tags.count < 8 ){
-                                tags.add(concept.conceptName)
-                            }
+                            tags.add("It \(concept.conceptName!)")
+                            
+//                            if ( tags.count < 8 ){
+//                                tags.add("It \(concept.conceptName!)")
+//
+//                            }
                             
                         }
                         
@@ -239,7 +242,7 @@ class MainViewController: UIViewController,
         let range = NSRange(location: 0, length: tmpString.length)
         //let scheme = NSLinguisticTagScheme.nameTypeOrLexicalClass
 
-        tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeLexicalClass, options: options) { (tag, tokenRange, _, _) in
+        tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
             let token = tmpString.substring(with: tokenRange)
 
             if(words[tag] == nil){
@@ -304,6 +307,7 @@ class MainViewController: UIViewController,
     
     func generatePoem1()->String{
         //image tags
+        print(tagOne)
         let words = getWordClass(text: tagOne, language: "en")
         print(words)
         /*print poem structure*/
