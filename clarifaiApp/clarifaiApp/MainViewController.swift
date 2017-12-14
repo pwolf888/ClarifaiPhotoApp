@@ -190,6 +190,7 @@ class MainViewController: UIViewController,
                             // Take all the tags and push them into a string
                             self.tagOne = "\(tags)"
                             
+                            print(tags)
                             // Send tag to our API to generate poetry
                             //self.getRequest(poemName: self.tagOne)
                         
@@ -205,7 +206,7 @@ class MainViewController: UIViewController,
                         self.openCamera.isEnabled = true;
                         self.selectPhoto.setImage(UIImage(named: "snapoetry_photo_alt"), for: .normal)
                         self.openCamera.setImage(UIImage(named: "snapoetry_camera_alt"), for: .normal)
-                        
+                        self.generatePoem1()
                     }
                     
                 })
@@ -316,6 +317,10 @@ class MainViewController: UIViewController,
         poem += "What " + getArticle(word: chosenWords[2]) + " " + chosenWords[2] + " " + chosenWords[3]
         poem += "\nI cannot erase that " + chosenWords[4] + " in my mind\n"
         poem += "Just " + chosenWords[5] + " " + chosenWords[6] + "ing"
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
         
         return poem
     }
