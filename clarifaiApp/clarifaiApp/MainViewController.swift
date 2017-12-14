@@ -74,10 +74,10 @@ class MainViewController: UIViewController,
             // Present it to screen
             self.present(imagePicker, animated: true, completion: nil)
             
-            // Clear poem array
-            if poems.capacity != 0 {
-                poems.remove(at: 0)
-            }
+//            // Clear poem array
+//            if poems.capacity != 0 {
+//                poems.remove(at: 0)
+//            }
             poeticText.text.removeAll()
         }
     }
@@ -105,10 +105,10 @@ class MainViewController: UIViewController,
         present(picker, animated: true, completion: nil)
         
         
-        // Clear poem array
-        if poems.capacity != 0 {
-            poems.remove(at: 0)
-        }
+//        // Clear poem array
+//        if poems.capacity != 0 {
+//            poems.remove(at: 0)
+//        }
         poeticText.text.removeAll()
         
     }
@@ -179,21 +179,26 @@ class MainViewController: UIViewController,
                         // Loop through predicted concepts (tags), and display them on the screen.
                         let tags = NSMutableArray()
                         for concept in caiOutput.concepts {
-                            tags.add(concept.conceptName)
+                            if ( tags.count < 8 ){
+                                tags.add(concept.conceptName)
+                            }
+                            
                         }
                         
                         // Wait for the API to load before outputing to screen
                         DispatchQueue.main.async {
                             // Update the new tags in the UI.
-                            self.textView.text = String(format: "Tags:\n%@", tags.componentsJoined(by: " "))
+                            self.textView.text = String(format: "Tags: ", tags.componentsJoined(by: " "))
+                            
                             
                             // Take all the tags and push them into a string
+                            
                             self.tagOne = "\(tags)"
                             
                             print(tags)
                             // Send tag to our API to generate poetry
                             //self.getRequest(poemName: self.tagOne)
-                        
+                            self.generatePoem1()
                         }
                         
                     }
@@ -206,7 +211,7 @@ class MainViewController: UIViewController,
                         self.openCamera.isEnabled = true;
                         self.selectPhoto.setImage(UIImage(named: "snapoetry_photo_alt"), for: .normal)
                         self.openCamera.setImage(UIImage(named: "snapoetry_camera_alt"), for: .normal)
-                        self.generatePoem1()
+                        
                     }
                     
                 })
@@ -234,7 +239,7 @@ class MainViewController: UIViewController,
         let range = NSRange(location: 0, length: tmpString.length)
         //let scheme = NSLinguisticTagScheme.nameTypeOrLexicalClass
 
-        tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
+        tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeLexicalClass, options: options) { (tag, tokenRange, _, _) in
             let token = tmpString.substring(with: tokenRange)
 
             if(words[tag] == nil){
@@ -248,9 +253,6 @@ class MainViewController: UIViewController,
     
     
     
-    
-//    let s = "Please click the ❤ button to get this article seen by more people."
-//    newGetWordClass(text: s)
     
     
     //if there aren't enough  adj/verb/adverb in image tags for us to choose from, we can use those supplement
@@ -303,6 +305,7 @@ class MainViewController: UIViewController,
     func generatePoem1()->String{
         //image tags
         let words = getWordClass(text: tagOne, language: "en")
+        print(words)
         /*print poem structure*/
         print("Poem Structure:\n")
         print("I am in the {0:noun}, it is so {1:adj}\nWhat a/an {2:adj} {3:noun}\nI cannot erase this {4:noun} in my mind\nJust {5: adv}{6:verb}ing\n")
