@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5AEF25FC1F468E940068ECA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF25FB1F468E940068ECA7 /* AppDelegate.swift */; };
-		5AEF25FE1F468E940068ECA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF25FD1F468E940068ECA7 /* ViewController.swift */; };
+		5AEF25FE1F468E940068ECA7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF25FD1F468E940068ECA7 /* MainViewController.swift */; };
 		5AEF26011F468E940068ECA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF25FF1F468E940068ECA7 /* Main.storyboard */; };
 		5AEF26031F468E940068ECA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF26021F468E940068ECA7 /* Assets.xcassets */; };
 		5AEF26061F468E940068ECA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF26041F468E940068ECA7 /* LaunchScreen.storyboard */; };
@@ -21,7 +21,7 @@
 		265763978DA521057E9E1FB2 /* Pods-clarifaiApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clarifaiApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clarifaiApp/Pods-clarifaiApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5AEF25F81F468E940068ECA7 /* clarifaiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = clarifaiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AEF25FB1F468E940068ECA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5AEF25FD1F468E940068ECA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5AEF25FD1F468E940068ECA7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5AEF26001F468E940068ECA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5AEF26021F468E940068ECA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AEF26051F468E940068ECA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				5AEF25FB1F468E940068ECA7 /* AppDelegate.swift */,
-				5AEF25FD1F468E940068ECA7 /* ViewController.swift */,
+				5AEF25FD1F468E940068ECA7 /* MainViewController.swift */,
 				5AEF25FF1F468E940068ECA7 /* Main.storyboard */,
 				5AEF26021F468E940068ECA7 /* Assets.xcassets */,
 				5AEF26041F468E940068ECA7 /* LaunchScreen.storyboard */,
@@ -231,7 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AEF25FE1F468E940068ECA7 /* ViewController.swift in Sources */,
+				5AEF25FE1F468E940068ECA7 /* MainViewController.swift in Sources */,
 				5AEF25FC1F468E940068ECA7 /* AppDelegate.swift in Sources */,
 				80B99F351FCA5F640058B472 /* SafeColors.swift in Sources */,
 			);

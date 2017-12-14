@@ -14,7 +14,7 @@ import Clarifai
 import SnapKit
 
 
-class ViewController: UIViewController,
+class MainViewController: UIViewController,
         UIImagePickerControllerDelegate,
         UINavigationControllerDelegate {
     
@@ -25,6 +25,11 @@ class ViewController: UIViewController,
     @IBOutlet weak var poeticText: UITextView!
     @IBOutlet weak var openCamera: UIButton!
     @IBOutlet weak var snapoetryTitle: UIImageView!
+    @IBOutlet weak var selectFont: UIButton!
+    
+    @IBOutlet weak var backNavButton: UIButton!
+    @IBOutlet weak var shareNavButton: UIButton!
+    
     
     // Declaring Variables - Globals
     var app:ClarifaiApp?
@@ -36,7 +41,7 @@ class ViewController: UIViewController,
     // Load Clarifai API
     override func viewDidLoad() {
         
-        setupUI()
+        setupInitialUI()
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -85,7 +90,7 @@ class ViewController: UIViewController,
     @IBAction func selectPhoto(_ sender: UIButton) {
         
         // Open the eye on touch up
-        selectPhoto.setImage(UIImage(named: "snapoetry_photos"), for: .normal)
+        selectPhoto.setImage(UIImage(named: "snapoetry_photo_alt"), for: .normal)
         
         // Show a UIImagePickerController to let the user pick an image from their library.
         picker.allowsEditing = false;
@@ -110,8 +115,12 @@ class ViewController: UIViewController,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // The user picked an image. Send it to Clarifai for recognition.
         dismiss(animated: true, completion: nil)
+        //redraw UI
+        setupPhotolUI()
+        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
+            // Needs a fix
             // Set image to the UIImageView
             imageView.image = image
             
@@ -192,8 +201,8 @@ class ViewController: UIViewController,
                         // Enable buttons
                         self.selectPhoto.isEnabled = true;
                         self.openCamera.isEnabled = true;
-                        self.selectPhoto.setImage(UIImage(named: "snapoetry_photos"), for: .normal)
-                        self.openCamera.setImage(UIImage(named: "snapoetry_camera"), for: .normal)
+                        self.selectPhoto.setImage(UIImage(named: "snapoetry_photo_alt"), for: .normal)
+                        self.openCamera.setImage(UIImage(named: "snapoetry_camera_alt"), for: .normal)
                         
                     }
                     
@@ -267,33 +276,73 @@ class ViewController: UIViewController,
         
     }
     
-    func setupUI(){
+    @IBAction func cancelSnap(sender: UIButton) {
+        // Confirm Cancellation.
+        
+        print("User pressed back")
+        let defaultAction = UIAlertAction(title: "Okay",
+                                          style: .default) { (action) in
+                                            // Respond to user selection of the action.
+                                            self.setupInitialUI()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel) { (action) in
+                                            // Respond to user selection of the action.
+        }
+        
+        // Create and configure the alert controller.
+        let alert = UIAlertController(title: "Cancel",
+            message: "All changes will be lost. Continue?",
+                                      preferredStyle: .alert)
+        alert.addAction(defaultAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true) {
+            // The alert was presented
+        }
+    }
+    
+    
+
+
+    func setupInitialUI(){
                 
         //** CONFIGURE OVERALL LAYOUT
         let contentView = UIView()
         view.addSubview(contentView)
-        contentView.backgroundColor = .snapoetryBackground
+        contentView.backgroundColor = .whiteColour
         contentView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
         
+        //** CONFIGURE BACKGROUND VIEW
+        let backgroundView = UIView()
+        contentView.addSubview(backgroundView)
+        //        self.view.bringSubview(toFront: titleView)
+        backgroundView.backgroundColor = .snapoetryBackground
+        backgroundView.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(contentView)
+            make.bottom.equalTo(contentView.snp.centerY)
+        }
         
         //** CONFIGURE TITLE VIEW
         let titleView = UIView()
         view.addSubview(titleView)
         self.view.bringSubview(toFront: titleView)
         titleView.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(view)
+            make.centerY.equalTo(contentView.snp.centerY)
             make.height.equalTo(100)
+            make.left.right.equalTo(contentView)
         }
+        
         
         //** CONFIGURE TITLE TEXT
         titleView.addSubview(snapoetryTitle)
         snapoetryTitle.snp.makeConstraints { (make) in
+            make.centerY.equalTo(titleView.snp.centerY).offset(-25)
             make.centerX.equalTo(titleView.snp.centerX)
-            make.top.equalTo(titleView).offset(10)
-            make.height.equalTo(83)
-           make.width.equalTo(300)
+            make.width.equalTo(400)
+            make.height.equalTo(94)
         }
         
         
@@ -301,24 +350,28 @@ class ViewController: UIViewController,
         let iconView = UIView()
         view.addSubview(iconView)
         iconView.snp.makeConstraints { (make) in
-            make.bottom.left.right.equalTo(view)
-            make.height.equalTo(self.view.snp.height).multipliedBy(0.10)
+            make.left.right.equalTo(contentView)
+            make.bottom.equalTo(contentView).offset(-50)
+            make.height.equalTo(self.view.snp.height).multipliedBy(0.15)
         }
         
         //** CONFIGURE PHOTO VIEW
         let photoView = UIView()
-        view.addSubview(photoView)
+        contentView.addSubview(photoView)
         photoView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleView.snp.bottom)
-            make.left.right.equalTo(view)
-            make.bottom.equalTo(iconView.snp.top)
+            make.top.bottom.equalTo(contentView)
+            make.left.right.equalTo(contentView)
         }
         
         //** CONFIGURE CAMERA ICON
         iconView.addSubview(openCamera)
+        self.view.bringSubview(toFront: openCamera)
+        openCamera.layer.borderWidth = 2
+        openCamera.layer.borderColor = UIColor.snapoetryBackground.cgColor
+        openCamera.layer.cornerRadius = 10
         openCamera.snp.makeConstraints { (make) in
             make.centerY.equalTo(iconView.snp.centerY)
-            make.left.equalTo(iconView.snp.left).offset(10)
+            make.left.equalTo(iconView.snp.left).offset(30)
             make.height.equalTo(iconView).multipliedBy(0.95)
             make.width.equalTo(iconView.snp.height)
             
@@ -326,37 +379,116 @@ class ViewController: UIViewController,
         
         //** CONFIGURE PHOTO LIBRARY ICON
         iconView.addSubview(selectPhoto)
+        self.view.bringSubview(toFront: selectPhoto)
+        selectPhoto.layer.borderWidth = 2
+        selectPhoto.layer.borderColor = UIColor.snapoetryBackground.cgColor
+        selectPhoto.layer.cornerRadius = 10
         selectPhoto.snp.makeConstraints { (make) in
             make.centerY.equalTo(iconView.snp.centerY)
-            make.right.equalTo(iconView.snp.right).offset(-10)
+            make.right.equalTo(iconView.snp.right).offset(-30)
             make.height.equalTo(iconView).multipliedBy(0.9)
             make.width.equalTo(iconView.snp.height)
-            
         }
         
-        //** CONFIGURE POEM VIEW
-        let poemView = UIView()
-        view.addSubview(poemView)
-        self.view.bringSubview(toFront: poemView)
-        poemView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(view)
-            make.bottom.equalTo(iconView.snp.top)
-            make.top.equalTo(titleView.snp.bottom)
+    }
+    
+    func setupPhotolUI(){
+        
+        //** CONFIGURE OVERALL LAYOUT
+        let contentView = UIView()
+        view.addSubview(contentView)
+        contentView.backgroundColor = .whiteColour
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
         }
         
-         //** CONFIGURE POEM TEXT
-        poemView.addSubview(poeticText)
-       // self.view.bringSubview(toFront: poeticText)
-        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
-        poeticText.textAlignment = NSTextAlignment.center
-        poeticText.textColor = .whiteColour
-       
+        //** CONFIGURE NAVBAR VIEW
+        let navBar = UIView()
+        view.addSubview(navBar)
+        navBar.backgroundColor = .whiteColour
+        navBar.snp.makeConstraints { (make) in
+            make.left.right.equalTo(contentView)
+            make.top.equalTo(contentView)
+            make.height.equalTo(64)
+        }
         
-        poeticText.snp.makeConstraints { (make) in
-            make.center.equalTo(poemView)
-            make.height.equalTo(128)
-            make.width.equalTo(240)
-            
+        //** CONFIGURE BACK BUTTON
+        navBar.addSubview(backNavButton)
+        self.view.bringSubview(toFront: backNavButton)
+        backNavButton.snp.makeConstraints { (make) in
+            make.left.equalTo(navBar.snp.left).offset(10)
+            make.bottom.equalTo(navBar.snp.bottom).offset(-10)
+
+        }
+        
+        //** CONFIGURE SOCIAL MEDIA SHARE BUTTON
+        navBar.addSubview(shareNavButton)
+        self.view.bringSubview(toFront: shareNavButton)
+        shareNavButton.snp.makeConstraints { (make) in
+            make.right.equalTo(navBar.snp.right).offset(-10)
+            make.bottom.equalTo(navBar.snp.bottom).offset(-10)
+            make.height.width.equalTo(30)
+        }
+        
+        //** CONFIGURE ICON VIEW
+        let iconView = UIView()
+        view.addSubview(iconView)
+        iconView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(contentView)
+            make.bottom.equalTo(contentView)
+            make.height.equalTo(64)
+        }
+        
+        //** CONFIGURE PHOTO VIEW
+        let photoView = UIView()
+        contentView.addSubview(photoView)
+        photoView.snp.makeConstraints { (make) in
+            make.top.equalTo(navBar.snp.bottom)
+            make.bottom.equalTo(contentView.snp.bottom)
+            make.left.right.equalTo(contentView)
+        }
+        
+        //** CONFIGURE FONT BUTTON SINGLE
+        iconView.addSubview(selectFont)
+        selectFont.backgroundColor = .whiteColour
+        selectFont.layer.borderWidth = 1
+        selectFont.layer.borderColor = UIColor.snapoetryBackground.cgColor
+        selectFont.layer.cornerRadius = 10
+        selectFont.snp.makeConstraints { (make) in
+            make.centerY.equalTo(iconView.snp.centerY)
+            make.left.equalTo(iconView.snp.left).offset(10)
+            make.height.equalTo(iconView).multipliedBy(0.8)
+            make.width.equalTo(selectFont.snp.height)
+
+        }
+        
+//        //** CONFIGURE COLOUR BUTTON SINGLE
+        let selectColourView = UIView()
+        iconView.addSubview(selectColourView)
+        selectColourView.backgroundColor = .whiteColour
+        self.view.bringSubview(toFront: selectColourView)
+        selectColourView.layer.borderWidth = 1
+        selectColourView.layer.borderColor = UIColor.snapoetryBackground.cgColor
+        selectColourView.layer.cornerRadius = 10
+        selectColourView.snp.makeConstraints { (make) in
+            make.centerY.equalTo(iconView.snp.centerY)
+            make.right.equalTo(iconView.snp.right).offset(-10)
+            make.height.equalTo(iconView).multipliedBy(0.8)
+            make.width.equalTo(selectColourView.snp.height)
+
+        }
+        
+        let selectColour = UIButton()
+        selectColourView.addSubview(selectColour)
+        selectColour.backgroundColor = .whiteColour
+        self.view.bringSubview(toFront: selectColour)
+        selectColour.layer.borderWidth = 1
+        selectColour.layer.borderColor = UIColor.greyColour.cgColor
+        selectColour.layer.cornerRadius = 10
+        selectColour.snp.makeConstraints { (make) in
+            make.center.equalTo(selectColourView.snp.center)
+            make.height.equalTo(35)
+            make.width.equalTo(35)
         }
         
         //** CONFIGURE PHOTO DISPLAYED VIEW
@@ -364,9 +496,32 @@ class ViewController: UIViewController,
         imageView.snp.makeConstraints { (make) in
             make.top.equalTo(photoView.snp.top)
             make.bottom.equalTo(photoView.snp.bottom)
-            //make.width.equalTo(200)
             make.center.equalTo(photoView.snp.center)
         }
+        
+        //** CONFIGURE POEM VIEW
+        let poemView = UIView()
+        self.view.bringSubview(toFront: poemView)
+        contentView.addSubview(poemView)
+        poemView.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView).offset(64)
+        }
+        
+        //** CONFIGURE POEM TEXT
+        photoView.addSubview(poeticText)
+        self.view.bringSubview(toFront: poeticText)
+        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        poeticText.textAlignment = NSTextAlignment.center
+        poeticText.textColor = .whiteColour
+
+        poeticText.snp.makeConstraints { (make) in
+            make.top.equalTo(poemView.snp.centerY).offset(-50)
+            make.width.equalTo(poemView).multipliedBy(0.8)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.height.equalTo(400)
+
+        }
+
         
     }
     
