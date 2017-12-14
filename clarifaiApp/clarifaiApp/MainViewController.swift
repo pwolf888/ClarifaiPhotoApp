@@ -12,7 +12,7 @@
 import UIKit
 import Clarifai
 import SnapKit
-
+import Foundation
 
 class MainViewController: UIViewController,
         UIImagePickerControllerDelegate,
@@ -37,6 +37,8 @@ class MainViewController: UIViewController,
     var poems = [String]()
     var loaded = false
     var tagOne = "no poem"
+    
+    
     
     // Load Clarifai API
     override func viewDidLoad() {
@@ -183,13 +185,13 @@ class MainViewController: UIViewController,
                         // Wait for the API to load before outputing to screen
                         DispatchQueue.main.async {
                             // Update the new tags in the UI.
-                            self.textView.text = String(format: "Tags:\n%@", tags.componentsJoined(by: ", "))
+                            self.textView.text = String(format: "Tags:\n%@", tags.componentsJoined(by: " "))
                             
-                            // Take the first tag from the list
-                            self.tagOne = "\(tags[0] as! CVarArg)"
+                            // Take all the tags and push them into a string
+                            self.tagOne = "\(tags)"
                             
                             // Send tag to our API to generate poetry
-                            self.getRequest(poemName: self.tagOne)
+                            //self.getRequest(poemName: self.tagOne)
                         
                         }
                         
@@ -212,69 +214,177 @@ class MainViewController: UIViewController,
     
     }
     
+    // ***************************************************
+    // * Wordclasser 
+    // *
+    // ***************************************************
+    
+    //identify word class for each word in sentence
+    func getWordClass(text: String, language: String = "en")->[String:[String]]{
 
-    // Gets a poem from our heroku api
-    func getRequest(poemName: String) {
+        let options: NSLinguisticTagger.Options = [.omitWhitespace, .omitPunctuation, .joinNames]
+        let schemes = NSLinguisticTagger.availableTagSchemes(forLanguage: language)
+        let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
+
+        var words = [String:[String]]()
+
+        tagger.string = text
+        let string = text as NSString
+        let range = NSRange(location: 0, length: string.length)
+        let scheme = 
+
+        tagger.enumerateTags(in: range, scheme: scheme , options: options) { (tag, tokenRange, _, _) in
+            let token = string.substring(with: tokenRange)
+
+            if(words[tag!.rawValue] == nil){
+                words[tag!.rawValue] = [String]()
+            }
+            words[tag!.rawValue]!.append(token)
+        }
+
+        return words
+    }
+    
+    
+    
+    
+//    let s = "Please click the ❤ button to get this article seen by more people."
+//    newGetWordClass(text: s)
+    
+    
+    //if there aren't enough  adj/verb/adverb in image tags for us to choose from, we can use those supplement
+    let wordSupplement = ["Adjective":["sweet", "beautiful", "bright", "shining", "brilliant", "wonderful", "gigantic", "huge", "little", "amazing", "great", "shy", "lazy", "exciting", "slow", "smooth", "soft", "warm"], "Verb":["run", "walk", "jump", "fly", "laugh", "smile", "sing", "rise", "cry", "swim", "climb", "burn", "eat", "push", "sit", "look"], "Adverb":["happily", "excitedly", "cheerfully", "lightly", "alone", "fast", "gladly", "swiftly", "shyly", "brightly", "silently", "lazily", "excitingly", "slowly", "smoothly", "softly", "warmly"]]
+    
+    //select a specific type of word from the image tags
+    func selectRandomWord(wordClass:String, imageTags:[String:[String]])->String{
+        if(imageTags[wordClass] == nil){
+            let len = wordSupplement[wordClass]!.count
+            let random = Int(arc4random_uniform(UInt32(len)))
+            
+            return wordSupplement[wordClass]![random]
+        }
+        else{
+            let len = imageTags[wordClass]!.count
+            let random = Int(arc4random_uniform(UInt32(len)))
+            
+            return imageTags[wordClass]![random]
+        }
+    }
+    
+    //define article(a/an) before word
+    func getArticle(word: String)->String{
+        var firstCharacter = ""
+        firstCharacter.append(word[word.startIndex])
+        let vowels = ["a", "e", "i", "o", "u"]
         
-        // Url to our API
-        let todoEndpoint: String = "https://radiant-lake-85816.herokuapp.com/poems?poem=\(poemName)"
-        // new API link: https://radiant-lake-85816.herokuapp.com/poems?poem=
-        // old API link: https://nameless-gorge-75596.herokuapp.com/poems?poem=
-        guard let url = URL(string: todoEndpoint) else {
-            print("Error: cannot create URL")
-            return
+        for i in 0..<vowels.count{
+            if(firstCharacter.lowercased() == vowels[i]){
+                return "an"
+            }
         }
         
-        // Turn it into a request
-        let urlRequest = URLRequest(url: url)
-        
-        // Begin the session
-        let session = URLSession.shared
-        
-        // Session becomes a data task with a completion handler
-        let task = session.dataTask(with: urlRequest, completionHandler:{ data, response, error in
-            
-            // Wait for a 200 OK code
-            if let response = response {
-                print(response)
-            }
-            
-            // Turn data into JSON Object
-            if let data = data {
-                print(data)
-                
-                // Serialise Data
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
-                    
-                    // If data is the first poem in the list
-                    if let poem = json[0]["poem"] {
-                        
-                        // Wait for the request to load before output
-                        DispatchQueue.main.async {
-                            
-                            // Store poem into a string array
-                            self.poems.append(poem as! String)
-                            print(self.poems)
-                            
-                            // Output to text view element
-                            self.poeticText.text = "\(self.poems[0])"
-                            
-                        }
-                    }
-                    
-                } catch {
-                    print(error)
-                }
-            }
-            if let error = error {
-                print(error)
-            }
-        
-        })
-        task.resume()
-        
+        return "a"
     }
+    
+    
+    
+//    for (wordClass, wordArray) in words{
+//    print("\(wordClass): \(wordArray)")
+//    }
+    
+    /*poem structure 1
+     I am in the {0:noun}, it is so {1:adj}
+     What a/an {2:adj} {3:noun}
+     I cannot erase this {4:noun} in my mind
+     Just {5: adv} {6:verb}ing
+     */
+    
+    func generatePoem1()->String{
+        //image tags
+        let words = getWordClass(text: tagOne, language: "en")
+        /*print poem structure*/
+        print("Poem Structure:\n")
+        print("I am in the {0:noun}, it is so {1:adj}\nWhat a/an {2:adj} {3:noun}\nI cannot erase this {4:noun} in my mind\nJust {5: adv}{6:verb}ing\n")
+        print("Poem:\n")
+        
+        let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Noun", "Adverb", "Verb"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = "I am in the " + chosenWords[0] + ", it is so " + chosenWords[1] + ".\n"
+        poem += "What " + getArticle(word: chosenWords[2]) + " " + chosenWords[2] + " " + chosenWords[3]
+        poem += "\nI cannot erase that " + chosenWords[4] + " in my mind\n"
+        poem += "Just " + chosenWords[5] + " " + chosenWords[6] + "ing"
+        
+        return poem
+    }
+    
+
+    
+
+//    // Gets a poem from our heroku api
+//    func getRequest(poemName: String) {
+//
+//        // Url to our API
+//        let todoEndpoint: String = "https://radiant-lake-85816.herokuapp.com/poems?poem=\(poemName)"
+//        // new API link: https://radiant-lake-85816.herokuapp.com/poems?poem=
+//        // old API link: https://nameless-gorge-75596.herokuapp.com/poems?poem=
+//        guard let url = URL(string: todoEndpoint) else {
+//            print("Error: cannot create URL")
+//            return
+//        }
+//
+//        // Turn it into a request
+//        let urlRequest = URLRequest(url: url)
+//
+//        // Begin the session
+//        let session = URLSession.shared
+//
+//        // Session becomes a data task with a completion handler
+//        let task = session.dataTask(with: urlRequest, completionHandler:{ data, response, error in
+//
+//            // Wait for a 200 OK code
+//            if let response = response {
+//                print(response)
+//            }
+//
+//            // Turn data into JSON Object
+//            if let data = data {
+//                print(data)
+//
+//                // Serialise Data
+//                do {
+//                    let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
+//
+//                    // If data is the first poem in the list
+//                    if let poem = json[0]["poem"] {
+//
+//                        // Wait for the request to load before output
+//                        DispatchQueue.main.async {
+//
+//                            // Store poem into a string array
+//                            self.poems.append(poem as! String)
+//                            print(self.poems)
+//
+//                            // Output to text view element
+//                            self.poeticText.text = "\(self.poems[0])"
+//
+//                        }
+//                    }
+//
+//                } catch {
+//                    print(error)
+//                }
+//            }
+//            if let error = error {
+//                print(error)
+//            }
+//
+//        })
+//        task.resume()
+//
+//    }
     
     @IBAction func cancelSnap(sender: UIButton) {
         // Confirm Cancellation.
@@ -303,7 +413,7 @@ class MainViewController: UIViewController,
     }
     
     
-
+ 
 
     func setupInitialUI(){
                 
