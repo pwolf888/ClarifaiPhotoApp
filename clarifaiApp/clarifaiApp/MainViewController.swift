@@ -229,17 +229,17 @@ class MainViewController: UIViewController,
         var words = [String:[String]]()
 
         tagger.string = text
-        let string = text as NSString
-        let range = NSRange(location: 0, length: string.length)
-        let scheme = 
+        let tmpString = text as NSString
+        let range = NSRange(location: 0, length: tmpString.length)
+        //let scheme = NSLinguisticTagScheme.nameTypeOrLexicalClass
 
-        tagger.enumerateTags(in: range, scheme: scheme , options: options) { (tag, tokenRange, _, _) in
-            let token = string.substring(with: tokenRange)
+        tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
+            let token = tmpString.substring(with: tokenRange)
 
-            if(words[tag!.rawValue] == nil){
-                words[tag!.rawValue] = [String]()
+            if(words[tag] == nil){
+                words[tag] = [String]()
             }
-            words[tag!.rawValue]!.append(token)
+            words[tag]!.append(token)
         }
 
         return words
