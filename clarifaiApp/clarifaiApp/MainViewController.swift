@@ -300,7 +300,7 @@ class MainViewController: UIViewController,
         self.present(alert, animated: true) {
             // The alert was presented
         }
-        }
+    }
     
     
 
@@ -343,7 +343,6 @@ class MainViewController: UIViewController,
             make.centerX.equalTo(titleView.snp.centerX)
             make.width.equalTo(400)
             make.height.equalTo(94)
-            
         }
         
         
@@ -389,7 +388,6 @@ class MainViewController: UIViewController,
             make.right.equalTo(iconView.snp.right).offset(-30)
             make.height.equalTo(iconView).multipliedBy(0.9)
             make.width.equalTo(iconView.snp.height)
-            
         }
         
     }
@@ -420,8 +418,7 @@ class MainViewController: UIViewController,
         backNavButton.snp.makeConstraints { (make) in
             make.left.equalTo(navBar.snp.left).offset(10)
             make.bottom.equalTo(navBar.snp.bottom).offset(-10)
-            make.height.equalTo(navBar).multipliedBy(0.8)
-            make.width.equalTo(backNavButton.snp.height)
+
         }
         
         //** CONFIGURE SOCIAL MEDIA SHARE BUTTON
@@ -494,38 +491,37 @@ class MainViewController: UIViewController,
             make.width.equalTo(35)
         }
         
-        //** CONFIGURE POEM VIEW
-        let poemView = UIView()
-        view.addSubview(poemView)
-        self.view.bringSubview(toFront: poemView)
-        poemView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(contentView)
-            make.top.equalTo(navBar.snp.bottom)
-        }
-        
-        //** CONFIGURE POEM TEXT
-        poemView.addSubview(poeticText)
-        // self.view.bringSubview(toFront: poeticText)
-        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
-        poeticText.textAlignment = NSTextAlignment.center
-        poeticText.textColor = .whiteColour
-        
-        poeticText.snp.makeConstraints { (make) in
-            make.centerX.equalTo(poemView.snp.centerX)
-            make.bottom.equalTo(poemView)
-            make.height.equalTo(280)
-            make.width.equalTo(280)
-            
-        }
-        
         //** CONFIGURE PHOTO DISPLAYED VIEW
         photoView.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.top.equalTo(photoView.snp.top)
             make.bottom.equalTo(photoView.snp.bottom)
-            //make.width.equalTo(200)
             make.center.equalTo(photoView.snp.center)
         }
+        
+        //** CONFIGURE POEM VIEW
+        let poemView = UIView()
+        self.view.bringSubview(toFront: poemView)
+        contentView.addSubview(poemView)
+        poemView.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView).offset(64)
+        }
+        
+        //** CONFIGURE POEM TEXT
+        photoView.addSubview(poeticText)
+        self.view.bringSubview(toFront: poeticText)
+        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        poeticText.textAlignment = NSTextAlignment.center
+        poeticText.textColor = .whiteColour
+
+        poeticText.snp.makeConstraints { (make) in
+            make.top.equalTo(poemView.snp.centerY).offset(-50)
+            make.width.equalTo(poemView).multipliedBy(0.8)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.height.equalTo(400)
+
+        }
+
         
     }
     
