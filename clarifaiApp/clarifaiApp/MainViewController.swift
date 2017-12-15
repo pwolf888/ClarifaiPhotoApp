@@ -179,12 +179,13 @@ class MainViewController: UIViewController,
                         // Loop through predicted concepts (tags), and display them on the screen.
                         let tags = NSMutableArray()
                         for concept in caiOutput.concepts {
-                            tags.add("It \(concept.conceptName!)")
                             
-//                            if ( tags.count < 8 ){
-//                                tags.add("It \(concept.conceptName!)")
-//
-//                            }
+                            // Removes the tag "no person" as it was causing problems
+                            if ( concept.conceptName! == "no person" ){
+                                tags.remove(concept.conceptName)
+                            } else {
+                                tags.add("It \(concept.conceptName!)")
+                            }
                             
                         }
                         
@@ -336,7 +337,27 @@ class MainViewController: UIViewController,
         return poem
     }
     
-
+        func generatePoem3()->String{
+            /*print poem structure*/
+            let words = getWordClass(text: tagOne, language: "en")
+            print(words)
+            let wordClasses = ["Adjective", "Adjective", "Noun", "Adjective", "Noun", "Verb", "Noun", "Verb", "Adverb", "Noun"]
+            var chosenWords = [String]()
+            for i in 0..<wordClasses.count{
+                chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+            }
+    
+            var poem = chosenWords[0] + " " + chosenWords[1] + " " + chosenWords[2] + "\n"
+            poem += "And " + chosenWords[3] + " " + chosenWords[4] + ",\n"
+            poem += chosenWords[5] + " its " + chosenWords[6] + "\n"
+            poem += "And " + chosenWords[7] + "ing " + chosenWords[8] + " in the " + chosenWords[9]
+            
+            // Output to text view element
+            self.poeticText.text = "\(poem)"
+            print("\(poem)")
+            
+            return poem
+        }
     
 
 //    // Gets a poem from our heroku api
