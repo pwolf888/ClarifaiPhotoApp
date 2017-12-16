@@ -219,7 +219,7 @@ class MainViewController: UIViewController,
                             }
                             else {
                                 print("Poem topic not identified")
-                                self.generatePoem1()
+                                self.generatePoem2()
                             }
                             
                         }
@@ -285,7 +285,7 @@ class MainViewController: UIViewController,
     
     
     //if there aren't enough  adj/verb/adverb in image tags for us to choose from, we can use those supplement
-    let wordSupplement = ["Adjective":["sweet", "beautiful", "bright", "shining", "brilliant", "wonderful", "gigantic", "huge", "little", "amazing", "great", "shy", "lazy", "exciting", "slow", "smooth", "soft", "warm"], "Verb":["run", "walk", "jump", "fly", "laugh", "smile", "sing", "rise", "cry", "swim", "climb", "burn", "eat", "push", "sit", "look"], "Adverb":["happily", "excitedly", "cheerfully", "lightly", "alone", "fast", "gladly", "swiftly", "shyly", "brightly", "silently", "lazily", "excitingly", "slowly", "smoothly", "softly", "warmly"]]
+    let wordSupplement = ["Adjective":["sweet", "beautiful", "bright", "shining", "brilliant", "wonderful", "gigantic", "huge", "little", "amazing", "great", "shy", "lazy", "exciting", "slow", "smooth", "soft", "warm"], "Verb":["run", "walk", "jump", "fly", "laugh", "smile", "sing", "rise", "cry", "swim", "climb", "burn", "eat", "push", "sit", "look"], "Adverb":["happily", "excitedly", "cheerfully", "lightly", "alone", "fast", "gladly", "swiftly", "shyly", "brightly", "silently", "lazily", "excitingly", "slowly", "smoothly", "softly", "warmly"], "Pronoun":["he","she","they"], "Detirminer":["the", "every", "this", "those", "that", "many", "my", "his", "hers", "yours"]]
     
     //select a specific type of word from the image tags
     func selectRandomWord(wordClass:String, imageTags:[String:[String]])->String{
@@ -354,6 +354,41 @@ class MainViewController: UIViewController,
         print("\(poem)")
         return poem
     }
+    
+    /*poem structure 2
+     The {0:noun} {1:verb} in the {2:noun}
+     Without {3:determiner} {4:adjective} or {5:adjective}
+     {6:Pronoun} {7:adverb} the {8:noun}"
+     */
+    
+    func generatePoem2()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        /*print poem structure*/
+        print("Poem Structure:\n")
+        
+        print("The {noun} {verb} in the {noun}\nWithout {determiner} {adjective} or {adjective}\n{Pronoun} {adverb} the {noun}")
+        print("Poem:\n")
+        
+        let wordClasses = ["Noun", "Verb", "Noun", "Detirminer", "Adjective", "Adjective", "Pronoun", "Verb", "Noun",]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = "The " + chosenWords[0] + " " + chosenWords[1] + " in the " + chosenWords[2]
+        poem += ".\n Without " + chosenWords[3] + " " + chosenWords[4] + " or " + chosenWords[5] + ".\n"
+        poem += chosenWords[6] + " " + chosenWords[7] + " the " + chosenWords[8]
+        
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        
+        return poem
+    }
+
     
     /*
      Animal poem structure #1
