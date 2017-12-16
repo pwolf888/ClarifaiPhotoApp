@@ -877,9 +877,12 @@ class MainViewController: UIViewController,
         //** CONFIGURE POEM TEXT
         photoView.addSubview(poeticText)
         self.view.bringSubview(toFront: poeticText)
-        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
         poeticText.textAlignment = NSTextAlignment.center
         poeticText.textColor = .whiteColour
+        poeticText.layer.shadowColor = UIColor.black.cgColor
+        poeticText.layer.shadowOpacity = 0.9
+        poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
 
         poeticText.snp.makeConstraints { (make) in
             make.top.equalTo(poemView.snp.centerY).offset(-50)
