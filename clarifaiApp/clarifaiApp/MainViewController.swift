@@ -203,7 +203,25 @@ class MainViewController: UIViewController,
                             print(tags)
                             // Send tag to our API to generate poetry
                             //self.getRequest(poemName: self.tagOne)
-                            self.generatePeople1()
+                            
+                            if (self.tagOne.contains("animal")){
+                                print("Poem topic identified as Animals")
+                                self.generateAnimal1()
+                            }
+                            else if (self.tagOne.contains("nature")){
+                                print("Poem topic identified as Nature")
+                                self.generateNature1()
+                                }
+                            else if (self.tagOne.contains("people")){
+                                print("Poem topic identified as People")
+                                self.generatePeople1()
+                            }
+                            else {
+                                print("Poem topic not identified")
+                                self.generatePoem1()
+                            }
+                            
+                            //self.generatePeople1()
                         }
                         
                     }
@@ -445,7 +463,7 @@ class MainViewController: UIViewController,
         let words = getWordClass(text: tagOne, language: "en")
         print(words)
         
-        let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Adjective", "Noun"]
+        let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Adjective", "Noun", "Noun"]
         var chosenWords = [String]()
         for i in 0..<wordClasses.count{
             chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
