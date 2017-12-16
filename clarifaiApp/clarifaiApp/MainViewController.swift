@@ -204,6 +204,7 @@ class MainViewController: UIViewController,
                             // Send tag to our API to generate poetry
                             //self.getRequest(poemName: self.tagOne)
                             
+                            //Check if list of tags contains one of our key topics, to generate relevant poem
                             if (self.tagOne.contains("animal")){
                                 print("Poem topic identified as Animals")
                                 self.generateAnimal1()
@@ -221,7 +222,6 @@ class MainViewController: UIViewController,
                                 self.generatePoem1()
                             }
                             
-                            //self.generatePeople1()
                         }
                         
                     }
