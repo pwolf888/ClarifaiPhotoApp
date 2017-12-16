@@ -270,6 +270,7 @@ class MainViewController: UIViewController,
     
     //select a specific type of word from the image tags
     func selectRandomWord(wordClass:String, imageTags:[String:[String]])->String{
+        
         if(imageTags[wordClass] == nil){
             let len = wordSupplement[wordClass]!.count
             let random = Int(arc4random_uniform(UInt32(len)))
