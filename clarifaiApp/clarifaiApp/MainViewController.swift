@@ -74,10 +74,10 @@ class MainViewController: UIViewController,
             // Present it to screen
             self.present(imagePicker, animated: true, completion: nil)
             
-            // Clear poem array
-            if poems.capacity != 0 {
-                poems.remove(at: 0)
-            }
+//            // Clear poem array
+//            if poems.capacity != 0 {
+//                poems.remove(at: 0)
+//            }
             poeticText.text.removeAll()
         }
     }
@@ -105,10 +105,10 @@ class MainViewController: UIViewController,
         present(picker, animated: true, completion: nil)
         
         
-        // Clear poem array
-        if poems.capacity != 0 {
-            poems.remove(at: 0)
-        }
+//        // Clear poem array
+//        if poems.capacity != 0 {
+//            poems.remove(at: 0)
+//        }
         poeticText.text.removeAll()
         
     }
@@ -179,21 +179,30 @@ class MainViewController: UIViewController,
                         // Loop through predicted concepts (tags), and display them on the screen.
                         let tags = NSMutableArray()
                         for concept in caiOutput.concepts {
-                            tags.add(concept.conceptName)
+                            
+                            // Removes the tag "no person" as it was causing problems
+                            if ( concept.conceptName! == "no person" ){
+                                tags.remove(concept.conceptName)
+                            } else {
+                                tags.add("It is \(concept.conceptName!)")
+                            }
+                            
                         }
                         
                         // Wait for the API to load before outputing to screen
                         DispatchQueue.main.async {
                             // Update the new tags in the UI.
-                            self.textView.text = String(format: "Tags:\n%@", tags.componentsJoined(by: " "))
+                            self.textView.text = String(format: "Tags: ", tags.componentsJoined(by: " "))
+                            
                             
                             // Take all the tags and push them into a string
+                            
                             self.tagOne = "\(tags)"
                             
                             print(tags)
                             // Send tag to our API to generate poetry
                             //self.getRequest(poemName: self.tagOne)
-                        
+                            self.generateAnimal1()
                         }
                         
                     }
@@ -206,7 +215,7 @@ class MainViewController: UIViewController,
                         self.openCamera.isEnabled = true;
                         self.selectPhoto.setImage(UIImage(named: "snapoetry_photo_alt"), for: .normal)
                         self.openCamera.setImage(UIImage(named: "snapoetry_camera_alt"), for: .normal)
-                        self.generatePoem1()
+                        
                     }
                     
                 })
@@ -222,35 +231,38 @@ class MainViewController: UIViewController,
     
     //identify word class for each word in sentence
     func getWordClass(text: String, language: String = "en")->[String:[String]]{
-
+        
+        // Disregards the unimportant things inside the text ie. gaps, puncuation etc..
         let options: NSLinguisticTagger.Options = [.omitWhitespace, .omitPunctuation, .joinNames]
+        // Chooses a language english
         let schemes = NSLinguisticTagger.availableTagSchemes(forLanguage: language)
+        // Tags will be english and the options will be disregarded.
         let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
-
+        
         var words = [String:[String]]()
-
+        
+        // Text perameter becomes a tagger string
         tagger.string = text
+        // Text is then converted to NSString
         let tmpString = text as NSString
+        // The range is the max length of tmpString
         let range = NSRange(location: 0, length: tmpString.length)
-        //let scheme = NSLinguisticTagScheme.nameTypeOrLexicalClass
-
+    
+        // The tagger beginners classing the words inside the tmpString with Noun, Verb, Adj etc
         tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
+            
             let token = tmpString.substring(with: tokenRange)
 
             if(words[tag] == nil){
                 words[tag] = [String]()
             }
+           
             words[tag]!.append(token)
+           
         }
 
         return words
     }
-    
-    
-    
-    
-//    let s = "Please click the ❤ button to get this article seen by more people."
-//    newGetWordClass(text: s)
     
     
     //if there aren't enough  adj/verb/adverb in image tags for us to choose from, we can use those supplement
@@ -258,6 +270,7 @@ class MainViewController: UIViewController,
     
     //select a specific type of word from the image tags
     func selectRandomWord(wordClass:String, imageTags:[String:[String]])->String{
+        
         if(imageTags[wordClass] == nil){
             let len = wordSupplement[wordClass]!.count
             let random = Int(arc4random_uniform(UInt32(len)))
@@ -302,11 +315,9 @@ class MainViewController: UIViewController,
     
     func generatePoem1()->String{
         //image tags
+        print(tagOne)
         let words = getWordClass(text: tagOne, language: "en")
-        /*print poem structure*/
-        print("Poem Structure:\n")
-        print("I am in the {0:noun}, it is so {1:adj}\nWhat a/an {2:adj} {3:noun}\nI cannot erase this {4:noun} in my mind\nJust {5: adv}{6:verb}ing\n")
-        print("Poem:\n")
+        print(words)
         
         let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Noun", "Adverb", "Verb"]
         var chosenWords = [String]()
@@ -321,11 +332,103 @@ class MainViewController: UIViewController,
         
         // Output to text view element
         self.poeticText.text = "\(poem)"
-        
+        print("\(poem)")
         return poem
     }
     
-
+    /*
+     Animal poem structure #1
+     {0:adj} {1:noun}, with your eyes so {2:adj}
+     You see the {3:noun} so {4:adj} and {5:adj}
+     Time to {6:verb}, so much to {7:verb}
+     */
+    
+    func generateAnimal1()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        
+        print(words)
+        
+        let wordClasses = ["Adjective", "Noun", "Adjective", "Noun", "Adjective", "Adjective", "Verb", "Verb"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem =  getArticle(word: chosenWords[0]) + " " + chosenWords[0] + " " + chosenWords[1] + ", with your eyes so " + chosenWords[2] + ", \n"
+        poem += "You see the " + chosenWords[3] + " so " + chosenWords[4] + " and " + chosenWords[5] + ", \n"
+        poem += "Time to " + chosenWords[6] + ", so much to " + chosenWords[7] + "."
+        
+        print(getArticle(word: chosenWords[0]))
+        print(chosenWords[0])
+        print(chosenWords[1])
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
+    
+    /*
+     Animal poem structure #2
+     I have a {0:adj} {1:noun}
+     Most {2: adj} for miles around
+     Wherever there’s lots of {3:noun}
+     That’s where he’ll {4:verb}
+     
+     */
+    func generateAnimal2()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        
+        let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Noun", "Adverb", "Verb"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = "I am in the " + chosenWords[0] + ", it is so " + chosenWords[1] + ".\n"
+        poem += "What " + getArticle(word: chosenWords[2]) + " " + chosenWords[2] + " " + chosenWords[3]
+        poem += "\nI cannot erase that " + chosenWords[4] + " in my mind\n"
+        poem += "Just " + chosenWords[5] + " " + chosenWords[6] + "ing"
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
+    
+    /*
+     Nature poem structure #1
+     Let your eyes consume the beauty of {0:noun}
+     Let {1: adj} {2:noun} soothe your mind
+     You’ll feel the aloha spirit—
+     A more {3:adj} {4:noun} you won’t find
+     
+     */
+    func generateNature1()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        
+        let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Noun", "Adverb", "Verb"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = "I am in the " + chosenWords[0] + ", it is so " + chosenWords[1] + ".\n"
+        poem += "What " + getArticle(word: chosenWords[2]) + " " + chosenWords[2] + " " + chosenWords[3]
+        poem += "\nI cannot erase that " + chosenWords[4] + " in my mind\n"
+        poem += "Just " + chosenWords[5] + " " + chosenWords[6] + "ing"
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
     
 
 //    // Gets a poem from our heroku api
