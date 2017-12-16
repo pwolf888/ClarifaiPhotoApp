@@ -184,7 +184,8 @@ class MainViewController: UIViewController,
                             if ( concept.conceptName! == "no person" ){
                                 tags.remove(concept.conceptName)
                             } else {
-                                tags.add("It is \(concept.conceptName!)")
+                                //tags.add("It is \(concept.conceptName!)")
+                                tags.add(concept.conceptName!)
                             }
                             
                         }
@@ -202,7 +203,7 @@ class MainViewController: UIViewController,
                             print(tags)
                             // Send tag to our API to generate poetry
                             //self.getRequest(poemName: self.tagOne)
-                            self.generateAnimal1()
+                            self.generatePeople1()
                         }
                         
                     }
@@ -430,7 +431,102 @@ class MainViewController: UIViewController,
         return poem
     }
     
-
+    
+    /*
+    Nature poem structure #2
+    {0:noun} is such a {1:adj} sight,
+    With {2:adj} {3:noun} and {4:adj} {5:noun}
+    An abundance of {6:noun}, what pure delight
+    */
+    
+    func generateNature2()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        
+        let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Adjective", "Noun"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = chosenWords[0] + " is such a " + chosenWords[1] + " sight,"
+        poem += "\nWith " + chosenWords[2] + " " + chosenWords[3] + " and " + chosenWords[4] + " " + chosenWords[5]
+        poem += "\nWith " + chosenWords[6] + " in my mind"
+        poem += "\nAn abundance of " + chosenWords[7] + " what pure delight."
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
+ 
+    /*
+    Room poem structure #1
+    A {0:adj} {1:noun}
+    A {2:adj} {3:adj} room
+    With {4:noun} and {5:noun} tossed throughout
+    Where does that {6:adj} {7:noun} come from ?
+    */
+    
+    func generateRoom1()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        
+        let wordClasses = ["Adjective", "Noun", "Adjective", "Adjective", "Noun", "Noun", "Adjective", "Noun"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = "A " + chosenWords[0] + " " + chosenWords[1]
+        poem += "\n" + chosenWords[2] + " " + chosenWords[3] + " room "
+        poem += "\nWith " + chosenWords[4] + " and " + chosenWords[5] + " tossed throughout"
+        poem += "\nWhere does that " + chosenWords[6] + " " + chosenWords[7] + " come from?"
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
+    
+    /*
+    People poem structure #1
+    {0:adj} {1:adj} eyes embedded in the {2:adj} face
+    A {4:adj} mouth beneath {3:adj} nose
+    The most {5:adj} person ever known
+    Your {6:adj} {7:noun} lit up the New York City
+    */
+    
+    func generatePeople1()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        
+        let wordClasses = ["Adjective", "Adjective", "Adjective", "Adjective", "Adjective", "Adjective", "Adjective", "Noun"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = chosenWords[0] + " " + chosenWords[1] + " eyes embedded in the " + chosenWords[2] + " face"
+        poem += "\nA " + chosenWords[2] + " mouth beneath " + chosenWords[2] + " nose "
+        poem += "\nThe most " + chosenWords[3] + " person ever known "
+        poem += "\nYour " + chosenWords[5] + " " + chosenWords[6] + " blushes like a rose"
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
+    
+    
+    
+//******* OBSOLETE CODE *******************************************************************************
 //    // Gets a poem from our heroku api
 //    func getRequest(poemName: String) {
 //
