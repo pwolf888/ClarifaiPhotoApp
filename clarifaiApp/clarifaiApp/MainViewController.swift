@@ -184,7 +184,7 @@ class MainViewController: UIViewController,
                             if ( concept.conceptName! == "no person" ){
                                 tags.remove(concept.conceptName)
                             } else {
-                                tags.add("It \(concept.conceptName!)")
+                                tags.add("It is \(concept.conceptName!)")
                             }
                             
                         }
@@ -202,7 +202,7 @@ class MainViewController: UIViewController,
                             print(tags)
                             // Send tag to our API to generate poetry
                             //self.getRequest(poemName: self.tagOne)
-                            self.generatePoem1()
+                            self.generateAnimal1()
                         }
                         
                     }
@@ -256,7 +256,9 @@ class MainViewController: UIViewController,
             if(words[tag] == nil){
                 words[tag] = [String]()
             }
+           
             words[tag]!.append(token)
+           
         }
 
         return words
@@ -315,10 +317,6 @@ class MainViewController: UIViewController,
         print(tagOne)
         let words = getWordClass(text: tagOne, language: "en")
         print(words)
-        /*print poem structure*/
-        print("Poem Structure:\n")
-        print("I am in the {0:noun}, it is so {1:adj}\nWhat a/an {2:adj} {3:noun}\nI cannot erase this {4:noun} in my mind\nJust {5: adv}{6:verb}ing\n")
-        print("Poem:\n")
         
         let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Noun", "Adverb", "Verb"]
         var chosenWords = [String]()
@@ -333,31 +331,103 @@ class MainViewController: UIViewController,
         
         // Output to text view element
         self.poeticText.text = "\(poem)"
-        
+        print("\(poem)")
         return poem
     }
     
-        func generatePoem3()->String{
-            /*print poem structure*/
-            let words = getWordClass(text: tagOne, language: "en")
-            print(words)
-            let wordClasses = ["Adjective", "Adjective", "Noun", "Adjective", "Noun", "Verb", "Noun", "Verb", "Adverb", "Noun"]
-            var chosenWords = [String]()
-            for i in 0..<wordClasses.count{
-                chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
-            }
+    /*
+     Animal poem structure #1
+     {0:adj} {1:noun}, with your eyes so {2:adj}
+     You see the {3:noun} so {4:adj} and {5:adj}
+     Time to {6:verb}, so much to {7:verb}
+     */
     
-            var poem = chosenWords[0] + " " + chosenWords[1] + " " + chosenWords[2] + "\n"
-            poem += "And " + chosenWords[3] + " " + chosenWords[4] + ",\n"
-            poem += chosenWords[5] + " its " + chosenWords[6] + "\n"
-            poem += "And " + chosenWords[7] + "ing " + chosenWords[8] + " in the " + chosenWords[9]
-            
-            // Output to text view element
-            self.poeticText.text = "\(poem)"
-            print("\(poem)")
-            
-            return poem
+    func generateAnimal1()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        
+        print(words)
+        
+        let wordClasses = ["Adjective", "Noun", "Adjective", "Noun", "Adjective", "Adjective", "Verb", "Verb"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
         }
+        var poem =  getArticle(word: chosenWords[0]) + " " + chosenWords[0] + " " + chosenWords[1] + ", with your eyes so " + chosenWords[2] + ", \n"
+        poem += "You see the " + chosenWords[3] + " so " + chosenWords[4] + " and " + chosenWords[5] + ", \n"
+        poem += "Time to " + chosenWords[6] + ", so much to " + chosenWords[7] + "."
+        
+        print(getArticle(word: chosenWords[0]))
+        print(chosenWords[0])
+        print(chosenWords[1])
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
+    
+    /*
+     Animal poem structure #2
+     I have a {0:adj} {1:noun}
+     Most {2: adj} for miles around
+     Wherever there’s lots of {3:noun}
+     That’s where he’ll {4:verb}
+     
+     */
+    func generateAnimal2()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        
+        let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Noun", "Adverb", "Verb"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = "I am in the " + chosenWords[0] + ", it is so " + chosenWords[1] + ".\n"
+        poem += "What " + getArticle(word: chosenWords[2]) + " " + chosenWords[2] + " " + chosenWords[3]
+        poem += "\nI cannot erase that " + chosenWords[4] + " in my mind\n"
+        poem += "Just " + chosenWords[5] + " " + chosenWords[6] + "ing"
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
+    
+    /*
+     Nature poem structure #1
+     Let your eyes consume the beauty of {0:noun}
+     Let {1: adj} {2:noun} soothe your mind
+     You’ll feel the aloha spirit—
+     A more {3:adj} {4:noun} you won’t find
+     
+     */
+    func generateNature1()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        
+        let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Noun", "Adverb", "Verb"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = "I am in the " + chosenWords[0] + ", it is so " + chosenWords[1] + ".\n"
+        poem += "What " + getArticle(word: chosenWords[2]) + " " + chosenWords[2] + " " + chosenWords[3]
+        poem += "\nI cannot erase that " + chosenWords[4] + " in my mind\n"
+        poem += "Just " + chosenWords[5] + " " + chosenWords[6] + "ing"
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
     
 
 //    // Gets a poem from our heroku api
