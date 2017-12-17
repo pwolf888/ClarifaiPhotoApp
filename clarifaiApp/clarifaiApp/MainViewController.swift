@@ -37,8 +37,31 @@ class MainViewController: UIViewController,
     var poems = [String]()
     var loaded = false
     var tagOne = "no poem"
+ 
+    /* ERIN TO IMPLEMENT THIS LATER....
+    //Check to see which device the app is running on, in order to apply appropriate contraints.
+    struct ScreenSize
+    {
+        static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
+        static let SCREEN_HEIGHT        = UIScreen.main.bounds.size.height
+        static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+        static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+    }
     
-    
+    struct DeviceType
+    {
+        static let IS_IPHONE_4_OR_LESS  = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH < 568.0
+        static let IS_IPHONE_5          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 568.0
+        static let IS_IPHONE_6          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0
+        static let IS_IPHONE_6P         = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 736.0
+        static let IS_IPHONE_7          = IS_IPHONE_6
+        static let IS_IPHONE_7P         = IS_IPHONE_6P
+        static let IS_IPHONE_8          = IS_IPHONE_6
+        static let IS_IPHONE_8P         = IS_IPHONE_6P
+        static let IS_IPHONE_X          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 812.0
+        static let iPad                 = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
+    }
+    */
     
     // Load Clarifai API
     override func viewDidLoad() {
@@ -51,6 +74,8 @@ class MainViewController: UIViewController,
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
         
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -184,7 +209,8 @@ class MainViewController: UIViewController,
                             if ( concept.conceptName! == "no person" ){
                                 tags.remove(concept.conceptName)
                             } else {
-                                tags.add("It is \(concept.conceptName!)")
+                                //tags.add("It is \(concept.conceptName!)")
+                                tags.add(concept.conceptName!)
                             }
                             
                         }
@@ -202,7 +228,25 @@ class MainViewController: UIViewController,
                             print(tags)
                             // Send tag to our API to generate poetry
                             //self.getRequest(poemName: self.tagOne)
-                            self.generateAnimal1()
+                            
+                            //Check if list of tags contains one of our key topics, to generate relevant poem
+                            if (self.tagOne.contains("animal")){
+                                print("Poem topic identified as Animals")
+                                self.generateAnimal1()
+                            }
+                            else if (self.tagOne.contains("nature")){
+                                print("Poem topic identified as Nature")
+                                self.generateNature1()
+                                }
+                            else if (self.tagOne.contains("people")){
+                                print("Poem topic identified as People")
+                                self.generatePeople1()
+                            }
+                            else {
+                                print("Poem topic not identified")
+                                self.generatePoem2()
+                            }
+                            
                         }
                         
                     }
@@ -266,7 +310,7 @@ class MainViewController: UIViewController,
     
     
     //if there aren't enough  adj/verb/adverb in image tags for us to choose from, we can use those supplement
-    let wordSupplement = ["Adjective":["sweet", "beautiful", "bright", "shining", "brilliant", "wonderful", "gigantic", "huge", "little", "amazing", "great", "shy", "lazy", "exciting", "slow", "smooth", "soft", "warm"], "Verb":["run", "walk", "jump", "fly", "laugh", "smile", "sing", "rise", "cry", "swim", "climb", "burn", "eat", "push", "sit", "look"], "Adverb":["happily", "excitedly", "cheerfully", "lightly", "alone", "fast", "gladly", "swiftly", "shyly", "brightly", "silently", "lazily", "excitingly", "slowly", "smoothly", "softly", "warmly"]]
+    let wordSupplement = ["Adjective":["sweet", "beautiful", "bright", "shining", "brilliant", "wonderful", "gigantic", "huge", "little", "amazing", "great", "shy", "lazy", "exciting", "slow", "smooth", "soft", "warm"], "Verb":["run", "walk", "jump", "fly", "laugh", "smile", "sing", "rise", "cry", "swim", "climb", "burn", "eat", "push", "sit", "look"], "Adverb":["happily", "excitedly", "cheerfully", "lightly", "alone", "fast", "gladly", "swiftly", "shyly", "brightly", "silently", "lazily", "excitingly", "slowly", "smoothly", "softly", "warmly"], "Pronoun":["he","she","they"], "Detirminer":["the", "every", "this", "those", "that", "many", "my", "his", "hers", "yours"]]
     
     //select a specific type of word from the image tags
     func selectRandomWord(wordClass:String, imageTags:[String:[String]])->String{
@@ -335,6 +379,41 @@ class MainViewController: UIViewController,
         print("\(poem)")
         return poem
     }
+    
+    /*poem structure 2
+     The {0:noun} {1:verb} in the {2:noun}
+     Without {3:determiner} {4:adjective} or {5:adjective}
+     {6:Pronoun} {7:adverb} the {8:noun}"
+     */
+    
+    func generatePoem2()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        /*print poem structure*/
+        print("Poem Structure:\n")
+        
+        print("The {noun} {verb} in the {noun}\nWithout {determiner} {adjective} or {adjective}\n{Pronoun} {adverb} the {noun}")
+        print("Poem:\n")
+        
+        let wordClasses = ["Noun", "Verb", "Noun", "Detirminer", "Adjective", "Adjective", "Pronoun", "Verb", "Noun",]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = "The " + chosenWords[0] + " " + chosenWords[1] + " in the " + chosenWords[2]
+        poem += ".\n Without " + chosenWords[3] + " " + chosenWords[4] + " or " + chosenWords[5] + ".\n"
+        poem += chosenWords[6] + " " + chosenWords[7] + " the " + chosenWords[8]
+        
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        
+        return poem
+    }
+
     
     /*
      Animal poem structure #1
@@ -430,7 +509,102 @@ class MainViewController: UIViewController,
         return poem
     }
     
-
+    
+    /*
+    Nature poem structure #2
+    {0:noun} is such a {1:adj} sight,
+    With {2:adj} {3:noun} and {4:adj} {5:noun}
+    An abundance of {6:noun}, what pure delight
+    */
+    
+    func generateNature2()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        
+        let wordClasses = ["Noun", "Adjective", "Adjective", "Noun", "Adjective", "Noun", "Noun"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = chosenWords[0] + " is such a " + chosenWords[1] + " sight,"
+        poem += "\nWith " + chosenWords[2] + " " + chosenWords[3] + " and " + chosenWords[4] + " " + chosenWords[5]
+        poem += "\nWith " + chosenWords[6] + " in my mind"
+        poem += "\nAn abundance of " + chosenWords[7] + " what pure delight."
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
+ 
+    /*
+    Room poem structure #1
+    A {0:adj} {1:noun}
+    A {2:adj} {3:adj} room
+    With {4:noun} and {5:noun} tossed throughout
+    Where does that {6:adj} {7:noun} come from ?
+    */
+    
+    func generateRoom1()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        
+        let wordClasses = ["Adjective", "Noun", "Adjective", "Adjective", "Noun", "Noun", "Adjective", "Noun"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = "A " + chosenWords[0] + " " + chosenWords[1]
+        poem += "\n" + chosenWords[2] + " " + chosenWords[3] + " room "
+        poem += "\nWith " + chosenWords[4] + " and " + chosenWords[5] + " tossed throughout"
+        poem += "\nWhere does that " + chosenWords[6] + " " + chosenWords[7] + " come from?"
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
+    
+    /*
+    People poem structure #1
+    {0:adj} {1:adj} eyes embedded in the {2:adj} face
+    A {4:adj} mouth beneath {3:adj} nose
+    The most {5:adj} person ever known
+    Your {6:adj} {7:noun} lit up the New York City
+    */
+    
+    func generatePeople1()->String{
+        //image tags
+        print(tagOne)
+        let words = getWordClass(text: tagOne, language: "en")
+        print(words)
+        
+        let wordClasses = ["Adjective", "Adjective", "Adjective", "Adjective", "Adjective", "Adjective", "Adjective", "Noun"]
+        var chosenWords = [String]()
+        for i in 0..<wordClasses.count{
+            chosenWords.append(selectRandomWord(wordClass: wordClasses[i], imageTags: words))
+        }
+        var poem = chosenWords[0] + " " + chosenWords[1] + " eyes embedded in the " + chosenWords[2] + " face"
+        poem += "\nA " + chosenWords[2] + " mouth beneath " + chosenWords[2] + " nose "
+        poem += "\nThe most " + chosenWords[3] + " person ever known "
+        poem += "\nYour " + chosenWords[5] + " " + chosenWords[6] + " blushes like a rose"
+        
+        
+        // Output to text view element
+        self.poeticText.text = "\(poem)"
+        print("\(poem)")
+        return poem
+    }
+    
+    
+    
+//******* OBSOLETE CODE *******************************************************************************
 //    // Gets a poem from our heroku api
 //    func getRequest(poemName: String) {
 //
@@ -549,7 +723,7 @@ class MainViewController: UIViewController,
         self.view.bringSubview(toFront: titleView)
         titleView.snp.makeConstraints { (make) in
             make.centerY.equalTo(contentView.snp.centerY)
-            make.height.equalTo(100)
+            make.height.equalTo(180)
             make.left.right.equalTo(contentView)
         }
         
@@ -560,7 +734,7 @@ class MainViewController: UIViewController,
             make.centerY.equalTo(titleView.snp.centerY).offset(-25)
             make.centerX.equalTo(titleView.snp.centerX)
             make.width.equalTo(400)
-            make.height.equalTo(94)
+            make.height.equalTo(120)
         }
         
         
@@ -728,9 +902,13 @@ class MainViewController: UIViewController,
         //** CONFIGURE POEM TEXT
         photoView.addSubview(poeticText)
         self.view.bringSubview(toFront: poeticText)
-        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
         poeticText.textAlignment = NSTextAlignment.center
         poeticText.textColor = .whiteColour
+        poeticText.layer.shadowColor = UIColor.black.cgColor
+        poeticText.layer.shadowOpacity = 0.9
+        poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        poeticText.text = "Analysing Image..."
 
         poeticText.snp.makeConstraints { (make) in
             make.top.equalTo(poemView.snp.centerY).offset(-50)
