@@ -37,7 +37,8 @@ class MainViewController: UIViewController,
     var poems = [String]()
     var loaded = false
     var tagOne = "no poem"
-    
+ 
+    /* ERIN TO IMPLEMENT THIS LATER....
     //Check to see which device the app is running on, in order to apply appropriate contraints.
     struct ScreenSize
     {
@@ -60,6 +61,7 @@ class MainViewController: UIViewController,
         static let IS_IPHONE_X          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 812.0
         static let iPad                 = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
     }
+    */
     
     // Load Clarifai API
     override func viewDidLoad() {
@@ -906,6 +908,7 @@ class MainViewController: UIViewController,
         poeticText.layer.shadowColor = UIColor.black.cgColor
         poeticText.layer.shadowOpacity = 0.9
         poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        poeticText.text = "Analysing Image..."
 
         poeticText.snp.makeConstraints { (make) in
             make.top.equalTo(poemView.snp.centerY).offset(-50)
