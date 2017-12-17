@@ -698,7 +698,7 @@ class MainViewController: UIViewController,
         self.view.bringSubview(toFront: titleView)
         titleView.snp.makeConstraints { (make) in
             make.centerY.equalTo(contentView.snp.centerY)
-            make.height.equalTo(100)
+            make.height.equalTo(180)
             make.left.right.equalTo(contentView)
         }
         
@@ -709,7 +709,7 @@ class MainViewController: UIViewController,
             make.centerY.equalTo(titleView.snp.centerY).offset(-25)
             make.centerX.equalTo(titleView.snp.centerX)
             make.width.equalTo(400)
-            make.height.equalTo(94)
+            make.height.equalTo(120)
         }
         
         
