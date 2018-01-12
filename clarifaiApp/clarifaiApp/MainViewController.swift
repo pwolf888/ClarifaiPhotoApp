@@ -26,7 +26,7 @@ class MainViewController: UIViewController,
     @IBOutlet weak var openCamera: UIButton!
     @IBOutlet weak var snapoetryTitle: UIImageView!
     @IBOutlet weak var selectFont: UIButton!
-    
+    @IBOutlet weak var selectTextColour: UIButton!
     @IBOutlet weak var backNavButton: UIButton!
     @IBOutlet weak var shareNavButton: UIButton!
     
@@ -668,6 +668,23 @@ class MainViewController: UIViewController,
 //
 //    }
     
+    @IBOutlet weak var changeColourView: UIView!
+    
+    @IBAction func changeTextColour(_ sender: UIButton) {
+        
+        //call function to present user with text colour options
+        bringChangeColourToView()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        var touch: UITouch? = touches.first as! UITouch
+
+        // Dismiss the Change Text colour view if user doesnt select a colour
+        if touch?.view != changeColourView {
+            changeColourView.isHidden = true
+        }
+    }
+    
     @IBAction func cancelSnap(sender: UIButton) {
         // Confirm Cancellation.
         
@@ -694,9 +711,6 @@ class MainViewController: UIViewController,
         }
     }
     
-    
- 
-
     func setupInitialUI(){
                 
         //** CONFIGURE OVERALL LAYOUT
@@ -870,14 +884,14 @@ class MainViewController: UIViewController,
 
         }
         
-        let selectColour = UIButton()
-        selectColourView.addSubview(selectColour)
-        selectColour.backgroundColor = .whiteColour
-        self.view.bringSubview(toFront: selectColour)
-        selectColour.layer.borderWidth = 1
-        selectColour.layer.borderColor = UIColor.greyColour.cgColor
-        selectColour.layer.cornerRadius = 10
-        selectColour.snp.makeConstraints { (make) in
+        selectColourView.addSubview(selectTextColour)
+        selectTextColour.backgroundColor = .whiteColour
+        self.view.bringSubview(toFront: selectTextColour)
+        selectTextColour.backgroundColor = .purple
+        selectTextColour.layer.borderWidth = 1
+        selectTextColour.layer.borderColor = UIColor.greyColour.cgColor
+        selectTextColour.layer.cornerRadius = 10
+        selectTextColour.snp.makeConstraints { (make) in
             make.center.equalTo(selectColourView.snp.center)
             make.height.equalTo(35)
             make.width.equalTo(35)
@@ -918,6 +932,21 @@ class MainViewController: UIViewController,
 
         }
 
+        
+    }
+    
+    func bringChangeColourToView()
+    {
+        changeColourView.isHidden = false
+        view.addSubview(changeColourView)
+        changeColourView.backgroundColor = .yellow
+        self.view.bringSubview(toFront: changeColourView)
+        changeColourView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(view).multipliedBy(0.9)
+            make.bottom.equalTo(selectTextColour.snp.top).offset(-30)
+            make.height.equalTo(50)
+        }
         
     }
     
