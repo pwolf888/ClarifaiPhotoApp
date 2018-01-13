@@ -13,6 +13,7 @@ import UIKit
 import Clarifai
 import SnapKit
 import Foundation
+import AVFoundation
 
 class MainViewController: UIViewController,
         UIImagePickerControllerDelegate,
@@ -20,12 +21,19 @@ class MainViewController: UIViewController,
     
     // Declared Variables - IBOutlet
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var selectPhoto: UIButton!
+    //@IBOutlet weak var textView: UITextView!
+//    @IBOutlet weak var selectPhoto: UIButton!
     @IBOutlet weak var poeticText: UITextView!
     
+    // Custom camera outlets
+    @IBOutlet weak var previewView: UIView!
+
+    // Custom camera variables
+    var session: AVCaptureSession?
+    var stillImageOutput: AVCaptureStillImageOutput?
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
-    @IBOutlet weak var selectFont: UIButton!
+    
     
     @IBOutlet weak var backNavButton: UIButton!
     @IBOutlet weak var shareNavButton: UIButton!
@@ -37,7 +45,7 @@ class MainViewController: UIViewController,
     var poems = [String]()
     var loaded = false
     var tagOne = "no poem"
-    var cameraNeeded = true;
+    //var cameraNeeded = true;
  
     /* ERIN TO IMPLEMENT THIS LATER....
     //Check to see which device the app is running on, in order to apply appropriate contraints.
@@ -67,33 +75,91 @@ class MainViewController: UIViewController,
     // Load Clarifai API
     override func viewDidLoad() {
         
-        setupInitialUI()
+        //setupInitialUI()
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         //Declare my api key
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
         
+        
+        
     }
     
-    // When the app starts it will open the camera
-    override func viewDidAppear(_ animated: Bool) {
-        if (cameraNeeded == true) {
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = .camera
-                imagePicker.allowsEditing = false
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Setup your camera here...
+        
+        // Setup Session to use camera inputs
+        session = AVCaptureSession()
+        session!.sessionPreset = AVCaptureSessionPresetPhoto
+        
+        // Rear Camera is chosen
+        let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        
+        // Prepare the rear camera as input
+        var error: NSError?
+        var input: AVCaptureDeviceInput!
+        do {
+            input = try AVCaptureDeviceInput(device: backCamera)
+        } catch let error1 as NSError {
+            error = error1
+            input = nil
+            print(error!.localizedDescription)
+        }
+        
+        // Check Errors for the session
+        if error == nil && session!.canAddInput(input) {
+            session!.addInput(input)
+            // ...
+            // The remainder of the session setup will go here...
+            
+            stillImageOutput = AVCaptureStillImageOutput()
+            stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+            
+            if session!.canAddOutput(stillImageOutput) {
+                session!.addOutput(stillImageOutput)
+                // ...
+                // Configure the Live Preview here...
+                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
+                videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
+                videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+                previewView.layer.addSublayer(videoPreviewLayer!)
+                session!.startRunning()
                 
-                // Present it to screen
-                self.present(imagePicker, animated: false, completion: nil)
                 
-                poeticText.text.removeAll()
-                cameraNeeded = false
+                
             }
             
         }
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        videoPreviewLayer!.frame = previewView.bounds
+        
+        
+    }
+    
+    // When the app starts it will open the camera
+//    override func viewDidAppear(_ animated: Bool) {
+//        if (cameraNeeded == true) {
+//            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+//                let imagePicker = UIImagePickerController()
+//                imagePicker.delegate = self
+//                imagePicker.sourceType = .camera
+//                imagePicker.allowsEditing = false
+//
+//                // Present it to screen
+//                self.present(imagePicker, animated: false, completion: nil)
+//
+//                poeticText.text.removeAll()
+//                cameraNeeded = false
+//            }
+//
+//        }
+//    }
     
     
     override func didReceiveMemoryWarning() {
@@ -103,31 +169,59 @@ class MainViewController: UIViewController,
     
 
     
-    // select photo icon blinks
-    @IBAction func selectPhotoDown(_ sender: UIButton) {
-         selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
+//    // select photo icon blinks
+//    @IBAction func selectPhotoDown(_ sender: UIButton) {
+//         selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
+//    }
+    
+    
+//    // Select a photo from the album
+//    @IBAction func selectPhoto(_ sender: UIButton) {
+//
+//        // Open the eye on touch up
+//        selectPhoto.setImage(UIImage(named: "snapoetry_photo_alt"), for: .normal)
+//
+//        // Show a UIImagePickerController to let the user pick an image from their library.
+//        picker.allowsEditing = false;
+//
+//        // Open Users device photo library
+//        picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+//        picker.delegate = self;
+//
+//        // present photo to screen
+//        present(picker, animated: true, completion: nil)
+//
+//        poeticText.text.removeAll()
+//
+//    }
+    
+    
+    @IBAction func didTakePhoto(_ sender: UIButton) {
+        
+        if let videoConnection = stillImageOutput!.connection(withMediaType: AVMediaTypeVideo) {
+            // ...
+            // Code for photo capture goes here...
+            stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) -> Void in
+                // ...
+                if sampleBuffer != nil {
+                    let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
+                    let dataProvider = CGDataProvider(data: imageData! as CFData)
+                    let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
+                    let image = UIImage(cgImage: cgImageRef!)
+                    // ...
+                    // Add the image to captureImageView here...
+                    
+                    self.imageView.image = image
+                }
+                
+                
+            })
+            
+        }
     }
     
     
-    // Select a photo from the album
-    @IBAction func selectPhoto(_ sender: UIButton) {
-        
-        // Open the eye on touch up
-        selectPhoto.setImage(UIImage(named: "snapoetry_photo_alt"), for: .normal)
-        
-        // Show a UIImagePickerController to let the user pick an image from their library.
-        picker.allowsEditing = false;
-        
-        // Open Users device photo library
-        picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        picker.delegate = self;
-        
-        // present photo to screen
-        present(picker, animated: true, completion: nil)
-        
-        poeticText.text.removeAll()
-        
-    }
+    
     
     // Pick an image from the users library
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -157,11 +251,11 @@ class MainViewController: UIViewController,
             
             // Recognizes the image
             recognizeImage(image: image)
-            textView.text = "Hmmmm..."
+            //textView.text = "Hmmmm..."
             
             // Disable buttons while recognizing
-            selectPhoto.isEnabled = false
-            selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
+            //selectPhoto.isEnabled = false
+            //selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
             
             
             
@@ -209,7 +303,7 @@ class MainViewController: UIViewController,
                         // Wait for the API to load before outputing to screen
                         DispatchQueue.main.async {
                             // Update the new tags in the UI.
-                            self.textView.text = String(format: "Tags: ", tags.componentsJoined(by: " "))
+                            //self.textView.text = String(format: "Tags: ", tags.componentsJoined(by: " "))
                             
                             
                             // Take all the tags and push them into a string
@@ -244,11 +338,7 @@ class MainViewController: UIViewController,
                     
                     // Once finished enable buttons again
                     DispatchQueue.main.async {
-                        
-                        // Enable buttons
-                        self.selectPhoto.isEnabled = true;
-                        
-                        self.selectPhoto.setImage(UIImage(named: "snapoetry_photo_alt"), for: .normal)
+                      
                         
                         
                     }
@@ -700,18 +790,18 @@ class MainViewController: UIViewController,
 //
 //        }
         
-        //** CONFIGURE PHOTO LIBRARY ICON
-        iconView.addSubview(selectPhoto)
-        self.view.bringSubview(toFront: selectPhoto)
-        selectPhoto.layer.borderWidth = 2
-        selectPhoto.layer.borderColor = UIColor.snapoetryBackground.cgColor
-        selectPhoto.layer.cornerRadius = 10
-        selectPhoto.snp.makeConstraints { (make) in
-            make.centerY.equalTo(iconView.snp.centerY)
-            make.right.equalTo(iconView.snp.right).offset(-30)
-            make.height.equalTo(iconView).multipliedBy(0.9)
-            make.width.equalTo(iconView.snp.height)
-        }
+//        //** CONFIGURE PHOTO LIBRARY ICON
+//        iconView.addSubview(selectPhoto)
+//        self.view.bringSubview(toFront: selectPhoto)
+//        selectPhoto.layer.borderWidth = 2
+//        selectPhoto.layer.borderColor = UIColor.snapoetryBackground.cgColor
+//        selectPhoto.layer.cornerRadius = 10
+//        selectPhoto.snp.makeConstraints { (make) in
+//            make.centerY.equalTo(iconView.snp.centerY)
+//            make.right.equalTo(iconView.snp.right).offset(-30)
+//            make.height.equalTo(iconView).multipliedBy(0.9)
+//            make.width.equalTo(iconView.snp.height)
+//        }
         
     }
     
@@ -771,19 +861,19 @@ class MainViewController: UIViewController,
             make.left.right.equalTo(contentView)
         }
         
-        //** CONFIGURE FONT BUTTON SINGLE
-        iconView.addSubview(selectFont)
-        selectFont.backgroundColor = .whiteColour
-        selectFont.layer.borderWidth = 1
-        selectFont.layer.borderColor = UIColor.snapoetryBackground.cgColor
-        selectFont.layer.cornerRadius = 10
-        selectFont.snp.makeConstraints { (make) in
-            make.centerY.equalTo(iconView.snp.centerY)
-            make.left.equalTo(iconView.snp.left).offset(10)
-            make.height.equalTo(iconView).multipliedBy(0.8)
-            make.width.equalTo(selectFont.snp.height)
-
-        }
+//        //** CONFIGURE FONT BUTTON SINGLE
+//        iconView.addSubview(selectFont)
+//        selectFont.backgroundColor = .whiteColour
+//        selectFont.layer.borderWidth = 1
+//        selectFont.layer.borderColor = UIColor.snapoetryBackground.cgColor
+//        selectFont.layer.cornerRadius = 10
+//        selectFont.snp.makeConstraints { (make) in
+//            make.centerY.equalTo(iconView.snp.centerY)
+//            make.left.equalTo(iconView.snp.left).offset(10)
+//            make.height.equalTo(iconView).multipliedBy(0.8)
+//            make.width.equalTo(selectFont.snp.height)
+//
+//        }
         
 //        //** CONFIGURE COLOUR BUTTON SINGLE
         let selectColourView = UIView()
