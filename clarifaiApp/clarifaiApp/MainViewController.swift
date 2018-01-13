@@ -37,7 +37,7 @@ class MainViewController: UIViewController,
     var poems = [String]()
     var loaded = false
     var tagOne = "no poem"
-    var camearaNeeded = true;
+    var cameraNeeded = true;
  
     /* ERIN TO IMPLEMENT THIS LATER....
     //Check to see which device the app is running on, in order to apply appropriate contraints.
@@ -78,7 +78,7 @@ class MainViewController: UIViewController,
     
     // When the app starts it will open the camera
     override func viewDidAppear(_ animated: Bool) {
-        if (camearaNeeded == true) {
+        if (cameraNeeded == true) {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
@@ -86,10 +86,10 @@ class MainViewController: UIViewController,
                 imagePicker.allowsEditing = false
                 
                 // Present it to screen
-                self.present(imagePicker, animated: true, completion: nil)
+                self.present(imagePicker, animated: false, completion: nil)
                 
                 poeticText.text.removeAll()
-                camearaNeeded = false
+                cameraNeeded = false
             }
             
         }
@@ -199,8 +199,9 @@ class MainViewController: UIViewController,
                             if ( concept.conceptName! == "no person" ){
                                 tags.remove(concept.conceptName)
                             } else {
-                                //tags.add("It is \(concept.conceptName!)")
-                                tags.add(concept.conceptName!)
+                                tags.add("It is \(concept.conceptName!)")
+                                
+                                
                             }
                             
                         }
@@ -593,70 +594,7 @@ class MainViewController: UIViewController,
     }
     
     
-    
-//******* OBSOLETE CODE *******************************************************************************
-//    // Gets a poem from our heroku api
-//    func getRequest(poemName: String) {
-//
-//        // Url to our API
-//        let todoEndpoint: String = "https://radiant-lake-85816.herokuapp.com/poems?poem=\(poemName)"
-//        // new API link: https://radiant-lake-85816.herokuapp.com/poems?poem=
-//        // old API link: https://nameless-gorge-75596.herokuapp.com/poems?poem=
-//        guard let url = URL(string: todoEndpoint) else {
-//            print("Error: cannot create URL")
-//            return
-//        }
-//
-//        // Turn it into a request
-//        let urlRequest = URLRequest(url: url)
-//
-//        // Begin the session
-//        let session = URLSession.shared
-//
-//        // Session becomes a data task with a completion handler
-//        let task = session.dataTask(with: urlRequest, completionHandler:{ data, response, error in
-//
-//            // Wait for a 200 OK code
-//            if let response = response {
-//                print(response)
-//            }
-//
-//            // Turn data into JSON Object
-//            if let data = data {
-//                print(data)
-//
-//                // Serialise Data
-//                do {
-//                    let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
-//
-//                    // If data is the first poem in the list
-//                    if let poem = json[0]["poem"] {
-//
-//                        // Wait for the request to load before output
-//                        DispatchQueue.main.async {
-//
-//                            // Store poem into a string array
-//                            self.poems.append(poem as! String)
-//                            print(self.poems)
-//
-//                            // Output to text view element
-//                            self.poeticText.text = "\(self.poems[0])"
-//
-//                        }
-//                    }
-//
-//                } catch {
-//                    print(error)
-//                }
-//            }
-//            if let error = error {
-//                print(error)
-//            }
-//
-//        })
-//        task.resume()
-//
-//    }
+    // Back button after taking photo
     
     @IBAction func cancelSnap(sender: UIButton) {
         // Confirm Cancellation.
@@ -666,6 +604,7 @@ class MainViewController: UIViewController,
                                           style: .default) { (action) in
                                             // Respond to user selection of the action.
                                             self.setupInitialUI()
+                                           
         }
         let cancelAction = UIAlertAction(title: "Cancel",
                                          style: .cancel) { (action) in
@@ -681,14 +620,16 @@ class MainViewController: UIViewController,
         
         self.present(alert, animated: true) {
             // The alert was presented
+            
         }
+        
     }
     
     
  
 
     func setupInitialUI(){
-                
+        
         //** CONFIGURE OVERALL LAYOUT
         let contentView = UIView()
         view.addSubview(contentView)
@@ -697,15 +638,15 @@ class MainViewController: UIViewController,
             make.edges.equalTo(view)
         }
         
-        //** CONFIGURE BACKGROUND VIEW
-        let backgroundView = UIView()
-        contentView.addSubview(backgroundView)
-        //        self.view.bringSubview(toFront: titleView)
-        backgroundView.backgroundColor = .snapoetryBackground
-        backgroundView.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(contentView)
-            make.bottom.equalTo(contentView.snp.centerY)
-        }
+//        //** CONFIGURE BACKGROUND VIEW
+//        let backgroundView = UIView()
+//        contentView.addSubview(backgroundView)
+//        //        self.view.bringSubview(toFront: titleView)
+//        backgroundView.backgroundColor = .snapoetryBackground
+//        backgroundView.snp.makeConstraints { (make) in
+//            make.top.left.right.equalTo(contentView)
+//            make.bottom.equalTo(contentView.snp.centerY)
+//        }
         
         //** CONFIGURE TITLE VIEW
         let titleView = UIView()
