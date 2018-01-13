@@ -23,8 +23,8 @@ class MainViewController: UIViewController,
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var selectPhoto: UIButton!
     @IBOutlet weak var poeticText: UITextView!
-    @IBOutlet weak var openCamera: UIButton!
-    @IBOutlet weak var snapoetryTitle: UIImageView!
+    
+    
     @IBOutlet weak var selectFont: UIButton!
     
     @IBOutlet weak var backNavButton: UIButton!
@@ -37,6 +37,7 @@ class MainViewController: UIViewController,
     var poems = [String]()
     var loaded = false
     var tagOne = "no poem"
+    var camearaNeeded = true;
  
     /* ERIN TO IMPLEMENT THIS LATER....
     //Check to see which device the app is running on, in order to apply appropriate contraints.
@@ -75,6 +76,24 @@ class MainViewController: UIViewController,
         
     }
     
+    // When the app starts it will open the camera
+    override func viewDidAppear(_ animated: Bool) {
+        if (camearaNeeded == true) {
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .camera
+                imagePicker.allowsEditing = false
+                
+                // Present it to screen
+                self.present(imagePicker, animated: true, completion: nil)
+                
+                poeticText.text.removeAll()
+                camearaNeeded = false
+            }
+            
+        }
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -82,30 +101,7 @@ class MainViewController: UIViewController,
         // Dispose of any resources that can be recreated.
     }
     
-    // Make the eye icon blink when touched
-    @IBAction func cameraDown(_ sender: UIButton) {
-        openCamera.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
-    }
-    
-    // Open the devices camera
-    @IBAction func openCamera(_ sender: Any) {
-        openCamera.setImage(UIImage(named: "snapoetry_camera"), for: .normal)
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            imagePicker.allowsEditing = false
-            
-            // Present it to screen
-            self.present(imagePicker, animated: true, completion: nil)
-            
-//            // Clear poem array
-//            if poems.capacity != 0 {
-//                poems.remove(at: 0)
-//            }
-            poeticText.text.removeAll()
-        }
-    }
+
     
     // select photo icon blinks
     @IBAction func selectPhotoDown(_ sender: UIButton) {
@@ -129,11 +125,6 @@ class MainViewController: UIViewController,
         // present photo to screen
         present(picker, animated: true, completion: nil)
         
-        
-//        // Clear poem array
-//        if poems.capacity != 0 {
-//            poems.remove(at: 0)
-//        }
         poeticText.text.removeAll()
         
     }
@@ -170,9 +161,8 @@ class MainViewController: UIViewController,
             
             // Disable buttons while recognizing
             selectPhoto.isEnabled = false
-            openCamera.isEnabled = false
             selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
-            openCamera.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
+            
             
             
         }
@@ -256,9 +246,9 @@ class MainViewController: UIViewController,
                         
                         // Enable buttons
                         self.selectPhoto.isEnabled = true;
-                        self.openCamera.isEnabled = true;
+                        
                         self.selectPhoto.setImage(UIImage(named: "snapoetry_photo_alt"), for: .normal)
-                        self.openCamera.setImage(UIImage(named: "snapoetry_camera_alt"), for: .normal)
+                        
                         
                     }
                     
@@ -728,14 +718,14 @@ class MainViewController: UIViewController,
         }
         
         
-        //** CONFIGURE TITLE TEXT
-        titleView.addSubview(snapoetryTitle)
-        snapoetryTitle.snp.makeConstraints { (make) in
-            make.centerY.equalTo(titleView.snp.centerY).offset(-25)
-            make.centerX.equalTo(titleView.snp.centerX)
-            make.width.equalTo(400)
-            make.height.equalTo(120)
-        }
+//        //** CONFIGURE TITLE TEXT
+//        titleView.addSubview(snapoetryTitle)
+//        snapoetryTitle.snp.makeConstraints { (make) in
+//            make.centerY.equalTo(titleView.snp.centerY).offset(-25)
+//            make.centerX.equalTo(titleView.snp.centerX)
+//            make.width.equalTo(400)
+//            make.height.equalTo(120)
+//        }
         
         
         //** CONFIGURE ICON VIEW
@@ -755,19 +745,19 @@ class MainViewController: UIViewController,
             make.left.right.equalTo(contentView)
         }
         
-        //** CONFIGURE CAMERA ICON
-        iconView.addSubview(openCamera)
-        self.view.bringSubview(toFront: openCamera)
-        openCamera.layer.borderWidth = 2
-        openCamera.layer.borderColor = UIColor.snapoetryBackground.cgColor
-        openCamera.layer.cornerRadius = 10
-        openCamera.snp.makeConstraints { (make) in
-            make.centerY.equalTo(iconView.snp.centerY)
-            make.left.equalTo(iconView.snp.left).offset(30)
-            make.height.equalTo(iconView).multipliedBy(0.95)
-            make.width.equalTo(iconView.snp.height)
-            
-        }
+//        //** CONFIGURE CAMERA ICON
+//        iconView.addSubview(openCamera)
+//        self.view.bringSubview(toFront: openCamera)
+//        openCamera.layer.borderWidth = 2
+//        openCamera.layer.borderColor = UIColor.snapoetryBackground.cgColor
+//        openCamera.layer.cornerRadius = 10
+//        openCamera.snp.makeConstraints { (make) in
+//            make.centerY.equalTo(iconView.snp.centerY)
+//            make.left.equalTo(iconView.snp.left).offset(30)
+//            make.height.equalTo(iconView).multipliedBy(0.95)
+//            make.width.equalTo(iconView.snp.height)
+//
+//        }
         
         //** CONFIGURE PHOTO LIBRARY ICON
         iconView.addSubview(selectPhoto)

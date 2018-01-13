@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,15 +26,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="una-gX-nlX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="286"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="snapoetry_title" translatesAutoresizingMaskIntoConstraints="NO" id="xPH-7k-Yio">
-                                <rect key="frame" x="-140" y="216" width="655" height="181"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jCi-61-fUj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -62,17 +53,6 @@
                                 <connections>
                                     <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="opC-F4-Wil"/>
                                     <action selector="selectPhotoDown:" destination="BYZ-38-t0r" eventType="touchDown" id="7SU-zu-8lw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-w0-RNI">
-                                <rect key="frame" x="16" y="547" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="snapoetry_camera_alt">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cameraDown:" destination="BYZ-38-t0r" eventType="touchDown" id="awe-I3-pV6"/>
-                                    <action selector="openCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Qi-FA-dtP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnd-3o-V8b">
@@ -109,12 +89,10 @@
                     <connections>
                         <outlet property="backNavButton" destination="8oA-lH-qlT" id="5V7-vc-T7B"/>
                         <outlet property="imageView" destination="jCi-61-fUj" id="S5E-yB-aC3"/>
-                        <outlet property="openCamera" destination="Joh-w0-RNI" id="bUo-rK-sN1"/>
                         <outlet property="poeticText" destination="oCH-tU-4uz" id="upV-xf-1JP"/>
                         <outlet property="selectFont" destination="fnd-3o-V8b" id="eUd-XN-e9E"/>
                         <outlet property="selectPhoto" destination="ypi-BQ-4qY" id="mg7-rF-nkt"/>
                         <outlet property="shareNavButton" destination="Dcz-qY-U7h" id="E6I-Rt-tt8"/>
-                        <outlet property="snapoetryTitle" destination="xPH-7k-Yio" id="aNe-OO-D4w"/>
                         <outlet property="textView" destination="6ad-Dm-riO" id="9AQ-Al-ckj"/>
                     </connections>
                 </viewController>
@@ -124,9 +102,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="snapoetry_camera_alt" width="200" height="182"/>
         <image name="snapoetry_photo_alt" width="200" height="182"/>
         <image name="snapoetry_share" width="100" height="100"/>
-        <image name="snapoetry_title" width="655" height="181"/>
     </resources>
 </document>

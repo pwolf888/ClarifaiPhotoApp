@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "clarifaiApp/MainViewController.swift"
-            timestampString = "535090898.23059"
+            timestampString = "537500595.740563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "getWordClass(text:language:)"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "recognizeImage(image:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "clarifaiApp/MainViewController.swift"
-            timestampString = "535090898.231151"
+            timestampString = "537500595.741002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "getWordClass(text:language:)"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "recognizeImage(image:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
