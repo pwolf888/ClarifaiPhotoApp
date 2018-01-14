@@ -92,7 +92,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iyY-Wb-eZ7"/>
+                                    <action selector="selectTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iyY-Wb-eZ7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-lH-qlT">
@@ -113,43 +113,69 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmD-oL-e5t">
-                                        <rect key="frame" x="17" y="14" width="38" height="30"/>
+                                        <rect key="frame" x="17" y="14" width="23" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" identifier="colourBlack"/>
-                                        <state key="normal" title="Black"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="el2-ze-1Gb"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj7-SR-CMO">
-                                        <rect key="frame" x="70" y="14" width="40" height="30"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj7-SR-CMO">
+                                        <rect key="frame" x="53" y="14" width="19" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" identifier="colourWhite"/>
-                                        <state key="normal" title="White"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YlW-BN-XAA"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8W-7Q-RCO">
-                                        <rect key="frame" x="129" y="14" width="31" height="30"/>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8W-7Q-RCO">
+                                        <rect key="frame" x="109" y="14" width="18" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" identifier="colourBlue"/>
-                                        <state key="normal" title="Blue"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KeI-go-eAk"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYE-hy-8f3">
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYE-hy-8f3">
                                         <rect key="frame" x="176" y="14" width="44" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" identifier="colourYellow"/>
-                                        <state key="normal" title="Yellow"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dY0-MV-5QD"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Phz-Hq-CP7">
-                                        <rect key="frame" x="237" y="14" width="30" height="30"/>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Phz-Hq-CP7">
+                                        <rect key="frame" x="278" y="14" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" identifier="colourRed"/>
-                                        <state key="normal" title="Red"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I8a-4Y-5rD"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3D-ay-jS4">
-                                        <rect key="frame" x="285" y="14" width="42" height="30"/>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3D-ay-jS4">
+                                        <rect key="frame" x="131" y="14" width="42" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" identifier="colourGreen"/>
-                                        <state key="normal" title="Green"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yYX-X3-ehl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKV-4D-Zsa">
+                                        <rect key="frame" x="80" y="14" width="21" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="47N-yO-IRl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xk-OK-KGM">
+                                        <rect key="frame" x="228" y="14" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GfW-a0-EUr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078431372547" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -157,6 +183,14 @@
                     <connections>
                         <outlet property="backNavButton" destination="8oA-lH-qlT" id="5V7-vc-T7B"/>
                         <outlet property="changeColourView" destination="jTW-D3-98y" id="zA8-CP-USc"/>
+                        <outlet property="colourBlack" destination="OmD-oL-e5t" id="ygN-y9-z82"/>
+                        <outlet property="colourBlue" destination="C8W-7Q-RCO" id="wq5-YY-LTT"/>
+                        <outlet property="colourGreen" destination="h3D-ay-jS4" id="vrd-2n-EjR"/>
+                        <outlet property="colourOrange" destination="4xk-OK-KGM" id="dbU-Qb-vEV"/>
+                        <outlet property="colourPurple" destination="ZKV-4D-Zsa" id="bEg-m8-Gli"/>
+                        <outlet property="colourRed" destination="Phz-Hq-CP7" id="86K-z7-kB6"/>
+                        <outlet property="colourWhite" destination="wj7-SR-CMO" id="ThQ-3J-b8d"/>
+                        <outlet property="colourYellow" destination="ZYE-hy-8f3" id="w6E-J7-FAf"/>
                         <outlet property="imageView" destination="jCi-61-fUj" id="S5E-yB-aC3"/>
                         <outlet property="openCamera" destination="Joh-w0-RNI" id="bUo-rK-sN1"/>
                         <outlet property="poeticText" destination="oCH-tU-4uz" id="upV-xf-1JP"/>

@@ -30,6 +30,15 @@ class MainViewController: UIViewController,
     @IBOutlet weak var backNavButton: UIButton!
     @IBOutlet weak var shareNavButton: UIButton!
     
+    @IBOutlet weak var colourBlack: UIButton!
+    @IBOutlet weak var colourWhite: UIButton!
+    @IBOutlet weak var colourBlue: UIButton!
+    @IBOutlet weak var colourYellow: UIButton!
+    @IBOutlet weak var colourRed: UIButton!
+    @IBOutlet weak var colourGreen: UIButton!
+    @IBOutlet weak var colourOrange: UIButton!
+    @IBOutlet weak var colourPurple: UIButton!
+    
     
     // Declaring Variables - Globals
     var app:ClarifaiApp?
@@ -670,7 +679,7 @@ class MainViewController: UIViewController,
     
     @IBOutlet weak var changeColourView: UIView!
     
-    @IBAction func changeTextColour(_ sender: UIButton) {
+    @IBAction func selectTextColour(_ sender: UIButton) {
         
         //call function to present user with text colour options
         bringChangeColourToView()
@@ -682,6 +691,46 @@ class MainViewController: UIViewController,
         // Dismiss the Change Text colour view if user doesnt select a colour
         if touch?.view != changeColourView {
             changeColourView.isHidden = true
+        }
+    }
+    
+    @IBAction func changeTextColour(_ sender: UIButton) {
+        
+        switch sender.tag{
+            case 0:
+                poeticText.textColor = UIColor.black
+                changeColourView.isHidden = true
+                break;
+            case 1:
+                poeticText.textColor = UIColor.white
+                changeColourView.isHidden = true
+                break;
+            case 2:
+                poeticText.textColor = UIColor.purple
+                changeColourView.isHidden = true
+                break;
+            case 3:
+                poeticText.textColor = UIColor.blue
+                changeColourView.isHidden = true
+                break;
+            case 4:
+                poeticText.textColor = UIColor.green
+                changeColourView.isHidden = true
+                break;
+            case 5:
+                poeticText.textColor = UIColor.yellow
+                changeColourView.isHidden = true
+                break;
+            case 6:
+                poeticText.textColor = UIColor.orange
+                changeColourView.isHidden = true
+                break;
+            case 7:
+                poeticText.textColor = UIColor.red
+                changeColourView.isHidden = true
+                break;
+            default: ()
+                break;
         }
     }
     
@@ -937,9 +986,9 @@ class MainViewController: UIViewController,
     
     func bringChangeColourToView()
     {
+        // create view to house all colours
         changeColourView.isHidden = false
         view.addSubview(changeColourView)
-        changeColourView.backgroundColor = .yellow
         self.view.bringSubview(toFront: changeColourView)
         changeColourView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
@@ -947,6 +996,104 @@ class MainViewController: UIViewController,
             make.bottom.equalTo(selectTextColour.snp.top).offset(-30)
             make.height.equalTo(50)
         }
+        
+        // lay out each colour within view
+        changeColourView.addSubview(colourBlack)
+        colourBlack.layer.borderWidth = 2
+        colourBlack.layer.borderColor = UIColor.black.cgColor
+        colourBlack.layer.cornerRadius = 10
+        changeColourView.bringSubview(toFront: colourBlack)
+        colourBlack.snp.makeConstraints { (make) in
+        make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(changeColourView.snp.left)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourBlack.snp.width)
+        }
+        
+        changeColourView.addSubview(colourWhite)
+        colourWhite.layer.borderWidth = 2
+        colourWhite.layer.borderColor = UIColor.white.cgColor
+        colourWhite.layer.cornerRadius = 10
+        changeColourView.bringSubview(toFront: colourWhite)
+        colourWhite.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourBlack.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourWhite.snp.width)
+        }
+        
+        changeColourView.addSubview(colourPurple)
+        colourPurple.layer.borderWidth = 2
+        colourPurple.layer.borderColor = UIColor.purple.cgColor
+        colourPurple.layer.cornerRadius = 10
+        changeColourView.bringSubview(toFront: colourPurple)
+        colourPurple.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourWhite.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourPurple.snp.width)
+        }
+        
+        changeColourView.addSubview(colourBlue)
+        colourBlue.layer.borderWidth = 2
+        colourBlue.layer.borderColor = UIColor.textBlue.cgColor
+        colourBlue.layer.cornerRadius = 10
+        changeColourView.bringSubview(toFront: colourBlue)
+        colourBlue.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourPurple.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourBlue.snp.width)
+        }
+        
+        changeColourView.addSubview(colourGreen)
+        colourGreen.layer.borderWidth = 2
+        colourGreen.layer.borderColor = UIColor.green.cgColor
+        colourGreen.layer.cornerRadius = 10
+        changeColourView.bringSubview(toFront: colourGreen)
+        colourGreen.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourBlue.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourGreen.snp.width)
+        }
+        
+        changeColourView.addSubview(colourYellow)
+        colourYellow.layer.borderWidth = 2
+        colourYellow.layer.borderColor = UIColor.yellow.cgColor
+        colourYellow.layer.cornerRadius = 10
+        changeColourView.bringSubview(toFront: colourYellow)
+        colourYellow.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourGreen.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourYellow.snp.width)
+        }
+        
+        changeColourView.addSubview(colourOrange)
+        colourOrange.layer.borderWidth = 2
+        colourOrange.layer.borderColor = UIColor.orange.cgColor
+        colourOrange.layer.cornerRadius = 10
+        changeColourView.bringSubview(toFront: colourOrange)
+        colourOrange.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourYellow.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourOrange.snp.width)
+        }
+        
+        changeColourView.addSubview(colourRed)
+        colourRed.layer.borderWidth = 2
+        colourRed.layer.borderColor = UIColor.red.cgColor
+        colourRed.layer.cornerRadius = 10
+        changeColourView.bringSubview(toFront: colourYellow)
+        colourRed.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourOrange.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourRed.snp.width)
+        }
+        
         
     }
     
