@@ -39,6 +39,14 @@ class MainViewController: UIViewController,
     @IBOutlet weak var colourOrange: UIButton!
     @IBOutlet weak var colourPurple: UIButton!
     
+    var whiteImage = UIImage(named: "White")!
+    var blackImage = UIImage(named: "Black")!
+    var blueImage = UIImage(named: "Blue")!
+    var purpleImage = UIImage(named: "Purple")!
+    var greenImage = UIImage(named: "Green")!
+    var yellowImage = UIImage(named: "Yellow")!
+    var orangeImage = UIImage(named: "Orange")!
+    var redImage = UIImage(named: "Red")!
     
     // Declaring Variables - Globals
     var app:ClarifaiApp?
@@ -936,6 +944,7 @@ class MainViewController: UIViewController,
         selectColourView.addSubview(selectTextColour)
         selectTextColour.backgroundColor = .whiteColour
         self.view.bringSubview(toFront: selectTextColour)
+        selectTextColour.setImage(UIImage(named: "White.png"), for: .normal)
         selectTextColour.backgroundColor = .purple
         selectTextColour.layer.borderWidth = 1
         selectTextColour.layer.borderColor = UIColor.greyColour.cgColor
@@ -998,10 +1007,9 @@ class MainViewController: UIViewController,
         }
         
         // lay out each colour within view
+        colourBlack.setImage(UIImage(named: "Black.png"), for: .normal)
+        colourBlack.imageView?.contentMode = .scaleAspectFit
         changeColourView.addSubview(colourBlack)
-        colourBlack.layer.borderWidth = 2
-        colourBlack.layer.borderColor = UIColor.black.cgColor
-        colourBlack.layer.cornerRadius = 10
         changeColourView.bringSubview(toFront: colourBlack)
         colourBlack.snp.makeConstraints { (make) in
         make.width.equalTo(changeColourView).dividedBy(10)
@@ -1011,9 +1019,6 @@ class MainViewController: UIViewController,
         }
         
         changeColourView.addSubview(colourWhite)
-        colourWhite.layer.borderWidth = 2
-        colourWhite.layer.borderColor = UIColor.white.cgColor
-        colourWhite.layer.cornerRadius = 10
         changeColourView.bringSubview(toFront: colourWhite)
         colourWhite.snp.makeConstraints { (make) in
             make.width.equalTo(changeColourView).dividedBy(10)
@@ -1023,9 +1028,6 @@ class MainViewController: UIViewController,
         }
         
         changeColourView.addSubview(colourPurple)
-        colourPurple.layer.borderWidth = 2
-        colourPurple.layer.borderColor = UIColor.purple.cgColor
-        colourPurple.layer.cornerRadius = 10
         changeColourView.bringSubview(toFront: colourPurple)
         colourPurple.snp.makeConstraints { (make) in
             make.width.equalTo(changeColourView).dividedBy(10)
@@ -1035,9 +1037,6 @@ class MainViewController: UIViewController,
         }
         
         changeColourView.addSubview(colourBlue)
-        colourBlue.layer.borderWidth = 2
-        colourBlue.layer.borderColor = UIColor.textBlue.cgColor
-        colourBlue.layer.cornerRadius = 10
         changeColourView.bringSubview(toFront: colourBlue)
         colourBlue.snp.makeConstraints { (make) in
             make.width.equalTo(changeColourView).dividedBy(10)
@@ -1047,9 +1046,6 @@ class MainViewController: UIViewController,
         }
         
         changeColourView.addSubview(colourGreen)
-        colourGreen.layer.borderWidth = 2
-        colourGreen.layer.borderColor = UIColor.green.cgColor
-        colourGreen.layer.cornerRadius = 10
         changeColourView.bringSubview(toFront: colourGreen)
         colourGreen.snp.makeConstraints { (make) in
             make.width.equalTo(changeColourView).dividedBy(10)
@@ -1059,9 +1055,6 @@ class MainViewController: UIViewController,
         }
         
         changeColourView.addSubview(colourYellow)
-        colourYellow.layer.borderWidth = 2
-        colourYellow.layer.borderColor = UIColor.yellow.cgColor
-        colourYellow.layer.cornerRadius = 10
         changeColourView.bringSubview(toFront: colourYellow)
         colourYellow.snp.makeConstraints { (make) in
             make.width.equalTo(changeColourView).dividedBy(10)
@@ -1071,9 +1064,6 @@ class MainViewController: UIViewController,
         }
         
         changeColourView.addSubview(colourOrange)
-        colourOrange.layer.borderWidth = 2
-        colourOrange.layer.borderColor = UIColor.orange.cgColor
-        colourOrange.layer.cornerRadius = 10
         changeColourView.bringSubview(toFront: colourOrange)
         colourOrange.snp.makeConstraints { (make) in
             make.width.equalTo(changeColourView).dividedBy(10)
@@ -1083,9 +1073,6 @@ class MainViewController: UIViewController,
         }
         
         changeColourView.addSubview(colourRed)
-        colourRed.layer.borderWidth = 2
-        colourRed.layer.borderColor = UIColor.red.cgColor
-        colourRed.layer.cornerRadius = 10
         changeColourView.bringSubview(toFront: colourYellow)
         colourRed.snp.makeConstraints { (make) in
             make.width.equalTo(changeColourView).dividedBy(10)
@@ -1093,7 +1080,6 @@ class MainViewController: UIViewController,
             make.centerY.equalTo(changeColourView.snp.centerY)
             make.height.equalTo(colourRed.snp.width)
         }
-        
         
     }
     
