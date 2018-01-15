@@ -708,34 +708,42 @@ class MainViewController: UIViewController,
             case 0:
                 poeticText.textColor = UIColor.black
                 changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Black.png"), for: .normal)
                 break;
             case 1:
                 poeticText.textColor = UIColor.white
                 changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "White.png"), for: .normal)
                 break;
             case 2:
                 poeticText.textColor = UIColor.purple
                 changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Purple.png"), for: .normal)
                 break;
             case 3:
                 poeticText.textColor = UIColor.blue
                 changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Blue.png"), for: .normal)
                 break;
             case 4:
                 poeticText.textColor = UIColor.green
                 changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Green.png"), for: .normal)
                 break;
             case 5:
                 poeticText.textColor = UIColor.yellow
                 changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Yellow.png"), for: .normal)
                 break;
             case 6:
                 poeticText.textColor = UIColor.orange
                 changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Orange.png"), for: .normal)
                 break;
             case 7:
                 poeticText.textColor = UIColor.red
                 changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Red.png"), for: .normal)
                 break;
             default: ()
                 break;
@@ -928,11 +936,6 @@ class MainViewController: UIViewController,
 //        //** CONFIGURE COLOUR BUTTON SINGLE
         let selectColourView = UIView()
         iconView.addSubview(selectColourView)
-        selectColourView.backgroundColor = .whiteColour
-        self.view.bringSubview(toFront: selectColourView)
-        selectColourView.layer.borderWidth = 1
-        selectColourView.layer.borderColor = UIColor.snapoetryBackground.cgColor
-        selectColourView.layer.cornerRadius = 10
         selectColourView.snp.makeConstraints { (make) in
             make.centerY.equalTo(iconView.snp.centerY)
             make.right.equalTo(iconView.snp.right).offset(-10)
@@ -942,13 +945,7 @@ class MainViewController: UIViewController,
         }
         
         selectColourView.addSubview(selectTextColour)
-        selectTextColour.backgroundColor = .whiteColour
         self.view.bringSubview(toFront: selectTextColour)
-        selectTextColour.setImage(UIImage(named: "White.png"), for: .normal)
-        selectTextColour.backgroundColor = .purple
-        selectTextColour.layer.borderWidth = 1
-        selectTextColour.layer.borderColor = UIColor.greyColour.cgColor
-        selectTextColour.layer.cornerRadius = 10
         selectTextColour.snp.makeConstraints { (make) in
             make.center.equalTo(selectColourView.snp.center)
             make.height.equalTo(35)
