@@ -21,13 +21,17 @@ class MainViewController: UIViewController,
     
     // Declared Variables - IBOutlet
     @IBOutlet weak var imageView: UIImageView!
-    //@IBOutlet weak var textView: UITextView!
-//    @IBOutlet weak var selectPhoto: UIButton!
     @IBOutlet weak var poeticText: UITextView!
+   
     
-    // Custom camera outlets
+    
+    // Custom camera view outlets
     @IBOutlet weak var previewView: UIView!
-
+    @IBOutlet weak var takePhoto: UIButton!
+    @IBOutlet weak var selectPhoto: UIButton!
+    @IBOutlet weak var openHelp: UIButton!
+    
+    
     // Custom camera variables
     var session: AVCaptureSession?
     var stillImageOutput: AVCaptureStillImageOutput?
@@ -75,7 +79,7 @@ class MainViewController: UIViewController,
     // Load Clarifai API
     override func viewDidLoad() {
         
-        //setupInitialUI()
+        setupInitialUI()
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -142,24 +146,7 @@ class MainViewController: UIViewController,
         
     }
     
-    // When the app starts it will open the camera
-//    override func viewDidAppear(_ animated: Bool) {
-//        if (cameraNeeded == true) {
-//            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-//                let imagePicker = UIImagePickerController()
-//                imagePicker.delegate = self
-//                imagePicker.sourceType = .camera
-//                imagePicker.allowsEditing = false
-//
-//                // Present it to screen
-//                self.present(imagePicker, animated: false, completion: nil)
-//
-//                poeticText.text.removeAll()
-//                cameraNeeded = false
-//            }
-//
-//        }
-//    }
+
     
     
     override func didReceiveMemoryWarning() {
@@ -169,31 +156,26 @@ class MainViewController: UIViewController,
     
 
     
-//    // select photo icon blinks
-//    @IBAction func selectPhotoDown(_ sender: UIButton) {
-//         selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
-//    }
+    @IBAction func openHelp(_ sender: UIButton) {
+    }
     
     
-//    // Select a photo from the album
-//    @IBAction func selectPhoto(_ sender: UIButton) {
-//
-//        // Open the eye on touch up
-//        selectPhoto.setImage(UIImage(named: "snapoetry_photo_alt"), for: .normal)
-//
-//        // Show a UIImagePickerController to let the user pick an image from their library.
-//        picker.allowsEditing = false;
-//
-//        // Open Users device photo library
-//        picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-//        picker.delegate = self;
-//
-//        // present photo to screen
-//        present(picker, animated: true, completion: nil)
-//
-//        poeticText.text.removeAll()
-//
-//    }
+    // Select a photo from the album
+    @IBAction func selectPhoto(_ sender: UIButton) {
+
+        // Show a UIImagePickerController to let the user pick an image from their library.
+        picker.allowsEditing = false;
+
+        // Open Users device photo library
+        picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        picker.delegate = self;
+
+        // present photo to screen
+        present(picker, animated: true, completion: nil)
+
+        poeticText.text.removeAll()
+
+    }
     
     
     @IBAction func didTakePhoto(_ sender: UIButton) {
@@ -720,88 +702,33 @@ class MainViewController: UIViewController,
 
     func setupInitialUI(){
         
-        //** CONFIGURE OVERALL LAYOUT
-        let contentView = UIView()
-        view.addSubview(contentView)
-        contentView.backgroundColor = .whiteColour
-        contentView.snp.makeConstraints { (make) in
+        //** CONFIGURE CAMERA PREVIEW VIEW
+        view.addSubview(previewView)
+        previewView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
         
-//        //** CONFIGURE BACKGROUND VIEW
-//        let backgroundView = UIView()
-//        contentView.addSubview(backgroundView)
-//        //        self.view.bringSubview(toFront: titleView)
-//        backgroundView.backgroundColor = .snapoetryBackground
-//        backgroundView.snp.makeConstraints { (make) in
-//            make.top.left.right.equalTo(contentView)
-//            make.bottom.equalTo(contentView.snp.centerY)
-//        }
-        
-        //** CONFIGURE TITLE VIEW
-        let titleView = UIView()
-        view.addSubview(titleView)
-        self.view.bringSubview(toFront: titleView)
-        titleView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(contentView.snp.centerY)
-            make.height.equalTo(180)
-            make.left.right.equalTo(contentView)
+        //** CONFIGURE TAKE PHOTO BUTTON
+        view.addSubview(takePhoto)
+        self.view.bringSubview(toFront: takePhoto)
+        takePhoto.snp.makeConstraints { (make) in
+            make.bottom.centerX.equalTo(previewView)
         }
         
-        
-//        //** CONFIGURE TITLE TEXT
-//        titleView.addSubview(snapoetryTitle)
-//        snapoetryTitle.snp.makeConstraints { (make) in
-//            make.centerY.equalTo(titleView.snp.centerY).offset(-25)
-//            make.centerX.equalTo(titleView.snp.centerX)
-//            make.width.equalTo(400)
-//            make.height.equalTo(120)
-//        }
-        
-        
-        //** CONFIGURE ICON VIEW
-        let iconView = UIView()
-        view.addSubview(iconView)
-        iconView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(contentView)
-            make.bottom.equalTo(contentView).offset(-50)
-            make.height.equalTo(self.view.snp.height).multipliedBy(0.15)
+        //** CONFIGURE SELECT PHOTO BUTTON
+        view.addSubview(selectPhoto)
+        self.view.bringSubview(toFront: selectPhoto)
+        selectPhoto.snp.makeConstraints { (make) in
+            make.bottom.right.equalTo(previewView)
         }
         
-        //** CONFIGURE PHOTO VIEW
-        let photoView = UIView()
-        contentView.addSubview(photoView)
-        photoView.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(contentView)
-            make.left.right.equalTo(contentView)
+        //** CONFIGURE HELP BUTTON
+        view.addSubview(openHelp)
+        self.view.bringSubview(toFront: openHelp)
+        openHelp.snp.makeConstraints { (make) in
+            make.bottom.left.equalTo(previewView)
         }
         
-//        //** CONFIGURE CAMERA ICON
-//        iconView.addSubview(openCamera)
-//        self.view.bringSubview(toFront: openCamera)
-//        openCamera.layer.borderWidth = 2
-//        openCamera.layer.borderColor = UIColor.snapoetryBackground.cgColor
-//        openCamera.layer.cornerRadius = 10
-//        openCamera.snp.makeConstraints { (make) in
-//            make.centerY.equalTo(iconView.snp.centerY)
-//            make.left.equalTo(iconView.snp.left).offset(30)
-//            make.height.equalTo(iconView).multipliedBy(0.95)
-//            make.width.equalTo(iconView.snp.height)
-//
-//        }
-        
-//        //** CONFIGURE PHOTO LIBRARY ICON
-//        iconView.addSubview(selectPhoto)
-//        self.view.bringSubview(toFront: selectPhoto)
-//        selectPhoto.layer.borderWidth = 2
-//        selectPhoto.layer.borderColor = UIColor.snapoetryBackground.cgColor
-//        selectPhoto.layer.cornerRadius = 10
-//        selectPhoto.snp.makeConstraints { (make) in
-//            make.centerY.equalTo(iconView.snp.centerY)
-//            make.right.equalTo(iconView.snp.right).offset(-30)
-//            make.height.equalTo(iconView).multipliedBy(0.9)
-//            make.width.equalTo(iconView.snp.height)
-//        }
         
     }
     
