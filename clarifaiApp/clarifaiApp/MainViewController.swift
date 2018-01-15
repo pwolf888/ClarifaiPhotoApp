@@ -34,7 +34,6 @@ class MainViewController: UIViewController,
     // Photo options
     @IBOutlet weak var backNavButton: UIButton!
     @IBOutlet weak var shareNavButton: UIButton!
-    @IBOutlet weak var poeticText: UITextView!
     @IBOutlet weak var savePhoto: UIButton!
     @IBOutlet weak var fontStyle: UIButton!
     @IBOutlet weak var fontColour: UIButton!
@@ -846,11 +845,11 @@ class MainViewController: UIViewController,
         
 //        //** CONFIGURE COLOUR BUTTON SINGLE
         let selectColourView = UIView()
-        iconView.addSubview(selectColourView)
+        view.addSubview(selectColourView)
         selectColourView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(iconView.snp.centerY)
-            make.right.equalTo(iconView.snp.right).offset(-10)
-            make.height.equalTo(iconView).multipliedBy(0.8)
+            make.centerY.equalTo(view.snp.centerY)
+            make.right.equalTo(view.snp.right).offset(-10)
+        //    make.height.equalTo(view).multipliedBy(0.8)
             make.width.equalTo(selectColourView.snp.height)
 
         }
@@ -864,23 +863,23 @@ class MainViewController: UIViewController,
         }
         
         //** CONFIGURE PHOTO DISPLAYED VIEW
-        photoView.addSubview(imageView)
+        imageView.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.top.equalTo(photoView.snp.top)
-            make.bottom.equalTo(photoView.snp.bottom)
-            make.center.equalTo(photoView.snp.center)
+            make.top.equalTo(imageView.snp.top)
+            make.bottom.equalTo(imageView.snp.bottom)
+            make.center.equalTo(imageView.snp.center)
         }
         
         //** CONFIGURE POEM VIEW
         let poemView = UIView()
         self.view.bringSubview(toFront: poemView)
-        contentView.addSubview(poemView)
+        view.addSubview(poemView)
         poemView.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView).offset(64)
+            make.edges.equalTo(view).offset(64)
         }
         
         //** CONFIGURE POEM TEXT
-        photoView.addSubview(poeticText)
+        view.addSubview(poeticText)
         //*** FONT CHANGE
         view.addSubview(fontStyle)
         self.view.bringSubview(toFront: fontStyle)
