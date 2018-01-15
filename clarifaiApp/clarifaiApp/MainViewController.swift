@@ -23,6 +23,11 @@ class MainViewController: UIViewController,
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var takePhoto: UIButton!
     @IBOutlet weak var selectPhoto: UIButton!
+    @IBOutlet weak var poeticText: UITextView!
+    @IBOutlet weak var openCamera: UIButton!
+    @IBOutlet weak var snapoetryTitle: UIImageView!
+    @IBOutlet weak var selectFont: UIButton!
+    @IBOutlet weak var selectTextColour: UIButton!
     @IBOutlet weak var openHelp: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -39,6 +44,23 @@ class MainViewController: UIViewController,
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
+    @IBOutlet weak var colourBlack: UIButton!
+    @IBOutlet weak var colourWhite: UIButton!
+    @IBOutlet weak var colourBlue: UIButton!
+    @IBOutlet weak var colourYellow: UIButton!
+    @IBOutlet weak var colourRed: UIButton!
+    @IBOutlet weak var colourGreen: UIButton!
+    @IBOutlet weak var colourOrange: UIButton!
+    @IBOutlet weak var colourPurple: UIButton!
+    
+    var whiteImage = UIImage(named: "White")!
+    var blackImage = UIImage(named: "Black")!
+    var blueImage = UIImage(named: "Blue")!
+    var purpleImage = UIImage(named: "Purple")!
+    var greenImage = UIImage(named: "Green")!
+    var yellowImage = UIImage(named: "Yellow")!
+    var orangeImage = UIImage(named: "Orange")!
+    var redImage = UIImage(named: "Red")!
     
     // Declaring Variables - Globals
     var app:ClarifaiApp?
@@ -661,6 +683,71 @@ class MainViewController: UIViewController,
     
     // Back button after taking photo
     
+    @IBOutlet weak var changeColourView: UIView!
+    
+    @IBAction func selectTextColour(_ sender: UIButton) {
+        
+        //call function to present user with text colour options
+        bringChangeColourToView()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        var touch: UITouch? = touches.first as! UITouch
+
+        // Dismiss the Change Text colour view if user doesnt select a colour
+        if touch?.view != changeColourView {
+            changeColourView.isHidden = true
+        }
+    }
+    
+    @IBAction func changeTextColour(_ sender: UIButton) {
+        
+        switch sender.tag{
+            case 0:
+                poeticText.textColor = UIColor.black
+                changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Black.png"), for: .normal)
+                break;
+            case 1:
+                poeticText.textColor = UIColor.white
+                changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "White.png"), for: .normal)
+                break;
+            case 2:
+                poeticText.textColor = UIColor.purple
+                changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Purple.png"), for: .normal)
+                break;
+            case 3:
+                poeticText.textColor = UIColor.blue
+                changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Blue.png"), for: .normal)
+                break;
+            case 4:
+                poeticText.textColor = UIColor.green
+                changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Green.png"), for: .normal)
+                break;
+            case 5:
+                poeticText.textColor = UIColor.yellow
+                changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Yellow.png"), for: .normal)
+                break;
+            case 6:
+                poeticText.textColor = UIColor.orange
+                changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Orange.png"), for: .normal)
+                break;
+            case 7:
+                poeticText.textColor = UIColor.red
+                changeColourView.isHidden = true
+                selectTextColour.setImage(UIImage(named: "Red.png"), for: .normal)
+                break;
+            default: ()
+                break;
+        }
+    }
+    
     @IBAction func cancelSnap(sender: UIButton) {
         // Confirm Cancellation.
         
@@ -690,9 +777,6 @@ class MainViewController: UIViewController,
         
     }
     
-    
- 
-
     func setupInitialUI(){
         
         //** CONFIGURE CAMERA PREVIEW VIEW
@@ -760,6 +844,43 @@ class MainViewController: UIViewController,
             make.bottom.right.equalTo(imageView).offset(-20)
         }
         
+//        //** CONFIGURE COLOUR BUTTON SINGLE
+        let selectColourView = UIView()
+        iconView.addSubview(selectColourView)
+        selectColourView.snp.makeConstraints { (make) in
+            make.centerY.equalTo(iconView.snp.centerY)
+            make.right.equalTo(iconView.snp.right).offset(-10)
+            make.height.equalTo(iconView).multipliedBy(0.8)
+            make.width.equalTo(selectColourView.snp.height)
+
+        }
+        
+        selectColourView.addSubview(selectTextColour)
+        self.view.bringSubview(toFront: selectTextColour)
+        selectTextColour.snp.makeConstraints { (make) in
+            make.center.equalTo(selectColourView.snp.center)
+            make.height.equalTo(35)
+            make.width.equalTo(35)
+        }
+        
+        //** CONFIGURE PHOTO DISPLAYED VIEW
+        photoView.addSubview(imageView)
+        imageView.snp.makeConstraints { (make) in
+            make.top.equalTo(photoView.snp.top)
+            make.bottom.equalTo(photoView.snp.bottom)
+            make.center.equalTo(photoView.snp.center)
+        }
+        
+        //** CONFIGURE POEM VIEW
+        let poemView = UIView()
+        self.view.bringSubview(toFront: poemView)
+        contentView.addSubview(poemView)
+        poemView.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView).offset(64)
+        }
+        
+        //** CONFIGURE POEM TEXT
+        photoView.addSubview(poeticText)
         //*** FONT CHANGE
         view.addSubview(fontStyle)
         self.view.bringSubview(toFront: fontStyle)
@@ -777,6 +898,96 @@ class MainViewController: UIViewController,
             make.centerX.equalTo(imageView.snp.centerX)
             make.height.equalTo(400)
 
+        }
+        
+    }
+    
+    func bringChangeColourToView()
+    {
+        // create view to house all colours
+        changeColourView.isHidden = false
+        view.addSubview(changeColourView)
+        self.view.bringSubview(toFront: changeColourView)
+        changeColourView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(view).multipliedBy(0.9)
+            make.bottom.equalTo(selectTextColour.snp.top).offset(-30)
+            make.height.equalTo(50)
+        }
+        
+        // lay out each colour within view
+        colourBlack.setImage(UIImage(named: "Black.png"), for: .normal)
+        colourBlack.imageView?.contentMode = .scaleAspectFit
+        changeColourView.addSubview(colourBlack)
+        changeColourView.bringSubview(toFront: colourBlack)
+        colourBlack.snp.makeConstraints { (make) in
+        make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(changeColourView.snp.left)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourBlack.snp.width)
+        }
+        
+        changeColourView.addSubview(colourWhite)
+        changeColourView.bringSubview(toFront: colourWhite)
+        colourWhite.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourBlack.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourWhite.snp.width)
+        }
+        
+        changeColourView.addSubview(colourPurple)
+        changeColourView.bringSubview(toFront: colourPurple)
+        colourPurple.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourWhite.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourPurple.snp.width)
+        }
+        
+        changeColourView.addSubview(colourBlue)
+        changeColourView.bringSubview(toFront: colourBlue)
+        colourBlue.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourPurple.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourBlue.snp.width)
+        }
+        
+        changeColourView.addSubview(colourGreen)
+        changeColourView.bringSubview(toFront: colourGreen)
+        colourGreen.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourBlue.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourGreen.snp.width)
+        }
+        
+        changeColourView.addSubview(colourYellow)
+        changeColourView.bringSubview(toFront: colourYellow)
+        colourYellow.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourGreen.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourYellow.snp.width)
+        }
+        
+        changeColourView.addSubview(colourOrange)
+        changeColourView.bringSubview(toFront: colourOrange)
+        colourOrange.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourYellow.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourOrange.snp.width)
+        }
+        
+        changeColourView.addSubview(colourRed)
+        changeColourView.bringSubview(toFront: colourYellow)
+        colourRed.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourOrange.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourRed.snp.width)
         }
         
     }

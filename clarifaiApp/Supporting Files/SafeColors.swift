@@ -21,4 +21,11 @@ extension UIColor {
     class var greyColour: UIColor {
         return UIColor(red:0.58, green:0.59, blue:0.60, alpha:1.0)
     }
+    
+    
+    class var textBlue: UIColor {
+        return UIColor(red:0.31, green:0.65, blue:0.98, alpha:1.0)
+    }
+    
+
 }

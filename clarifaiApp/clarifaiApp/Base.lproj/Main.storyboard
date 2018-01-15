@@ -12,7 +12,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="clarifaiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="clarifaiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -76,12 +76,23 @@
                                     <action selector="openHelp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l8q-7U-aLb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8F-aZ-jG2">
+                                <rect key="frame" x="310" y="618" width="52" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="selectColour"/>
+                                <state key="normal" image="White">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iyY-Wb-eZ7"/>
+
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7b-jK-c3E">
                                 <rect key="frame" x="168" y="27" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="save"/>
                                 <connections>
                                     <action selector="savePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sK3-gF-8t8"/>
+
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCg-Ic-hgL">
@@ -100,19 +111,114 @@
                                     <action selector="fontColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Qd-I3-F6z"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jTW-D3-98y" userLabel="Change Text Colour">
+                                <rect key="frame" x="16" y="527" width="343" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmD-oL-e5t">
+                                        <rect key="frame" x="3" y="3" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="colourBlack"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="Black"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="el2-ze-1Gb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj7-SR-CMO">
+                                        <rect key="frame" x="37" y="3" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="colourWhite"/>
+                                        <state key="normal" image="White"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YlW-BN-XAA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8W-7Q-RCO">
+                                        <rect key="frame" x="92" y="3" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="colourBlue"/>
+                                        <state key="normal" image="Blue"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KeI-go-eAk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYE-hy-8f3">
+                                        <rect key="frame" x="192" y="3" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="colourYellow"/>
+                                        <state key="normal" image="Yellow"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dY0-MV-5QD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Phz-Hq-CP7">
+                                        <rect key="frame" x="298" y="3" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="colourRed"/>
+                                        <state key="normal" image="Red"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I8a-4Y-5rD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3D-ay-jS4">
+                                        <rect key="frame" x="146" y="3" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="colourGreen"/>
+                                        <state key="normal" image="Green"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yYX-X3-ehl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKV-4D-Zsa">
+                                        <rect key="frame" x="65" y="3" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Purple"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="47N-yO-IRl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xk-OK-KGM">
+                                        <rect key="frame" x="245" y="3" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Orange"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GfW-a0-EUr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="backNavButton" destination="8oA-lH-qlT" id="5V7-vc-T7B"/>
+                        <outlet property="changeColourView" destination="jTW-D3-98y" id="zA8-CP-USc"/>
+                        <outlet property="colourBlack" destination="OmD-oL-e5t" id="ygN-y9-z82"/>
+                        <outlet property="colourBlue" destination="C8W-7Q-RCO" id="wq5-YY-LTT"/>
+                        <outlet property="colourGreen" destination="h3D-ay-jS4" id="vrd-2n-EjR"/>
+                        <outlet property="colourOrange" destination="4xk-OK-KGM" id="dbU-Qb-vEV"/>
+                        <outlet property="colourPurple" destination="ZKV-4D-Zsa" id="bEg-m8-Gli"/>
+                        <outlet property="colourRed" destination="Phz-Hq-CP7" id="86K-z7-kB6"/>
+                        <outlet property="colourWhite" destination="wj7-SR-CMO" id="ThQ-3J-b8d"/>
+                        <outlet property="colourYellow" destination="ZYE-hy-8f3" id="w6E-J7-FAf"/>
+
                         <outlet property="fontColour" destination="2r2-0c-Y9z" id="Z8S-yD-WtC"/>
                         <outlet property="fontStyle" destination="pCg-Ic-hgL" id="b5V-Vn-BWE"/>
+
                         <outlet property="imageView" destination="jCi-61-fUj" id="S5E-yB-aC3"/>
                         <outlet property="openHelp" destination="h7q-dV-7ev" id="Ap2-3b-30G"/>
                         <outlet property="poeticText" destination="oCH-tU-4uz" id="upV-xf-1JP"/>
+
+                        <outlet property="selectFont" destination="fnd-3o-V8b" id="eUd-XN-e9E"/>
+                        <outlet property="selectPhoto" destination="ypi-BQ-4qY" id="mg7-rF-nkt"/>
+                        <outlet property="selectTextColour" destination="p8F-aZ-jG2" id="F3N-Hs-rxY"/>
+
                         <outlet property="previewView" destination="xei-jp-WNm" id="bci-Z2-74B"/>
                         <outlet property="savePhoto" destination="u7b-jK-c3E" id="49f-SW-LGg"/>
                         <outlet property="selectPhoto" destination="HQG-Ms-XTs" id="JF3-Bb-dQV"/>
+
                         <outlet property="shareNavButton" destination="Dcz-qY-U7h" id="E6I-Rt-tt8"/>
                         <outlet property="takePhoto" destination="EoZ-fP-nzO" id="J4Z-V0-g1P"/>
                     </connections>
@@ -123,6 +229,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Black" width="52" height="52"/>
+        <image name="Blue" width="52" height="52"/>
+        <image name="Green" width="52" height="52"/>
+        <image name="Orange" width="52" height="52"/>
+        <image name="Purple" width="52" height="52"/>
+        <image name="Red" width="52" height="52"/>
+        <image name="White" width="52" height="52"/>
+        <image name="Yellow" width="52" height="52"/>
+        <image name="snapoetry_camera_alt" width="200" height="182"/>
+        <image name="snapoetry_photo_alt" width="200" height="182"/>
         <image name="snapoetry-logo-2" width="51" height="47"/>
         <image name="snapoetry_share" width="100" height="100"/>
     </resources>
