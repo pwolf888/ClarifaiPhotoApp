@@ -24,9 +24,6 @@ class MainViewController: UIViewController,
     @IBOutlet weak var takePhoto: UIButton!
     @IBOutlet weak var selectPhoto: UIButton!
     @IBOutlet weak var poeticText: UITextView!
-    @IBOutlet weak var openCamera: UIButton!
-    @IBOutlet weak var snapoetryTitle: UIImageView!
-    @IBOutlet weak var selectFont: UIButton!
     @IBOutlet weak var selectTextColour: UIButton!
     @IBOutlet weak var openHelp: UIButton!
     @IBOutlet weak var imageView: UIImageView!
@@ -35,8 +32,7 @@ class MainViewController: UIViewController,
     @IBOutlet weak var backNavButton: UIButton!
     @IBOutlet weak var shareNavButton: UIButton!
     @IBOutlet weak var savePhoto: UIButton!
-    @IBOutlet weak var fontStyle: UIButton!
-    @IBOutlet weak var fontColour: UIButton!
+    @IBOutlet weak var selectFontStyle: UIButton!
     
     // Custom camera variables
     var session: AVCaptureSession?
@@ -174,8 +170,6 @@ class MainViewController: UIViewController,
     @IBAction func fontStyle(_ sender: UIButton) {
     }
     
-    @IBAction func fontColour(_ sender: UIButton) {
-    }
     
     
     // Select a photo from the album
@@ -198,9 +192,6 @@ class MainViewController: UIViewController,
     // Take a photo
     @IBAction func didTakePhoto(_ sender: UIButton) {
         
-        // Setup UI for camera
-        setupPhotoUI()
-        
         if let videoConnection = stillImageOutput!.connection(withMediaType: AVMediaTypeVideo) {
             
             // Take a still image from the stream
@@ -214,6 +205,10 @@ class MainViewController: UIViewController,
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
                     
+                    
+                    // Setup UI for camera
+                    self.setupPhotoUI()
+                    
                     // Output image to imageView then send to Clarifai
                     self.imageView.image = image
                     self.recognizeImage(image: image)
@@ -223,6 +218,7 @@ class MainViewController: UIViewController,
             })
             
         }
+        
     }
 
     
@@ -691,7 +687,7 @@ class MainViewController: UIViewController,
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var touch: UITouch? = touches.first as! UITouch
+        let touch: UITouch? = touches.first
 
         // Dismiss the Change Text colour view if user doesnt select a colour
         if touch?.view != changeColourView {
@@ -778,8 +774,15 @@ class MainViewController: UIViewController,
     
     func setupInitialUI(){
         
+        //** CONFIGURE OVERALL LAYOUT
+        let contentView = UIView()
+        view.addSubview(contentView)
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
+        
         //** CONFIGURE CAMERA PREVIEW VIEW
-        view.addSubview(previewView)
+        contentView.addSubview(previewView)
         previewView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
@@ -788,18 +791,19 @@ class MainViewController: UIViewController,
         view.addSubview(takePhoto)
         self.view.bringSubview(toFront: takePhoto)
         takePhoto.snp.makeConstraints { (make) in
-            make.bottom.centerX.equalTo(previewView)
+            make.centerX.equalTo(previewView)
+            make.bottom.equalTo(previewView).offset(-10)
         }
         
         //** CONFIGURE SELECT PHOTO BUTTON
-        view.addSubview(selectPhoto)
+        contentView.addSubview(selectPhoto)
         self.view.bringSubview(toFront: selectPhoto)
         selectPhoto.snp.makeConstraints { (make) in
             make.bottom.right.equalTo(previewView)
         }
         
         //** CONFIGURE HELP BUTTON
-        view.addSubview(openHelp)
+        contentView.addSubview(openHelp)
         self.view.bringSubview(toFront: openHelp)
         openHelp.snp.makeConstraints { (make) in
             make.bottom.left.equalTo(previewView)
@@ -810,66 +814,73 @@ class MainViewController: UIViewController,
     
     func setupPhotoUI(){
         
-        //*** IMAGE VIEW
+        //** CONFIGURE PHOTO DISPLAYED VIEW
         view.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
         
-        //*** BACK BUTTON
-        view.addSubview(backNavButton)
-        self.view.bringSubview(toFront: backNavButton)
-        backNavButton.snp.makeConstraints { (make) in
-            make.top.left.equalTo(imageView)
-        }
-        
+
         //*** SHARE BUTTON
-        view.addSubview(shareNavButton)
+        imageView.addSubview(shareNavButton)
         self.view.bringSubview(toFront: shareNavButton)
         shareNavButton.snp.makeConstraints { (make) in
-            make.top.right.equalTo(imageView)
+            make.top.equalTo(imageView).offset(20)
+            make.right.equalTo(imageView).offset(-20)
+            make.width.height.equalTo(35)
         }
+        
+        //*** BACK BUTTON
+        imageView.addSubview(backNavButton)
+        self.view.bringSubview(toFront: backNavButton)
+        backNavButton.snp.makeConstraints { (make) in
+            make.top.left.equalTo(imageView).offset(10)
+            make.centerY.equalTo(shareNavButton.snp.centerY)
+        }
+        
+        
         //*** SAVE BUTTON
-        view.addSubview(savePhoto)
+        imageView.addSubview(savePhoto)
         self.view.bringSubview(toFront: savePhoto)
         savePhoto.snp.makeConstraints { (make) in
-            make.bottom.right.equalTo(imageView)
+            make.centerX.equalTo(imageView.snp.centerX)
+            make.centerY.equalTo(shareNavButton.snp.centerY)
         }
         
-        //*** TEXT COLOUR
-        view.addSubview(fontColour)
-        self.view.bringSubview(toFront: fontColour)
-        fontColour.snp.makeConstraints { (make) in
-            make.bottom.right.equalTo(imageView).offset(-20)
-        }
-        
-//        //** CONFIGURE COLOUR BUTTON SINGLE
-        let selectColourView = UIView()
-        view.addSubview(selectColourView)
-        selectColourView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(view.snp.centerY)
-            make.right.equalTo(view.snp.right).offset(-10)
-        //    make.height.equalTo(view).multipliedBy(0.8)
-            make.width.equalTo(selectColourView.snp.height)
 
+        //** CONFIGURE COLOUR BUTTON SINGLE
+        let selectColourView = UIView()
+        imageView.addSubview(selectColourView)
+        selectColourView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(imageView.snp.bottom).offset(-20)
+            make.right.equalTo(imageView.snp.right).offset(-20)
+            make.height.width.equalTo(50)
         }
         
         selectColourView.addSubview(selectTextColour)
         self.view.bringSubview(toFront: selectTextColour)
         selectTextColour.snp.makeConstraints { (make) in
             make.center.equalTo(selectColourView.snp.center)
-            make.height.equalTo(35)
-            make.width.equalTo(35)
+            make.height.width.equalTo(50)
         }
         
-        //** CONFIGURE PHOTO DISPLAYED VIEW
-        imageView.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) in
-            make.top.equalTo(imageView.snp.top)
-            make.bottom.equalTo(imageView.snp.bottom)
-            make.center.equalTo(imageView.snp.center)
-        }
-        
+//        //** CONFIGURE FONT BUTTON SINGLE
+//        let selectFontView = UIView()
+//        imageView.addSubview(selectFontView)
+//        selectFontView.snp.makeConstraints { (make) in
+//            make.bottom.equalTo(selectColourView.snp.bottom)
+//            make.right.equalTo(selectColourView.snp.left).offset(-20)
+//            make.height.width.equalTo(50)
+//        }
+//
+//        selectFontView.addSubview(selectFontStyle)
+//        self.view.bringSubview(toFront: selectFontStyle)
+//        selectFontStyle.snp.makeConstraints { (make) in
+//            make.bottom.equalTo(selectTextColour)
+//            make.right.equalTo(selectTextColour.snp.left).offset(-50)
+//            make.height.width.equalTo(50)
+//        }
+
         //** CONFIGURE POEM VIEW
         let poemView = UIView()
         self.view.bringSubview(toFront: poemView)
@@ -877,18 +888,18 @@ class MainViewController: UIViewController,
         poemView.snp.makeConstraints { (make) in
             make.edges.equalTo(view).offset(64)
         }
-        
-        //** CONFIGURE POEM TEXT
-        view.addSubview(poeticText)
-        //*** FONT CHANGE
-        view.addSubview(fontStyle)
-        self.view.bringSubview(toFront: fontStyle)
-        fontStyle.snp.makeConstraints { (make) in
-            make.bottom.right.equalTo(imageView).offset(-40)
-        }
-        
+
+
         //*** POETIC TEXT
         imageView.addSubview(poeticText)
+        self.view.bringSubview(toFront: poeticText)
+        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
+        poeticText.textAlignment = NSTextAlignment.center
+        poeticText.textColor = .whiteColour
+        poeticText.layer.shadowColor = UIColor.black.cgColor
+        poeticText.layer.shadowOpacity = 0.9
+        poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        
         self.view.bringSubview(toFront: poeticText)
         poeticText.snp.makeConstraints { (make) in
             //make.center.equalTo(imageView)
@@ -898,7 +909,7 @@ class MainViewController: UIViewController,
             make.height.equalTo(400)
 
         }
-        
+
     }
     
     func bringChangeColourToView()
