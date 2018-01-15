@@ -83,8 +83,6 @@ class MainViewController: UIViewController,
         //Declare my api key
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
         
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,24 +110,20 @@ class MainViewController: UIViewController,
         // Check Errors for the session
         if error == nil && session!.canAddInput(input) {
             session!.addInput(input)
-            // ...
-            // The remainder of the session setup will go here...
             
             stillImageOutput = AVCaptureStillImageOutput()
             stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
             
             if session!.canAddOutput(stillImageOutput) {
                 session!.addOutput(stillImageOutput)
-                // ...
-                // Configure the Live Preview here...
+                
+                // Configure the live stream of the camera
                 videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
                 videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
                 videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
                 previewView.layer.addSublayer(videoPreviewLayer!)
                 session!.startRunning()
-                
-                
-                
+             
             }
             
         }
@@ -180,23 +174,26 @@ class MainViewController: UIViewController,
 
     }
     
-    
+    // Take a photo
     @IBAction func didTakePhoto(_ sender: UIButton) {
         
+        // Setup UI for camera
         setupPhotoUI()
+        
         if let videoConnection = stillImageOutput!.connection(withMediaType: AVMediaTypeVideo) {
-            // ...
-            // Code for photo capture goes here...
+            
+            // Take a still image from the stream
             stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) -> Void in
-                // ...
+                
+                // Take an image from the live stream of the camera
+                // Turn it into a jpeg
                 if sampleBuffer != nil {
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
                     let dataProvider = CGDataProvider(data: imageData! as CFData)
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
-                    // ...
-                    // Add the image to captureImageView here...
                     
+                    // Output image to imageView then send to Clarifai
                     self.imageView.image = image
                     self.recognizeImage(image: image)
                 }
@@ -206,9 +203,7 @@ class MainViewController: UIViewController,
             
         }
     }
-    
-    
-    
+
     
     // Pick an image from the users library
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -238,13 +233,6 @@ class MainViewController: UIViewController,
             
             // Recognizes the image
             recognizeImage(image: image)
-            //textView.text = "Hmmmm..."
-            
-            // Disable buttons while recognizing
-            //selectPhoto.isEnabled = false
-            //selectPhoto.setImage(UIImage(named: "snapoetry_closed"), for: .normal)
-            
-            
             
         }
     }
