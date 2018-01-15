@@ -29,7 +29,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-lH-qlT">
-                                <rect key="frame" x="12" y="9" width="46" height="81"/>
+                                <rect key="frame" x="12" y="27" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
@@ -76,15 +76,42 @@
                                     <action selector="openHelp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l8q-7U-aLb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7b-jK-c3E">
+                                <rect key="frame" x="168" y="27" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="save"/>
+                                <connections>
+                                    <action selector="savePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sK3-gF-8t8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCg-Ic-hgL">
+                                <rect key="frame" x="320" y="564" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="font"/>
+                                <connections>
+                                    <action selector="fontStyle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rbg-qQ-ks1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2r2-0c-Y9z">
+                                <rect key="frame" x="315" y="526" width="43" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="colour"/>
+                                <connections>
+                                    <action selector="fontColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Qd-I3-F6z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="backNavButton" destination="8oA-lH-qlT" id="5V7-vc-T7B"/>
+                        <outlet property="fontColour" destination="2r2-0c-Y9z" id="Z8S-yD-WtC"/>
+                        <outlet property="fontStyle" destination="pCg-Ic-hgL" id="b5V-Vn-BWE"/>
                         <outlet property="imageView" destination="jCi-61-fUj" id="S5E-yB-aC3"/>
                         <outlet property="openHelp" destination="h7q-dV-7ev" id="Ap2-3b-30G"/>
                         <outlet property="poeticText" destination="oCH-tU-4uz" id="upV-xf-1JP"/>
                         <outlet property="previewView" destination="xei-jp-WNm" id="bci-Z2-74B"/>
+                        <outlet property="savePhoto" destination="u7b-jK-c3E" id="49f-SW-LGg"/>
                         <outlet property="selectPhoto" destination="HQG-Ms-XTs" id="JF3-Bb-dQV"/>
                         <outlet property="shareNavButton" destination="Dcz-qY-U7h" id="E6I-Rt-tt8"/>
                         <outlet property="takePhoto" destination="EoZ-fP-nzO" id="J4Z-V0-g1P"/>

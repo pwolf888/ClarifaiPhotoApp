@@ -19,28 +19,25 @@ class MainViewController: UIViewController,
         UIImagePickerControllerDelegate,
         UINavigationControllerDelegate {
     
-    // Declared Variables - IBOutlet
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var poeticText: UITextView!
-   
-    
-    
     // Custom camera view outlets
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var takePhoto: UIButton!
     @IBOutlet weak var selectPhoto: UIButton!
     @IBOutlet weak var openHelp: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
+    // Photo options
+    @IBOutlet weak var backNavButton: UIButton!
+    @IBOutlet weak var shareNavButton: UIButton!
+    @IBOutlet weak var poeticText: UITextView!
+    @IBOutlet weak var savePhoto: UIButton!
+    @IBOutlet weak var fontStyle: UIButton!
+    @IBOutlet weak var fontColour: UIButton!
     
     // Custom camera variables
     var session: AVCaptureSession?
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    
-    
-    
-    @IBOutlet weak var backNavButton: UIButton!
-    @IBOutlet weak var shareNavButton: UIButton!
     
     
     // Declaring Variables - Globals
@@ -49,7 +46,7 @@ class MainViewController: UIViewController,
     var poems = [String]()
     var loaded = false
     var tagOne = "no poem"
-    //var cameraNeeded = true;
+    
  
     /* ERIN TO IMPLEMENT THIS LATER....
     //Check to see which device the app is running on, in order to apply appropriate contraints.
@@ -146,17 +143,23 @@ class MainViewController: UIViewController,
         
     }
     
-
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     
     @IBAction func openHelp(_ sender: UIButton) {
+    }
+    
+    @IBAction func savePhoto(_ sender: UIButton) {
+    }
+    
+    @IBAction func fontStyle(_ sender: UIButton) {
+    }
+    
+    @IBAction func fontColour(_ sender: UIButton) {
     }
     
     
@@ -195,6 +198,7 @@ class MainViewController: UIViewController,
                     // Add the image to captureImageView here...
                     
                     self.imageView.image = image
+                    self.recognizeImage(image: image)
                 }
                 
                 
@@ -742,14 +746,50 @@ class MainViewController: UIViewController,
         }
         
         //*** BACK BUTTON
+        view.addSubview(backNavButton)
+        self.view.bringSubview(toFront: backNavButton)
+        backNavButton.snp.makeConstraints { (make) in
+            make.top.left.equalTo(imageView)
+        }
         
         //*** SHARE BUTTON
+        view.addSubview(shareNavButton)
+        self.view.bringSubview(toFront: shareNavButton)
+        shareNavButton.snp.makeConstraints { (make) in
+            make.top.right.equalTo(imageView)
+        }
+        //*** SAVE BUTTON
+        view.addSubview(savePhoto)
+        self.view.bringSubview(toFront: savePhoto)
+        savePhoto.snp.makeConstraints { (make) in
+            make.bottom.right.equalTo(imageView)
+        }
         
         //*** TEXT COLOUR
+        view.addSubview(fontColour)
+        self.view.bringSubview(toFront: fontColour)
+        fontColour.snp.makeConstraints { (make) in
+            make.bottom.right.equalTo(imageView).offset(-20)
+        }
         
         //*** FONT CHANGE
+        view.addSubview(fontStyle)
+        self.view.bringSubview(toFront: fontStyle)
+        fontStyle.snp.makeConstraints { (make) in
+            make.bottom.right.equalTo(imageView).offset(-40)
+        }
         
         //*** POETIC TEXT
+        imageView.addSubview(poeticText)
+        self.view.bringSubview(toFront: poeticText)
+        poeticText.snp.makeConstraints { (make) in
+            //make.center.equalTo(imageView)
+            make.top.equalTo(imageView.snp.centerY).offset(-50)
+            make.width.equalTo(imageView).multipliedBy(0.8)
+            make.centerX.equalTo(imageView.snp.centerX)
+            make.height.equalTo(400)
+
+        }
         
     }
     
