@@ -180,6 +180,7 @@ class MainViewController: UIViewController,
     
     @IBAction func didTakePhoto(_ sender: UIButton) {
         
+        setupPhotoUI()
         if let videoConnection = stillImageOutput!.connection(withMediaType: AVMediaTypeVideo) {
             // ...
             // Code for photo capture goes here...
@@ -189,7 +190,7 @@ class MainViewController: UIViewController,
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
                     let dataProvider = CGDataProvider(data: imageData! as CFData)
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
-                    let image = UIImage(cgImage: cgImageRef!)
+                    let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
                     // ...
                     // Add the image to captureImageView here...
                     
@@ -210,7 +211,7 @@ class MainViewController: UIViewController,
         // The user picked an image. Send it to Clarifai for recognition.
         dismiss(animated: true, completion: nil)
         //redraw UI
-        setupPhotolUI()
+        setupPhotoUI()
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
@@ -732,140 +733,23 @@ class MainViewController: UIViewController,
         
     }
     
-    func setupPhotolUI(){
+    func setupPhotoUI(){
         
-        //** CONFIGURE OVERALL LAYOUT
-        let contentView = UIView()
-        view.addSubview(contentView)
-        contentView.backgroundColor = .whiteColour
-        contentView.snp.makeConstraints { (make) in
+        //*** IMAGE VIEW
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
         }
         
-        //** CONFIGURE NAVBAR VIEW
-        let navBar = UIView()
-        view.addSubview(navBar)
-        navBar.backgroundColor = .whiteColour
-        navBar.snp.makeConstraints { (make) in
-            make.left.right.equalTo(contentView)
-            make.top.equalTo(contentView)
-            make.height.equalTo(64)
-        }
+        //*** BACK BUTTON
         
-        //** CONFIGURE BACK BUTTON
-        navBar.addSubview(backNavButton)
-        self.view.bringSubview(toFront: backNavButton)
-        backNavButton.snp.makeConstraints { (make) in
-            make.left.equalTo(navBar.snp.left).offset(10)
-            make.bottom.equalTo(navBar.snp.bottom).offset(-10)
-
-        }
+        //*** SHARE BUTTON
         
-        //** CONFIGURE SOCIAL MEDIA SHARE BUTTON
-        navBar.addSubview(shareNavButton)
-        self.view.bringSubview(toFront: shareNavButton)
-        shareNavButton.snp.makeConstraints { (make) in
-            make.right.equalTo(navBar.snp.right).offset(-10)
-            make.bottom.equalTo(navBar.snp.bottom).offset(-10)
-            make.height.width.equalTo(30)
-        }
+        //*** TEXT COLOUR
         
-        //** CONFIGURE ICON VIEW
-        let iconView = UIView()
-        view.addSubview(iconView)
-        iconView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(contentView)
-            make.bottom.equalTo(contentView)
-            make.height.equalTo(64)
-        }
+        //*** FONT CHANGE
         
-        //** CONFIGURE PHOTO VIEW
-        let photoView = UIView()
-        contentView.addSubview(photoView)
-        photoView.snp.makeConstraints { (make) in
-            make.top.equalTo(navBar.snp.bottom)
-            make.bottom.equalTo(contentView.snp.bottom)
-            make.left.right.equalTo(contentView)
-        }
-        
-//        //** CONFIGURE FONT BUTTON SINGLE
-//        iconView.addSubview(selectFont)
-//        selectFont.backgroundColor = .whiteColour
-//        selectFont.layer.borderWidth = 1
-//        selectFont.layer.borderColor = UIColor.snapoetryBackground.cgColor
-//        selectFont.layer.cornerRadius = 10
-//        selectFont.snp.makeConstraints { (make) in
-//            make.centerY.equalTo(iconView.snp.centerY)
-//            make.left.equalTo(iconView.snp.left).offset(10)
-//            make.height.equalTo(iconView).multipliedBy(0.8)
-//            make.width.equalTo(selectFont.snp.height)
-//
-//        }
-        
-//        //** CONFIGURE COLOUR BUTTON SINGLE
-        let selectColourView = UIView()
-        iconView.addSubview(selectColourView)
-        selectColourView.backgroundColor = .whiteColour
-        self.view.bringSubview(toFront: selectColourView)
-        selectColourView.layer.borderWidth = 1
-        selectColourView.layer.borderColor = UIColor.snapoetryBackground.cgColor
-        selectColourView.layer.cornerRadius = 10
-        selectColourView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(iconView.snp.centerY)
-            make.right.equalTo(iconView.snp.right).offset(-10)
-            make.height.equalTo(iconView).multipliedBy(0.8)
-            make.width.equalTo(selectColourView.snp.height)
-
-        }
-        
-        let selectColour = UIButton()
-        selectColourView.addSubview(selectColour)
-        selectColour.backgroundColor = .whiteColour
-        self.view.bringSubview(toFront: selectColour)
-        selectColour.layer.borderWidth = 1
-        selectColour.layer.borderColor = UIColor.greyColour.cgColor
-        selectColour.layer.cornerRadius = 10
-        selectColour.snp.makeConstraints { (make) in
-            make.center.equalTo(selectColourView.snp.center)
-            make.height.equalTo(35)
-            make.width.equalTo(35)
-        }
-        
-        //** CONFIGURE PHOTO DISPLAYED VIEW
-        photoView.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) in
-            make.top.equalTo(photoView.snp.top)
-            make.bottom.equalTo(photoView.snp.bottom)
-            make.center.equalTo(photoView.snp.center)
-        }
-        
-        //** CONFIGURE POEM VIEW
-        let poemView = UIView()
-        self.view.bringSubview(toFront: poemView)
-        contentView.addSubview(poemView)
-        poemView.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView).offset(64)
-        }
-        
-        //** CONFIGURE POEM TEXT
-        photoView.addSubview(poeticText)
-        self.view.bringSubview(toFront: poeticText)
-        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
-        poeticText.textAlignment = NSTextAlignment.center
-        poeticText.textColor = .whiteColour
-        poeticText.layer.shadowColor = UIColor.black.cgColor
-        poeticText.layer.shadowOpacity = 0.9
-        poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-        poeticText.text = "Analysing Image..."
-
-        poeticText.snp.makeConstraints { (make) in
-            make.top.equalTo(poemView.snp.centerY).offset(-50)
-            make.width.equalTo(poemView).multipliedBy(0.8)
-            make.centerX.equalTo(contentView.snp.centerX)
-            make.height.equalTo(400)
-
-        }
-
+        //*** POETIC TEXT
         
     }
     

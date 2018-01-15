@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "clarifaiApp/MainViewController.swift"
-            timestampString = "537680812.597784"
+            timestampString = "537682209.242736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "recognizeImage(image:)"
             landmarkType = "7">
             <Locations>
