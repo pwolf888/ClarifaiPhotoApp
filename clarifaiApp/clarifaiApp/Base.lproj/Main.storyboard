@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeueLights.ttc">
-            <string>HelveticaNeue-Light</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -26,62 +21,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="una-gX-nlX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="286"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="snapoetry_title" translatesAutoresizingMaskIntoConstraints="NO" id="xPH-7k-Yio">
-                                <rect key="frame" x="-140" y="216" width="655" height="181"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jCi-61-fUj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCH-tU-4uz">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <rect key="frame" x="73" y="380" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6ad-Dm-riO">
-                                <rect key="frame" x="459" y="335" width="114" height="291"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-lH-qlT">
+                                <rect key="frame" x="12" y="27" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypi-BQ-4qY">
-                                <rect key="frame" x="259" y="547" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="snapoetry_photo_alt">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="opC-F4-Wil"/>
-                                    <action selector="selectPhotoDown:" destination="BYZ-38-t0r" eventType="touchDown" id="7SU-zu-8lw"/>
+                                    <action selector="cancelSnapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ocv-rH-RZ4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-w0-RNI">
-                                <rect key="frame" x="16" y="547" width="100" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcz-qY-U7h">
+                                <rect key="frame" x="312" y="18" width="49" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="snapoetry_camera_alt">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" image="snapoetry_share"/>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xei-jp-WNm">
+                                <rect key="frame" x="49" y="75" width="288" height="256"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoZ-fP-nzO">
+                                <rect key="frame" x="161" y="587" width="64" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="snapoetry-logo-2"/>
                                 <connections>
-                                    <action selector="cameraDown:" destination="BYZ-38-t0r" eventType="touchDown" id="awe-I3-pV6"/>
-                                    <action selector="openCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Qi-FA-dtP"/>
+                                    <action selector="didTakePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Gc-KF-27n"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnd-3o-V8b">
-                                <rect key="frame" x="12" y="629" width="46" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jCi-61-fUj">
+                                <rect key="frame" x="93" y="483" width="189" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Aa">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQG-Ms-XTs">
+                                <rect key="frame" x="282" y="602" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="library"/>
+                                <connections>
+                                    <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZpW-PS-Cjg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7q-dV-7ev">
+                                <rect key="frame" x="16" y="602" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <state key="normal" title="?"/>
+                                <connections>
+                                    <action selector="openHelp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l8q-7U-aLb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8F-aZ-jG2">
                                 <rect key="frame" x="310" y="618" width="52" height="52"/>
@@ -92,20 +85,31 @@
                                 </state>
                                 <connections>
                                     <action selector="selectTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iyY-Wb-eZ7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-lH-qlT">
-                                <rect key="frame" x="12" y="9" width="46" height="30"/>
+
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7b-jK-c3E">
+                                <rect key="frame" x="168" y="27" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
+                                <state key="normal" title="save"/>
                                 <connections>
-                                    <action selector="cancelSnapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ocv-rH-RZ4"/>
+                                    <action selector="savePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sK3-gF-8t8"/>
+
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcz-qY-U7h">
-                                <rect key="frame" x="302" y="18" width="49" height="49"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCg-Ic-hgL">
+                                <rect key="frame" x="320" y="564" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="snapoetry_share"/>
+                                <state key="normal" title="font"/>
+                                <connections>
+                                    <action selector="fontStyle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rbg-qQ-ks1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2r2-0c-Y9z">
+                                <rect key="frame" x="315" y="526" width="43" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="colour"/>
+                                <connections>
+                                    <action selector="fontColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Qd-I3-F6z"/>
+                                </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jTW-D3-98y" userLabel="Change Text Colour">
                                 <rect key="frame" x="16" y="527" width="343" height="58"/>
@@ -186,7 +190,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.30196078431372547" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="backNavButton" destination="8oA-lH-qlT" id="5V7-vc-T7B"/>
@@ -199,15 +203,24 @@
                         <outlet property="colourRed" destination="Phz-Hq-CP7" id="86K-z7-kB6"/>
                         <outlet property="colourWhite" destination="wj7-SR-CMO" id="ThQ-3J-b8d"/>
                         <outlet property="colourYellow" destination="ZYE-hy-8f3" id="w6E-J7-FAf"/>
+
+                        <outlet property="fontColour" destination="2r2-0c-Y9z" id="Z8S-yD-WtC"/>
+                        <outlet property="fontStyle" destination="pCg-Ic-hgL" id="b5V-Vn-BWE"/>
+
                         <outlet property="imageView" destination="jCi-61-fUj" id="S5E-yB-aC3"/>
-                        <outlet property="openCamera" destination="Joh-w0-RNI" id="bUo-rK-sN1"/>
+                        <outlet property="openHelp" destination="h7q-dV-7ev" id="Ap2-3b-30G"/>
                         <outlet property="poeticText" destination="oCH-tU-4uz" id="upV-xf-1JP"/>
+
                         <outlet property="selectFont" destination="fnd-3o-V8b" id="eUd-XN-e9E"/>
                         <outlet property="selectPhoto" destination="ypi-BQ-4qY" id="mg7-rF-nkt"/>
                         <outlet property="selectTextColour" destination="p8F-aZ-jG2" id="F3N-Hs-rxY"/>
+
+                        <outlet property="previewView" destination="xei-jp-WNm" id="bci-Z2-74B"/>
+                        <outlet property="savePhoto" destination="u7b-jK-c3E" id="49f-SW-LGg"/>
+                        <outlet property="selectPhoto" destination="HQG-Ms-XTs" id="JF3-Bb-dQV"/>
+
                         <outlet property="shareNavButton" destination="Dcz-qY-U7h" id="E6I-Rt-tt8"/>
-                        <outlet property="snapoetryTitle" destination="xPH-7k-Yio" id="aNe-OO-D4w"/>
-                        <outlet property="textView" destination="6ad-Dm-riO" id="9AQ-Al-ckj"/>
+                        <outlet property="takePhoto" destination="EoZ-fP-nzO" id="J4Z-V0-g1P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -226,7 +239,7 @@
         <image name="Yellow" width="52" height="52"/>
         <image name="snapoetry_camera_alt" width="200" height="182"/>
         <image name="snapoetry_photo_alt" width="200" height="182"/>
+        <image name="snapoetry-logo-2" width="51" height="47"/>
         <image name="snapoetry_share" width="100" height="100"/>
-        <image name="snapoetry_title" width="655" height="181"/>
     </resources>
 </document>
