@@ -24,7 +24,6 @@ class MainViewController: UIViewController,
     @IBOutlet weak var takePhoto: UIButton!
     @IBOutlet weak var selectPhoto: UIButton!
     @IBOutlet weak var poeticText: UITextView!
-    @IBOutlet weak var selectTextColour: UIButton!
     @IBOutlet weak var openHelp: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -32,13 +31,16 @@ class MainViewController: UIViewController,
     @IBOutlet weak var backNavButton: UIButton!
     @IBOutlet weak var shareNavButton: UIButton!
     @IBOutlet weak var savePhoto: UIButton!
-    @IBOutlet weak var selectFontStyle: UIButton!
+    @IBOutlet weak var fontStyle: UIButton!
+    @IBOutlet weak var textColour: UIButton!
+    
     
     // Custom camera variables
     var session: AVCaptureSession?
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
+    // edit poem text options
     @IBOutlet weak var colourBlack: UIButton!
     @IBOutlet weak var colourWhite: UIButton!
     @IBOutlet weak var colourBlue: UIButton!
@@ -56,6 +58,10 @@ class MainViewController: UIViewController,
     var yellowImage = UIImage(named: "Yellow")!
     var orangeImage = UIImage(named: "Orange")!
     var redImage = UIImage(named: "Red")!
+    
+    @IBOutlet weak var changeColourView: UIView!
+    @IBOutlet weak var changeFontView: UIView!
+    
     
     // Declaring Variables - Globals
     var app:ClarifaiApp?
@@ -192,6 +198,9 @@ class MainViewController: UIViewController,
     // Take a photo
     @IBAction func didTakePhoto(_ sender: UIButton) {
         
+        // Setup UI for camera
+        setupPhotoUI()
+        
         if let videoConnection = stillImageOutput!.connection(withMediaType: AVMediaTypeVideo) {
             
             // Take a still image from the stream
@@ -206,8 +215,7 @@ class MainViewController: UIViewController,
                     let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
                     
                     
-                    // Setup UI for camera
-                    self.setupPhotoUI()
+                   
                     
                     // Output image to imageView then send to Clarifai
                     self.imageView.image = image
@@ -675,15 +683,11 @@ class MainViewController: UIViewController,
         return poem
     }
     
-    
-    // Back button after taking photo
-    
-    @IBOutlet weak var changeColourView: UIView!
-    
-    @IBAction func selectTextColour(_ sender: UIButton) {
-        
+    @IBAction func selectTextColour(sender: UIButton) {
+
         //call function to present user with text colour options
-        bringChangeColourToView()
+        print("User has selected to change colour")
+        //bringChangeColourToView()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -695,48 +699,48 @@ class MainViewController: UIViewController,
         }
     }
     
-    @IBAction func changeTextColour(_ sender: UIButton) {
+    @IBAction func changeTextColour(sender: UIButton) {
         
         switch sender.tag{
             case 0:
                 poeticText.textColor = UIColor.black
                 changeColourView.isHidden = true
-                selectTextColour.setImage(UIImage(named: "Black.png"), for: .normal)
+                textColour.setImage(UIImage(named: "Black.png"), for: .normal)
                 break;
             case 1:
                 poeticText.textColor = UIColor.white
                 changeColourView.isHidden = true
-                selectTextColour.setImage(UIImage(named: "White.png"), for: .normal)
+                textColour.setImage(UIImage(named: "White.png"), for: .normal)
                 break;
             case 2:
                 poeticText.textColor = UIColor.purple
                 changeColourView.isHidden = true
-                selectTextColour.setImage(UIImage(named: "Purple.png"), for: .normal)
+                textColour.setImage(UIImage(named: "Purple.png"), for: .normal)
                 break;
             case 3:
                 poeticText.textColor = UIColor.blue
                 changeColourView.isHidden = true
-                selectTextColour.setImage(UIImage(named: "Blue.png"), for: .normal)
+                textColour.setImage(UIImage(named: "Blue.png"), for: .normal)
                 break;
             case 4:
                 poeticText.textColor = UIColor.green
                 changeColourView.isHidden = true
-                selectTextColour.setImage(UIImage(named: "Green.png"), for: .normal)
+                textColour.setImage(UIImage(named: "Green.png"), for: .normal)
                 break;
             case 5:
                 poeticText.textColor = UIColor.yellow
                 changeColourView.isHidden = true
-                selectTextColour.setImage(UIImage(named: "Yellow.png"), for: .normal)
+                textColour.setImage(UIImage(named: "Yellow.png"), for: .normal)
                 break;
             case 6:
                 poeticText.textColor = UIColor.orange
                 changeColourView.isHidden = true
-                selectTextColour.setImage(UIImage(named: "Orange.png"), for: .normal)
+                textColour.setImage(UIImage(named: "Orange.png"), for: .normal)
                 break;
             case 7:
                 poeticText.textColor = UIColor.red
                 changeColourView.isHidden = true
-                selectTextColour.setImage(UIImage(named: "Red.png"), for: .normal)
+                textColour.setImage(UIImage(named: "Red.png"), for: .normal)
                 break;
             default: ()
                 break;
@@ -806,47 +810,72 @@ class MainViewController: UIViewController,
         contentView.addSubview(openHelp)
         self.view.bringSubview(toFront: openHelp)
         openHelp.snp.makeConstraints { (make) in
-            make.bottom.left.equalTo(previewView)
+            make.bottom.left.equalTo(previewView).offset(-10)
+            make.left.equalTo(contentView.snp.left).offset(10)
+            make.width.height.equalTo(50)
         }
-        
-        
+
     }
     
     func setupPhotoUI(){
         
+        //** HIDE PHOTO LIBRARY BUTTON
+        selectPhoto.isHidden = true
+        
         //** CONFIGURE PHOTO DISPLAYED VIEW
         view.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.top.bottom.equalTo(view)
+            make.left.right.equalTo(view)
         }
-        
+
+
 
         //*** SHARE BUTTON
         imageView.addSubview(shareNavButton)
-        self.view.bringSubview(toFront: shareNavButton)
+        imageView.bringSubview(toFront: shareNavButton)
         shareNavButton.snp.makeConstraints { (make) in
             make.top.equalTo(imageView).offset(20)
             make.right.equalTo(imageView).offset(-20)
-            make.width.height.equalTo(35)
+            make.width.height.equalTo(50)
         }
-        
+
         //*** BACK BUTTON
         imageView.addSubview(backNavButton)
-        self.view.bringSubview(toFront: backNavButton)
+        imageView.bringSubview(toFront: backNavButton)
         backNavButton.snp.makeConstraints { (make) in
             make.top.left.equalTo(imageView).offset(10)
             make.centerY.equalTo(shareNavButton.snp.centerY)
+            make.width.height.equalTo(50)
         }
-        
-        
+
+
         //*** SAVE BUTTON
         imageView.addSubview(savePhoto)
-        self.view.bringSubview(toFront: savePhoto)
+        imageView.bringSubview(toFront: savePhoto)
         savePhoto.snp.makeConstraints { (make) in
             make.centerX.equalTo(imageView.snp.centerX)
             make.centerY.equalTo(shareNavButton.snp.centerY)
+            make.width.height.equalTo(50)
         }
-        
+
+        //*** POETIC TEXT
+        imageView.addSubview(poeticText)
+        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
+        poeticText.textAlignment = NSTextAlignment.center
+        poeticText.textColor = .whiteColour
+        poeticText.layer.shadowColor = UIColor.black.cgColor
+        poeticText.layer.shadowOpacity = 0.9
+        poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+
+        imageView.bringSubview(toFront: poeticText)
+        poeticText.snp.makeConstraints { (make) in
+            make.top.equalTo(imageView.snp.centerY).offset(-50)
+            make.width.equalTo(imageView).multipliedBy(0.8)
+            make.centerX.equalTo(imageView.snp.centerX)
+            make.height.equalTo(300)
+
+        }
 
         //** CONFIGURE COLOUR BUTTON SINGLE
         let selectColourView = UIView()
@@ -856,151 +885,134 @@ class MainViewController: UIViewController,
             make.right.equalTo(imageView.snp.right).offset(-20)
             make.height.width.equalTo(50)
         }
-        
-        selectColourView.addSubview(selectTextColour)
-        self.view.bringSubview(toFront: selectTextColour)
-        selectTextColour.snp.makeConstraints { (make) in
-            make.center.equalTo(selectColourView.snp.center)
+
+        selectColourView.addSubview(textColour)
+        selectColourView.bringSubview(toFront: textColour)
+        textColour.snp.makeConstraints { (make) in
+            make.bottom.equalTo(selectColourView.snp.bottom)
+            make.right.equalTo(selectColourView.snp.right)
+            make.height.width.equalTo(selectColourView)
+        }
+
+        //** CONFIGURE FONT BUTTON SINGLE
+        let selectFontView = UIView()
+        imageView.addSubview(selectFontView)
+        selectFontView.snp.makeConstraints { (make) in
+            make.right.equalTo(textColour.snp.left).offset(-10)
+            make.bottom.equalTo(imageView.snp.bottom).offset(-20)
             make.height.width.equalTo(50)
         }
-        
-//        //** CONFIGURE FONT BUTTON SINGLE
-//        let selectFontView = UIView()
-//        imageView.addSubview(selectFontView)
-//        selectFontView.snp.makeConstraints { (make) in
-//            make.bottom.equalTo(selectColourView.snp.bottom)
-//            make.right.equalTo(selectColourView.snp.left).offset(-20)
-//            make.height.width.equalTo(50)
-//        }
-//
-//        selectFontView.addSubview(selectFontStyle)
-//        self.view.bringSubview(toFront: selectFontStyle)
-//        selectFontStyle.snp.makeConstraints { (make) in
-//            make.bottom.equalTo(selectTextColour)
-//            make.right.equalTo(selectTextColour.snp.left).offset(-50)
-//            make.height.width.equalTo(50)
-//        }
 
-        //** CONFIGURE POEM VIEW
-        let poemView = UIView()
-        self.view.bringSubview(toFront: poemView)
-        view.addSubview(poemView)
-        poemView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view).offset(64)
-        }
-
-
-        //*** POETIC TEXT
-        imageView.addSubview(poeticText)
-        self.view.bringSubview(toFront: poeticText)
-        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
-        poeticText.textAlignment = NSTextAlignment.center
-        poeticText.textColor = .whiteColour
-        poeticText.layer.shadowColor = UIColor.black.cgColor
-        poeticText.layer.shadowOpacity = 0.9
-        poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-        
-        self.view.bringSubview(toFront: poeticText)
-        poeticText.snp.makeConstraints { (make) in
-            //make.center.equalTo(imageView)
-            make.top.equalTo(imageView.snp.centerY).offset(-50)
-            make.width.equalTo(imageView).multipliedBy(0.8)
-            make.centerX.equalTo(imageView.snp.centerX)
-            make.height.equalTo(400)
-
+        selectFontView.addSubview(fontStyle)
+        selectFontView.bringSubview(toFront: fontStyle)
+        fontStyle.snp.makeConstraints { (make) in
+            make.bottom.equalTo(selectFontView)
+            make.right.equalTo(selectFontView)
+            make.height.width.equalTo(selectFontView)
         }
 
     }
-    
-    func bringChangeColourToView()
+
+    func bringChangeFontToView()
     {
-        // create view to house all colours
-        changeColourView.isHidden = false
-        view.addSubview(changeColourView)
-        self.view.bringSubview(toFront: changeColourView)
-        changeColourView.snp.makeConstraints { (make) in
+        //create view to house fonts
+        
+        changeFontView.isHidden = false
+        changeFontView.backgroundColor = .orange
+        changeFontView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
             make.width.equalTo(view).multipliedBy(0.9)
-            make.bottom.equalTo(selectTextColour.snp.top).offset(-30)
-            make.height.equalTo(50)
-        }
-        
-        // lay out each colour within view
-        colourBlack.setImage(UIImage(named: "Black.png"), for: .normal)
-        colourBlack.imageView?.contentMode = .scaleAspectFit
-        changeColourView.addSubview(colourBlack)
-        changeColourView.bringSubview(toFront: colourBlack)
-        colourBlack.snp.makeConstraints { (make) in
-        make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(changeColourView.snp.left)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourBlack.snp.width)
-        }
-        
-        changeColourView.addSubview(colourWhite)
-        changeColourView.bringSubview(toFront: colourWhite)
-        colourWhite.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourBlack.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourWhite.snp.width)
-        }
-        
-        changeColourView.addSubview(colourPurple)
-        changeColourView.bringSubview(toFront: colourPurple)
-        colourPurple.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourWhite.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourPurple.snp.width)
-        }
-        
-        changeColourView.addSubview(colourBlue)
-        changeColourView.bringSubview(toFront: colourBlue)
-        colourBlue.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourPurple.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourBlue.snp.width)
-        }
-        
-        changeColourView.addSubview(colourGreen)
-        changeColourView.bringSubview(toFront: colourGreen)
-        colourGreen.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourBlue.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourGreen.snp.width)
-        }
-        
-        changeColourView.addSubview(colourYellow)
-        changeColourView.bringSubview(toFront: colourYellow)
-        colourYellow.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourGreen.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourYellow.snp.width)
-        }
-        
-        changeColourView.addSubview(colourOrange)
-        changeColourView.bringSubview(toFront: colourOrange)
-        colourOrange.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourYellow.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourOrange.snp.width)
-        }
-        
-        changeColourView.addSubview(colourRed)
-        changeColourView.bringSubview(toFront: colourYellow)
-        colourRed.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourOrange.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourRed.snp.width)
-        }
-        
+            make.height.equalTo(100)
     }
+    
+    
+//    func bringChangeColourToView()
+//    {
+//        // create view to house all colours
+//        changeColourView.isHidden = false
+//        view.addSubview(changeColourView)
+//        self.view.bringSubview(toFront: changeColourView)
+//        changeColourView.snp.makeConstraints { (make) in
+//            make.centerX.equalTo(view.snp.centerX)
+//            make.width.equalTo(view).multipliedBy(0.9)
+//            make.bottom.equalTo(selectTextColour.snp.top).offset(-30)
+//            make.height.equalTo(50)
+//        }
+//
+//        // lay out each colour within view
+//        changeColourView.addSubview(colourBlack)
+//        changeColourView.bringSubview(toFront: colourBlack)
+//        colourBlack.snp.makeConstraints { (make) in
+//        make.width.equalTo(changeColourView).dividedBy(10)
+//            make.left.equalTo(changeColourView.snp.left)
+//            make.centerY.equalTo(changeColourView.snp.centerY)
+//            make.height.equalTo(colourBlack.snp.width)
+//        }
+//
+//        changeColourView.addSubview(colourWhite)
+//        changeColourView.bringSubview(toFront: colourWhite)
+//        colourWhite.snp.makeConstraints { (make) in
+//            make.width.equalTo(changeColourView).dividedBy(10)
+//            make.left.equalTo(colourBlack.snp.right).offset(10)
+//            make.centerY.equalTo(changeColourView.snp.centerY)
+//            make.height.equalTo(colourWhite.snp.width)
+//        }
+//
+//        changeColourView.addSubview(colourPurple)
+//        changeColourView.bringSubview(toFront: colourPurple)
+//        colourPurple.snp.makeConstraints { (make) in
+//            make.width.equalTo(changeColourView).dividedBy(10)
+//            make.left.equalTo(colourWhite.snp.right).offset(10)
+//            make.centerY.equalTo(changeColourView.snp.centerY)
+//            make.height.equalTo(colourPurple.snp.width)
+//        }
+//
+//        changeColourView.addSubview(colourBlue)
+//        changeColourView.bringSubview(toFront: colourBlue)
+//        colourBlue.snp.makeConstraints { (make) in
+//            make.width.equalTo(changeColourView).dividedBy(10)
+//            make.left.equalTo(colourPurple.snp.right).offset(10)
+//            make.centerY.equalTo(changeColourView.snp.centerY)
+//            make.height.equalTo(colourBlue.snp.width)
+//        }
+//
+//        changeColourView.addSubview(colourGreen)
+//        changeColourView.bringSubview(toFront: colourGreen)
+//        colourGreen.snp.makeConstraints { (make) in
+//            make.width.equalTo(changeColourView).dividedBy(10)
+//            make.left.equalTo(colourBlue.snp.right).offset(10)
+//            make.centerY.equalTo(changeColourView.snp.centerY)
+//            make.height.equalTo(colourGreen.snp.width)
+//        }
+//
+//        changeColourView.addSubview(colourYellow)
+//        changeColourView.bringSubview(toFront: colourYellow)
+//        colourYellow.snp.makeConstraints { (make) in
+//            make.width.equalTo(changeColourView).dividedBy(10)
+//            make.left.equalTo(colourGreen.snp.right).offset(10)
+//            make.centerY.equalTo(changeColourView.snp.centerY)
+//            make.height.equalTo(colourYellow.snp.width)
+//        }
+//
+//        changeColourView.addSubview(colourOrange)
+//        changeColourView.bringSubview(toFront: colourOrange)
+//        colourOrange.snp.makeConstraints { (make) in
+//            make.width.equalTo(changeColourView).dividedBy(10)
+//            make.left.equalTo(colourYellow.snp.right).offset(10)
+//            make.centerY.equalTo(changeColourView.snp.centerY)
+//            make.height.equalTo(colourOrange.snp.width)
+//        }
+//
+//        changeColourView.addSubview(colourRed)
+//        changeColourView.bringSubview(toFront: colourYellow)
+//        colourRed.snp.makeConstraints { (make) in
+//            make.width.equalTo(changeColourView).dividedBy(10)
+//            make.left.equalTo(colourOrange.snp.right).offset(10)
+//            make.centerY.equalTo(changeColourView.snp.centerY)
+//            make.height.equalTo(colourRed.snp.width)
+//      }
     
 }
 
+
+}
