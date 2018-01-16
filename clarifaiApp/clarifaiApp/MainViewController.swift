@@ -234,8 +234,6 @@ class MainViewController: UIViewController,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // The user picked an image. Send it to Clarifai for recognition.
         dismiss(animated: true, completion: nil)
-        //redraw UI
-        setupPhotoUI()
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
@@ -258,6 +256,9 @@ class MainViewController: UIViewController,
             
             // Recognizes the image
             recognizeImage(image: image)
+            
+            //redraw UI
+            self.setupPhotoUI()
             
         }
     }
@@ -683,11 +684,11 @@ class MainViewController: UIViewController,
         return poem
     }
     
-    @IBAction func selectTextColour(sender: UIButton) {
+    @IBAction func selectTextColour(_ sender: UIButton) {
 
         //call function to present user with text colour options
         print("User has selected to change colour")
-        //bringChangeColourToView()
+        bringChangeColourToView()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -699,7 +700,7 @@ class MainViewController: UIViewController,
         }
     }
     
-    @IBAction func changeTextColour(sender: UIButton) {
+    @IBAction func changeTextColour(_ sender: UIButton) {
         
         switch sender.tag{
             case 0:
@@ -747,7 +748,7 @@ class MainViewController: UIViewController,
         }
     }
     
-    @IBAction func cancelSnap(sender: UIButton) {
+    @IBAction func cancelSnap(_ sender: UIButton) {
         // Confirm Cancellation.
         
         print("User pressed back")
@@ -819,17 +820,12 @@ class MainViewController: UIViewController,
     
     func setupPhotoUI(){
         
-        //** HIDE PHOTO LIBRARY BUTTON
-        selectPhoto.isHidden = true
-        
         //** CONFIGURE PHOTO DISPLAYED VIEW
         view.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(view)
             make.left.right.equalTo(view)
         }
-
-
 
         //*** SHARE BUTTON
         imageView.addSubview(shareNavButton)
@@ -910,6 +906,91 @@ class MainViewController: UIViewController,
             make.right.equalTo(selectFontView)
             make.height.width.equalTo(selectFontView)
         }
+        
+        
+        // create view to house all colours
+        changeColourView.isHidden = true
+        view.addSubview(changeColourView)
+        self.view.bringSubview(toFront: changeColourView)
+        changeColourView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(view).multipliedBy(0.9)
+            make.bottom.equalTo(textColour.snp.top).offset(-30)
+            make.height.equalTo(50)
+        }
+        
+        // lay out each colour within view
+        changeColourView.addSubview(colourBlack)
+        changeColourView.bringSubview(toFront: colourBlack)
+        colourBlack.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(changeColourView.snp.left)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourBlack.snp.width)
+        }
+        
+        changeColourView.addSubview(colourWhite)
+        changeColourView.bringSubview(toFront: colourWhite)
+        colourWhite.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourBlack.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourWhite.snp.width)
+        }
+        
+        changeColourView.addSubview(colourPurple)
+        changeColourView.bringSubview(toFront: colourPurple)
+        colourPurple.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourWhite.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourPurple.snp.width)
+        }
+        
+        changeColourView.addSubview(colourBlue)
+        changeColourView.bringSubview(toFront: colourBlue)
+        colourBlue.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourPurple.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourBlue.snp.width)
+        }
+        
+        changeColourView.addSubview(colourGreen)
+        changeColourView.bringSubview(toFront: colourGreen)
+        colourGreen.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourBlue.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourGreen.snp.width)
+        }
+        
+        changeColourView.addSubview(colourYellow)
+        changeColourView.bringSubview(toFront: colourYellow)
+        colourYellow.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourGreen.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourYellow.snp.width)
+        }
+        
+        changeColourView.addSubview(colourOrange)
+        changeColourView.bringSubview(toFront: colourOrange)
+        colourOrange.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourYellow.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourOrange.snp.width)
+        }
+        
+        changeColourView.addSubview(colourRed)
+        changeColourView.bringSubview(toFront: colourYellow)
+        colourRed.snp.makeConstraints { (make) in
+            make.width.equalTo(changeColourView).dividedBy(10)
+            make.left.equalTo(colourOrange.snp.right).offset(10)
+            make.centerY.equalTo(changeColourView.snp.centerY)
+            make.height.equalTo(colourRed.snp.width)
+        }
 
     }
 
@@ -923,96 +1004,16 @@ class MainViewController: UIViewController,
             make.centerX.equalTo(view.snp.centerX)
             make.width.equalTo(view).multipliedBy(0.9)
             make.height.equalTo(100)
+        }
     }
     
     
-//    func bringChangeColourToView()
-//    {
-//        // create view to house all colours
-//        changeColourView.isHidden = false
-//        view.addSubview(changeColourView)
-//        self.view.bringSubview(toFront: changeColourView)
-//        changeColourView.snp.makeConstraints { (make) in
-//            make.centerX.equalTo(view.snp.centerX)
-//            make.width.equalTo(view).multipliedBy(0.9)
-//            make.bottom.equalTo(selectTextColour.snp.top).offset(-30)
-//            make.height.equalTo(50)
-//        }
-//
-//        // lay out each colour within view
-//        changeColourView.addSubview(colourBlack)
-//        changeColourView.bringSubview(toFront: colourBlack)
-//        colourBlack.snp.makeConstraints { (make) in
-//        make.width.equalTo(changeColourView).dividedBy(10)
-//            make.left.equalTo(changeColourView.snp.left)
-//            make.centerY.equalTo(changeColourView.snp.centerY)
-//            make.height.equalTo(colourBlack.snp.width)
-//        }
-//
-//        changeColourView.addSubview(colourWhite)
-//        changeColourView.bringSubview(toFront: colourWhite)
-//        colourWhite.snp.makeConstraints { (make) in
-//            make.width.equalTo(changeColourView).dividedBy(10)
-//            make.left.equalTo(colourBlack.snp.right).offset(10)
-//            make.centerY.equalTo(changeColourView.snp.centerY)
-//            make.height.equalTo(colourWhite.snp.width)
-//        }
-//
-//        changeColourView.addSubview(colourPurple)
-//        changeColourView.bringSubview(toFront: colourPurple)
-//        colourPurple.snp.makeConstraints { (make) in
-//            make.width.equalTo(changeColourView).dividedBy(10)
-//            make.left.equalTo(colourWhite.snp.right).offset(10)
-//            make.centerY.equalTo(changeColourView.snp.centerY)
-//            make.height.equalTo(colourPurple.snp.width)
-//        }
-//
-//        changeColourView.addSubview(colourBlue)
-//        changeColourView.bringSubview(toFront: colourBlue)
-//        colourBlue.snp.makeConstraints { (make) in
-//            make.width.equalTo(changeColourView).dividedBy(10)
-//            make.left.equalTo(colourPurple.snp.right).offset(10)
-//            make.centerY.equalTo(changeColourView.snp.centerY)
-//            make.height.equalTo(colourBlue.snp.width)
-//        }
-//
-//        changeColourView.addSubview(colourGreen)
-//        changeColourView.bringSubview(toFront: colourGreen)
-//        colourGreen.snp.makeConstraints { (make) in
-//            make.width.equalTo(changeColourView).dividedBy(10)
-//            make.left.equalTo(colourBlue.snp.right).offset(10)
-//            make.centerY.equalTo(changeColourView.snp.centerY)
-//            make.height.equalTo(colourGreen.snp.width)
-//        }
-//
-//        changeColourView.addSubview(colourYellow)
-//        changeColourView.bringSubview(toFront: colourYellow)
-//        colourYellow.snp.makeConstraints { (make) in
-//            make.width.equalTo(changeColourView).dividedBy(10)
-//            make.left.equalTo(colourGreen.snp.right).offset(10)
-//            make.centerY.equalTo(changeColourView.snp.centerY)
-//            make.height.equalTo(colourYellow.snp.width)
-//        }
-//
-//        changeColourView.addSubview(colourOrange)
-//        changeColourView.bringSubview(toFront: colourOrange)
-//        colourOrange.snp.makeConstraints { (make) in
-//            make.width.equalTo(changeColourView).dividedBy(10)
-//            make.left.equalTo(colourYellow.snp.right).offset(10)
-//            make.centerY.equalTo(changeColourView.snp.centerY)
-//            make.height.equalTo(colourOrange.snp.width)
-//        }
-//
-//        changeColourView.addSubview(colourRed)
-//        changeColourView.bringSubview(toFront: colourYellow)
-//        colourRed.snp.makeConstraints { (make) in
-//            make.width.equalTo(changeColourView).dividedBy(10)
-//            make.left.equalTo(colourOrange.snp.right).offset(10)
-//            make.centerY.equalTo(changeColourView.snp.centerY)
-//            make.height.equalTo(colourRed.snp.width)
-//      }
+    func bringChangeColourToView()
+    {
+        // create view to house all colours
+        changeColourView.isHidden = true
+    }
     
-}
 
 
 }

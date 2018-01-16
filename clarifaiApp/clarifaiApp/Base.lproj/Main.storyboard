@@ -35,7 +35,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="back-5"/>
                                 <connections>
-                                    <action selector="cancelSnapWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ocv-rH-RZ4"/>
+                                    <action selector="cancelSnap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WK5-1v-eIt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcz-qY-U7h">
@@ -75,12 +75,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXM-Hr-Mez">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXM-Hr-Mez">
                                 <rect key="frame" x="318" y="607" width="52" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="White"/>
+                                <state key="normal" image="White"/>
                                 <connections>
-                                    <action selector="selectTextColourWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hMj-go-Jxd"/>
+                                    <action selector="selectTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="acL-xS-bM4"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x6v-j6-Eyb">
@@ -92,8 +92,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Green"/>
                                         <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="01c-la-UKL"/>
-                                            <action selector="changeTextColourWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tfs-xv-9h0"/>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WCB-Dy-fQZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twm-hB-zQT">
@@ -101,8 +100,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Yellow"/>
                                         <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GUv-Kj-E7R"/>
-                                            <action selector="changeTextColourWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ls9-nx-PcG"/>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="45t-ji-3kD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1g6-VQ-gtO">
@@ -110,8 +108,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Orange"/>
                                         <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o38-ZD-j3o"/>
-                                            <action selector="changeTextColourWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OO7-3h-IBs"/>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vH4-5C-63i"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8u9-B2-YvE">
@@ -119,8 +116,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Red"/>
                                         <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AbE-hj-mI7"/>
-                                            <action selector="changeTextColourWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ga7-Gf-hHa"/>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l1z-oW-nm6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzF-7k-ecO">
@@ -128,8 +124,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Blue"/>
                                         <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="faj-B8-7Yj"/>
-                                            <action selector="changeTextColourWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RHr-xn-b08"/>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bQ4-Gg-dOH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hG-Ec-puh">
@@ -137,8 +132,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Purple"/>
                                         <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fLc-bX-3Aj"/>
-                                            <action selector="changeTextColourWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z7R-TA-zYD"/>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oe8-XG-2Qm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42P-F5-pMQ">
@@ -146,8 +140,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Black"/>
                                         <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6ma-OO-Pnm"/>
-                                            <action selector="changeTextColourWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="31X-dU-NY6"/>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CXh-dA-2aw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmd-Ij-5U2">
@@ -155,12 +148,12 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="White"/>
                                         <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JLq-bv-d5D"/>
-                                            <action selector="changeTextColourWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qBd-xF-NsA"/>
+                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vsp-Zh-yml"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UnO-js-hac">
                                 <rect key="frame" x="11" y="309" width="352" height="48"/>
@@ -200,7 +193,6 @@
                                         <state key="normal" title="Font5"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7q-dV-7ev">
                                 <rect key="frame" x="11" y="609" width="50" height="50"/>
@@ -215,7 +207,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Font"/>
                                 <connections>
-                                    <action selector="bringChangeFontToView" destination="BYZ-38-t0r" eventType="touchUpInside" id="aTc-3N-v28"/>
                                     <action selector="fontStyle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rbg-qQ-ks1"/>
                                 </connections>
                             </button>
