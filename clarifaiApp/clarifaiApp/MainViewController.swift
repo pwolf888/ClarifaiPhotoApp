@@ -907,7 +907,26 @@ class MainViewController: UIViewController,
             make.height.width.equalTo(selectFontView)
         }
         
+
+    }
+
+    func bringChangeFontToView()
+    {
+        //create view to house fonts
         
+        changeFontView.isHidden = false
+        changeFontView.backgroundColor = .orange
+        changeFontView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(view).multipliedBy(0.9)
+            make.height.equalTo(100)
+        }
+    }
+    
+    
+    func bringChangeColourToView()
+    {
+        // create view to house all colours
         // create view to house all colours
         changeColourView.isHidden = true
         view.addSubview(changeColourView)
@@ -991,27 +1010,6 @@ class MainViewController: UIViewController,
             make.centerY.equalTo(changeColourView.snp.centerY)
             make.height.equalTo(colourRed.snp.width)
         }
-
-    }
-
-    func bringChangeFontToView()
-    {
-        //create view to house fonts
-        
-        changeFontView.isHidden = false
-        changeFontView.backgroundColor = .orange
-        changeFontView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view.snp.centerX)
-            make.width.equalTo(view).multipliedBy(0.9)
-            make.height.equalTo(100)
-        }
-    }
-    
-    
-    func bringChangeColourToView()
-    {
-        // create view to house all colours
-        changeColourView.isHidden = true
     }
     
 
