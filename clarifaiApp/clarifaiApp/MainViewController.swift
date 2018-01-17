@@ -219,9 +219,6 @@ class MainViewController: UIViewController,
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
                     
-                    
-                   
-                    
                     // Output image to imageView then send to Clarifai
                     self.imageView.image = image
                     self.recognizeImage(image: image)

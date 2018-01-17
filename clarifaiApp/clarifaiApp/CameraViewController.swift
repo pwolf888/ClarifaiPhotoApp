@@ -107,7 +107,9 @@ UINavigationControllerDelegate {
         // present photo to screen
         present(picker, animated: true, completion: nil)
         
-        poeticText.text.removeAll()
+//  <-- CODE TO BE MOVED TO NEW VC
+        //poeticText.text.removeAll()
+// -->
         
     }
     
