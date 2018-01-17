@@ -252,12 +252,51 @@
                     <view key="view" contentMode="scaleToFill" id="22g-qL-hl7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9B-vf-IZa">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSx-6y-uye">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iH-lr-36o">
+                                <rect key="frame" x="162" y="609" width="51" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="snapoetry-logo-2"/>
+                                <connections>
+                                    <action selector="didTakePhoto:" destination="j4Z-7c-M0g" eventType="touchUpInside" id="FqB-ch-vwz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq7-SC-wCt">
+                                <rect key="frame" x="6" y="609" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="info"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8v-an-WVi">
+                                <rect key="frame" x="313" y="614" width="50" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="photoLibrary"/>
+                                <connections>
+                                    <action selector="selectPhoto:" destination="j4Z-7c-M0g" eventType="touchUpInside" id="HqH-xw-okB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="KSx-6y-uye" id="L94-2G-kMu"/>
+                        <outlet property="openHelp" destination="iq7-SC-wCt" id="GHC-c3-VOO"/>
+                        <outlet property="previewView" destination="C9B-vf-IZa" id="6Zw-va-vav"/>
+                        <outlet property="selectPhoto" destination="c8v-an-WVi" id="EBL-26-3fv"/>
+                        <outlet property="takePhoto" destination="2iH-lr-36o" id="RfE-4V-e00"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ja-3N-2Se" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15" y="781"/>
+            <point key="canvasLocation" x="13.6" y="780.35982008995506"/>
         </scene>
         <!--Edit Snap View Controller-->
         <scene sceneID="i9w-el-KnN">
@@ -292,6 +331,7 @@
         <image name="Yellow" width="52" height="52"/>
         <image name="back-5" width="60" height="60"/>
         <image name="info" width="124" height="124"/>
+        <image name="photoLibrary" width="259" height="212"/>
         <image name="snapoetry-logo-2" width="51" height="47"/>
     </resources>
 </document>
