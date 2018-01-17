@@ -14,6 +14,8 @@
 		5AEF26031F468E940068ECA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF26021F468E940068ECA7 /* Assets.xcassets */; };
 		5AEF26061F468E940068ECA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF26041F468E940068ECA7 /* LaunchScreen.storyboard */; };
 		5E859729936A055157D54DC7 /* Pods_clarifaiApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F382D3D0A891E60DD2E99957 /* Pods_clarifaiApp.framework */; };
+		80792437200F3EA900824C26 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80792436200F3EA900824C26 /* CameraViewController.swift */; };
+		80792439200F3EE900824C26 /* EditSnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80792438200F3EE900824C26 /* EditSnapViewController.swift */; };
 		80B99F351FCA5F640058B472 /* SafeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B99F341FCA5F640058B472 /* SafeColors.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,8 @@
 		5AEF26021F468E940068ECA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AEF26051F468E940068ECA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AEF26071F468E940068ECA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80792436200F3EA900824C26 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		80792438200F3EE900824C26 /* EditSnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSnapViewController.swift; sourceTree = "<group>"; };
 		80B99F341FCA5F640058B472 /* SafeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeColors.swift; sourceTree = "<group>"; };
 		F382D3D0A891E60DD2E99957 /* Pods_clarifaiApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clarifaiApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -78,6 +82,8 @@
 				5AEF25FD1F468E940068ECA7 /* MainViewController.swift */,
 				5AD5C4841FE208B7002DB212 /* wordClass.swift */,
 				5AEF25FF1F468E940068ECA7 /* Main.storyboard */,
+				80792438200F3EE900824C26 /* EditSnapViewController.swift */,
+				80792436200F3EA900824C26 /* CameraViewController.swift */,
 				5AEF26021F468E940068ECA7 /* Assets.xcassets */,
 				5AEF26041F468E940068ECA7 /* LaunchScreen.storyboard */,
 				5AEF26071F468E940068ECA7 /* Info.plist */,
@@ -147,7 +153,7 @@
 				TargetAttributes = {
 					5AEF25F71F468E940068ECA7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6T3TA6MQ82;
+						DevelopmentTeam = 68JWZ73FGC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -244,7 +250,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80792439200F3EE900824C26 /* EditSnapViewController.swift in Sources */,
 				5AD5C4851FE208B7002DB212 /* wordClass.swift in Sources */,
+				80792437200F3EA900824C26 /* CameraViewController.swift in Sources */,
 				5AEF25FE1F468E940068ECA7 /* MainViewController.swift in Sources */,
 				5AEF25FC1F468E940068ECA7 /* AppDelegate.swift in Sources */,
 				80B99F351FCA5F640058B472 /* SafeColors.swift in Sources */,
@@ -381,7 +389,7 @@
 			baseConfigurationReference = 265763978DA521057E9E1FB2 /* Pods-clarifaiApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
-				DEVELOPMENT_TEAM = 6T3TA6MQ82;
+				DEVELOPMENT_TEAM = 68JWZ73FGC;
 				INFOPLIST_FILE = clarifaiApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -397,7 +405,7 @@
 			baseConfigurationReference = 0DABCF46B0CF37F83EBC6E4A /* Pods-clarifaiApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
-				DEVELOPMENT_TEAM = 6T3TA6MQ82;
+				DEVELOPMENT_TEAM = 68JWZ73FGC;
 				INFOPLIST_FILE = clarifaiApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
