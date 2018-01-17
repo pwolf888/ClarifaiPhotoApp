@@ -109,6 +109,7 @@ class MainViewController: UIViewController,
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("fire")
         super.viewWillAppear(animated)
         // Setup your camera here...
         
@@ -154,6 +155,7 @@ class MainViewController: UIViewController,
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("fire2")
         super.viewDidAppear(animated)
         videoPreviewLayer!.frame = previewView.bounds
         
@@ -168,12 +170,15 @@ class MainViewController: UIViewController,
     
     
     @IBAction func openHelp(_ sender: UIButton) {
+        print("fontStyle Button ")
     }
     
     @IBAction func savePhoto(_ sender: UIButton) {
+        print("save Button ")
     }
     
     @IBAction func fontStyle(_ sender: UIButton) {
+        print("fontStyle Button ")
     }
     
     
@@ -793,8 +798,8 @@ class MainViewController: UIViewController,
         }
         
         //** CONFIGURE TAKE PHOTO BUTTON
-        view.addSubview(takePhoto)
-        self.view.bringSubview(toFront: takePhoto)
+        contentView.addSubview(takePhoto)
+        contentView.bringSubview(toFront: takePhoto)
         takePhoto.snp.makeConstraints { (make) in
             make.centerX.equalTo(previewView)
             make.bottom.equalTo(previewView).offset(-10)
@@ -802,17 +807,17 @@ class MainViewController: UIViewController,
         
         //** CONFIGURE SELECT PHOTO BUTTON
         contentView.addSubview(selectPhoto)
-        self.view.bringSubview(toFront: selectPhoto)
+        contentView.bringSubview(toFront: selectPhoto)
         selectPhoto.snp.makeConstraints { (make) in
             make.bottom.right.equalTo(previewView)
         }
         
         //** CONFIGURE HELP BUTTON
         contentView.addSubview(openHelp)
-        self.view.bringSubview(toFront: openHelp)
+        contentView.bringSubview(toFront: openHelp)
         openHelp.snp.makeConstraints { (make) in
             make.bottom.left.equalTo(previewView).offset(-10)
-            make.left.equalTo(contentView.snp.left).offset(10)
+            //make.left.equalTo(contentView.snp.left).offset(10)
             make.width.height.equalTo(50)
         }
 
@@ -831,18 +836,18 @@ class MainViewController: UIViewController,
         imageView.addSubview(shareNavButton)
         imageView.bringSubview(toFront: shareNavButton)
         shareNavButton.snp.makeConstraints { (make) in
-            make.top.equalTo(imageView).offset(20)
-            make.right.equalTo(imageView).offset(-20)
-            make.width.height.equalTo(50)
+            //make.top.equalTo(imageView).offset(20)
+            //make.right.equalTo(imageView).offset(-20)
+            //make.width.height.equalTo(50)
         }
 
         //*** BACK BUTTON
         imageView.addSubview(backNavButton)
         imageView.bringSubview(toFront: backNavButton)
         backNavButton.snp.makeConstraints { (make) in
-            make.top.left.equalTo(imageView).offset(10)
+            //make.top.left.equalTo(imageView).offset(10)
             make.centerY.equalTo(shareNavButton.snp.centerY)
-            make.width.height.equalTo(50)
+            //make.width.height.equalTo(50)
         }
 
 
@@ -852,7 +857,7 @@ class MainViewController: UIViewController,
         savePhoto.snp.makeConstraints { (make) in
             make.centerX.equalTo(imageView.snp.centerX)
             make.centerY.equalTo(shareNavButton.snp.centerY)
-            make.width.height.equalTo(50)
+            //make.width.height.equalTo(50)
         }
 
         //*** POETIC TEXT
@@ -879,7 +884,7 @@ class MainViewController: UIViewController,
         selectColourView.snp.makeConstraints { (make) in
             make.bottom.equalTo(imageView.snp.bottom).offset(-20)
             make.right.equalTo(imageView.snp.right).offset(-20)
-            make.height.width.equalTo(50)
+            //make.height.width.equalTo(100)
         }
 
         selectColourView.addSubview(textColour)
@@ -887,7 +892,7 @@ class MainViewController: UIViewController,
         textColour.snp.makeConstraints { (make) in
             make.bottom.equalTo(selectColourView.snp.bottom)
             make.right.equalTo(selectColourView.snp.right)
-            make.height.width.equalTo(selectColourView)
+            make.height.width.equalTo(50)
         }
 
         //** CONFIGURE FONT BUTTON SINGLE
@@ -926,15 +931,17 @@ class MainViewController: UIViewController,
     
     func bringChangeColourToView()
     {
+        
+        
         // create view to house all colours
         // create view to house all colours
         changeColourView.isHidden = true
         view.addSubview(changeColourView)
-        self.view.bringSubview(toFront: changeColourView)
+        view.bringSubview(toFront: changeColourView)
         changeColourView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
             make.width.equalTo(view).multipliedBy(0.9)
-            make.bottom.equalTo(textColour.snp.top).offset(-30)
+        make.bottom.equalTo(textColour.snp.top).offset(-30)
             make.height.equalTo(50)
         }
         

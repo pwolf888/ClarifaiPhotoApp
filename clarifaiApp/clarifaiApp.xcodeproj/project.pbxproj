@@ -147,7 +147,7 @@
 				TargetAttributes = {
 					5AEF25F71F468E940068ECA7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 68JWZ73FGC;
+						DevelopmentTeam = 6T3TA6MQ82;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -381,7 +381,7 @@
 			baseConfigurationReference = 265763978DA521057E9E1FB2 /* Pods-clarifaiApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
-				DEVELOPMENT_TEAM = 68JWZ73FGC;
+				DEVELOPMENT_TEAM = 6T3TA6MQ82;
 				INFOPLIST_FILE = clarifaiApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -397,7 +397,7 @@
 			baseConfigurationReference = 0DABCF46B0CF37F83EBC6E4A /* Pods-clarifaiApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
-				DEVELOPMENT_TEAM = 68JWZ73FGC;
+				DEVELOPMENT_TEAM = 6T3TA6MQ82;
 				INFOPLIST_FILE = clarifaiApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

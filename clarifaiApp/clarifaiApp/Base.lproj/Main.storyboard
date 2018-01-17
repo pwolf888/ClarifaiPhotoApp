@@ -51,7 +51,7 @@
                                     <action selector="didTakePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Gc-KF-27n"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQG-Ms-XTs">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQG-Ms-XTs">
                                 <rect key="frame" x="282" y="553" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -80,7 +80,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="White"/>
                                 <connections>
-                                    <action selector="selectTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="acL-xS-bM4"/>
+                                    <action selector="selectTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vJR-MK-zN2"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x6v-j6-Eyb">
@@ -234,7 +234,7 @@
                         <outlet property="selectPhoto" destination="HQG-Ms-XTs" id="JF3-Bb-dQV"/>
                         <outlet property="shareNavButton" destination="Dcz-qY-U7h" id="E6I-Rt-tt8"/>
                         <outlet property="takePhoto" destination="EoZ-fP-nzO" id="J4Z-V0-g1P"/>
-                        <outlet property="textColour" destination="hXM-Hr-Mez" id="hIm-te-QCj"/>
+                        <outlet property="textColour" destination="hXM-Hr-Mez" id="JIb-wq-0FK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
