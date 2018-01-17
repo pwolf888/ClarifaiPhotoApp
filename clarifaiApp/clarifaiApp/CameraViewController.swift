@@ -19,7 +19,7 @@ UINavigationControllerDelegate {
     @IBOutlet weak var takePhoto: UIButton!
     @IBOutlet weak var selectPhoto: UIButton!
     @IBOutlet weak var openHelp: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var photoTaken: UIImageView!
     
     // Custom camera variables
     var session: AVCaptureSession?
@@ -37,6 +37,7 @@ UINavigationControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         print("fire")
         super.viewWillAppear(animated)
+        
         // Setup your camera here...
         
         // Setup Session to use camera inputs
@@ -117,9 +118,6 @@ UINavigationControllerDelegate {
     // Take a photo
     @IBAction func didTakePhoto(_ sender: UIButton) {
         
-        // Setup UI for camera
-        setupInitialUI()
-        
         if let videoConnection = stillImageOutput!.connection(withMediaType: AVMediaTypeVideo) {
             
             // Take a still image from the stream
@@ -133,11 +131,11 @@ UINavigationControllerDelegate {
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
                     
-                    
+                    // Output image to imageView
+                    self.photoTaken.image = image
                     
 //  <-- CODE TO BE MOVED TO NEW VC
-                    // Output image to imageView then send to Clarifai
-                    // self.imageView.image = image
+                    // send image to Clarifai
                     // self.recognizeImage(image: image)
                     
 //  -->
@@ -147,6 +145,10 @@ UINavigationControllerDelegate {
             })
             
         }
+        
+        let svc = self.storyboard!.instantiateViewController(withIdentifier: "editSnapVC") as! EditSnapViewController
+        svc.newImage = photoTaken.image
+        self.present(svc, animated: true, completion: nil)
         
     }
     
@@ -160,21 +162,21 @@ UINavigationControllerDelegate {
             
             // Needs a fix
             // Set image to the UIImageView
-            imageView.image = image
+            photoTaken.image = image
             
             // Get Width and Height of Chosen Image
             let imageWidth = image.size.width
             let imageHeight = image.size.height
             
             // Create a new frame for the image to sit in
-            imageView.frame = CGRect(x: 0.0, y: 0.0, width: imageWidth, height: imageHeight)
+            photoTaken.frame = CGRect(x: 0.0, y: 0.0, width: imageWidth, height: imageHeight)
             
             // Automatically resizes the height of the image
-            imageView.autoresizingMask = UIViewAutoresizing.flexibleHeight
+            photoTaken.autoresizingMask = UIViewAutoresizing.flexibleHeight
             
             // Scales the image to fit on the screen
-            self.imageView.contentMode = UIViewContentMode.scaleAspectFit
-                
+            self.photoTaken.contentMode = UIViewContentMode.scaleAspectFit
+            
 //  <-- CODE TO BE MOVED TO NEW VC
             // Recognizes the image
             // recognizeImage(image: image)
@@ -183,7 +185,13 @@ UINavigationControllerDelegate {
            // self.setupPhotoUI()
 //  -->
         }
+        
+        let svc = self.storyboard!.instantiateViewController(withIdentifier: "editSnapVC") as! EditSnapViewController
+        svc.newImage = photoTaken.image
+        self.present(svc, animated: true, completion: nil)
+        
     }
+    
     
     func setupInitialUI(){
         
@@ -230,14 +238,11 @@ UINavigationControllerDelegate {
     }
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "sendPhotoToEdit" {
+//            let destination = segue.destination as! EditSnapViewController
+//            destination.newImage = self.photoTaken.image
+//        }
+//    }
 
 }

@@ -15,6 +15,15 @@ import AVFoundation
 class EditSnapViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
     
+    // Declaring Variables - Globals
+    var app:ClarifaiApp?
+    let picker = UIImagePickerController()
+    var poems = [String]()
+    var loaded = false
+    var tagOne = "no poem"
+    var newImage: UIImage!
+
+    
     // Photo options
     @IBOutlet weak var backNavButton: UIButton!
     @IBOutlet weak var shareNavButton: UIButton!
@@ -22,7 +31,7 @@ UINavigationControllerDelegate {
     @IBOutlet weak var fontStyle: UIButton!
     @IBOutlet weak var textColour: UIButton!
     @IBOutlet weak var poeticText: UITextView!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var photoTaken: UIImageView!
     
     // edit poem text options
     @IBOutlet weak var colourBlack: UIButton!
@@ -45,17 +54,12 @@ UINavigationControllerDelegate {
     
     @IBOutlet weak var changeColourView: UIView!
     @IBOutlet weak var changeFontView: UIView!
-    
-    // Declaring Variables - Globals
-    var app:ClarifaiApp?
-    let picker = UIImagePickerController()
-    var poems = [String]()
-    var loaded = false
-    var tagOne = "no poem"
 
     override func viewDidLoad() {
         
+        photoTaken.image = newImage
         changeColourView.isHidden = true
+        
         setupPhotoUI()
         super.viewDidLoad()
 
@@ -606,8 +610,8 @@ UINavigationControllerDelegate {
         }
         
         //** CONFIGURE PHOTO DISPLAYED VIEW
-        contentView.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) in
+        contentView.addSubview(photoTaken)
+        photoTaken.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(contentView)
             make.left.right.equalTo(contentView)
         }
@@ -631,16 +635,16 @@ UINavigationControllerDelegate {
         }
 
         //*** SAVE BUTTON
-        imageView.addSubview(savePhoto)
-        imageView.bringSubview(toFront: savePhoto)
+        photoTaken.addSubview(savePhoto)
+        photoTaken.bringSubview(toFront: savePhoto)
         savePhoto.snp.makeConstraints { (make) in
-            make.centerX.equalTo(imageView.snp.centerX)
+            make.centerX.equalTo(photoTaken.snp.centerX)
             make.centerY.equalTo(shareNavButton.snp.centerY)
             //make.width.height.equalTo(50)
         }
 
         //*** POETIC TEXT
-        imageView.addSubview(poeticText)
+        photoTaken.addSubview(poeticText)
         poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
         poeticText.textAlignment = NSTextAlignment.center
         poeticText.textColor = .black
@@ -648,11 +652,11 @@ UINavigationControllerDelegate {
         poeticText.layer.shadowOpacity = 0.9
         poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
 
-        imageView.bringSubview(toFront: poeticText)
+        photoTaken.bringSubview(toFront: poeticText)
         poeticText.snp.makeConstraints { (make) in
-            make.top.equalTo(imageView.snp.centerY).offset(-50)
-            make.width.equalTo(imageView).multipliedBy(0.8)
-            make.centerX.equalTo(imageView.snp.centerX)
+            make.top.equalTo(photoTaken.snp.centerY).offset(-50)
+            make.width.equalTo(photoTaken).multipliedBy(0.8)
+            make.centerX.equalTo(photoTaken.snp.centerX)
             make.height.equalTo(300)
 
         }

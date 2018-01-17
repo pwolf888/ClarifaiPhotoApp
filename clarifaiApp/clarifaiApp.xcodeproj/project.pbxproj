@@ -10,7 +10,7 @@
 		5AD5C4851FE208B7002DB212 /* wordClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD5C4841FE208B7002DB212 /* wordClass.swift */; };
 		5AEF25FC1F468E940068ECA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF25FB1F468E940068ECA7 /* AppDelegate.swift */; };
 		5AEF25FE1F468E940068ECA7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF25FD1F468E940068ECA7 /* MainViewController.swift */; };
-		5AEF26011F468E940068ECA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF25FF1F468E940068ECA7 /* Main.storyboard */; settings = {ASSET_TAGS = (7, ); }; };
+		5AEF26011F468E940068ECA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF25FF1F468E940068ECA7 /* Main.storyboard */; };
 		5AEF26031F468E940068ECA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF26021F468E940068ECA7 /* Assets.xcassets */; };
 		5AEF26061F468E940068ECA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF26041F468E940068ECA7 /* LaunchScreen.storyboard */; };
 		5E859729936A055157D54DC7 /* Pods_clarifaiApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F382D3D0A891E60DD2E99957 /* Pods_clarifaiApp.framework */; };

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VhA-dj-xHK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j4Z-7c-M0g">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -244,7 +244,7 @@
         <!--Camera View Controller-->
         <scene sceneID="lu8-33-fvO">
             <objects>
-                <viewController id="j4Z-7c-M0g" customClass="CameraViewController" customModule="clarifaiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cameraVC" id="j4Z-7c-M0g" customClass="CameraViewController" customModule="clarifaiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Ph-E8-UaJ"/>
                         <viewControllerLayoutGuide type="bottom" id="1Ks-Zu-uCa"/>
@@ -287,8 +287,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="KSx-6y-uye" id="L94-2G-kMu"/>
                         <outlet property="openHelp" destination="iq7-SC-wCt" id="GHC-c3-VOO"/>
+                        <outlet property="photoTaken" destination="KSx-6y-uye" id="L94-2G-kMu"/>
                         <outlet property="previewView" destination="C9B-vf-IZa" id="6Zw-va-vav"/>
                         <outlet property="selectPhoto" destination="c8v-an-WVi" id="EBL-26-3fv"/>
                         <outlet property="takePhoto" destination="2iH-lr-36o" id="RfE-4V-e00"/>
@@ -296,12 +296,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ja-3N-2Se" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13.6" y="780.35982008995506"/>
+            <point key="canvasLocation" x="65" y="779"/>
         </scene>
         <!--Edit Snap View Controller-->
         <scene sceneID="i9w-el-KnN">
             <objects>
-                <viewController id="VhA-dj-xHK" customClass="EditSnapViewController" customModule="clarifaiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editSnapVC" id="VhA-dj-xHK" customClass="EditSnapViewController" customModule="clarifaiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WUO-Uh-R22"/>
                         <viewControllerLayoutGuide type="bottom" id="gFC-aT-3zg"/>
@@ -317,7 +317,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ohS-uP-fMp">
                                 <rect key="frame" x="67" y="269" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -430,13 +429,11 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pVc-67-TdS">
                                 <rect key="frame" x="0.0" y="422" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -454,7 +451,7 @@
                         <outlet property="colourWhite" destination="frH-MD-fOb" id="IMR-rX-fEc"/>
                         <outlet property="colourYellow" destination="UKK-Zg-aVv" id="Zgc-Qt-EfW"/>
                         <outlet property="fontStyle" destination="z8Y-jN-31l" id="C4c-Fs-Rcp"/>
-                        <outlet property="imageView" destination="iHg-yL-wS1" id="Get-ey-D5p"/>
+                        <outlet property="photoTaken" destination="iHg-yL-wS1" id="Get-ey-D5p"/>
                         <outlet property="poeticText" destination="ohS-uP-fMp" id="7XM-O5-DjO"/>
                         <outlet property="savePhoto" destination="jHV-HK-vqN" id="9Vn-mf-jgV"/>
                         <outlet property="shareNavButton" destination="WPt-0a-SLD" id="qdE-J8-6MV"/>
