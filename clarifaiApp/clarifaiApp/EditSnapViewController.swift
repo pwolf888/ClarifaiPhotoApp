@@ -572,23 +572,34 @@ UINavigationControllerDelegate {
     }
     
     // Save the users photo
-    @IBAction func savePhoto(_ sender: UIButton) {
-        print("save Photo")
-        if let image = UIImage(named: "example.png") {
-            if let data = UIImagePNGRepresentation(image) {
-                let filename = getDocumentsDirectory().appendingPathComponent("_snapoetry.png")
-                try? data.write(to: filename)
+    @IBAction func savePhoto(_ sender: Any) {
+        
+        do {
+            let imageData = try UIImagePNGRepresentation(self.newImage)
+            let compressedImage = UIImage(data: imageData!)
+            UIImageWriteToSavedPhotosAlbum(compressedImage!, nil, nil, nil)
+        
+            let savedPhotoAction = UIAlertAction(title: "Awesome!",
+            style: .default) { (action) in }
+            // Create and configure the alert controller.
+            let alert = UIAlertController(title: "Snapoetry",
+                                          message: "Image Saved!",
+                                          preferredStyle: .alert)
+            alert.addAction(savedPhotoAction)
+            
+            self.present(alert, animated: true) {
+                // The alert was presented
+                
             }
+            
+            } catch {
+                print("Did not save")
+            }
+
         }
         
-    }
     
     
-    // Get users directory
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
     
 // <-- REDIRECT THIS METHOD TO OTHER VC
    @IBAction func cancelSnap(_ sender: UIButton) {

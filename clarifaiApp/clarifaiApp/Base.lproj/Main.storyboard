@@ -354,7 +354,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Save"/>
                                 <connections>
-                                    <action selector="savePhoto:" destination="VhA-dj-xHK" eventType="touchUpInside" id="mXT-AJ-NHY"/>
+                                    <action selector="savePhoto:" destination="VhA-dj-xHK" eventType="touchUpInside" id="CYe-lr-MGW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ccx-lU-RW9">
