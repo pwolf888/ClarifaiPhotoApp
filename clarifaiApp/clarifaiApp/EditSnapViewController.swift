@@ -571,7 +571,24 @@ UINavigationControllerDelegate {
         }
     }
     
+    // Save the users photo
+    @IBAction func savePhoto(_ sender: UIButton) {
+        print("save Photo")
+        if let image = UIImage(named: "example.png") {
+            if let data = UIImagePNGRepresentation(image) {
+                let filename = getDocumentsDirectory().appendingPathComponent("_snapoetry.png")
+                try? data.write(to: filename)
+            }
+        }
+        
+    }
     
+    
+    // Get users directory
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
     
 // <-- REDIRECT THIS METHOD TO OTHER VC
    @IBAction func cancelSnap(_ sender: UIButton) {
@@ -644,8 +661,8 @@ UINavigationControllerDelegate {
         }
 
         //*** SAVE BUTTON
-        photoTaken.addSubview(savePhoto)
-        photoTaken.bringSubview(toFront: savePhoto)
+        contentView.addSubview(savePhoto)
+        contentView.bringSubview(toFront: savePhoto)
         savePhoto.snp.makeConstraints { (make) in
             make.centerX.equalTo(photoTaken.snp.centerX)
             make.centerY.equalTo(shareNavButton.snp.centerY)
