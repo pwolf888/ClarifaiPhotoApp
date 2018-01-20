@@ -571,32 +571,37 @@ UINavigationControllerDelegate {
     
 // <-- REDIRECT THIS METHOD TO OTHER VC
    @IBAction func cancelSnap(_ sender: UIButton) {
-//        // Confirm Cancellation.
-//
-//        print("User pressed back")
-//        let defaultAction = UIAlertAction(title: "Okay",
-//                                          style: .default) { (action) in
-//                                            // Respond to user selection of the action.
-//                                            self.setupInitialUI()
-//
-//        }
-//        let cancelAction = UIAlertAction(title: "Cancel",
-//                                         style: .cancel) { (action) in
-//                                            // Respond to user selection of the action.
-//        }
-//
-//        // Create and configure the alert controller.
-//        let alert = UIAlertController(title: "Cancel",
-//                                      message: "All changes will be lost. Continue?",
-//                                      preferredStyle: .alert)
-//        alert.addAction(defaultAction)
-//        alert.addAction(cancelAction)
-//
-//        self.present(alert, animated: true) {
-//            // The alert was presented
-//
-//        }
-//
+        // Confirm Cancellation.
+
+        print("User pressed back")
+        let defaultAction = UIAlertAction(title: "Okay",
+                                          style: .default) { (action) in
+                                            // Respond to user selection of the action.
+                                            //self.setupInitialUI()
+                                            let cameraVC = self.storyboard!.instantiateViewController(withIdentifier: "cameraVC") as! CameraViewController
+                                            
+                                            self.present(cameraVC, animated: true, completion: nil)
+
+        }
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel) { (action) in
+                                            // Respond to user selection of the action.
+        }
+
+        // Create and configure the alert controller.
+        let alert = UIAlertController(title: "Cancel",
+                                      message: "All changes will be lost. Continue?",
+                                      preferredStyle: .alert)
+        alert.addAction(defaultAction)
+        alert.addAction(cancelAction)
+
+        self.present(alert, animated: true) {
+            // The alert was presented
+
+        }
+    
+    
+
     }
     
     
