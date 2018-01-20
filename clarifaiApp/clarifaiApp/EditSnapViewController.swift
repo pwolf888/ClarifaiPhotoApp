@@ -58,6 +58,8 @@ UINavigationControllerDelegate {
     override func viewDidLoad() {
         
         photoTaken.image = newImage
+        
+        
         changeColourView.isHidden = true
         
         setupPhotoUI()
@@ -67,6 +69,8 @@ UINavigationControllerDelegate {
         
         //Declare my api key
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
+        
+        recognizeImage(image: newImage)
     }
 
     override func didReceiveMemoryWarning() {
