@@ -579,9 +579,9 @@ UINavigationControllerDelegate {
     @IBAction func savePhoto(_ sender: Any) {
         
         //call function to combine text and image as one object
-        textToImage(drawText: poeticText.text! as NSString, inImage: newImage!, atPoint: CGPoint(x: view.bounds.midX, y: view.bounds.midY))
+        textToImage(drawText: poeticText.text! as NSString, inImage: newImage!, atPoint: CGPoint(x: UIScreen.main.bounds.size.width*0.5,y: UIScreen.main.bounds.size.height*0.5))
 
-//        do {
+        do {
             let imageData = try UIImagePNGRepresentation(savedImage)
             let compressedImage = UIImage(data: imageData!)
             UIImageWriteToSavedPhotosAlbum(compressedImage!, nil, nil, nil)
@@ -599,9 +599,9 @@ UINavigationControllerDelegate {
 
             }
 
-//            } catch {
-//                print("Did not save")
-//            }
+            } catch {
+                print("Did not save")
+            }
 
         }
     
@@ -610,7 +610,7 @@ UINavigationControllerDelegate {
 
         let selectedTextColor = poeticText.textColor
         //** below code is set to default until change font and text size functions are implemented
-        let selectedFont = UIFont(name: "Helvetica Bold", size: 150)!
+        let selectedFont = UIFont(name: "HelveticaNeue-Light", size: 56)!
         
         //** implement below code once chnage font and size functions implemented
         //let selectedFont = UIFont(name: (poeticText.font?.fontName)!, size: poeticText.font?.pointSize)
@@ -619,8 +619,15 @@ UINavigationControllerDelegate {
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
 
+        //** code implemented to change text alignment to center, and add spacing between text
+        let paraStyle = NSMutableParagraphStyle()
+        paraStyle.lineSpacing = 1.2
+        paraStyle.alignment = NSTextAlignment.center;
+        
+        
         let textFontAttributes = [
             NSFontAttributeName: selectedFont,
+            NSParagraphStyleAttributeName: paraStyle,
             NSForegroundColorAttributeName: selectedTextColor as Any,
             ] as [String : Any]
         image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
@@ -719,7 +726,7 @@ UINavigationControllerDelegate {
 
         //*** POETIC TEXT
         photoTaken.addSubview(poeticText)
-        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
+        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         poeticText.textAlignment = NSTextAlignment.center
         poeticText.textColor = .black
         poeticText.layer.shadowColor = UIColor.black.cgColor
