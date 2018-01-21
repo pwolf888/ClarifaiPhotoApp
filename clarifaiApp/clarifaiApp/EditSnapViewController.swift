@@ -609,10 +609,12 @@ UINavigationControllerDelegate {
     func textToImage(drawText text: NSString, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
 
         let selectedTextColor = poeticText.textColor
-        //let selectedFont = poeticText.font
-        let selectedFont = UIFont(name: "Helvetica Bold", size: 200)!
-        //let selectedFont = UIFont(name: (poeticText.font?.fontName)!, size: 24)
-        //let selectedSize = poeticText.font?.pointSize
+        //** below code is set to default until change font and text size functions are implemented
+        let selectedFont = UIFont(name: "Helvetica Bold", size: 150)!
+        
+        //** implement below code once chnage font and size functions implemented
+        //let selectedFont = UIFont(name: (poeticText.font?.fontName)!, size: poeticText.font?.pointSize)
+    
 
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
