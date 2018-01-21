@@ -22,6 +22,7 @@ UINavigationControllerDelegate {
     var loaded = false
     var tagOne = "no poem"
     var newImage: UIImage!
+    var savedImage: UIImage!
 
     
     // Photo options
@@ -71,6 +72,7 @@ UINavigationControllerDelegate {
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
         
         recognizeImage(image: newImage)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -537,32 +539,32 @@ UINavigationControllerDelegate {
             textColour.setImage(UIImage(named: "White.png"), for: .normal)
             break;
         case 2:
-            poeticText.textColor = UIColor.purple
+            poeticText.textColor = UIColor.textPurple
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Purple.png"), for: .normal)
             break;
         case 3:
-            poeticText.textColor = UIColor.blue
+            poeticText.textColor = UIColor.textBlue
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Blue.png"), for: .normal)
             break;
         case 4:
-            poeticText.textColor = UIColor.green
+            poeticText.textColor = UIColor.textGreen
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Green.png"), for: .normal)
             break;
         case 5:
-            poeticText.textColor = UIColor.yellow
+            poeticText.textColor = UIColor.textYellow
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Yellow.png"), for: .normal)
             break;
         case 6:
-            poeticText.textColor = UIColor.orange
+            poeticText.textColor = UIColor.textOrange
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Orange.png"), for: .normal)
             break;
         case 7:
-            poeticText.textColor = UIColor.red
+            poeticText.textColor = UIColor.textRed
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Red.png"), for: .normal)
             break;
@@ -570,6 +572,76 @@ UINavigationControllerDelegate {
         break;
         }
     }
+    
+    
+    
+    // Save the users photo
+    @IBAction func savePhoto(_ sender: Any) {
+        
+        //call function to combine text and image as one object
+        textToImage(drawText: poeticText.text! as NSString, inImage: newImage!, atPoint: CGPoint(x: UIScreen.main.bounds.size.width*0.5,y: UIScreen.main.bounds.size.height*0.5))
+
+        do {
+            let imageData = try UIImagePNGRepresentation(savedImage)
+            let compressedImage = UIImage(data: imageData!)
+            UIImageWriteToSavedPhotosAlbum(compressedImage!, nil, nil, nil)
+
+            let savedPhotoAction = UIAlertAction(title: "Awesome!",
+            style: .default) { (action) in }
+            // Create and configure the alert controller.
+            let alert = UIAlertController(title: "Snapoetry",
+                                          message: "Image Saved!",
+                                          preferredStyle: .alert)
+            alert.addAction(savedPhotoAction)
+
+            self.present(alert, animated: true) {
+                // The alert was presented
+
+            }
+
+            } catch {
+                print("Did not save")
+            }
+
+        }
+    
+        
+    func textToImage(drawText text: NSString, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
+
+        let selectedTextColor = poeticText.textColor
+        //** below code is set to default until change font and text size functions are implemented
+        let selectedFont = UIFont(name: "HelveticaNeue-Light", size: 56)!
+        
+        //** implement below code once chnage font and size functions implemented
+        //let selectedFont = UIFont(name: (poeticText.font?.fontName)!, size: poeticText.font?.pointSize)
+    
+
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
+
+        //** code implemented to change text alignment to center, and add spacing between text
+        let paraStyle = NSMutableParagraphStyle()
+        paraStyle.lineSpacing = 1.2
+        paraStyle.alignment = NSTextAlignment.center;
+        
+        
+        let textFontAttributes = [
+            NSFontAttributeName: selectedFont,
+            NSParagraphStyleAttributeName: paraStyle,
+            NSForegroundColorAttributeName: selectedTextColor as Any,
+            ] as [String : Any]
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+
+        let rect = CGRect(origin: point, size: image.size)
+        text.draw(in: rect, withAttributes: textFontAttributes)
+
+        savedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return savedImage!
+    }
+    
+
     
     
     
@@ -644,8 +716,8 @@ UINavigationControllerDelegate {
         }
 
         //*** SAVE BUTTON
-        photoTaken.addSubview(savePhoto)
-        photoTaken.bringSubview(toFront: savePhoto)
+        contentView.addSubview(savePhoto)
+        contentView.bringSubview(toFront: savePhoto)
         savePhoto.snp.makeConstraints { (make) in
             make.centerX.equalTo(photoTaken.snp.centerX)
             make.centerY.equalTo(shareNavButton.snp.centerY)
@@ -654,7 +726,7 @@ UINavigationControllerDelegate {
 
         //*** POETIC TEXT
         photoTaken.addSubview(poeticText)
-        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
+        poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         poeticText.textAlignment = NSTextAlignment.center
         poeticText.textColor = .black
         poeticText.layer.shadowColor = UIColor.black.cgColor
@@ -694,7 +766,6 @@ UINavigationControllerDelegate {
         //create view to house fonts
         
         changeFontView.isHidden = false
-        changeFontView.backgroundColor = .orange
         changeFontView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
             make.width.equalTo(view).multipliedBy(0.9)
