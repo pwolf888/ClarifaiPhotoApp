@@ -24,6 +24,7 @@ UINavigationControllerDelegate {
     var newImage: UIImage!
     var savedImage: UIImage!
 
+    @IBOutlet weak var snapoetryLoader: UIImageView!
     
     // Photo options
     @IBOutlet weak var backNavButton: UIButton!
@@ -58,6 +59,8 @@ UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         
+        
+        
         photoTaken.image = newImage
         
         
@@ -72,7 +75,7 @@ UINavigationControllerDelegate {
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
         
         recognizeImage(image: newImage)
-
+        snapoetryLoader.startAnimating()
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,6 +86,7 @@ UINavigationControllerDelegate {
 
     // Recognize the Image with Clarifai
     func recognizeImage(image: UIImage) {
+        
         
         // Check that the application was initialized correctly.
         if let app = app {
@@ -158,7 +162,9 @@ UINavigationControllerDelegate {
                     // Once finished enable buttons again
                     DispatchQueue.main.async {
                         
-                        
+                        UIView.animate(withDuration: 0.2, animations: {
+                            self.snapoetryLoader.alpha = 0
+                        })
                         
                     }
                     
@@ -758,6 +764,13 @@ UINavigationControllerDelegate {
             make.bottom.equalTo(contentView.snp.bottom)
             make.right.equalTo(textColour.snp.left).offset(-10)
             make.height.width.equalTo(50)
+        }
+        snapoetryLoader.image = UIImage.animatedImageNamed("eyelash_", duration: 1.0)
+        contentView.addSubview(snapoetryLoader)
+        contentView.bringSubview(toFront: snapoetryLoader)
+        snapoetryLoader.snp.makeConstraints { (make) in
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.centerY.equalTo(contentView.snp.centerY)
         }
     }
     

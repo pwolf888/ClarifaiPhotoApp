@@ -385,14 +385,6 @@
                                             <action selector="changeTextColour:" destination="VhA-dj-xHK" eventType="touchUpInside" id="3Tb-kd-ix0"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YoU-gz-zp8">
-                                        <rect key="frame" x="255" y="13" width="112" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Orange"/>
-                                        <connections>
-                                            <action selector="changeTextColour:" destination="VhA-dj-xHK" eventType="touchUpInside" id="d3y-ze-XXd"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIv-fy-6Sp">
                                         <rect key="frame" x="317" y="13" width="84" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -433,6 +425,14 @@
                                             <action selector="changeTextColour:" destination="VhA-dj-xHK" eventType="touchUpInside" id="3dl-58-wd5"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YoU-gz-zp8">
+                                        <rect key="frame" x="255" y="13" width="112" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Orange"/>
+                                        <connections>
+                                            <action selector="changeTextColour:" destination="VhA-dj-xHK" eventType="touchUpInside" id="d3y-ze-XXd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -440,6 +440,10 @@
                                 <rect key="frame" x="0.0" y="422" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="eyelash_0" translatesAutoresizingMaskIntoConstraints="NO" id="peh-bv-Mka">
+                                <rect key="frame" x="83" y="234" width="208" height="198"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -460,6 +464,7 @@
                         <outlet property="poeticText" destination="ohS-uP-fMp" id="7XM-O5-DjO"/>
                         <outlet property="savePhoto" destination="jHV-HK-vqN" id="9Vn-mf-jgV"/>
                         <outlet property="shareNavButton" destination="WPt-0a-SLD" id="qdE-J8-6MV"/>
+                        <outlet property="snapoetryLoader" destination="peh-bv-Mka" id="LAY-bC-4l1"/>
                         <outlet property="textColour" destination="La8-zK-DMK" id="2bU-uh-fUY"/>
                     </connections>
                 </viewController>
@@ -481,6 +486,7 @@
         <image name="White" width="52" height="52"/>
         <image name="Yellow" width="52" height="52"/>
         <image name="back-5" width="60" height="60"/>
+        <image name="eyelash_0" width="208" height="198"/>
         <image name="info" width="124" height="124"/>
         <image name="photoLibrary" width="259" height="212"/>
         <image name="snapoetry-logo-2" width="51" height="47"/>
