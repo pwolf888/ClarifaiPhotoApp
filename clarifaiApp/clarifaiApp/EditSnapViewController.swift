@@ -1,12 +1,9 @@
 //
-//  ViewController.swift
-//  Snapoetry
-//  
-//  An app that can take a photo, recognize the image with tags,
-//  then display hardcoded poetry from another api using the first tag.
+//  EditSnapViewController.swift
+//  clarifaiApp
 //
-//  Created by Jonathan Turnbull on 18/08/2017.
-//  Copyright © 2017 partywolfAPPS. All rights reserved.
+//  Created by Erin Abrams on 17/1/18.
+//  Copyright © 2018 partywolfAPPS. All rights reserved.
 //
 
 import UIKit
@@ -15,17 +12,17 @@ import SnapKit
 import Foundation
 import AVFoundation
 
-class MainViewController: UIViewController,
-        UIImagePickerControllerDelegate,
-        UINavigationControllerDelegate {
+class EditSnapViewController: UIViewController, UIImagePickerControllerDelegate,
+UINavigationControllerDelegate {
     
-    // Custom camera view outlets
-    @IBOutlet weak var previewView: UIView!
-    @IBOutlet weak var takePhoto: UIButton!
-    @IBOutlet weak var selectPhoto: UIButton!
-    @IBOutlet weak var poeticText: UITextView!
-    @IBOutlet weak var openHelp: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
+    // Declaring Variables - Globals
+    var app:ClarifaiApp?
+    let picker = UIImagePickerController()
+    var poems = [String]()
+    var loaded = false
+    var tagOne = "no poem"
+    var newImage: UIImage!
+
     
     // Photo options
     @IBOutlet weak var backNavButton: UIButton!
@@ -33,12 +30,8 @@ class MainViewController: UIViewController,
     @IBOutlet weak var savePhoto: UIButton!
     @IBOutlet weak var fontStyle: UIButton!
     @IBOutlet weak var textColour: UIButton!
-    
-    
-    // Custom camera variables
-    var session: AVCaptureSession?
-    var stillImageOutput: AVCaptureStillImageOutput?
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    @IBOutlet weak var poeticText: UITextView!
+    @IBOutlet weak var photoTaken: UIImageView!
     
     // edit poem text options
     @IBOutlet weak var colourBlack: UIButton!
@@ -61,210 +54,31 @@ class MainViewController: UIViewController,
     
     @IBOutlet weak var changeColourView: UIView!
     @IBOutlet weak var changeFontView: UIView!
-    
-    
-    // Declaring Variables - Globals
-    var app:ClarifaiApp?
-    let picker = UIImagePickerController()
-    var poems = [String]()
-    var loaded = false
-    var tagOne = "no poem"
-    
- 
-    /* ERIN TO IMPLEMENT THIS LATER....
-    //Check to see which device the app is running on, in order to apply appropriate contraints.
-    struct ScreenSize
-    {
-        static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
-        static let SCREEN_HEIGHT        = UIScreen.main.bounds.size.height
-        static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
-        static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
-    }
-    
-    struct DeviceType
-    {
-        static let IS_IPHONE_4_OR_LESS  = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH < 568.0
-        static let IS_IPHONE_5          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 568.0
-        static let IS_IPHONE_6          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0
-        static let IS_IPHONE_6P         = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 736.0
-        static let IS_IPHONE_7          = IS_IPHONE_6
-        static let IS_IPHONE_7P         = IS_IPHONE_6P
-        static let IS_IPHONE_8          = IS_IPHONE_6
-        static let IS_IPHONE_8P         = IS_IPHONE_6P
-        static let IS_IPHONE_X          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 812.0
-        static let iPad                 = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
-    }
-    */
-    
-    // Load Clarifai API
+
     override func viewDidLoad() {
         
-        setupInitialUI()
+        photoTaken.image = newImage
+        
+        
+        changeColourView.isHidden = true
+        
+        setupPhotoUI()
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
         
         //Declare my api key
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
         
+        recognizeImage(image: newImage)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("fire")
-        super.viewWillAppear(animated)
-        // Setup your camera here...
-        
-        // Setup Session to use camera inputs
-        session = AVCaptureSession()
-        session!.sessionPreset = AVCaptureSessionPresetPhoto
-        
-        // Rear Camera is chosen
-        let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        
-        // Prepare the rear camera as input
-        var error: NSError?
-        var input: AVCaptureDeviceInput!
-        do {
-            input = try AVCaptureDeviceInput(device: backCamera)
-        } catch let error1 as NSError {
-            error = error1
-            input = nil
-            print(error!.localizedDescription)
-        }
-        
-        // Check Errors for the session
-        if error == nil && session!.canAddInput(input) {
-            session!.addInput(input)
-            
-            stillImageOutput = AVCaptureStillImageOutput()
-            stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-            
-            if session!.canAddOutput(stillImageOutput) {
-                session!.addOutput(stillImageOutput)
-                
-                // Configure the live stream of the camera
-                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
-                videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
-                videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
-                previewView.layer.addSublayer(videoPreviewLayer!)
-                session!.startRunning()
-             
-            }
-            
-        }
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("fire2")
-        super.viewDidAppear(animated)
-        videoPreviewLayer!.frame = previewView.bounds
-        
-        
-    }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func openHelp(_ sender: UIButton) {
-        print("fontStyle Button ")
-    }
-    
-    @IBAction func savePhoto(_ sender: UIButton) {
-        print("save Button ")
-    }
-    
-    @IBAction func fontStyle(_ sender: UIButton) {
-        print("fontStyle Button ")
-    }
-    
-    
-    
-    // Select a photo from the album
-    @IBAction func selectPhoto(_ sender: UIButton) {
 
-        // Show a UIImagePickerController to let the user pick an image from their library.
-        picker.allowsEditing = false;
-
-        // Open Users device photo library
-        picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        picker.delegate = self;
-
-        // present photo to screen
-        present(picker, animated: true, completion: nil)
-
-        poeticText.text.removeAll()
-
-    }
-    
-    // Take a photo
-    @IBAction func didTakePhoto(_ sender: UIButton) {
-        
-        // Setup UI for camera
-        setupPhotoUI()
-        
-        if let videoConnection = stillImageOutput!.connection(withMediaType: AVMediaTypeVideo) {
-            
-            // Take a still image from the stream
-            stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) -> Void in
-                
-                // Take an image from the live stream of the camera
-                // Turn it into a jpeg
-                if sampleBuffer != nil {
-                    let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
-                    let dataProvider = CGDataProvider(data: imageData! as CFData)
-                    let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
-                    let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
-                    
-                    // Output image to imageView then send to Clarifai
-                    self.imageView.image = image
-                    self.recognizeImage(image: image)
-                }
-                
-                
-            })
-            
-        }
-        
-    }
-
-    
-    // Pick an image from the users library
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        // The user picked an image. Send it to Clarifai for recognition.
-        dismiss(animated: true, completion: nil)
-        
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
-            // Needs a fix
-            // Set image to the UIImageView
-            imageView.image = image
-            
-            // Get Width and Height of Chosen Image
-            let imageWidth = image.size.width
-            let imageHeight = image.size.height
-            
-            // Create a new frame for the image to sit in
-            imageView.frame = CGRect(x: 0.0, y: 0.0, width: imageWidth, height: imageHeight)
-            
-            // Automatically resizes the height of the image
-            imageView.autoresizingMask = UIViewAutoresizing.flexibleHeight
-            
-            // Scales the image to fit on the screen
-            self.imageView.contentMode = UIViewContentMode.scaleAspectFit
-            
-            // Recognizes the image
-            recognizeImage(image: image)
-            
-            //redraw UI
-            self.setupPhotoUI()
-            
-        }
-    }
-    
     // Recognize the Image with Clarifai
     func recognizeImage(image: UIImage) {
         
@@ -325,7 +139,7 @@ class MainViewController: UIViewController,
                             else if (self.tagOne.contains("nature")){
                                 print("Poem topic identified as Nature")
                                 self.generateNature1()
-                                }
+                            }
                             else if (self.tagOne.contains("people")){
                                 print("Poem topic identified as People")
                                 self.generatePeople1()
@@ -341,7 +155,7 @@ class MainViewController: UIViewController,
                     
                     // Once finished enable buttons again
                     DispatchQueue.main.async {
-                      
+                        
                         
                         
                     }
@@ -349,13 +163,8 @@ class MainViewController: UIViewController,
                 })
             })
         }
-    
+        
     }
-    
-    // ***************************************************
-    // * Wordclasser 
-    // *
-    // ***************************************************
     
     //identify word class for each word in sentence
     func getWordClass(text: String, language: String = "en")->[String:[String]]{
@@ -375,20 +184,20 @@ class MainViewController: UIViewController,
         let tmpString = text as NSString
         // The range is the max length of tmpString
         let range = NSRange(location: 0, length: tmpString.length)
-    
+        
         // The tagger beginners classing the words inside the tmpString with Noun, Verb, Adj etc
         tagger.enumerateTags(in: range, scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
             
             let token = tmpString.substring(with: tokenRange)
-
+            
             if(words[tag] == nil){
                 words[tag] = [String]()
             }
-           
+            
             words[tag]!.append(token)
-           
+            
         }
-
+        
         return words
     }
     
@@ -430,9 +239,9 @@ class MainViewController: UIViewController,
     
     
     
-//    for (wordClass, wordArray) in words{
-//    print("\(wordClass): \(wordArray)")
-//    }
+    //    for (wordClass, wordArray) in words{
+    //    print("\(wordClass): \(wordArray)")
+    //    }
     
     /*poem structure 1
      I am in the {0:noun}, it is so {1:adj}
@@ -497,7 +306,7 @@ class MainViewController: UIViewController,
         
         return poem
     }
-
+    
     
     /*
      Animal poem structure #1
@@ -595,11 +404,11 @@ class MainViewController: UIViewController,
     
     
     /*
-    Nature poem structure #2
-    {0:noun} is such a {1:adj} sight,
-    With {2:adj} {3:noun} and {4:adj} {5:noun}
-    An abundance of {6:noun}, what pure delight
-    */
+     Nature poem structure #2
+     {0:noun} is such a {1:adj} sight,
+     With {2:adj} {3:noun} and {4:adj} {5:noun}
+     An abundance of {6:noun}, what pure delight
+     */
     
     func generateNature2()->String{
         //image tags
@@ -623,14 +432,14 @@ class MainViewController: UIViewController,
         print("\(poem)")
         return poem
     }
- 
+    
     /*
-    Room poem structure #1
-    A {0:adj} {1:noun}
-    A {2:adj} {3:adj} room
-    With {4:noun} and {5:noun} tossed throughout
-    Where does that {6:adj} {7:noun} come from ?
-    */
+     Room poem structure #1
+     A {0:adj} {1:noun}
+     A {2:adj} {3:adj} room
+     With {4:noun} and {5:noun} tossed throughout
+     Where does that {6:adj} {7:noun} come from ?
+     */
     
     func generateRoom1()->String{
         //image tags
@@ -656,12 +465,12 @@ class MainViewController: UIViewController,
     }
     
     /*
-    People poem structure #1
-    {0:adj} {1:adj} eyes embedded in the {2:adj} face
-    A {4:adj} mouth beneath {3:adj} nose
-    The most {5:adj} person ever known
-    Your {6:adj} {7:noun} lit up the New York City
-    */
+     People poem structure #1
+     {0:adj} {1:adj} eyes embedded in the {2:adj} face
+     A {4:adj} mouth beneath {3:adj} nose
+     The most {5:adj} person ever known
+     Your {6:adj} {7:noun} lit up the New York City
+     */
     
     func generatePeople1()->String{
         //image tags
@@ -686,8 +495,15 @@ class MainViewController: UIViewController,
         return poem
     }
     
+    @IBAction func selectFont(_ sender: UIButton) {
+        
+        //call function to present user with text colour options
+        print("User has selected to change font")
+        bringChangeFontToView()
+    }
+    
     @IBAction func selectTextColour(_ sender: UIButton) {
-
+        
         //call function to present user with text colour options
         print("User has selected to change colour")
         bringChangeColourToView()
@@ -695,91 +511,105 @@ class MainViewController: UIViewController,
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch? = touches.first
-
+        
         // Dismiss the Change Text colour view if user doesnt select a colour
         if touch?.view != changeColourView {
             changeColourView.isHidden = true
+        }
+        
+        // Dismiss the Change Font view if user doesnt select a font
+        if touch?.view != changeColourView {
+            changeFontView.isHidden = true
         }
     }
     
     @IBAction func changeTextColour(_ sender: UIButton) {
         
         switch sender.tag{
-            case 0:
-                poeticText.textColor = UIColor.black
-                changeColourView.isHidden = true
-                textColour.setImage(UIImage(named: "Black.png"), for: .normal)
-                break;
-            case 1:
-                poeticText.textColor = UIColor.white
-                changeColourView.isHidden = true
-                textColour.setImage(UIImage(named: "White.png"), for: .normal)
-                break;
-            case 2:
-                poeticText.textColor = UIColor.purple
-                changeColourView.isHidden = true
-                textColour.setImage(UIImage(named: "Purple.png"), for: .normal)
-                break;
-            case 3:
-                poeticText.textColor = UIColor.blue
-                changeColourView.isHidden = true
-                textColour.setImage(UIImage(named: "Blue.png"), for: .normal)
-                break;
-            case 4:
-                poeticText.textColor = UIColor.green
-                changeColourView.isHidden = true
-                textColour.setImage(UIImage(named: "Green.png"), for: .normal)
-                break;
-            case 5:
-                poeticText.textColor = UIColor.yellow
-                changeColourView.isHidden = true
-                textColour.setImage(UIImage(named: "Yellow.png"), for: .normal)
-                break;
-            case 6:
-                poeticText.textColor = UIColor.orange
-                changeColourView.isHidden = true
-                textColour.setImage(UIImage(named: "Orange.png"), for: .normal)
-                break;
-            case 7:
-                poeticText.textColor = UIColor.red
-                changeColourView.isHidden = true
-                textColour.setImage(UIImage(named: "Red.png"), for: .normal)
-                break;
-            default: ()
-                break;
+        case 0:
+            poeticText.textColor = UIColor.black
+            changeColourView.isHidden = true
+            textColour.setImage(UIImage(named: "Black.png"), for: .normal)
+            break;
+        case 1:
+            poeticText.textColor = UIColor.white
+            changeColourView.isHidden = true
+            textColour.setImage(UIImage(named: "White.png"), for: .normal)
+            break;
+        case 2:
+            poeticText.textColor = UIColor.purple
+            changeColourView.isHidden = true
+            textColour.setImage(UIImage(named: "Purple.png"), for: .normal)
+            break;
+        case 3:
+            poeticText.textColor = UIColor.blue
+            changeColourView.isHidden = true
+            textColour.setImage(UIImage(named: "Blue.png"), for: .normal)
+            break;
+        case 4:
+            poeticText.textColor = UIColor.green
+            changeColourView.isHidden = true
+            textColour.setImage(UIImage(named: "Green.png"), for: .normal)
+            break;
+        case 5:
+            poeticText.textColor = UIColor.yellow
+            changeColourView.isHidden = true
+            textColour.setImage(UIImage(named: "Yellow.png"), for: .normal)
+            break;
+        case 6:
+            poeticText.textColor = UIColor.orange
+            changeColourView.isHidden = true
+            textColour.setImage(UIImage(named: "Orange.png"), for: .normal)
+            break;
+        case 7:
+            poeticText.textColor = UIColor.red
+            changeColourView.isHidden = true
+            textColour.setImage(UIImage(named: "Red.png"), for: .normal)
+            break;
+        default: ()
+        break;
         }
     }
     
-    @IBAction func cancelSnap(_ sender: UIButton) {
+    
+    
+// <-- REDIRECT THIS METHOD TO OTHER VC
+   @IBAction func cancelSnap(_ sender: UIButton) {
         // Confirm Cancellation.
-        
+
         print("User pressed back")
         let defaultAction = UIAlertAction(title: "Okay",
                                           style: .default) { (action) in
                                             // Respond to user selection of the action.
-                                            self.setupInitialUI()
-                                           
+                                            //self.setupInitialUI()
+                                            let cameraVC = self.storyboard!.instantiateViewController(withIdentifier: "cameraVC") as! CameraViewController
+                                            
+                                            self.present(cameraVC, animated: true, completion: nil)
+
         }
         let cancelAction = UIAlertAction(title: "Cancel",
                                          style: .cancel) { (action) in
                                             // Respond to user selection of the action.
         }
-        
+
         // Create and configure the alert controller.
         let alert = UIAlertController(title: "Cancel",
-            message: "All changes will be lost. Continue?",
+                                      message: "All changes will be lost. Continue?",
                                       preferredStyle: .alert)
         alert.addAction(defaultAction)
         alert.addAction(cancelAction)
-        
+
         self.present(alert, animated: true) {
             // The alert was presented
-            
+
         }
-        
+    
+    
+
     }
     
-    func setupInitialUI(){
+    
+    func setupPhotoUI(){
         
         //** CONFIGURE OVERALL LAYOUT
         let contentView = UIView()
@@ -788,130 +618,77 @@ class MainViewController: UIViewController,
             make.edges.equalTo(view)
         }
         
-        //** CONFIGURE CAMERA PREVIEW VIEW
-        contentView.addSubview(previewView)
-        previewView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }
-        
-        //** CONFIGURE TAKE PHOTO BUTTON
-        contentView.addSubview(takePhoto)
-        contentView.bringSubview(toFront: takePhoto)
-        takePhoto.snp.makeConstraints { (make) in
-            make.centerX.equalTo(previewView)
-            make.bottom.equalTo(previewView).offset(-10)
-        }
-        
-        //** CONFIGURE SELECT PHOTO BUTTON
-        contentView.addSubview(selectPhoto)
-        contentView.bringSubview(toFront: selectPhoto)
-        selectPhoto.snp.makeConstraints { (make) in
-            make.bottom.right.equalTo(previewView)
-        }
-        
-        //** CONFIGURE HELP BUTTON
-        contentView.addSubview(openHelp)
-        contentView.bringSubview(toFront: openHelp)
-        openHelp.snp.makeConstraints { (make) in
-            make.bottom.left.equalTo(previewView).offset(-10)
-            //make.left.equalTo(contentView.snp.left).offset(10)
-            make.width.height.equalTo(50)
-        }
-
-    }
-    
-    func setupPhotoUI(){
-        
         //** CONFIGURE PHOTO DISPLAYED VIEW
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(view)
-            make.left.right.equalTo(view)
+        contentView.addSubview(photoTaken)
+        photoTaken.snp.makeConstraints { (make) in
+            make.top.bottom.equalTo(contentView)
+            make.left.right.equalTo(contentView)
         }
 
         //*** SHARE BUTTON
-        imageView.addSubview(shareNavButton)
-        imageView.bringSubview(toFront: shareNavButton)
+        contentView.addSubview(shareNavButton)
+        contentView.bringSubview(toFront: shareNavButton)
         shareNavButton.snp.makeConstraints { (make) in
-            //make.top.equalTo(imageView).offset(20)
-            //make.right.equalTo(imageView).offset(-20)
-            //make.width.height.equalTo(50)
+            make.top.equalTo(contentView).offset(20)
+            make.right.equalTo(contentView).offset(-20)
+            make.width.height.equalTo(50)
         }
 
         //*** BACK BUTTON
-        imageView.addSubview(backNavButton)
-        imageView.bringSubview(toFront: backNavButton)
+        contentView.addSubview(backNavButton)
+        contentView.bringSubview(toFront: backNavButton)
         backNavButton.snp.makeConstraints { (make) in
-            //make.top.left.equalTo(imageView).offset(10)
+            make.left.equalTo(contentView).offset(10)
             make.centerY.equalTo(shareNavButton.snp.centerY)
-            //make.width.height.equalTo(50)
+            make.width.height.equalTo(50)
         }
 
-
         //*** SAVE BUTTON
-        imageView.addSubview(savePhoto)
-        imageView.bringSubview(toFront: savePhoto)
+        photoTaken.addSubview(savePhoto)
+        photoTaken.bringSubview(toFront: savePhoto)
         savePhoto.snp.makeConstraints { (make) in
-            make.centerX.equalTo(imageView.snp.centerX)
+            make.centerX.equalTo(photoTaken.snp.centerX)
             make.centerY.equalTo(shareNavButton.snp.centerY)
             //make.width.height.equalTo(50)
         }
 
         //*** POETIC TEXT
-        imageView.addSubview(poeticText)
+        photoTaken.addSubview(poeticText)
         poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
         poeticText.textAlignment = NSTextAlignment.center
-        poeticText.textColor = .whiteColour
+        poeticText.textColor = .black
         poeticText.layer.shadowColor = UIColor.black.cgColor
         poeticText.layer.shadowOpacity = 0.9
         poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
 
-        imageView.bringSubview(toFront: poeticText)
+        photoTaken.bringSubview(toFront: poeticText)
         poeticText.snp.makeConstraints { (make) in
-            make.top.equalTo(imageView.snp.centerY).offset(-50)
-            make.width.equalTo(imageView).multipliedBy(0.8)
-            make.centerX.equalTo(imageView.snp.centerX)
+            make.top.equalTo(photoTaken.snp.centerY).offset(-50)
+            make.width.equalTo(photoTaken).multipliedBy(0.8)
+            make.centerX.equalTo(photoTaken.snp.centerX)
             make.height.equalTo(300)
 
         }
 
         //** CONFIGURE COLOUR BUTTON SINGLE
-        let selectColourView = UIView()
-        imageView.addSubview(selectColourView)
-        selectColourView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(imageView.snp.bottom).offset(-20)
-            make.right.equalTo(imageView.snp.right).offset(-20)
-            //make.height.width.equalTo(100)
-        }
-
-        selectColourView.addSubview(textColour)
-        selectColourView.bringSubview(toFront: textColour)
+        contentView.addSubview(textColour)
+        contentView.bringSubview(toFront: textColour)
         textColour.snp.makeConstraints { (make) in
-            make.bottom.equalTo(selectColourView.snp.bottom)
-            make.right.equalTo(selectColourView.snp.right)
+            make.bottom.equalTo(contentView.snp.bottom)
+            make.right.equalTo(contentView.snp.right)
             make.height.width.equalTo(50)
-        }
-
-        //** CONFIGURE FONT BUTTON SINGLE
-        let selectFontView = UIView()
-        imageView.addSubview(selectFontView)
-        selectFontView.snp.makeConstraints { (make) in
-            make.right.equalTo(textColour.snp.left).offset(-10)
-            make.bottom.equalTo(imageView.snp.bottom).offset(-20)
-            make.height.width.equalTo(50)
-        }
-
-        selectFontView.addSubview(fontStyle)
-        selectFontView.bringSubview(toFront: fontStyle)
-        fontStyle.snp.makeConstraints { (make) in
-            make.bottom.equalTo(selectFontView)
-            make.right.equalTo(selectFontView)
-            make.height.width.equalTo(selectFontView)
         }
         
-
+            //** CONFIGURE FONT BUTTON SINGLE
+        contentView.addSubview(fontStyle)
+        contentView.bringSubview(toFront: fontStyle)
+        fontStyle.snp.makeConstraints { (make) in
+            make.bottom.equalTo(contentView.snp.bottom)
+            make.right.equalTo(textColour.snp.left).offset(-10)
+            make.height.width.equalTo(50)
+        }
     }
-
+    
     func bringChangeFontToView()
     {
         //create view to house fonts
@@ -929,16 +706,14 @@ class MainViewController: UIViewController,
     func bringChangeColourToView()
     {
         
-        
         // create view to house all colours
-        // create view to house all colours
-        changeColourView.isHidden = true
+        changeColourView.isHidden = false
         view.addSubview(changeColourView)
         view.bringSubview(toFront: changeColourView)
         changeColourView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
             make.width.equalTo(view).multipliedBy(0.9)
-        make.bottom.equalTo(textColour.snp.top).offset(-30)
+            make.bottom.equalTo(textColour.snp.top).offset(-30)
             make.height.equalTo(50)
         }
         
@@ -1016,6 +791,14 @@ class MainViewController: UIViewController,
         }
     }
     
+    /*
+    // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
