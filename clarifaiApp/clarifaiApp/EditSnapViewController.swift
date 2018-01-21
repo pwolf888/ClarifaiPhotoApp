@@ -22,6 +22,7 @@ UINavigationControllerDelegate {
     var loaded = false
     var tagOne = "no poem"
     var newImage: UIImage!
+    var savedImage: UIImage!
 
     
     // Photo options
@@ -71,6 +72,7 @@ UINavigationControllerDelegate {
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
         
         recognizeImage(image: newImage)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -571,14 +573,19 @@ UINavigationControllerDelegate {
         }
     }
     
+    
+    
     // Save the users photo
     @IBAction func savePhoto(_ sender: Any) {
         
-        do {
-            let imageData = try UIImagePNGRepresentation(self.newImage)
+        //call function to combine text and image as one object
+        textToImage(drawText: poeticText.text! as NSString, inImage: newImage!, atPoint: CGPoint(x: view.bounds.midX, y: view.bounds.midY))
+
+//        do {
+            let imageData = try UIImagePNGRepresentation(savedImage)
             let compressedImage = UIImage(data: imageData!)
             UIImageWriteToSavedPhotosAlbum(compressedImage!, nil, nil, nil)
-        
+
             let savedPhotoAction = UIAlertAction(title: "Awesome!",
             style: .default) { (action) in }
             // Create and configure the alert controller.
@@ -586,18 +593,47 @@ UINavigationControllerDelegate {
                                           message: "Image Saved!",
                                           preferredStyle: .alert)
             alert.addAction(savedPhotoAction)
-            
+
             self.present(alert, animated: true) {
                 // The alert was presented
-                
-            }
-            
-            } catch {
-                print("Did not save")
+
             }
 
+//            } catch {
+//                print("Did not save")
+//            }
+
         }
+    
+    func combineTextImage(){
         
+        
+    }
+        
+    func textToImage(drawText text: NSString, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
+
+        let textColor = UIColor.white
+        let textFont = UIFont(name: "Helvetica Bold", size: 12)!
+
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
+
+        let textFontAttributes = [
+            NSFontAttributeName: textFont,
+            NSForegroundColorAttributeName: textColor,
+            ] as [String : Any]
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+
+        let rect = CGRect(origin: point, size: image.size)
+        text.draw(in: rect, withAttributes: textFontAttributes)
+
+        savedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return savedImage!
+    }
+    
+
     
     
     
@@ -722,7 +758,6 @@ UINavigationControllerDelegate {
         //create view to house fonts
         
         changeFontView.isHidden = false
-        changeFontView.backgroundColor = .orange
         changeFontView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
             make.width.equalTo(view).multipliedBy(0.9)
