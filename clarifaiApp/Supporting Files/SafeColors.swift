@@ -27,5 +27,25 @@ extension UIColor {
         return UIColor(red:0.31, green:0.65, blue:0.98, alpha:1.0)
     }
     
+    class var textPurple: UIColor {
+        return UIColor(red:0.70, green:0.42, blue:0.88, alpha:1.0)
+    }
+    
+    class var textGreen: UIColor {
+        return UIColor(red:0.44, green:0.75, blue:0.25, alpha:1.0)
+    }
+    
+    class var textYellow: UIColor {
+        return UIColor(red:0.96, green:0.83, blue:0.15, alpha:1.0)
+    }
+    
+    class var textOrange: UIColor {
+        return UIColor(red:0.95, green:0.56, blue:0.10, alpha:1.0)
+    }
+    
+    class var textRed: UIColor {
+        return UIColor(red:0.93, green:0.36, blue:0.34, alpha:1.0)
+    }
+    
 
 }
