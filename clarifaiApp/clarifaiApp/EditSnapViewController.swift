@@ -605,22 +605,21 @@ UINavigationControllerDelegate {
 
         }
     
-    func combineTextImage(){
-        
-        
-    }
         
     func textToImage(drawText text: NSString, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
 
-        let textColor = UIColor.white
-        let textFont = UIFont(name: "Helvetica Bold", size: 12)!
+        let selectedTextColor = poeticText.textColor
+        //let selectedFont = poeticText.font
+        let selectedFont = UIFont(name: "Helvetica Bold", size: 200)!
+        //let selectedFont = UIFont(name: (poeticText.font?.fontName)!, size: 24)
+        //let selectedSize = poeticText.font?.pointSize
 
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
 
         let textFontAttributes = [
-            NSFontAttributeName: textFont,
-            NSForegroundColorAttributeName: textColor,
+            NSFontAttributeName: selectedFont,
+            NSForegroundColorAttributeName: selectedTextColor as Any,
             ] as [String : Any]
         image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
 
