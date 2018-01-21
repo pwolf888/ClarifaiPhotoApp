@@ -539,32 +539,32 @@ UINavigationControllerDelegate {
             textColour.setImage(UIImage(named: "White.png"), for: .normal)
             break;
         case 2:
-            poeticText.textColor = UIColor.purple
+            poeticText.textColor = UIColor.textPurple
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Purple.png"), for: .normal)
             break;
         case 3:
-            poeticText.textColor = UIColor.blue
+            poeticText.textColor = UIColor.textBlue
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Blue.png"), for: .normal)
             break;
         case 4:
-            poeticText.textColor = UIColor.green
+            poeticText.textColor = UIColor.textGreen
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Green.png"), for: .normal)
             break;
         case 5:
-            poeticText.textColor = UIColor.yellow
+            poeticText.textColor = UIColor.textYellow
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Yellow.png"), for: .normal)
             break;
         case 6:
-            poeticText.textColor = UIColor.orange
+            poeticText.textColor = UIColor.textOrange
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Orange.png"), for: .normal)
             break;
         case 7:
-            poeticText.textColor = UIColor.red
+            poeticText.textColor = UIColor.textRed
             changeColourView.isHidden = true
             textColour.setImage(UIImage(named: "Red.png"), for: .normal)
             break;
