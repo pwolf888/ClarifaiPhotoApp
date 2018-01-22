@@ -9,238 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="clarifaiApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xei-jp-WNm">
-                                <rect key="frame" x="49" y="75" width="288" height="256"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jCi-61-fUj">
-                                <rect key="frame" x="93" y="483" width="189" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-lH-qlT">
-                                <rect key="frame" x="-15" y="12" width="100" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="back-5"/>
-                                <connections>
-                                    <action selector="cancelSnap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WK5-1v-eIt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcz-qY-U7h">
-                                <rect key="frame" x="312" y="18" width="49" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Share"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoZ-fP-nzO">
-                                <rect key="frame" x="161" y="587" width="64" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="snapoetry-logo-2"/>
-                                <connections>
-                                    <action selector="didTakePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Gc-KF-27n"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQG-Ms-XTs">
-                                <rect key="frame" x="282" y="553" width="77" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="library"/>
-                                <connections>
-                                    <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZpW-PS-Cjg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7b-jK-c3E">
-                                <rect key="frame" x="136" y="12" width="97" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Save"/>
-                                <connections>
-                                    <action selector="savePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sK3-gF-8t8"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCH-tU-4uz">
-                                <rect key="frame" x="64" y="449" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="0.30196078430000001" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXM-Hr-Mez">
-                                <rect key="frame" x="318" y="607" width="52" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="White"/>
-                                <connections>
-                                    <action selector="selectTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vJR-MK-zN2"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x6v-j6-Eyb">
-                                <rect key="frame" x="0.0" y="366" width="375" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tk2-ft-IoO">
-                                        <rect key="frame" x="146" y="13" width="101" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Green"/>
-                                        <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WCB-Dy-fQZ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twm-hB-zQT">
-                                        <rect key="frame" x="205" y="13" width="104" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Yellow"/>
-                                        <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="45t-ji-3kD"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1g6-VQ-gtO">
-                                        <rect key="frame" x="255" y="13" width="112" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Orange"/>
-                                        <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vH4-5C-63i"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8u9-B2-YvE">
-                                        <rect key="frame" x="317" y="13" width="84" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Red"/>
-                                        <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l1z-oW-nm6"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzF-7k-ecO">
-                                        <rect key="frame" x="109" y="13" width="88" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Blue"/>
-                                        <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bQ4-Gg-dOH"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hG-Ec-puh">
-                                        <rect key="frame" x="53" y="13" width="105" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Purple"/>
-                                        <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oe8-XG-2Qm"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42P-F5-pMQ">
-                                        <rect key="frame" x="-44" y="13" width="96" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Black"/>
-                                        <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CXh-dA-2aw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmd-Ij-5U2">
-                                        <rect key="frame" x="8" y="13" width="100" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="White"/>
-                                        <connections>
-                                            <action selector="changeTextColour:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vsp-Zh-yml"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UnO-js-hac">
-                                <rect key="frame" x="11" y="309" width="352" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02q-KH-Z6f">
-                                        <rect key="frame" x="153" y="9" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Font3"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXb-aM-sVa">
-                                        <rect key="frame" x="207" y="9" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Font4"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEq-5l-yqK">
-                                        <rect key="frame" x="84" y="10" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Font2"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ohl-Uo-e48">
-                                        <rect key="frame" x="19" y="10" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Font1">
-                                                    <attributes>
-                                                        <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYV-8I-9h0">
-                                        <rect key="frame" x="279" y="9" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Font5"/>
-                                    </button>
-                                </subviews>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7q-dV-7ev">
-                                <rect key="frame" x="11" y="609" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="info"/>
-                                <connections>
-                                    <action selector="openHelp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l8q-7U-aLb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCg-Ic-hgL">
-                                <rect key="frame" x="260" y="609" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Font"/>
-                                <connections>
-                                    <action selector="fontStyle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rbg-qQ-ks1"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <connections>
-                        <outlet property="backNavButton" destination="8oA-lH-qlT" id="5V7-vc-T7B"/>
-                        <outlet property="changeColourView" destination="x6v-j6-Eyb" id="v2T-ZH-wVV"/>
-                        <outlet property="changeFontView" destination="UnO-js-hac" id="aLy-xO-PsV"/>
-                        <outlet property="colourBlack" destination="42P-F5-pMQ" id="cfw-bA-Q1G"/>
-                        <outlet property="colourBlue" destination="YzF-7k-ecO" id="Q06-i3-H2L"/>
-                        <outlet property="colourGreen" destination="tk2-ft-IoO" id="G9R-Di-JdD"/>
-                        <outlet property="colourOrange" destination="1g6-VQ-gtO" id="p1j-6l-wKt"/>
-                        <outlet property="colourPurple" destination="9hG-Ec-puh" id="mIM-pD-fJX"/>
-                        <outlet property="colourRed" destination="8u9-B2-YvE" id="pab-Mx-PFm"/>
-                        <outlet property="colourWhite" destination="lmd-Ij-5U2" id="4Fr-js-dwo"/>
-                        <outlet property="colourYellow" destination="twm-hB-zQT" id="gzQ-LI-OV9"/>
-                        <outlet property="fontStyle" destination="pCg-Ic-hgL" id="b5V-Vn-BWE"/>
-                        <outlet property="imageView" destination="jCi-61-fUj" id="S5E-yB-aC3"/>
-                        <outlet property="openHelp" destination="h7q-dV-7ev" id="Ap2-3b-30G"/>
-                        <outlet property="poeticText" destination="oCH-tU-4uz" id="upV-xf-1JP"/>
-                        <outlet property="previewView" destination="xei-jp-WNm" id="bci-Z2-74B"/>
-                        <outlet property="savePhoto" destination="u7b-jK-c3E" id="49f-SW-LGg"/>
-                        <outlet property="selectPhoto" destination="HQG-Ms-XTs" id="JF3-Bb-dQV"/>
-                        <outlet property="shareNavButton" destination="Dcz-qY-U7h" id="E6I-Rt-tt8"/>
-                        <outlet property="takePhoto" destination="EoZ-fP-nzO" id="J4Z-V0-g1P"/>
-                        <outlet property="textColour" destination="hXM-Hr-Mez" id="JIb-wq-0FK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="15.199999999999999" y="42.728635682158924"/>
-        </scene>
         <!--Camera View Controller-->
         <scene sceneID="lu8-33-fvO">
             <objects>
@@ -353,9 +121,6 @@
                                 <rect key="frame" x="8" y="609" width="54" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="help"/>
-                                <connections>
-                                    <action selector="openHelp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qtz-b4-DJu"/>
-                                </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47q-yI-suL">
                                 <rect key="frame" x="0.0" y="486" width="375" height="65"/>
@@ -479,19 +244,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Black" width="52" height="52"/>
-        <image name="Blue" width="52" height="52"/>
-        <image name="Font" width="124" height="124"/>
-        <image name="Green" width="52" height="52"/>
-        <image name="Orange" width="52" height="52"/>
-        <image name="Purple" width="52" height="52"/>
-        <image name="Red" width="52" height="52"/>
-        <image name="Save" width="60" height="60"/>
-        <image name="Share" width="60" height="60"/>
-        <image name="White" width="52" height="52"/>
-        <image name="Yellow" width="52" height="52"/>
         <image name="back" width="34" height="64"/>
-        <image name="back-5" width="60" height="60"/>
         <image name="blackColour" width="51" height="60"/>
         <image name="blueColour" width="51" height="60"/>
         <image name="download" width="53" height="63"/>
@@ -500,13 +253,11 @@
         <image name="fontSize" width="68" height="63"/>
         <image name="greenColour" width="51" height="60"/>
         <image name="help" width="67" height="62"/>
-        <image name="info" width="124" height="124"/>
         <image name="orangeColour" width="51" height="60"/>
         <image name="photoLibrary-1" width="68" height="63"/>
         <image name="purpleColour" width="51" height="60"/>
         <image name="redColour" width="51" height="60"/>
         <image name="share" width="76" height="64"/>
-        <image name="snapoetry-logo-2" width="51" height="47"/>
         <image name="snapoetryIcon" width="106" height="98"/>
         <image name="textColour" width="67" height="63"/>
         <image name="whiteColour" width="51" height="60"/>
