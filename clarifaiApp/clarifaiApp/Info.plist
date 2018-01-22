@@ -30,8 +30,6 @@
 	<string>Snapoetry needs access to your photo library to save image</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Snapoetry needs access to your photo library</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

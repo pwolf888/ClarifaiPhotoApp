@@ -45,14 +45,14 @@ UINavigationControllerDelegate {
     @IBOutlet weak var colourOrange: UIButton!
     @IBOutlet weak var colourPurple: UIButton!
     
-    var whiteImage = UIImage(named: "White")!
-    var blackImage = UIImage(named: "Black")!
-    var blueImage = UIImage(named: "Blue")!
-    var purpleImage = UIImage(named: "Purple")!
-    var greenImage = UIImage(named: "Green")!
-    var yellowImage = UIImage(named: "Yellow")!
-    var orangeImage = UIImage(named: "Orange")!
-    var redImage = UIImage(named: "Red")!
+    var whiteImage = UIImage(named: "whiteColour")!
+    var blackImage = UIImage(named: "blackColour")!
+    var blueImage = UIImage(named: "blueColour")!
+    var purpleImage = UIImage(named: "purpleColour")!
+    var greenImage = UIImage(named: "greenColour")!
+    var yellowImage = UIImage(named: "yellowColour")!
+    var orangeImage = UIImage(named: "orangeColour")!
+    var redImage = UIImage(named: "redColour")!
     
     @IBOutlet weak var changeColourView: UIView!
     @IBOutlet weak var changeFontView: UIView!
