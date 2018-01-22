@@ -260,13 +260,5 @@ UINavigationControllerDelegate {
         }
         
     }
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "sendPhotoToEdit" {
-//            let destination = segue.destination as! EditSnapViewController
-//            destination.newImage = self.photoTaken.image
-//        }
-//    }
 
 }
