@@ -380,7 +380,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 265763978DA521057E9E1FB2 /* Pods-clarifaiApp.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 68JWZ73FGC;
 				INFOPLIST_FILE = clarifaiApp/Info.plist;
@@ -397,7 +397,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0DABCF46B0CF37F83EBC6E4A /* Pods-clarifaiApp.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 68JWZ73FGC;
 				INFOPLIST_FILE = clarifaiApp/Info.plist;
