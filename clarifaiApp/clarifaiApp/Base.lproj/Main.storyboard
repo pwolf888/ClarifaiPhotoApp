@@ -339,7 +339,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0D-9o-hx4">
                                 <rect key="frame" x="-5" y="15" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="back-5"/>
+                                <state key="normal" image="back"/>
                                 <connections>
                                     <action selector="cancelSnap:" destination="VhA-dj-xHK" eventType="touchUpInside" id="wLf-30-gR5"/>
                                 </connections>
@@ -347,12 +347,12 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPt-0a-SLD">
                                 <rect key="frame" x="313" y="20" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Share"/>
+                                <state key="normal" image="share"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHV-HK-vqN">
                                 <rect key="frame" x="162" y="20" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Save"/>
+                                <state key="normal" image="download"/>
                                 <connections>
                                     <action selector="savePhoto:" destination="VhA-dj-xHK" eventType="touchUpInside" id="CYe-lr-MGW"/>
                                 </connections>
@@ -485,10 +485,13 @@
         <image name="Share" width="60" height="60"/>
         <image name="White" width="52" height="52"/>
         <image name="Yellow" width="52" height="52"/>
+        <image name="back" width="34" height="64"/>
         <image name="back-5" width="60" height="60"/>
+        <image name="download" width="53" height="63"/>
         <image name="eyelash_0" width="208" height="198"/>
         <image name="info" width="124" height="124"/>
         <image name="photoLibrary" width="259" height="212"/>
+        <image name="share" width="76" height="64"/>
         <image name="snapoetry-logo-2" width="51" height="47"/>
     </resources>
 </document>
