@@ -30,26 +30,34 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq7-SC-wCt">
-                                <rect key="frame" x="7" y="609" width="54" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="help"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8v-an-WVi">
-                                <rect key="frame" x="309" y="609" width="54" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="photoLibrary-1"/>
-                                <connections>
-                                    <action selector="selectPhoto:" destination="j4Z-7c-M0g" eventType="touchUpInside" id="HqH-xw-okB"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iH-lr-36o">
-                                <rect key="frame" x="149" y="585" width="76" height="70"/>
+                                <rect key="frame" x="155" y="604" width="65" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="snapoetryIcon"/>
                                 <connections>
                                     <action selector="didTakePhoto:" destination="j4Z-7c-M0g" eventType="touchUpInside" id="FqB-ch-vwz"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq7-SC-wCt">
+                                <rect key="frame" x="7" y="609" width="54" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="help"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8v-an-WVi">
+                                <rect key="frame" x="309" y="609" width="54" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="photoLibrary-1"/>
+                                <connections>
+                                    <action selector="selectPhoto:" destination="j4Z-7c-M0g" eventType="touchUpInside" id="HqH-xw-okB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7a-G6-xRV">
+                                <rect key="frame" x="16" y="12" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="rotateCamera"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -58,6 +66,7 @@
                         <outlet property="openHelp" destination="iq7-SC-wCt" id="GHC-c3-VOO"/>
                         <outlet property="photoTaken" destination="KSx-6y-uye" id="L94-2G-kMu"/>
                         <outlet property="previewView" destination="C9B-vf-IZa" id="6Zw-va-vav"/>
+                        <outlet property="rotateCamera" destination="j7a-G6-xRV" id="6MC-II-e7F"/>
                         <outlet property="selectPhoto" destination="c8v-an-WVi" id="EBL-26-3fv"/>
                         <outlet property="takePhoto" destination="2iH-lr-36o" id="RfE-4V-e00"/>
                     </connections>
@@ -121,6 +130,9 @@
                                 <rect key="frame" x="8" y="609" width="54" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="help"/>
+                                <connections>
+                                    <action selector="rotateCamera:" destination="i0G-87-bQT" eventType="touchUpInside" id="UWf-94-8qb"/>
+                                </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47q-yI-suL">
                                 <rect key="frame" x="0.0" y="486" width="375" height="65"/>
@@ -239,6 +251,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GQ-JC-13a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="i0G-87-bQT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="924" y="779.46026986506752"/>
         </scene>
@@ -257,6 +270,7 @@
         <image name="photoLibrary-1" width="68" height="63"/>
         <image name="purpleColour" width="51" height="60"/>
         <image name="redColour" width="51" height="60"/>
+        <image name="rotateCamera" width="64" height="64"/>
         <image name="share" width="76" height="64"/>
         <image name="snapoetryIcon" width="106" height="98"/>
         <image name="textColour" width="67" height="63"/>
