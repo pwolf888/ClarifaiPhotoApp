@@ -185,14 +185,7 @@ UINavigationControllerDelegate {
             
             // Scales the image to fit on the screen
             self.photoTaken.contentMode = UIViewContentMode.scaleAspectFit
-            
-//  <-- CODE TO BE MOVED TO NEW VC
-            // Recognizes the image
-            // recognizeImage(image: image)
-            
-            //redraw UI
-           // self.setupPhotoUI()
-//  -->
+        
         }
         
         let svc = self.storyboard!.instantiateViewController(withIdentifier: "editSnapVC") as! EditSnapViewController

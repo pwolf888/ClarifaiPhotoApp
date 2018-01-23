@@ -238,6 +238,7 @@
                         <outlet property="colourRed" destination="kIv-fy-6Sp" id="l77-gg-yLd"/>
                         <outlet property="colourWhite" destination="frH-MD-fOb" id="IMR-rX-fEc"/>
                         <outlet property="colourYellow" destination="UKK-Zg-aVv" id="Zgc-Qt-EfW"/>
+                        <outlet property="fontSize" destination="JfX-Qy-orG" id="Zfz-NB-qpN"/>
                         <outlet property="fontStyle" destination="z8Y-jN-31l" id="C4c-Fs-Rcp"/>
                         <outlet property="photoTaken" destination="iHg-yL-wS1" id="Get-ey-D5p"/>
                         <outlet property="poeticText" destination="ohS-uP-fMp" id="7XM-O5-DjO"/>
