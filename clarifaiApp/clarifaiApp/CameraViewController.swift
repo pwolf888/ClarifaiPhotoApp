@@ -28,6 +28,8 @@ UINavigationControllerDelegate {
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     let picker = UIImagePickerController()
+    var captureDevice : AVCaptureDevice?
+    var frontBack : Bool = false
 
     override func viewDidLoad() {
         
@@ -38,6 +40,9 @@ UINavigationControllerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         print("fire")
+        
+        backOrFront()
+        
         super.viewWillAppear(animated)
         
         // Setup your camera here...
@@ -47,13 +52,31 @@ UINavigationControllerDelegate {
         session!.sessionPreset = AVCaptureSessionPresetPhoto
         
         // Rear Camera is chosen
-        let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        
+        // Rear Camera is chosen
+        
+        
+        let devices = AVCaptureDevice.devices()
+        
+        // Loop through all the capture devices on this phone
+        for device in devices! {
+            // Make sure this particular device supports video
+            if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
+                // Finally check the position and confirm we've got the back camera
+                if((device as AnyObject).position == AVCaptureDevicePosition.front && frontBack == false) {
+                    captureDevice = device as? AVCaptureDevice
+                } else if((device as AnyObject).position == AVCaptureDevicePosition.back && frontBack == true) {
+                    captureDevice = device as? AVCaptureDevice
+                }
+            }
+        }
+        
         
         // Prepare the rear camera as input
         var error: NSError?
         var input: AVCaptureDeviceInput!
         do {
-            input = try AVCaptureDeviceInput(device: backCamera)
+            input = try AVCaptureDeviceInput(device: captureDevice)
         } catch let error1 as NSError {
             error = error1
             input = nil
@@ -116,7 +139,19 @@ UINavigationControllerDelegate {
         
     }
     
-
+    @IBAction func rotateCamera(_ sender: UIButton) {
+        backOrFront()
+    }
+    
+    func backOrFront() {
+        if(self.frontBack == false) {
+            self.frontBack = true
+        } else {
+            self.frontBack = false
+        }
+    }
+   
+    
     // Take a photo
     @IBAction func didTakePhoto(_ sender: UIButton) {
         

@@ -55,6 +55,9 @@
                                 <rect key="frame" x="16" y="12" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="rotateCamera"/>
+                                <connections>
+                                    <action selector="rotateCamera:" destination="j4Z-7c-M0g" eventType="touchUpInside" id="ETJ-ue-pEz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
