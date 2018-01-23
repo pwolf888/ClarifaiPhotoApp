@@ -18,6 +18,9 @@
         <array key="MarkerFeltThin.ttf">
             <string>MarkerFelt-Thin</string>
         </array>
+        <array key="Noteworthy.ttc">
+            <string>Noteworthy-Light</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Camera View Controller-->
@@ -248,6 +251,7 @@
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCH-r1-WQd">
                                         <rect key="frame" x="189" y="18" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="21"/>
                                         <state key="normal" title="Aa">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -339,6 +343,12 @@
                         <outlet property="colourRed" destination="kIv-fy-6Sp" id="l77-gg-yLd"/>
                         <outlet property="colourWhite" destination="frH-MD-fOb" id="IMR-rX-fEc"/>
                         <outlet property="colourYellow" destination="UKK-Zg-aVv" id="Zgc-Qt-EfW"/>
+                        <outlet property="font1" destination="uyo-ji-oPG" id="MhD-Yv-ffU"/>
+                        <outlet property="font2" destination="mWJ-sE-eI3" id="nOv-OC-rJl"/>
+                        <outlet property="font3" destination="lcH-eH-yBQ" id="DKv-VL-353"/>
+                        <outlet property="font4" destination="wCH-r1-WQd" id="eOj-oN-bPO"/>
+                        <outlet property="font5" destination="jOQ-8Z-8ew" id="W3v-aX-VeS"/>
+                        <outlet property="font6" destination="ee5-TK-zqI" id="xwL-Kb-ndj"/>
                         <outlet property="fontSize" destination="JfX-Qy-orG" id="Zfz-NB-qpN"/>
                         <outlet property="fontStyle" destination="z8Y-jN-31l" id="C4c-Fs-Rcp"/>
                         <outlet property="photoTaken" destination="iHg-yL-wS1" id="Get-ey-D5p"/>

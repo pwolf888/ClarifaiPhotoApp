@@ -55,11 +55,18 @@ UINavigationControllerDelegate {
     var orangeImage = UIImage(named: "orangeColour")!
     var redImage = UIImage(named: "redColour")!
     
+    @IBOutlet weak var font1: UIButton!
+    @IBOutlet weak var font2: UIButton!
+    @IBOutlet weak var font3: UIButton!
+    @IBOutlet weak var font4: UIButton!
+    @IBOutlet weak var font5: UIButton!
+    @IBOutlet weak var font6: UIButton!
+    
+    var selectedFontSize = 24
+    
     //Views that handle the edit poetrytext buttons
     @IBOutlet weak var changeFontView: UIView!
-    
     @IBOutlet weak var changeFontSizeView: UIView!
-    
     @IBOutlet weak var changeColourView: UIView!
     override func viewDidLoad() {
         
@@ -597,28 +604,27 @@ UINavigationControllerDelegate {
         switch sender.tag{
         case 0:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 56)!
+            poeticText.font = UIFont(name: "HelveticaNeue-Light", size: CGFloat(selectedFontSize))!
             break;
         case 1:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "MarkerFelt-Light", size: 56)!
+            poeticText.font = UIFont(name: "MarkerFelt-Light", size: CGFloat(selectedFontSize))!
             break;
         case 2:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "AmericanTypewriter-Regular", size: 56)!
+            poeticText.font = UIFont(name: "AmericanTypewriter-Regular", size: CGFloat(selectedFontSize))!
             break;
         case 3:
             changeFontSizeView.isHidden = true
-            fontSize.setImage(UIImage(named: "Blue.png"), for: .normal)
+            poeticText.font = UIFont(name: "HelveticaNeue-Light", size: CGFloat(selectedFontSize))!
             break;
         case 4:
             changeFontSizeView.isHidden = true
-            fontSize.setImage(UIImage(named: "Green.png"), for: .normal)
+            poeticText.font = UIFont(name: "HelveticaNeue-Light", size: CGFloat(selectedFontSize))!
             break;
         case 5:
-            poeticText.textColor = UIColor.textYellow
-            changeColourView.isHidden = true
-            textColour.setImage(UIImage(named: "Yellow.png"), for: .normal)
+            changeFontSizeView.isHidden = true
+            poeticText.font = UIFont(name: "HelveticaNeue-Light", size: CGFloat(selectedFontSize))!
             break;
         default: ()
         break;
@@ -845,9 +851,7 @@ UINavigationControllerDelegate {
             make.height.equalTo(view.snp.height)
         }
         
-        // lay out each colour within view
-        let font1 = UIButton()
-        font1.tag = 0
+        // lay out each font button within view
         changeFontView.addSubview(font1)
         changeFontView.bringSubview(toFront: font1)
         font1.setTitle("Aa", for: .normal)
@@ -856,21 +860,16 @@ UINavigationControllerDelegate {
             make.bottom.equalTo(changeFontView.snp.bottom)
             make.height.width.equalTo(40)
         }
-        
-        // lay out each colour within view
-        let font2 = UIButton()
-        font2.tag = 1
+
         changeFontView.addSubview(font2)
         changeFontView.bringSubview(toFront: font2)
         font2.setTitle("Aa", for: .normal)
         font2.snp.makeConstraints { (make) in
             make.right.equalTo(changeFontView.snp.right)
-            make.bottom.equalTo(font1.snp.bottom)
+            make.bottom.equalTo(font1.snp.top)
             make.height.width.equalTo(40)
         }
         
-        let font3 = UIButton()
-        font3.tag = 2
         changeFontView.addSubview(font3)
         changeFontView.bringSubview(toFront: font3)
         font3.setTitle("Aa", for: .normal)
@@ -880,8 +879,6 @@ UINavigationControllerDelegate {
             make.height.width.equalTo(40)
         }
         
-        let font4 = UIButton()
-        font4.tag = 3
         changeFontView.addSubview(font4)
         changeFontView.bringSubview(toFront: font4)
         font4.setTitle("Aa", for: .normal)
@@ -891,8 +888,6 @@ UINavigationControllerDelegate {
             make.height.width.equalTo(40)
         }
         
-        let font5 = UIButton()
-        font5.tag = 4
         changeFontView.addSubview(font5)
         changeFontView.bringSubview(toFront: font5)
         font5.setTitle("Aa", for: .normal)
@@ -902,8 +897,6 @@ UINavigationControllerDelegate {
             make.height.width.equalTo(40)
         }
         
-        let font6 = UIButton()
-        font6.tag = 5
         changeFontView.addSubview(font6)
         changeFontView.bringSubview(toFront: font6)
         font6.setTitle("Aa", for: .normal)
