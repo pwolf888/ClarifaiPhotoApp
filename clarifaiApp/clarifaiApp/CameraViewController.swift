@@ -224,27 +224,27 @@ UINavigationControllerDelegate {
             make.centerX.equalTo(previewView)
             make.height.equalTo(65)
             make.width.equalTo(71.1)
-            make.bottom.equalTo(previewView).offset(-10)
+            make.bottom.equalTo(previewView).offset(-15)
         }
         
         //** CONFIGURE SELECT PHOTO BUTTON
         contentView.addSubview(selectPhoto)
         contentView.bringSubview(toFront: selectPhoto)
         selectPhoto.snp.makeConstraints { (make) in
-            make.bottom.equalTo(previewView).offset(-10)
+            make.bottom.equalTo(previewView).offset(-15)
             //make.height.equalTo(50)
             //make.width.equalTo(54.5)
             make.height.equalTo(40)
             make.width.equalTo(43.5)
-            make.right.equalTo(previewView).offset(-10)
+            make.right.equalTo(previewView).offset(-15)
         }
         
         //** CONFIGURE HELP BUTTON
         contentView.addSubview(openHelp)
         contentView.bringSubview(toFront: openHelp)
         openHelp.snp.makeConstraints { (make) in
-            make.bottom.equalTo(previewView).offset(-10)
-            make.left.equalTo(contentView.snp.left).offset(10)
+            make.bottom.equalTo(previewView).offset(-15)
+            make.left.equalTo(contentView.snp.left).offset(15)
             make.height.equalTo(40)
             make.width.equalTo(43.5)
         }
@@ -254,7 +254,7 @@ UINavigationControllerDelegate {
         contentView.bringSubview(toFront: rotateCamera)
         rotateCamera.snp.makeConstraints { (make) in
             make.top.equalTo(previewView).offset(20)
-            make.left.equalTo(contentView.snp.left).offset(10)
+            make.left.equalTo(contentView.snp.left).offset(15)
             make.height.equalTo(40)
             make.width.equalTo(40)
         }
