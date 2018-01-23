@@ -72,7 +72,7 @@ UINavigationControllerDelegate {
                 
                 // Configure the live stream of the camera
                 videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
-                videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
+                videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
                 videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
                 previewView.layer.addSublayer(videoPreviewLayer!)
                 session!.startRunning()
@@ -214,7 +214,7 @@ UINavigationControllerDelegate {
         //** CONFIGURE CAMERA PREVIEW VIEW
         contentView.addSubview(previewView)
         previewView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.edges.equalTo(contentView)
         }
         
         //** CONFIGURE TAKE PHOTO BUTTON
