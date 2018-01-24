@@ -48,6 +48,8 @@ UINavigationControllerDelegate {
         
     }
     
+    
+    // Loade the camera front or back
     func loadCamera() {
         
         // Setup your camera here...
@@ -139,6 +141,7 @@ UINavigationControllerDelegate {
         
     }
     
+    // Rotate the camera
     @IBAction func rotateCamera(_ sender: UIButton) {
         backOrFront()
         print("camera swap")
@@ -146,6 +149,7 @@ UINavigationControllerDelegate {
         videoPreviewLayer!.frame = previewView.bounds
     }
     
+    // Changes the value of frontback a key variable used to changed the camera direction
     func backOrFront() {
         if(self.frontBack == false) {
             self.frontBack = true
