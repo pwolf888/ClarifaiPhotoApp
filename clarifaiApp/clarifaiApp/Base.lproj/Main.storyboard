@@ -117,6 +117,9 @@
                                 <rect key="frame" x="311" y="12" width="48" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="share"/>
+                                <connections>
+                                    <action selector="facebookButton:" destination="VhA-dj-xHK" eventType="touchUpInside" id="SO1-6W-Xm1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHV-HK-vqN">
                                 <rect key="frame" x="170" y="12" width="34" height="40"/>

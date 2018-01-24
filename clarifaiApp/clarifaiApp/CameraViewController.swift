@@ -183,23 +183,12 @@ UINavigationControllerDelegate {
                     print(svc.newImage)
                     self.present(svc, animated: true, completion: nil)
                     
-                    
-//  <-- CODE TO BE MOVED TO NEW VC
-                    // send image to Clarifai
-                    // self.recognizeImage(image: image)
-                    
-//  -->
                 }
                 
                 
             })
             
         }
-        
-//        let svc = self.storyboard!.instantiateViewController(withIdentifier: "editSnapVC") as! EditSnapViewController
-//        svc.newImage = photoTaken.image
-//        print(svc.newImage)
-//        self.present(svc, animated: true, completion: nil)
         
     }
     
