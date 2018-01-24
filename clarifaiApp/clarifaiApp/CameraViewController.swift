@@ -36,25 +36,25 @@ UINavigationControllerDelegate {
         setupInitialUI()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         print("fire")
         
-        backOrFront()
-        
         super.viewWillAppear(animated)
+        
+        loadCamera()
+        
+    }
+    
+    func loadCamera() {
         
         // Setup your camera here...
         
         // Setup Session to use camera inputs
         session = AVCaptureSession()
         session!.sessionPreset = AVCaptureSessionPresetPhoto
-        
-        // Rear Camera is chosen
-        
-        // Rear Camera is chosen
-        
         
         let devices = AVCaptureDevice.devices()
         
@@ -141,6 +141,9 @@ UINavigationControllerDelegate {
     
     @IBAction func rotateCamera(_ sender: UIButton) {
         backOrFront()
+        print("camera swap")
+        loadCamera()
+        videoPreviewLayer!.frame = previewView.bounds
     }
     
     func backOrFront() {
