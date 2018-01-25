@@ -654,12 +654,12 @@ UINavigationControllerDelegate {
             break;
         case 1:
             changeFontSizeView.isHidden = true
-            selectedFontSize = 36
+            selectedFontSize = 30
             poeticText.font = poeticText.font?.withSize(CGFloat(selectedFontSize))
             break;
         case 2:
             changeFontSizeView.isHidden = true
-            selectedFontSize = 48
+            selectedFontSize = 36
             poeticText.font = poeticText.font?.withSize(CGFloat(selectedFontSize))
             break;
         default: ()
@@ -702,14 +702,9 @@ UINavigationControllerDelegate {
         
     func textToImage(drawText text: NSString, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
 
+        // pull the current user selected text format
         let selectedTextColor = poeticText.textColor
-        //** below code is set to default until change font and text size functions are implemented
-        let selectedFont = UIFont(name: "HelveticaNeue-Light", size: 56)!
-        
-        //** implement below code once chnage font and size functions implemented
-        //let selectedFont = UIFont(name: (poeticText.font?.fontName)!, size: poeticText.font?.pointSize)
-    
-
+        let fontToDraw = UIFont(name: selectedFont, size: (poeticText.font?.pointSize)!)!
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
 
@@ -720,7 +715,7 @@ UINavigationControllerDelegate {
         
         
         let textFontAttributes = [
-            NSFontAttributeName: selectedFont,
+            NSFontAttributeName: fontToDraw,
             NSParagraphStyleAttributeName: paraStyle,
             NSForegroundColorAttributeName: selectedTextColor as Any,
             ] as [String : Any]
@@ -830,10 +825,14 @@ UINavigationControllerDelegate {
 
         photoTaken.bringSubview(toFront: poeticText)
         poeticText.snp.makeConstraints { (make) in
-            make.top.equalTo(photoTaken.snp.centerY).offset(-50)
-            make.width.equalTo(photoTaken).multipliedBy(0.8)
-            make.centerX.equalTo(photoTaken.snp.centerX)
-            make.height.equalTo(300)
+//            make.top.equalTo(photoTaken.snp.centerY).offset(-50)
+//            make.width.equalTo(photoTaken).multipliedBy(0.8)
+//            make.centerX.equalTo(photoTaken.snp.centerX)
+//            make.height.equalTo(300)
+            
+            make.left.right.equalTo(photoTaken).inset(20)
+            make.top.equalTo(photoTaken).offset(40)
+            make.bottom.equalTo(photoTaken).offset(-40)
 
         }
 
