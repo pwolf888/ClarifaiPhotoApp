@@ -23,6 +23,8 @@ UINavigationControllerDelegate {
     var tagOne = "no poem"
     var newImage: UIImage!
     var savedImage: UIImage!
+    var selectedFontSize = 24
+    var selectedFont = String()
 
     @IBOutlet weak var snapoetryLoader: UIImageView!
     
@@ -36,7 +38,7 @@ UINavigationControllerDelegate {
     @IBOutlet weak var photoTaken: UIImageView!
     @IBOutlet weak var fontSize: UIButton!
     
-    // edit poem text options
+    // edit poem text colour options
     @IBOutlet weak var colourBlack: UIButton!
     @IBOutlet weak var colourWhite: UIButton!
     @IBOutlet weak var colourBlue: UIButton!
@@ -55,6 +57,7 @@ UINavigationControllerDelegate {
     var orangeImage = UIImage(named: "orangeColour")!
     var redImage = UIImage(named: "redColour")!
     
+     // edit poem font options
     @IBOutlet weak var font1: UIButton!
     @IBOutlet weak var font2: UIButton!
     @IBOutlet weak var font3: UIButton!
@@ -62,8 +65,11 @@ UINavigationControllerDelegate {
     @IBOutlet weak var font5: UIButton!
     @IBOutlet weak var font6: UIButton!
     
-    var selectedFontSize = 24
-    var selectedFont = String()
+    // edit font size options
+    @IBOutlet weak var smallText: UIButton!
+    @IBOutlet weak var mediumText: UIButton!
+    @IBOutlet weak var largeText: UIButton!
+
     
     //Views that handle the edit poetrytext buttons
     @IBOutlet weak var changeFontView: UIView!
@@ -643,17 +649,18 @@ UINavigationControllerDelegate {
         switch sender.tag{
         case 0:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "HelveticaNeue-UltraLight", size: CGFloat(selectedFontSize))!
+            selectedFontSize = 24
+            poeticText.font = poeticText.font?.withSize(CGFloat(selectedFontSize))
             break;
         case 1:
             changeFontSizeView.isHidden = true
-            
-            //poeticText.font = UIFont.systemFont(ofSize: CGFloat(selectedFontSize), weight: 200)
-            poeticText.font = UIFont(name: "MarkerFelt-Thin", size: CGFloat(selectedFontSize))!
+            selectedFontSize = 36
+            poeticText.font = poeticText.font?.withSize(CGFloat(selectedFontSize))
             break;
         case 2:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "AmericanTypewriter", size: CGFloat(selectedFontSize))!
+            selectedFontSize = 48
+            poeticText.font = poeticText.font?.withSize(CGFloat(selectedFontSize))
             break;
         default: ()
         break;
@@ -951,8 +958,6 @@ UINavigationControllerDelegate {
         }
         
         // lay out each colour within view
-        let smallText = UIButton()
-        smallText.tag = 0
         changeFontSizeView.addSubview(smallText)
         changeFontSizeView.bringSubview(toFront: smallText)
         smallText.setTitle("+", for: .normal)
@@ -961,9 +966,7 @@ UINavigationControllerDelegate {
             make.bottom.equalTo(changeFontSizeView.snp.bottom)
             make.height.width.equalTo(40)
         }
-        
-        let mediumText = UIButton()
-        mediumText.tag = 1
+
         changeFontSizeView.addSubview(mediumText)
         changeFontSizeView.bringSubview(toFront: mediumText)
         mediumText.setTitle("+", for: .normal)
@@ -973,8 +976,6 @@ UINavigationControllerDelegate {
             make.height.width.equalTo(40)
         }
         
-        let largeText = UIButton()
-        largeText.tag = 2
         changeFontSizeView.addSubview(largeText)
         changeFontSizeView.bringSubview(toFront: largeText)
         largeText.setTitle("+", for: .normal)

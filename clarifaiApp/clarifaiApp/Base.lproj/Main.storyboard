@@ -318,20 +318,32 @@
                                 <rect key="frame" x="0.0" y="390" width="359" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwe-JR-qJ4">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F8-vV-hB4">
+                                        <rect key="frame" x="221" y="4" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="changeFontSize:" destination="VhA-dj-xHK" eventType="touchUpInside" id="Yf6-K2-kAO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwe-JR-qJ4">
                                         <rect key="frame" x="156" y="6" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="changeFontSize:" destination="VhA-dj-xHK" eventType="touchUpInside" id="Fsx-Mq-4wS"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvh-WX-1i3">
                                         <rect key="frame" x="92" y="6" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F8-vV-hB4">
-                                        <rect key="frame" x="221" y="4" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="changeFontSize:" destination="VhA-dj-xHK" eventType="touchUpInside" id="WHY-Yb-wzb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </view>
@@ -359,10 +371,13 @@
                         <outlet property="font6" destination="ee5-TK-zqI" id="xwL-Kb-ndj"/>
                         <outlet property="fontSize" destination="JfX-Qy-orG" id="Zfz-NB-qpN"/>
                         <outlet property="fontStyle" destination="z8Y-jN-31l" id="C4c-Fs-Rcp"/>
+                        <outlet property="largeText" destination="2F8-vV-hB4" id="ZAF-Wf-YDT"/>
+                        <outlet property="mediumText" destination="bwe-JR-qJ4" id="J3o-68-PnE"/>
                         <outlet property="photoTaken" destination="iHg-yL-wS1" id="Get-ey-D5p"/>
                         <outlet property="poeticText" destination="ohS-uP-fMp" id="7XM-O5-DjO"/>
                         <outlet property="savePhoto" destination="jHV-HK-vqN" id="9Vn-mf-jgV"/>
                         <outlet property="shareNavButton" destination="WPt-0a-SLD" id="qdE-J8-6MV"/>
+                        <outlet property="smallText" destination="Vvh-WX-1i3" id="vIG-nE-nd2"/>
                         <outlet property="snapoetryLoader" destination="peh-bv-Mka" id="LAY-bC-4l1"/>
                         <outlet property="textColour" destination="La8-zK-DMK" id="2bU-uh-fUY"/>
                     </connections>
