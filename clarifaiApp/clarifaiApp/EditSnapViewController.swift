@@ -11,6 +11,7 @@ import Clarifai
 import SnapKit
 import Foundation
 import AVFoundation
+import Social
 
 class EditSnapViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
@@ -509,6 +510,33 @@ UINavigationControllerDelegate {
         print("\(poem)")
         return poem
     }
+    
+    
+    // Social media sharing button - Allows user to share to facebook
+    @IBAction func facebookButton(_ sender: AnyObject) {
+        
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
+            
+            let fbShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            
+            //call function to combine text and image as one object
+            let shareImage = textToImage(drawText: poeticText.text! as NSString, inImage: newImage!, atPoint: CGPoint(x: UIScreen.main.bounds.size.width*0.5,y: UIScreen.main.bounds.size.height*0.5))
+            
+            fbShare.add(shareImage)
+            
+            self.present(fbShare, animated: true, completion: nil)
+            
+        } else {
+            
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    
     
     @IBAction func selectFont(_ sender: UIButton) {
         
