@@ -20,6 +20,10 @@ UINavigationControllerDelegate {
     @IBOutlet weak var selectPhoto: UIButton!
     @IBOutlet weak var openHelp: UIButton!
     @IBOutlet weak var photoTaken: UIImageView!
+    @IBOutlet weak var rotateCamera: UIButton!
+    
+    //global variables
+    var iconSize = 40
     
     // Custom camera variables
     var session: AVCaptureSession?
@@ -70,7 +74,7 @@ UINavigationControllerDelegate {
                 
                 // Configure the live stream of the camera
                 videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
-                videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
+                videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
                 videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
                 previewView.layer.addSublayer(videoPreviewLayer!)
                 session!.startRunning()
@@ -108,10 +112,6 @@ UINavigationControllerDelegate {
         // present photo to screen
         present(picker, animated: true, completion: nil)
         
-//  <-- CODE TO BE MOVED TO NEW VC
-        //poeticText.text.removeAll()
-// -->
-        
     }
     
 
@@ -139,24 +139,11 @@ UINavigationControllerDelegate {
                     print(svc.newImage)
                     self.present(svc, animated: true, completion: nil)
                     
-                    
-//  <-- CODE TO BE MOVED TO NEW VC
-                    // send image to Clarifai
-                    // self.recognizeImage(image: image)
-                    
-//  -->
                 }
-                
-                
+
             })
-            
         }
-        
-//        let svc = self.storyboard!.instantiateViewController(withIdentifier: "editSnapVC") as! EditSnapViewController
-//        svc.newImage = photoTaken.image
-//        print(svc.newImage)
-//        self.present(svc, animated: true, completion: nil)
-        
+
     }
     
     
@@ -183,14 +170,7 @@ UINavigationControllerDelegate {
             
             // Scales the image to fit on the screen
             self.photoTaken.contentMode = UIViewContentMode.scaleAspectFit
-            
-//  <-- CODE TO BE MOVED TO NEW VC
-            // Recognizes the image
-            // recognizeImage(image: image)
-            
-            //redraw UI
-           // self.setupPhotoUI()
-//  -->
+        
         }
         
         let svc = self.storyboard!.instantiateViewController(withIdentifier: "editSnapVC") as! EditSnapViewController
@@ -212,7 +192,7 @@ UINavigationControllerDelegate {
         //** CONFIGURE CAMERA PREVIEW VIEW
         contentView.addSubview(previewView)
         previewView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.edges.equalTo(contentView)
         }
         
         //** CONFIGURE TAKE PHOTO BUTTON
@@ -220,36 +200,38 @@ UINavigationControllerDelegate {
         contentView.bringSubview(toFront: takePhoto)
         takePhoto.snp.makeConstraints { (make) in
             make.centerX.equalTo(previewView)
-            make.bottom.equalTo(previewView).offset(-10)
+            make.height.equalTo(65)
+            make.width.equalTo(71.1)
+            make.bottom.equalTo(previewView).offset(-15)
         }
         
         //** CONFIGURE SELECT PHOTO BUTTON
         contentView.addSubview(selectPhoto)
         contentView.bringSubview(toFront: selectPhoto)
         selectPhoto.snp.makeConstraints { (make) in
-            make.bottom.equalTo(previewView).offset(-10)
-            make.height.equalTo(45)
-            make.width.equalTo(selectPhoto.snp.height).multipliedBy( 50 / 40.5 )
-            make.right.equalTo(previewView).offset(-10)
+            make.bottom.equalTo(previewView).offset(-15)
+            make.height.width.equalTo(iconSize)
+            make.right.equalTo(previewView).offset(-15)
         }
         
         //** CONFIGURE HELP BUTTON
         contentView.addSubview(openHelp)
         contentView.bringSubview(toFront: openHelp)
         openHelp.snp.makeConstraints { (make) in
-            make.bottom.equalTo(previewView).offset(-10)
-            make.left.equalTo(contentView.snp.left).offset(10)
-            make.width.height.equalTo(45)
+            make.bottom.equalTo(previewView).offset(-15)
+            make.left.equalTo(contentView.snp.left).offset(15)
+            make.height.width.equalTo(iconSize)
+        }
+        
+        //** CONFIGURE ROTATE CAMERA BUTTON
+        contentView.addSubview(rotateCamera)
+        contentView.bringSubview(toFront: rotateCamera)
+        rotateCamera.snp.makeConstraints { (make) in
+            make.top.equalTo(previewView).offset(20)
+            make.left.equalTo(contentView.snp.left).offset(15)
+            make.height.width.equalTo(iconSize)
         }
         
     }
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "sendPhotoToEdit" {
-//            let destination = segue.destination as! EditSnapViewController
-//            destination.newImage = self.photoTaken.image
-//        }
-//    }
 
 }

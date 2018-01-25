@@ -23,6 +23,9 @@ UINavigationControllerDelegate {
     var tagOne = "no poem"
     var newImage: UIImage!
     var savedImage: UIImage!
+    var selectedFontSize = 24
+    var selectedFont = String()
+    var iconSize = 40
 
     @IBOutlet weak var snapoetryLoader: UIImageView!
     
@@ -34,8 +37,9 @@ UINavigationControllerDelegate {
     @IBOutlet weak var textColour: UIButton!
     @IBOutlet weak var poeticText: UITextView!
     @IBOutlet weak var photoTaken: UIImageView!
+    @IBOutlet weak var fontSize: UIButton!
     
-    // edit poem text options
+    // edit poem text colour options
     @IBOutlet weak var colourBlack: UIButton!
     @IBOutlet weak var colourWhite: UIButton!
     @IBOutlet weak var colourBlue: UIButton!
@@ -45,26 +49,29 @@ UINavigationControllerDelegate {
     @IBOutlet weak var colourOrange: UIButton!
     @IBOutlet weak var colourPurple: UIButton!
     
-    var whiteImage = UIImage(named: "White")!
-    var blackImage = UIImage(named: "Black")!
-    var blueImage = UIImage(named: "Blue")!
-    var purpleImage = UIImage(named: "Purple")!
-    var greenImage = UIImage(named: "Green")!
-    var yellowImage = UIImage(named: "Yellow")!
-    var orangeImage = UIImage(named: "Orange")!
-    var redImage = UIImage(named: "Red")!
+     // edit poem font options
+    @IBOutlet weak var font1: UIButton!
+    @IBOutlet weak var font2: UIButton!
+    @IBOutlet weak var font3: UIButton!
+    @IBOutlet weak var font4: UIButton!
+    @IBOutlet weak var font5: UIButton!
+    @IBOutlet weak var font6: UIButton!
     
-    @IBOutlet weak var changeColourView: UIView!
-    @IBOutlet weak var changeFontView: UIView!
+    // edit font size options
+    @IBOutlet weak var smallText: UIButton!
+    @IBOutlet weak var mediumText: UIButton!
+    @IBOutlet weak var largeText: UIButton!
 
+    
+    //Views that handle the edit poetrytext buttons
+    @IBOutlet weak var changeFontView: UIView!
+    @IBOutlet weak var changeFontSizeView: UIView!
+    @IBOutlet weak var changeColourView: UIView!
     override func viewDidLoad() {
         
         
         
         photoTaken.image = newImage
-        
-        
-        changeColourView.isHidden = true
         
         setupPhotoUI()
         super.viewDidLoad()
@@ -507,6 +514,8 @@ UINavigationControllerDelegate {
         
         //call function to present user with text colour options
         print("User has selected to change font")
+        changeFontSizeView.isHidden = true
+        changeColourView.isHidden = true
         bringChangeFontToView()
     }
     
@@ -514,8 +523,21 @@ UINavigationControllerDelegate {
         
         //call function to present user with text colour options
         print("User has selected to change colour")
+        changeFontView.isHidden = true
+        changeFontSizeView.isHidden = true
         bringChangeColourToView()
     }
+    
+    @IBAction func selectFontSize(_ sender: Any) {
+        
+        //call function to present user with text colour options
+        print("User has selected to change text size")
+        changeColourView.isHidden = true
+        changeFontView.isHidden = true
+        bringFontSizeToView()
+        
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch? = touches.first
@@ -529,6 +551,11 @@ UINavigationControllerDelegate {
         if touch?.view != changeColourView {
             changeFontView.isHidden = true
         }
+        
+        // Dismiss the Change Size view if user doesnt select a size
+        if touch?.view != changeColourView {
+            changeFontSizeView.isHidden = true
+        }
     }
     
     @IBAction func changeTextColour(_ sender: UIButton) {
@@ -537,42 +564,95 @@ UINavigationControllerDelegate {
         case 0:
             poeticText.textColor = UIColor.black
             changeColourView.isHidden = true
-            textColour.setImage(UIImage(named: "Black.png"), for: .normal)
             break;
         case 1:
             poeticText.textColor = UIColor.white
             changeColourView.isHidden = true
-            textColour.setImage(UIImage(named: "White.png"), for: .normal)
             break;
         case 2:
             poeticText.textColor = UIColor.textPurple
             changeColourView.isHidden = true
-            textColour.setImage(UIImage(named: "Purple.png"), for: .normal)
             break;
         case 3:
             poeticText.textColor = UIColor.textBlue
             changeColourView.isHidden = true
-            textColour.setImage(UIImage(named: "Blue.png"), for: .normal)
             break;
         case 4:
             poeticText.textColor = UIColor.textGreen
             changeColourView.isHidden = true
-            textColour.setImage(UIImage(named: "Green.png"), for: .normal)
             break;
         case 5:
             poeticText.textColor = UIColor.textYellow
             changeColourView.isHidden = true
-            textColour.setImage(UIImage(named: "Yellow.png"), for: .normal)
             break;
         case 6:
             poeticText.textColor = UIColor.textOrange
             changeColourView.isHidden = true
-            textColour.setImage(UIImage(named: "Orange.png"), for: .normal)
             break;
         case 7:
             poeticText.textColor = UIColor.textRed
             changeColourView.isHidden = true
-            textColour.setImage(UIImage(named: "Red.png"), for: .normal)
+            break;
+        default: ()
+        break;
+        }
+    }
+    
+    @IBAction func changeFont(_ sender: UIButton) {
+        
+        switch sender.tag{
+        case 0:
+            changeFontView.isHidden = true
+            selectedFont = "HelveticaNeue-UltraLight"
+            poeticText.font = UIFont(name: selectedFont, size: CGFloat(selectedFontSize))!
+            break;
+        case 1:
+            changeFontView.isHidden = true
+            selectedFont = "MarkerFelt-Thin"
+            poeticText.font = UIFont(name: selectedFont, size: CGFloat(selectedFontSize))!
+            break;
+        case 2:
+            changeFontView.isHidden = true
+            selectedFont = "AmericanTypewriter"
+            poeticText.font = UIFont(name: selectedFont, size: CGFloat(selectedFontSize))!
+            break;
+        case 3:
+            changeFontView.isHidden = true
+            selectedFont = "Noteworthy-Light"
+            poeticText.font = UIFont(name: selectedFont, size: CGFloat(selectedFontSize))!
+            break;
+        case 4:
+            changeFontView.isHidden = true
+            selectedFont = "Avenir-Book"
+            poeticText.font = UIFont(name: selectedFont, size: CGFloat(selectedFontSize))!
+            break;
+        case 5:
+            changeFontView.isHidden = true
+            selectedFont = "Copperplate-Light"
+            poeticText.font = UIFont(name: selectedFont, size: CGFloat(selectedFontSize))!
+            break;
+        default: ()
+        break;
+        }
+    }
+    
+    @IBAction func changeFontSize(_ sender: UIButton) {
+        
+        switch sender.tag{
+        case 0:
+            changeFontSizeView.isHidden = true
+            selectedFontSize = 24
+            poeticText.font = poeticText.font?.withSize(CGFloat(selectedFontSize))
+            break;
+        case 1:
+            changeFontSizeView.isHidden = true
+            selectedFontSize = 30
+            poeticText.font = poeticText.font?.withSize(CGFloat(selectedFontSize))
+            break;
+        case 2:
+            changeFontSizeView.isHidden = true
+            selectedFontSize = 36
+            poeticText.font = poeticText.font?.withSize(CGFloat(selectedFontSize))
             break;
         default: ()
         break;
@@ -614,14 +694,9 @@ UINavigationControllerDelegate {
         
     func textToImage(drawText text: NSString, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
 
+        // pull the current user selected text format
         let selectedTextColor = poeticText.textColor
-        //** below code is set to default until change font and text size functions are implemented
-        let selectedFont = UIFont(name: "HelveticaNeue-Light", size: 56)!
-        
-        //** implement below code once chnage font and size functions implemented
-        //let selectedFont = UIFont(name: (poeticText.font?.fontName)!, size: poeticText.font?.pointSize)
-    
-
+        let fontToDraw = UIFont(name: selectedFont, size: (poeticText.font?.pointSize)!)!
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
 
@@ -632,7 +707,7 @@ UINavigationControllerDelegate {
         
         
         let textFontAttributes = [
-            NSFontAttributeName: selectedFont,
+            NSFontAttributeName: fontToDraw,
             NSParagraphStyleAttributeName: paraStyle,
             NSForegroundColorAttributeName: selectedTextColor as Any,
             ] as [String : Any]
@@ -681,8 +756,6 @@ UINavigationControllerDelegate {
             // The alert was presented
 
         }
-    
-    
 
     }
     
@@ -709,7 +782,8 @@ UINavigationControllerDelegate {
         shareNavButton.snp.makeConstraints { (make) in
             make.top.equalTo(contentView).offset(20)
             make.right.equalTo(contentView).offset(-20)
-            make.width.height.equalTo(50)
+            make.height.equalTo(40)
+            make.width.equalTo(40)
         }
 
         //*** BACK BUTTON
@@ -718,7 +792,8 @@ UINavigationControllerDelegate {
         backNavButton.snp.makeConstraints { (make) in
             make.left.equalTo(contentView).offset(10)
             make.centerY.equalTo(shareNavButton.snp.centerY)
-            make.width.height.equalTo(50)
+            make.height.equalTo(40)
+            make.width.equalTo(40)
         }
 
         //*** SAVE BUTTON
@@ -727,7 +802,8 @@ UINavigationControllerDelegate {
         savePhoto.snp.makeConstraints { (make) in
             make.centerX.equalTo(photoTaken.snp.centerX)
             make.centerY.equalTo(shareNavButton.snp.centerY)
-            //make.width.height.equalTo(50)
+            make.height.equalTo(40)
+            make.width.equalTo(40)
         }
 
         //*** POETIC TEXT
@@ -741,10 +817,9 @@ UINavigationControllerDelegate {
 
         photoTaken.bringSubview(toFront: poeticText)
         poeticText.snp.makeConstraints { (make) in
-            make.top.equalTo(photoTaken.snp.centerY).offset(-50)
-            make.width.equalTo(photoTaken).multipliedBy(0.8)
-            make.centerX.equalTo(photoTaken.snp.centerX)
-            make.height.equalTo(300)
+            make.left.right.equalTo(photoTaken).inset(20)
+            make.top.equalTo(photoTaken).offset(40)
+            make.bottom.equalTo(photoTaken).offset(-40)
 
         }
 
@@ -752,38 +827,149 @@ UINavigationControllerDelegate {
         contentView.addSubview(textColour)
         contentView.bringSubview(toFront: textColour)
         textColour.snp.makeConstraints { (make) in
-            make.bottom.equalTo(contentView.snp.bottom)
-            make.right.equalTo(contentView.snp.right)
-            make.height.width.equalTo(50)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-15)
+            make.right.equalTo(contentView.snp.right).offset(-10)
+            make.height.width.equalTo(iconSize)
         }
         
-            //** CONFIGURE FONT BUTTON SINGLE
+        //** CONFIGURE FONT BUTTON SINGLE
         contentView.addSubview(fontStyle)
         contentView.bringSubview(toFront: fontStyle)
         fontStyle.snp.makeConstraints { (make) in
-            make.bottom.equalTo(contentView.snp.bottom)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-15)
             make.right.equalTo(textColour.snp.left).offset(-10)
-            make.height.width.equalTo(50)
+            make.height.width.equalTo(iconSize)
         }
+        
+        //** CONFIGURE FONT SIZE BUTTON SINGLE
+        contentView.addSubview(fontSize)
+        contentView.bringSubview(toFront: fontSize)
+        fontSize.snp.makeConstraints { (make) in
+            make.bottom.equalTo(contentView.snp.bottom).offset(-15)
+            make.right.equalTo(fontStyle.snp.left).offset(-10)
+            make.height.width.equalTo(iconSize)
+        }
+        
+        //** CONFIGURE LOADING ANIMATION
         snapoetryLoader.image = UIImage.animatedImageNamed("eyelash_", duration: 1.0)
         contentView.addSubview(snapoetryLoader)
         contentView.bringSubview(toFront: snapoetryLoader)
         snapoetryLoader.snp.makeConstraints { (make) in
-            make.centerX.equalTo(contentView.snp.centerX)
-            make.centerY.equalTo(contentView.snp.centerY)
+            make.center.equalTo(contentView.snp.center)
         }
     }
     
     func bringChangeFontToView()
     {
-        //create view to house fonts
-        
+        // create view to house all colours
         changeFontView.isHidden = false
+        view.addSubview(changeFontView)
+        view.bringSubview(toFront: changeFontView)
         changeFontView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view.snp.centerX)
-            make.width.equalTo(view).multipliedBy(0.9)
-            make.height.equalTo(100)
+            make.right.equalTo(view.snp.right).offset(-10)
+            make.width.equalTo(view).multipliedBy(0.1)
+            make.bottom.equalTo(textColour.snp.top).offset(-10)
+            make.height.equalTo(view.snp.height)
         }
+        
+        // lay out each font button within view
+        changeFontView.addSubview(font1)
+        changeFontView.bringSubview(toFront: font1)
+        font1.setTitle("Aa", for: .normal)
+        font1.snp.makeConstraints { (make) in
+            make.right.equalTo(changeFontView.snp.right)
+            make.bottom.equalTo(changeFontView.snp.bottom)
+            make.height.width.equalTo(40)
+        }
+
+        changeFontView.addSubview(font2)
+        changeFontView.bringSubview(toFront: font2)
+        font2.setTitle("Aa", for: .normal)
+        font2.snp.makeConstraints { (make) in
+            make.right.equalTo(changeFontView.snp.right)
+            make.bottom.equalTo(font1.snp.top)
+            make.height.width.equalTo(40)
+        }
+        
+        changeFontView.addSubview(font3)
+        changeFontView.bringSubview(toFront: font3)
+        font3.setTitle("Aa", for: .normal)
+        font3.snp.makeConstraints { (make) in
+            make.right.equalTo(changeFontView.snp.right)
+            make.bottom.equalTo(font2.snp.top).offset(-5)
+            make.height.width.equalTo(40)
+        }
+        
+        changeFontView.addSubview(font4)
+        changeFontView.bringSubview(toFront: font4)
+        font4.setTitle("Aa", for: .normal)
+        font4.snp.makeConstraints { (make) in
+            make.right.equalTo(changeFontView.snp.right)
+            make.bottom.equalTo(font3.snp.top).offset(-5)
+            make.height.width.equalTo(40)
+        }
+        
+        changeFontView.addSubview(font5)
+        changeFontView.bringSubview(toFront: font5)
+        font5.setTitle("Aa", for: .normal)
+        font5.snp.makeConstraints { (make) in
+            make.right.equalTo(changeFontView.snp.right)
+            make.bottom.equalTo(font4.snp.top).offset(-5)
+            make.height.width.equalTo(40)
+        }
+        
+        changeFontView.addSubview(font6)
+        changeFontView.bringSubview(toFront: font6)
+        font6.setTitle("Aa", for: .normal)
+        font6.snp.makeConstraints { (make) in
+            make.right.equalTo(changeFontView.snp.right)
+            make.bottom.equalTo(font5.snp.top).offset(-5)
+            make.height.width.equalTo(40)
+        }
+        
+    }
+    
+    func bringFontSizeToView()
+    {
+        // create view to house all colours
+        changeFontSizeView.isHidden = false
+        view.addSubview(changeFontSizeView)
+        view.bringSubview(toFront: changeFontSizeView)
+        changeFontSizeView.snp.makeConstraints { (make) in
+            make.right.equalTo(view.snp.right).offset(-10)
+            make.width.equalTo(view).multipliedBy(0.1)
+            make.bottom.equalTo(textColour.snp.top).offset(-10)
+            make.height.equalTo(view.snp.height)
+        }
+        
+        // lay out each colour within view
+        changeFontSizeView.addSubview(smallText)
+        changeFontSizeView.bringSubview(toFront: smallText)
+        smallText.setTitle("+", for: .normal)
+        smallText.snp.makeConstraints { (make) in
+            make.right.equalTo(changeFontSizeView.snp.right)
+            make.bottom.equalTo(changeFontSizeView.snp.bottom)
+            make.height.width.equalTo(iconSize)
+        }
+
+        changeFontSizeView.addSubview(mediumText)
+        changeFontSizeView.bringSubview(toFront: mediumText)
+        mediumText.setTitle("+", for: .normal)
+        mediumText.snp.makeConstraints { (make) in
+            make.right.equalTo(changeFontSizeView.snp.right)
+            make.bottom.equalTo(smallText.snp.top).offset(-5)
+            make.height.width.equalTo(iconSize)
+        }
+        
+        changeFontSizeView.addSubview(largeText)
+        changeFontSizeView.bringSubview(toFront: largeText)
+        largeText.setTitle("+", for: .normal)
+        largeText.snp.makeConstraints { (make) in
+            make.right.equalTo(changeFontSizeView.snp.right)
+            make.bottom.equalTo(mediumText.snp.top).offset(-5)
+            make.height.width.equalTo(iconSize)
+        }
+        
     }
     
     
@@ -795,83 +981,75 @@ UINavigationControllerDelegate {
         view.addSubview(changeColourView)
         view.bringSubview(toFront: changeColourView)
         changeColourView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view.snp.centerX)
-            make.width.equalTo(view).multipliedBy(0.9)
-            make.bottom.equalTo(textColour.snp.top).offset(-30)
-            make.height.equalTo(50)
+            make.right.equalTo(view.snp.right).offset(-10)
+            make.width.equalTo(view).multipliedBy(0.1)
+            make.bottom.equalTo(textColour.snp.top).offset(-10)
+            make.height.equalTo(view.snp.height)
         }
         
         // lay out each colour within view
         changeColourView.addSubview(colourBlack)
         changeColourView.bringSubview(toFront: colourBlack)
         colourBlack.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(changeColourView.snp.left)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourBlack.snp.width)
+            make.right.equalTo(changeColourView.snp.right)
+            make.bottom.equalTo(changeColourView.snp.bottom)
+            make.height.width.equalTo(iconSize)
         }
         
         changeColourView.addSubview(colourWhite)
         changeColourView.bringSubview(toFront: colourWhite)
         colourWhite.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourBlack.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourWhite.snp.width)
+            make.right.equalTo(changeColourView.snp.right)
+            make.bottom.equalTo(colourBlack.snp.top).offset(-5)
+            make.height.width.equalTo(iconSize)
         }
         
         changeColourView.addSubview(colourPurple)
         changeColourView.bringSubview(toFront: colourPurple)
         colourPurple.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourWhite.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourPurple.snp.width)
+            make.right.equalTo(changeColourView.snp.right)
+            make.bottom.equalTo(colourWhite.snp.top).offset(-5)
+            make.height.width.equalTo(iconSize)
         }
         
         changeColourView.addSubview(colourBlue)
         changeColourView.bringSubview(toFront: colourBlue)
         colourBlue.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourPurple.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourBlue.snp.width)
+            make.right.equalTo(changeColourView.snp.right)
+            make.bottom.equalTo(colourPurple.snp.top).offset(-5)
+            make.height.width.equalTo(iconSize)
         }
         
         changeColourView.addSubview(colourGreen)
         changeColourView.bringSubview(toFront: colourGreen)
         colourGreen.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourBlue.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourGreen.snp.width)
+            make.right.equalTo(changeColourView.snp.right)
+            make.bottom.equalTo(colourBlue.snp.top).offset(-5)
+            make.height.width.equalTo(iconSize)
         }
         
         changeColourView.addSubview(colourYellow)
         changeColourView.bringSubview(toFront: colourYellow)
         colourYellow.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourGreen.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourYellow.snp.width)
+            make.right.equalTo(changeColourView.snp.right)
+            make.bottom.equalTo(colourGreen.snp.top).offset(-5)
+            make.height.width.equalTo(iconSize)
         }
         
         changeColourView.addSubview(colourOrange)
         changeColourView.bringSubview(toFront: colourOrange)
         colourOrange.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourYellow.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourOrange.snp.width)
+            make.right.equalTo(changeColourView.snp.right)
+            make.bottom.equalTo(colourYellow.snp.top).offset(-5)
+            make.height.width.equalTo(iconSize)
         }
         
         changeColourView.addSubview(colourRed)
         changeColourView.bringSubview(toFront: colourYellow)
         colourRed.snp.makeConstraints { (make) in
-            make.width.equalTo(changeColourView).dividedBy(10)
-            make.left.equalTo(colourOrange.snp.right).offset(10)
-            make.centerY.equalTo(changeColourView.snp.centerY)
-            make.height.equalTo(colourRed.snp.width)
+            make.right.equalTo(changeColourView.snp.right)
+            make.bottom.equalTo(colourOrange.snp.top).offset(-5)
+            make.height.width.equalTo(iconSize)
         }
     }
     
