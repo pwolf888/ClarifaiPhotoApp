@@ -604,27 +604,29 @@ UINavigationControllerDelegate {
         switch sender.tag{
         case 0:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "HelveticaNeue-Light", size: CGFloat(selectedFontSize))!
+            poeticText.font = UIFont(name: "HelveticaNeue-UltraLight", size: CGFloat(selectedFontSize))!
             break;
         case 1:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "MarkerFelt-Light", size: CGFloat(selectedFontSize))!
+            
+            //poeticText.font = UIFont.systemFont(ofSize: CGFloat(selectedFontSize), weight: 200)
+            poeticText.font = UIFont(name: "MarkerFelt-Thin", size: CGFloat(selectedFontSize))!
             break;
         case 2:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "AmericanTypewriter-Regular", size: CGFloat(selectedFontSize))!
+            poeticText.font = UIFont(name: "AmericanTypewriter", size: CGFloat(selectedFontSize))!
             break;
         case 3:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "HelveticaNeue-Light", size: CGFloat(selectedFontSize))!
+            poeticText.font = UIFont(name: "Noteworthy-Light", size: CGFloat(selectedFontSize))!
             break;
         case 4:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "HelveticaNeue-Light", size: CGFloat(selectedFontSize))!
+            poeticText.font = UIFont(name: "Avenir-Book", size: CGFloat(selectedFontSize))!
             break;
         case 5:
             changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "HelveticaNeue-Light", size: CGFloat(selectedFontSize))!
+            poeticText.font = UIFont(name: "Copperplate-Light", size: CGFloat(selectedFontSize))!
             break;
         default: ()
         break;
