@@ -791,7 +791,7 @@ UINavigationControllerDelegate {
             make.top.equalTo(contentView).offset(20)
             make.right.equalTo(contentView).offset(-20)
             make.height.equalTo(40)
-            make.width.equalTo(48.3)
+            make.width.equalTo(40)
         }
 
         //*** BACK BUTTON
@@ -801,7 +801,7 @@ UINavigationControllerDelegate {
             make.left.equalTo(contentView).offset(10)
             make.centerY.equalTo(shareNavButton.snp.centerY)
             make.height.equalTo(40)
-            make.width.equalTo(20)
+            make.width.equalTo(40)
         }
 
         //*** SAVE BUTTON
@@ -811,7 +811,7 @@ UINavigationControllerDelegate {
             make.centerX.equalTo(photoTaken.snp.centerX)
             make.centerY.equalTo(shareNavButton.snp.centerY)
             make.height.equalTo(40)
-            make.width.equalTo(33.1)
+            make.width.equalTo(40)
         }
 
         //*** POETIC TEXT
@@ -825,11 +825,6 @@ UINavigationControllerDelegate {
 
         photoTaken.bringSubview(toFront: poeticText)
         poeticText.snp.makeConstraints { (make) in
-//            make.top.equalTo(photoTaken.snp.centerY).offset(-50)
-//            make.width.equalTo(photoTaken).multipliedBy(0.8)
-//            make.centerX.equalTo(photoTaken.snp.centerX)
-//            make.height.equalTo(300)
-            
             make.left.right.equalTo(photoTaken).inset(20)
             make.top.equalTo(photoTaken).offset(40)
             make.bottom.equalTo(photoTaken).offset(-40)
