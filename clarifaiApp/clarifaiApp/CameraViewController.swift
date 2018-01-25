@@ -22,6 +22,8 @@ UINavigationControllerDelegate {
     @IBOutlet weak var photoTaken: UIImageView!
     @IBOutlet weak var rotateCamera: UIButton!
     
+    //global variables
+    var iconSize = 40
     
     // Custom camera variables
     var session: AVCaptureSession?
@@ -135,10 +137,6 @@ UINavigationControllerDelegate {
         // present photo to screen
         present(picker, animated: true, completion: nil)
         
-//  <-- CODE TO BE MOVED TO NEW VC
-        //poeticText.text.removeAll()
-// -->
-        
     }
     
     // Rotate the camera
@@ -184,12 +182,12 @@ UINavigationControllerDelegate {
                     self.present(svc, animated: true, completion: nil)
                     
                 }
-                
-                
+
             })
-            
         }
+
         
+
     }
     
     
@@ -216,14 +214,7 @@ UINavigationControllerDelegate {
             
             // Scales the image to fit on the screen
             self.photoTaken.contentMode = UIViewContentMode.scaleAspectFit
-            
-//  <-- CODE TO BE MOVED TO NEW VC
-            // Recognizes the image
-            // recognizeImage(image: image)
-            
-            //redraw UI
-           // self.setupPhotoUI()
-//  -->
+        
         }
         
         let svc = self.storyboard!.instantiateViewController(withIdentifier: "editSnapVC") as! EditSnapViewController
@@ -263,10 +254,7 @@ UINavigationControllerDelegate {
         contentView.bringSubview(toFront: selectPhoto)
         selectPhoto.snp.makeConstraints { (make) in
             make.bottom.equalTo(previewView).offset(-15)
-            //make.height.equalTo(50)
-            //make.width.equalTo(54.5)
-            make.height.equalTo(40)
-            make.width.equalTo(43.5)
+            make.height.width.equalTo(iconSize)
             make.right.equalTo(previewView).offset(-15)
         }
         
@@ -276,8 +264,7 @@ UINavigationControllerDelegate {
         openHelp.snp.makeConstraints { (make) in
             make.bottom.equalTo(previewView).offset(-15)
             make.left.equalTo(contentView.snp.left).offset(15)
-            make.height.equalTo(40)
-            make.width.equalTo(43.5)
+            make.height.width.equalTo(iconSize)
         }
         
         //** CONFIGURE ROTATE CAMERA BUTTON
@@ -286,8 +273,7 @@ UINavigationControllerDelegate {
         rotateCamera.snp.makeConstraints { (make) in
             make.top.equalTo(previewView).offset(20)
             make.left.equalTo(contentView.snp.left).offset(15)
-            make.height.equalTo(40)
-            make.width.equalTo(40)
+            make.height.width.equalTo(iconSize)
         }
         
     }
