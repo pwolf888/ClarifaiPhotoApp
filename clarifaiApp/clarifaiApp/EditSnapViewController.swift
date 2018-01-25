@@ -603,6 +603,40 @@ UINavigationControllerDelegate {
         
         switch sender.tag{
         case 0:
+            changeFontView.isHidden = true
+            poeticText.font = UIFont(name: "HelveticaNeue-UltraLight", size: CGFloat(selectedFontSize))!
+            break;
+        case 1:
+            changeFontView.isHidden = true
+            
+            //poeticText.font = UIFont.systemFont(ofSize: CGFloat(selectedFontSize), weight: 200)
+            poeticText.font = UIFont(name: "MarkerFelt-Thin", size: CGFloat(selectedFontSize))!
+            break;
+        case 2:
+            changeFontView.isHidden = true
+            poeticText.font = UIFont(name: "AmericanTypewriter", size: CGFloat(selectedFontSize))!
+            break;
+        case 3:
+            changeFontView.isHidden = true
+            poeticText.font = UIFont(name: "Noteworthy-Light", size: CGFloat(selectedFontSize))!
+            break;
+        case 4:
+            changeFontView.isHidden = true
+            poeticText.font = UIFont(name: "Avenir-Book", size: CGFloat(selectedFontSize))!
+            break;
+        case 5:
+            changeFontView.isHidden = true
+            poeticText.font = UIFont(name: "Copperplate-Light", size: CGFloat(selectedFontSize))!
+            break;
+        default: ()
+        break;
+        }
+    }
+    
+    @IBAction func changeFontSize(_ sender: UIButton) {
+        
+        switch sender.tag{
+        case 0:
             changeFontSizeView.isHidden = true
             poeticText.font = UIFont(name: "HelveticaNeue-UltraLight", size: CGFloat(selectedFontSize))!
             break;
@@ -615,18 +649,6 @@ UINavigationControllerDelegate {
         case 2:
             changeFontSizeView.isHidden = true
             poeticText.font = UIFont(name: "AmericanTypewriter", size: CGFloat(selectedFontSize))!
-            break;
-        case 3:
-            changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "Noteworthy-Light", size: CGFloat(selectedFontSize))!
-            break;
-        case 4:
-            changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "Avenir-Book", size: CGFloat(selectedFontSize))!
-            break;
-        case 5:
-            changeFontSizeView.isHidden = true
-            poeticText.font = UIFont(name: "Copperplate-Light", size: CGFloat(selectedFontSize))!
             break;
         default: ()
         break;
