@@ -108,8 +108,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ohS-uP-fMp">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ohS-uP-fMp">
+                                <rect key="frame" x="0.0" y="68" width="375" height="543"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -396,23 +396,23 @@
     </scenes>
     <resources>
         <image name="back" width="60" height="60"/>
-        <image name="blackColour" width="51" height="60"/>
-        <image name="blueColour" width="51" height="60"/>
+        <image name="blackColour" width="60" height="60"/>
+        <image name="blueColour" width="60" height="60"/>
         <image name="eyelash_0" width="208" height="198"/>
         <image name="font" width="60" height="60"/>
         <image name="fontSize" width="60" height="60"/>
-        <image name="greenColour" width="51" height="60"/>
+        <image name="greenColour" width="60" height="60"/>
         <image name="help" width="60" height="60"/>
-        <image name="orangeColour" width="51" height="60"/>
+        <image name="orangeColour" width="60" height="60"/>
         <image name="photoLibrary" width="60" height="60"/>
-        <image name="purpleColour" width="51" height="60"/>
-        <image name="redColour" width="51" height="60"/>
+        <image name="purpleColour" width="60" height="60"/>
+        <image name="redColour" width="60" height="60"/>
         <image name="rotateCamera" width="60" height="60"/>
         <image name="save" width="60" height="60"/>
         <image name="share" width="60" height="60"/>
         <image name="snapoetryIcon" width="106" height="98"/>
         <image name="textColour" width="60" height="60"/>
-        <image name="whiteColour" width="51" height="60"/>
-        <image name="yellowColour" width="51" height="60"/>
+        <image name="whiteColour" width="60" height="60"/>
+        <image name="yellowColour" width="60" height="60"/>
     </resources>
 </document>
