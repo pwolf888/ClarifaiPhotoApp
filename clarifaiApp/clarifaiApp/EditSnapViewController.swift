@@ -525,7 +525,7 @@ UINavigationControllerDelegate {
         }
         
         //** CONFIGURE LOADING ANIMATION
-        snapoetryLoader.image = UIImage.animatedImageNamed("eyelash_", duration: 1.0)
+        snapoetryLoader.image = UIImage.animatedImageNamed("eyelash_", duration: 2.0)
         contentView.addSubview(snapoetryLoader)
         contentView.bringSubview(toFront: snapoetryLoader)
         snapoetryLoader.snp.makeConstraints { (make) in
