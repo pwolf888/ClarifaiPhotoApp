@@ -29,7 +29,10 @@ UINavigationControllerDelegate {
     var iconSize = 40
     
     // Poem generator globals
-    var poemGenerator:PoemGenerator = PoemGenerator()
+//    var poemGenerator:PoemGenerator = PoemGenerator()
+//    var imageTags:[String] = []
+    
+    var poemGenerator:NewPoemGenerator = NewPoemGenerator()
     var imageTags:[String] = []
 
     @IBOutlet weak var snapoetryLoader: UIImageView!
@@ -134,7 +137,6 @@ UINavigationControllerDelegate {
                             
                             self.imageTags = tagsArray
                             self.poeticText.text = self.poemGenerator.generateTopicalPoem(tags: self.imageTags)
-                            
                             
                         }
                         
