@@ -67,9 +67,9 @@ UINavigationControllerDelegate {
             // Make sure this particular device supports video
             if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
                 // Finally check the position and confirm we've got the back camera
-                if((device as AnyObject).position == AVCaptureDevicePosition.front && frontBack == false) {
+                if((device as AnyObject).position == AVCaptureDevicePosition.back && frontBack == false) {
                     captureDevice = device as? AVCaptureDevice
-                } else if((device as AnyObject).position == AVCaptureDevicePosition.back && frontBack == true) {
+                } else if((device as AnyObject).position == AVCaptureDevicePosition.front && frontBack == true) {
                     captureDevice = device as? AVCaptureDevice
                 }
             }
