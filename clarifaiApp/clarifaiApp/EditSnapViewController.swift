@@ -25,7 +25,7 @@ UINavigationControllerDelegate {
     var newImage: UIImage!
     var savedImage: UIImage!
     var selectedFontSize = 24
-    var selectedFont = "HelveticaNeue-UltraLight"
+    var selectedFont = "HelveticaNeue-Light"
     var iconSize = 40
     
     // Poem generator globals
@@ -297,7 +297,7 @@ UINavigationControllerDelegate {
         switch sender.tag{
         case 0:
             changeFontView.isHidden = true
-            selectedFont = "HelveticaNeue-UltraLight"
+            selectedFont = "HelveticaNeue-Light"
             poeticText.font = UIFont(name: selectedFont, size: CGFloat(selectedFontSize))!
             break;
         case 1:
@@ -507,7 +507,7 @@ UINavigationControllerDelegate {
         poeticText.numberOfLines = 0
         poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         poeticText.textAlignment = NSTextAlignment.center
-        poeticText.textColor = .black
+        poeticText.textColor = .white
         poeticText.layer.shadowColor = UIColor.black.cgColor
         poeticText.layer.shadowOpacity = 0.9
         poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
