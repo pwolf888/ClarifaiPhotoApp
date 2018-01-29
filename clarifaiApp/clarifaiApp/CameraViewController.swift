@@ -213,7 +213,10 @@ UINavigationControllerDelegate {
             photoTaken.autoresizingMask = UIViewAutoresizing.flexibleHeight
             
             // Scales the image to fit on the screen
-            self.photoTaken.contentMode = UIViewContentMode.scaleAspectFit
+            self.photoTaken.contentMode = UIViewContentMode.scaleAspectFill
+            
+            //prevents the image from stretching once photo taken
+            self.photoTaken.clipsToBounds = true
         
         }
         
