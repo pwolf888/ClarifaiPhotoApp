@@ -25,7 +25,7 @@ UINavigationControllerDelegate {
     var newImage: UIImage!
     var savedImage: UIImage!
     var selectedFontSize = 24
-    var selectedFont = String()
+    var selectedFont = "HelveticaNeue-UltraLight"
     var iconSize = 40
     
     // Poem generator globals
