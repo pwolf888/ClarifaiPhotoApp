@@ -67,9 +67,9 @@ UINavigationControllerDelegate {
             // Make sure this particular device supports video
             if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
                 // Finally check the position and confirm we've got the back camera
-                if((device as AnyObject).position == AVCaptureDevicePosition.front && frontBack == false) {
+                if((device as AnyObject).position == AVCaptureDevicePosition.back && frontBack == false) {
                     captureDevice = device as? AVCaptureDevice
-                } else if((device as AnyObject).position == AVCaptureDevicePosition.back && frontBack == true) {
+                } else if((device as AnyObject).position == AVCaptureDevicePosition.front && frontBack == true) {
                     captureDevice = device as? AVCaptureDevice
                 }
             }
@@ -213,7 +213,10 @@ UINavigationControllerDelegate {
             photoTaken.autoresizingMask = UIViewAutoresizing.flexibleHeight
             
             // Scales the image to fit on the screen
-            self.photoTaken.contentMode = UIViewContentMode.scaleAspectFit
+            self.photoTaken.contentMode = UIViewContentMode.scaleAspectFill
+            
+            //prevents the image from stretching once photo taken
+            self.photoTaken.clipsToBounds = true
         
         }
         

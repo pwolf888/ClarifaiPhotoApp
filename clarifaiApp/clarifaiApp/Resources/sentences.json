@@ -1,0 +1,583 @@
+{
+    "telephone&nil": ["People used what they called a telephone \nbecause they hated being close together \nand they were scared of being alone.",
+                      "The telephone is a good way to \ntalk to people without having to offer them a drink."],
+    
+    "television&nil": ["The perfect date for me would be staying at home, \nmaking a big picnic in bed,\neating Wotsits and cookies while watching cable TV.",
+                   "Life doesn't imitate art, \nit imitates bad television.",
+                   "One of the big secrets of finding time is not to watch television"],
+    
+    "office&!no person|empty&comunication|conversation&nil": ["Boring meeting, fantasy ideas come out",
+                                                              "There are people who\nLove to participate in meeting\nAnd make storm and dream\nin their deliberation",
+                                                              "Animated discussions\nSome ideas may\nChange the world"],
+    
+    "office&!no person|empty|sky&!comunication|conversation&nil": ["Dead silence, busy employee"],
+    
+    "office&no person|empty&!waterfront&nil": ["Poor employee, trapped in traffic jam, left office empty"],
+    
+    "office&computer&nil": ["I hate when I forget to press send and I’m sitting there like an idiot waiting for a reply",
+                        "What’s your hobby? \nMy hobby is working. \nI spend 25 hours on working everyday.\nSuch a sweet life.",
+                        "Endless meetings, endless tasks. \nWorking makes me a superman. \n“What’s your favorite position?” \nI said \"CEO\"", "Do it in one day or from day one, \nit is up to you"
+                        ],
+    
+    "skyscraper&nil": ["The wind blows harder up here, \nAs though it is trying to push \nthese skyscrapers toppling over.",
+                       "A sword thrust into the city.",
+                       "A ladder for dreamers to reach sky. \nIs there enough oxygen at the top of this skyscraper?"],
+    
+    "school&meeting&!outdoors&nil": ["Knowledge, the best investment in the world.",
+                       "If knowledge is wealth, what will happen? \nFirst, I am a richer. \nThen, profess is the god of wealth.",
+                       "More school, less prison. \nBut sometimes, school itself is a prison.",
+                       "School needs book. Book needs paper. \nPaper needs tree. We need oxygen from tree. \nSo, school is killing us.",
+                       "Any Question? Profess said. \nWe look at each other in dead silence.",
+                       "Math class, the only place where \npeople buy 64 watermelons and no one wonders why"
+                       ],
+    
+    "school|university&no person|empty&nil": ["Cold winter, students hide in warm bed. \nNobody to talk with, sad profess",
+                                          "Lovely holiday, lonely classroom. \nStudents won’t be back untill the day before next holiday."],
+    
+    "meeting|seminar&no person|empty&nil": ["Fantasy seminar, among armchairs. \nArguing which is more comforatable. Secret meeting, held by invisible men. \nTalking about whether they can see each other."],
+    
+    "audience&empty|no person&nil": ["A speical concert for armchairs, \nhuman beings are not permitted",
+                                 "For the sake of privacy, \nonly invisible men are permitted to attend this concert.",
+                                 "Welcome to the most brilliant concert on this planet! \nTo protect privacy, \nplease make sure invisibility cloak has been weared."],
+    
+    "library&nil": ["What I really need is just a piece of memory bread.",
+                "If knowledge is wealth, then I am a richer.",
+                    "H.o.m.e.w.o.r.k.= [H]alf [O]f [M]y [E]nergy [W]asted [O]n [R]andom [K]nowledge.",
+                    "I see you over the tops of uneven books.\nI see your golden brown hair,\nas wild as the tall tundra grasses.\nI see you drop the musty book,\nonto the pale grey carpet.",
+                    "Library - It is a world full of books\nAll are interested, whether they are engineers, peons or cooks\nBooks of all genre you will find\nIt never fails to attract one's mind"],
+    
+    "book bindings&nil": [" Beauty dies as time pass by\n But our endureing love affair with book will never fade",
+                      "Book is the paradise while reality is the hell \nI can be what I want to be\nI can go where I want to go",
+                      "Happiness is a cup of coffee and a good book."],
+    
+    "traffic&nil": ["Hury up, hury up!\nyour boss is crazy. \nJust get out of car, \nwalk to your destination.",
+                "Waiting for the 'right' thing to happen just likes\nwaiting for all the traffic lights to be green for five miles \nbefore starting the trip.",
+                "When everyone has a car, \nyou should buy a plane.\nWhen everyone has plane, \nyou should buy a tank.",
+                "There are no traffic jams along the extra mile",
+                "Lead me not into temptation.\nOh who am I kidding,\nfollow me, I know a shortcut"],
+    
+    "car&!traffic&nil": ["A little house with four wheels.\nA scary monster with two big eyes.\nNo matter how fast you drive, \nyou will never escape from the earth.",
+                        "Steel is my body, oil is my food.\nThe fastest runner on the earth\nIf you are careful, I take you to the paradise.\nIf you are careless, I send you to the hell.",
+                        "Traffic police catches me.\nHe says I drive too fast\nBut I think it is not fast enough.\nBecause he has caught me.",
+                        "One drop of alcohol\nbrings a cup of tears of family.\nSet beer apart from driving",
+                        " If you don’t look back at your car after you park it, \nyou own the wrong car. ",
+                        "Best therapy sometimes is a drive and music",
+                        "My heart has no room for you,\nbut the trunk of my car definitely does.",
+                         "Combination of attractive physique and comfort\na medium of connectivity and economic growth\na mixture of technical innovation& development\n undoubtedly owner’s pride and little bit matter of envy."],
+    
+    "party&!barbecue|romantic|romance&nil": ["Bodies moved and liquor spilled\nHands got up and all felt good\nMusic created a flow and rhythm became nourishment",
+                                             "Music is energetic,\nLight is shining.\nWe are born to be wild.\nLet’s move, let’s dance.",
+              "No worrying, no crying.\nLeave everything behind.\nIt’s happy time.\nLet’s dance on the table.",
+              "There is no gentleman. \nThere is no lady\nWe are monkey\nLaughing, jumping and dancing.",
+              "It's easy to impress me. \nI don't need a fancy party to be happy. \nJust good friends, good food, and good laughs. \nI’m happy. I'm satisfied. I'm content.",
+              "It’s like when I’ve spotted you in a crowded room,\nit’s only to see you searching for someone else",
+              "I believe that if life gives you lemons, \nyou should make lemonade... \nAnd try to find somebody whose life has given them vodka, \nand have a party."
+              ],
+    
+    "audience&nil": ["*Such a @spacious/aboard hall, it can hold many audiences.",
+                 "A good teacher, like a good entertainer \nfirst must hold his audience's attention, \nthen he can teach his lesson.",
+                 "The size of your audience doesn’t matter\nKeep up the good work",
+                 "People think that the directors direct actors. No. \nReally, what the director's doing is directing the audience's eye through the film.",
+                 "A good movie makes the audience feel like they've journeyed with the characters."],
+    
+    "wildlife|animal&!bird|dog&@animal": ["*Little poor #monster , \nthe world outside is so @amazing/brilliant/interesting/beautiful/splendid/wide/broad .\nWhy do you stay in this narrow zoo. \nJust climb over the wall at 2am this night.",
+                         "*Poor #monster , look at you!\nYou have enough food to eat and comfortable place to live in.\nBut you lose the ability of hunting.\nTotally pathetic!",
+                         "*Such a strong #monster ! \nI feel like I'm nothing without wildlife. \nThey are the stars. \nI feel awkward without them.",
+                         "*What a cute #monster !\nPlans to protect air and water, wilderness and wildlife are in fact plans to protect man."],
+    
+    "cat&nil": ["The difference between cats and dogs,\nisdogs hide when they have done something wrong.\nCats are pround of it…",
+                "The thing I love about cats\nIs that they can wear hats\nI'd love them to wear spatz\nBut that would look ridiculous. "],
+    
+    "dog&grass&nil": ["Green blanket, vast and comfortable. \nLittle dog, cute and lovely.\nRunning, jumping and chasing\nSwifter, higher and stronger",
+                  "It’s so hot outside\nmy dog started melting"],
+    
+    "dog&!grass|hayfield&nil": ["Dogs are God’s way of saying.\nYou are not alone",
+                            "Money can buy you a fine dog,\nbut only love can make him wag his tail",
+                            "*A @little/adorable/lovely/cute/clever/cuddly/smart/friendly/energetic/furry dog with @cute/shining/dreamy/bright/watery eyes.\nThe more I look at you, \nThe better I feel.",
+                            "The average dog is nicer person than the average person\nIf you want a friend, buy a dog.",
+                            "You can tell by the kidness of a dog how a human should be",
+                            ],
+    
+    "dog&indoors|family|house&@furniture": ["*The dog sits on the #floor , \nwatching #sofa fighting with #table .\nAs a bystander, dog is at ease."],
+    
+    "dog&bathtub|shower|bathroom&nil": ["*@little/adorable/lovely/cute/clever/cuddly/smart/friendly/energetic/furry dog, @happy/exciting/delightful shower.\nIf water is too hot,\njust bark.",
+                                    "My little dog, I’m busy\nI can’t take you to see the sea\nI hope like this little pool"],
+    
+    "dog&food&nil": ["Tasty food, hungry dog. \nMean master, eating alone. \n Within eyesight, beyond reaach. \nTill the night, empty the refrigerator.",
+                 "A bone to the dog is not charity. \nCharity is the bone shared with the dog, \nwhen you are just as hungry as the dog."
+                 ],
+    
+    "dog&stove|cookware|kitchenware|cabinet&nil": ["*@little/adorable/lovely/cute/smart/energetic/furry/cuddly dog, empty stomach. \nTime to eat, where is my favorite bone?"],
+    
+    "dog&friendship&nil": ["*Little @adorable/lovely/cute/furry/cuddly Dog.\nDowny body, pure eyes.\nSilently accompany, best friend."],
+    
+    "dog&girl|child|boy&nil": ["*Happy child, funny dog, @sweet/wonderful/fantasy/happy life"],
+    
+    "dog&newborn|baby&nil": ["*Little baby, @adorable/lovely/cute/large dog.\nDifferent species, same hobby.\nSleep together, sweet dream."],
+    
+    "swan&nil": ["Being born in a duck yard does not matter, \nif only you are hatched from a swan's egg."],
+    
+    "refrigerator&nil": ["If we’re not meant to have midnight snacks, \nwhy is there a light in the refridgerator?",
+                         "The refrigerator stood alone at a corner\nwhere his tears were saved in the freezer.\nStrong and sturdy on the outside,\nhe was cold and heavy on his inside."],
+    
+    "kitchenware&nil": ["I am a man who never cry\nUntil one day, I meet the onion in this kitchen\nI swear, i will make the onion cry too.",
+                    "I have a kitchen,\nbut I am busy.\nSo I never cook.\nEvery day, I eat fast food.",
+                    "I cook, I eat. \nBut I never wash the dishes.\nUntil I have no plate to use",
+                    "Hey man! \nI am going to remind you of something\nKitchen is woman’s place\nBut it’s also where the knif is kept."],
+    
+    "bathroom|bathtub&nil": ["What is “5 minute shower”?\nI have no idea.\nBut it takes me 5 mins to get the water to the right temperature.",
+                         "It is happy to sing while taking a shower.\nUntil the shampoo flow into your mouth\nThen that explains how soap opera are formed.",
+                         "My favorite way to blow off steam is to sing obnoxiously loud in the shower.",
+                         "I like to do weird things in the shower, \nlike drink my coffee, brush my teeth and drink a smoothie.\n It's good time management.",
+                         "I don't need to sing in front of thousands, as I can sing in the shower."],
+    
+    "washcloset|water closet|lavatory|faucet&nil": ["When we are a baby\nWe all saw a toilet in our sleep.\nNot only saw it, but also use it.",
+                                                "Life is heavy. \nFlush away whatever you don’t want…\nYou know that.",
+                                                "People never cherish something,\nUntil it has gone\nToilet paper is definitely a good example."],
+    
+    "bedroom&nil": ["Every morning when I get up.\nI see \"follow your dream\" on the wallpaper.\nSo I go back to the bed.",
+                "Sleeping is my drug.\n Bed is drug trafficker.\nMy alarm clock is the police.",
+                "Every morning you have two choices:\nTo sleep with your dreams,\nor wake up and chase them",
+                "I’m pretty certain\nthere isnothing more satisfying in life than \nsleeping while someone else gets ready for work "],
+    
+    "sofa&!bedroom&nil": ["On a simple brown sofa\nHolding hands at a three band show\nHer touch comforts, I want to say\nBut I keep failing.",
+                          "For those who is lazy.\nThe trick for cleaning is quite sample.\nYou have just put stuff in less obvious places."],
+    
+    "laundry facility&nil": ["I find myself at the laundromat\nWorking out my thighs and lats\nI put 2 quarters in the slot \nIt makes a sound like a robot",
+                             "I have a dream.\nOne day, my bank account can fill up as fast as my laundry basket."],
+    
+    "street&portrait&nil": ["Keep an eye out for cars\nWhen you are taking photo on the street\nYou don’t want it to be your last photo, right?"],
+    
+    "street&!portrait&nil": ["The one who follows the crowd \nwill usually get no further than the crowd\nThe one who walks alone,\nis likely to find himself in places no one has ever been",
+                         "I am rarely bored alone\nI am often bored in crowds",
+                         "It takes nothing to join the crowd\nIt takes everything to stand alone ",
+                         "I’m street, \nso look both ways\n, before you cross me."],
+    
+    "face&portrait&!group|friendship&nil": ["“You look pretty today”\n“Was I ugly yesterday!?”\nYour twin sister think you’re ",
+                                        "Such a beautiful face\nI just can’t believe it\nYou must have used Photoshop to alter it.",
+                                        "Sometimes when you get a sweet text\nyou just sit there \nsmiling at your screen\nlike a weirdo",
+                                        "Unbelievable! Totally unbelievable!\nGod put all the beauty together and give it to you\nI’m jealous!",
+                                        "Don’t judge me cause I’m quiet.\nNo one plans a murder out loud",
+                                        "Actually, this is called “narcissistie”\nBut it is too long to write.\nSo we call it “selfie”",
+                                        "The problem with the world is that…\nThe intelligent people are full of doubts\nWhile the stupid ones are full of confidence",
+                                        "No matter how you feel.\nGet up, dress up, show up\nand never give up.",
+                                        "Fashion mate!\nBeing single doesn’t mean no one wants you\nIt means God is still busy\nwriting your love story.",
+                                        "I want to be the reason\nyou look down at your phone and smile.\nThen walk into a pole.",
+                                        "Everyday is a new beginning\nTake a deep breath, smile,\nand strat again!",
+                                        "They laugh at me\nbecause I’m different\nI laugh at them\nbecause they’re all the same"],
+    
+    "mirror&nil": ["“Mirror, mirror, on the wall, \nWho is the fairest of us all?”",
+               "Mirrors\nShow us what\nWe look like\nNot who we are",
+               "Respect is like a mirror.\nThe more you show it to other people,\nthe more it will reflect back on you",
+               "Do you ever just\nwant to punch yourself in\nthe face for liking\nsomeone too much",
+               "don’t stress about your eyesight failing as you get older.\nIt’s nature’s way of protecting you from shock \nas you walk past the mirror.",
+               "Our minds distort our mirrors."],
+    
+    "couple&nil": ["When I count my blessings, \nI count you twice.\nI love that feeling I got when I see you smile",
+               "Missing you is my hobby\nCaring for you is my job\nMaking you happy is my duty\nLoving you is my life",
+               "I am always wondering…\nIs love worth fighting for?\nUntil your figure appeared,\nI am ready to war.",
+               "Without you I’m nothing\nWith you, I’m something\nTogether we’re everything.",
+               "When I first met you,\nI honestly didn’t know\nyou were gonna be this important to me",
+               "Give the ones you love\nwings to fly,\nroots to come back,\nand reasons to stay"],
+    
+    "couple&sea&nil": ["Wave washes away our footprint.\nBut our love will never fade.",
+                       "There’s nothing more romantic at the beach than to write your names in hearts in the sand or the words I love you.",
+                   "One of the worst mistakes you can make\nis to walk away from the person\nwho stood there waiting for you"],
+    
+    "family&parent&nil": ["We are a happy family.\nCareful mom does research better than F.B.I\nBusy dad escapes from earth more often than NASA.\nI am swifter than rabbit",
+                          "Parents wipe away tears\nThey ease their child's fears\nThey have unconditional love\nTheir babies their blessing sent from above",
+                          "Time spent with family\nis worth every second\nTogetherness is a very important ingredient to family life.",
+                          "You don't choose your family. \nThey are God's gift to you, \nas you are to them."
+                          ],
+    
+    "family&!animal|university|library|bathroom|couple&nil": ["Family is not an important thing.\nIt’s everything.\nIt is a gift that lasts forever.",
+                       "As time went by, we all get older \nWhen we look back at our life, \nthe greatest happiness is family happiness",
+                       "My doctor asked if any members of my family suffered from insanity…\nI said nope\nWe all love it."],
+    
+    "friendship&group|togetherness&nil": ["Good friends.\nHard to find.\nHarder to leave.\nAnd impossible to forget.",
+                                      "We don’t meet people by accident\nThey are meant to cross our path for a reason.",
+                                      "Walking with a friend in the dark is better than walking alone in the light."],
+    
+    "coffee&!computer|cake&nil": ["No matter what historians claimed,\nB.C. really stands for “Before Coffee”\nA.D. definetely means “After Dinner”",
+                                  "A lone drop of coffee\nRunning down the side\nOf my cup\nEscaping the terror\nOf teeth and tongue",
+                                  "Let me stifled by your scent\nAnd drown in your sweet bitterness"],
+    
+    "coffee&computer&!cake&nil": ["No matter what historians claimed,\nB.C. really stands for “Before Coffee”\n“Bad computer” downloads a coffee.\nAha, “Brilliant Computer”",
+                        "I’m not addicted to coffee,\nWe’re just in a commited relationship"],
+    
+    "crowd&flag&nil": ["The world will not be destroyed by those who do evil\nBut by those who watch them\nwithout doing anything.",
+                   "Put the politicans on minimum wage\nAnd watch how fast things change",
+                   "Privilege is when you think something is not a problem\nbecause it’s not a problem to you personally"],
+    
+    "crowd&!flag|education|school&nil": ["Standing alone is better than\nbeing around people\nwho don’t value you",
+                                         "It is exhausting\nto observe so much good in\nso many people",
+                                         "Crowds are made of people\nwilling to be in the crowd\nwilling to fly with the flock"],
+    
+    "barbecue&nil": ["You can’t buy happiness\nBut…You can BBQ\nThat’s the same thing.",
+                 "You need to gym to BBQ the fat\nyou get from this BBQ.",
+                 "My favorite barbecue! I really need to hire someone to\nfollow me around\nand just knock unhealthy food\nout of my hand",
+                     "What better reason to pop open a refreshing beer on a hot day, at a backyard BBQ or for no reason at all other than bubbly, hoppy goodness?"],
+    
+    "burger&nil": ["I think maybe the key to eating healthy\nis not eating any food like burger that\nhas a TV commercial",
+                "The moment of joy\nwhen you are in a restaurant and\nyou see your burger coming",
+               "When you already started eating burger\nSomeone says “let’s pray”",
+               "I’ve never seen \na McDonalds or a Burger King under construction\nThey just show up",
+               "A burger without a\n    cheese\nLike a hug without a\n     squeeze",
+               "The more you weigh,\nthe harder you are to\n       kidnap\nStay safe. Eat burger",
+               "Skinny people are\nEasier to kidnap\nStay safe, eat burger",
+               "I’m into fitness\nFitness whole burger in my mouth",
+               "My favorite burger! I really need to hire someone to\nfollow me around\nand just knock unhealthy food\nout of my hand",
+               "I’m gonna order a burger\n5 mins before New Year\nAnd when it arrive I’ll say\nI ordered this a year ago, LOL"],
+    
+    "sweet&cake&!brownie cake&nil": ["The more you weigh,\nthe harder you are to kidnap\nStay safe. Eat cake",
+                   "Skinny people are\nEasier to kidnap\nStay safe, eat cake",
+                   "I eat cake because\nIt’s somebody’s birthday somewhere",
+                   "I’m into fitness\nFitness whole brownie cake in my mouth",
+                   "My favorite cake! I really need to hire someone to\nfollow me around\nand just knock unhealthy food\nout of my hand"],
+    
+    "sweet&icee&nil": ["When you’re stressed, \nYou eat ice-cream\n       Why?\nBecause stressed spelled backwards is desserts",
+                   "Skinny people are\nEasier to kidnap\nStay safe, eat ice-cream",
+                   "The more you weigh,\nthe harder you are to\n       kidnap\nStay safe. Eat ice-cream",
+                   "If you want to make everyone happy,\ndon’t be a leader - sell ice cream",
+                   "I’m into fitness\nFitness whole ice-cream in my mouth",
+                   "My favorite ice-cream! I really need to hire someone to\nfollow me around\nand just knock unhealthy food\nout of my hand"],
+    
+    "sweet&brownie cake&nil": ["The more you weigh,\nthe harder you are to kidnap\nStay safe. Eat brownie cake",
+                           "Skinny people are\nEasier to kidnap\nStay safe, eat brownie cake",
+                           "I’m into fitness\nFitness whole brownie cake in my mouth",
+                           "My favorite brownie cake! I really need to hire someone to\nfollow me around\nand just knock unhealthy food\nout of my hand"],
+    
+    "food&wrap&nil": ["I’m gonna order a chicken wrap\n5 mins before New Year\nAnd when it arrive I’ll say\nI ordered this a year ago, LOL"],
+    
+    "fruit&@fruit": ["*An #fruit a day keeps anyone away\nif you throw it hard enough",
+                     "*How delicious the #fruit is\nThe only time to eat diet food is \nwhile you’re waiting for the steak to cook",
+                     "*Know the difference between those who stay to feed the soil\nAnd those who come to grab the #fruit"],
+    
+    "apple&nil": ["Green, yellow, red,\nThe color of me and my fellows.\nWhen the sun's heat touches my friends,\nThey create life, thus I began, I'm apple.",
+                  "An apple a day keeps anyone away\nif you throw it hard enough"],
+    
+    "banana&nil": ["Yellow is what I am\nhappy is what I make you feel.\nUse me, then throw me\nand you'll trip by my peel.",
+                   "Banana peel makes you move faster if you can control it\n"],
+    
+    "pineapple&nil": ["The secret of being a pineapple:\nStand tall, wear a crown\nAnd be sweet on the inside",
+                      "Man, pineapples are so good\nIt's my favorite fruit\nIt's amplifies my taste buds making an enjoyable reaction"],
+    
+    "lemon&nil": ["When life gives you lemons, \nfreeze them and throw them as hard as possible\nat the people making your life difficult",
+                  "So sour, yet delicious.\nYour lips pucker, your eyes squint.\nThe tangy juices drip from your mouth."],
+    
+    "pizza&nil": ["You can’t make everybody happy\nYou are not pizza",
+              "I’m into fitness\nFitness whole pizza in my mouth",
+              "Dominos pizza is now made with real cheese!\nSo what the hell was it made with before",
+              "The more you weigh,\nthe harder you are to kidnap\nStay safe. Eat pizza",
+              "Skinny people are\nEasier to kidnap\nStay safe, eat pizza",
+              "My favorite pizza! I really need to hire someone to\nfollow me around\nand just knock unhealthy food\nout of my hand",
+              "I’m gonna order a pizza\n5 mins before New Year\nAnd when it arrive I’ll say\nI ordered this a year ago, LOL"],
+    
+    "birthday&nil": ["Growing old is mandatory,\nbut growing up is optional",
+                 "At least you’re not\nas old as you will be next year",
+                 "I just want to eat the cake\nBut you lit my cake on fire.",
+                 "You are beautiful\nYou are clever\nYou are older\nHappy birthday",
+                 "We should never know what old age is.\nWe should know the happiness time brings,\nnot count the years"],
+    
+    "romantic|romance&nil": ["You wanna know who i’m in love with?\nRead the first word again.",
+                         "I like when I don’t have to be careful what I say\nThat’s when you know…\nYou’re with the right people.",
+                         "Never make permanent decisions\nbased on temporary feelings",
+                         "I want you to be my best friend,\nmy naughty lover\nand my partner in life…",
+                         "Meeting you was fate\nBecoming your friend was a choice\nBut falling in love with you\nwas beyond my control",
+                         "A healthy relationship is one where\ntwo independent people just make a deal\nthat they will help make the other person the\nbest version of themselves."],
+    
+    "drink&beer&nil": ["The best beer\nare the ones \nwe drink with friends",
+                   "Adulthood has shown me that\nyou really don’t need alcohol\nto have fun",
+                   "Buy one beer\nfor the price of two \nand receive a second beer absolutely free.\nGreat deal!",
+                   "One drop of alcohol\nbrings a cup of tears of family.\nSet beer apart from driving",
+                   "Life and beer are very similar\nchill for best results",
+                   "I don’t drink alcohol\nI drink distilled spirits\nTherefore I’m not an alcoholic,\nI’m spiritual",
+                   "Never take advice from me,\nYou’ll end up drunk",
+                   "My beer just whispered to me\n”Leave tomorrow behind”",
+                   "I just rescued some wine,\nit was trapped in a bottle"],
+    
+    "sunset|dusk&nil":["Sunset is proof that ending can be beautiful.",
+                   "May every sunset bring you peace.\nMay every sunrise bring you hope.",
+                   "Someday you will find the one, \nwho will watch every sunrise with you \nuntil the sunset of your life.",
+                   "With every sunset,\nA new hope is born\nAn old expectation dies",
+                   "Beautiful sunsets need cloudy sky"],
+    
+    "dusk|moon&dark&nil": ["The night has fallen, the day has done\nThe moon has taken the place of the sun",
+                       "When you can’t sleep at night,\nit’s because you’re awake in someone else’s dream",
+                       "Tell me the story about\nhow the sun loved the moon so much\nhe died every night\nto let her breathe",
+                       "Everyone wants to be the sun \nto lighten up someone’s life,\nBut why not be the moon,\nTo brighten in the darkest hour?",
+                       "The sun watches what I do,\nbut the moon knows \nall my secrets",
+                       "Stars can’t shine without darkness",
+                       "You deserve the whole universe,\nbut I am just a star",
+                       "When life knocks you down,\nroll over and look at the stars",
+                       "I just want to sit outside with someone and talk all night"],
+    
+    "rainbow&nil": ["Drop of red,\nLarge orb in the sky of orange,\nSour yellow,\nSoft lushes green,\nBody's of wavy blue,\nRomantic flowers of fake purple",
+                    "Cleanse my palette\nSlice of sky\nMirage of heaven\nPure perfection",
+                    "The greater your storm\nThe brighter your rainbow"],
+    
+    "road&nil": ["Old roads, old bungalow, old folks.\nOld ways still have a lot to offer in this speed-up world we all live in.",
+             "Sometimes you have to\nstop being scared and just go for it.\nEither it will work out or not,\nThat’s life",
+             "When an Aussie says “Just down the road”\nIt can be anywhere from a block,\nto a kilometre, to a 3 day drive.\nJust down the road",
+             "Difficult roads often lead to beautiful destinations.",
+             "It’s your road,\nand yours alone\nothers may walk it with you,\nbut no one can walk it for you",
+             "Old ways won’t open new doors"],
+    
+    "tree&nil": ["Cut the trees,\nmade paper with them\nAnd write “save the trees”",
+             "If money doesn’t grow on trees,\nthen why do banks have branches?",
+             "Some people are just like trees\nThey take forever grow up",
+             "A tree falls the way it leans\nBe careful which way you lean",
+                 "little tree\nlittle silent Christmas tree\nyou are so little\nyou are more like a flower"],
+    
+    "flower&@flower": ["*The #flower that blooms in adversity is the rarest and most beautiful of all",
+                       "*A #flower cannot blossom without sunshine,\nand man cannot live without love",
+                       "*Every #flower is a soul blossoming in nature",
+                       "*Happiness held is the seed;\nHappiness shared is the flower\nSuch a beautiful #flower"],
+    
+    "sun&leaf&nil": ["Sunlight that filters through the leaves of trees"],
+    
+    "landscape&flower&nil": ["Common sense is a flower \nthat doesn’t grow in everyone’s garden",
+                         "If someone throws a stone at you\nThrow a flower at them\nBut remember to throw the flower pot with it",
+                         "There are always flowers \nfor those who want to see them",
+                         "Don’t wait for someone to bring you flowers\nPlant your own garden\nand decorate your soul",
+                         "A man bought a fake flower for his lover\nHe said,“I will love you untill it dies”",
+                         "A flower does not think of \ncompeting with the flower next to it\nIt just blooms"],
+    
+    "sea&!couple&nil": ["Dance with the waves,\nmove with the sea.\nLet the rhythm of the water\nset your soul free",
+                        "THE SEA! the sea! the open sea!\nThe blue, the fresh, the ever free!\nWithout a mark, without a bound,\nIt runneth the earth’s wide regions round; ",
+                    "To some\nIt’s just water.\nTo me it’s where\nI regain my\nSanity…",
+                    "Anything that \ncosts you your peace \nis too expensive",
+                    "If you don’t live on the edge,\nyou can’t see the view",
+                    "Don’t compare your life to others.\nThere’s no comparison between the sun and the moon\nThey shine when it’stheir time.",
+                    "Friends, sun,\nSand and sea\nThat sounds like\nA summer to me."],
+    
+    "boat|yacht&nil": ["A ship is always safe at shore,\nbut that is not what it's built for",
+                       "Storms don't scare me\nThey teach me how to sail my ship",
+                       "Solitude is not the same as loneliness. \nSolitude is a solitary boat floating in a sea of possible companions"],
+    
+    "palm&nil": ["As tall as demon\nMore hands than octopus\nSuch giant palm trees",
+                 "I so love the wind\nBlowing through the tall palm trees\nIn sleepy cool shade"],
+    
+    "volcano&nil": ["If your heart is a volcano, \nhow shall you expect flowers to bloom?"],
+    
+    "lake&nil": ["Many drops make a bucket, \nmany buckets make a pond, \nmany ponds make a lake, \nand many lakes make an ocean."],
+    
+    "river&nil": ["What always runs, but never walks.\noften murmurs, never talks,\nhas a bed, but never sleeps.\nhas a mouth, but never eats----It's river",
+                  "Fair river! in thy bright, clear flow\nOf crystal, wandering water,\nThou art an emblem of the glow\nOf beauty- the unhidden heart-",
+                  "No man ever steps in the same river twice, \nfor it's not the same river \nand he's not the same man",
+                  "My favourite places on earth are the wild waterways \nwhere the forest opens its arms \nand a silver curve of river folds the traveller into its embrace",
+                  "If my ship sails from sight, it doesn't mean my journey ends, it simply means the river bends",
+                  "The river flows at its own sweet will, but the flood is bound in the two banks. If it were not thus bound, its freedom would be wasted"],
+    
+    "bridge&nil": ["Cry a river,\nBuild a bridge\nGet over it",
+                   "Sometimes you just have to turn around,\ngive a little smile,\nthrow the match and burn that bridge",
+                   "The hardest thing in life is to know \nwhich bridge to cross and which to burn"],
+    
+    "sea&wave&nil": ["Like the waves\nclashing against one another\nStruggling to keep up,\nbut aware of the power",
+                     "Waves wipes away worries\nSeashells bring good luck\nMeet me where the sky touches the sea",
+                     "Sky, and the waves\npound the shore\nrunning back\npushing down",
+                     ],
+    
+    "sky&nil": ["You are my blue crayon,\nthe one I never have enough of,\nthe one I use to color my sky",
+            "Once you have tasted the taste of sky\nyou will forever look up",
+            "I touch the sky when my knees hit the ground",
+            "Paint the sky, make it yours",
+            "I never get tired of the blue sky",
+            "Body, like the mountain\nHeart, like the ocen\nMind, like the sky",
+            "Only from the heart can you touch the sky",
+            "Don’t ever let anyone turn your sky into a ceiling",
+            "Allow things to come and go,\nkeeping your heart as open as the sky"],
+    
+    "bird&nil": ["A bird sitting on a tree\nIs never afraid of the branch breaking\nBecause her trust it not on the branch\nbut on her own wings",
+                 "A free bird leaps\non the back of the wind\nand floats downstream\ntill the current ends",
+             "I always wonder why birds stay in the same place\nwhen they can fly anywhere on the earth\nThen I ask myself the same question",
+             "Some birds just aren’t meant to be caged",
+             "Everyone envy the freedom bird has\nBut the real freedom is a state of mind",
+             "If you want to fly’\ngive up everything that weighs you down",
+             "I’d risk the fall just to know \nhow it feels to fly",
+             "Intelligence without ambition is a bird without wings",
+             "The bird who dares to fall,\nis the bird who learn to fly"],
+    
+    "snow&mountain&nil": ["Tell the story of the iceberg you climbed\nYour words could become a page in someone else’s survival guide.",
+                      "Iceberg makes you realize \nhow tiny you are",
+                      "It isn’t the mountains ahead to climb that wear you out\nIt’s the pebble in your shoes",
+                      "The harder the climb,\nthe better the view",
+                      "Paradise doesn’t have to be tropical",
+                      "The mountains are calling and I must go"],
+    
+    "mountain&nil": ["There is no WiFi in the forest\nbut I promise\nyou will find a better connection",
+                     "The mist rolls in\nand the sun comes out,\nthe flowers bloom\nand the wylde things shout.",
+                 "The wolf on the hill is not as hungry as the wolf climbing the hill",
+                 "What glorious greeting the sun gives the mountain",
+                 "It is not the mountain we conquer but ourselves",
+                 "Your faith can move mountains\nYour doubt can create them",
+                 "Nature is not a place to visit\nIt is home",
+                 "Every time I get into forest, \nI lose my mind but find soul",
+                 "I am never lost in the mountains,\nit is where I found myself"],
+    
+    "bike&nil": ["I’d rather be a rider for a minute\nthan a spectator for a lifetime",
+             "Life is like riding a bicycle,\nto stay balanced you must keep moving",
+             "Rain or shine, i shan’t not decline, \nthe desire to cycle, nor indoors abide.",
+             "Every ride is like a tiny holiday\nRide hard or stay at home",
+             "I don’t need therapy\nI just need to go cycling",
+             "The secret of happiness?\nJust enjoy the ride",
+             "Cycling is just like church,\nmany attend, but few understand"],
+    
+    "music&nil": ["Music touches you the most,\nIt refreshes you with its serenity.\nBe it Do, Re, Me or Sa, Re, Ga, Ma,\nMusic is the soul of life.",
+                  "Music is my therapy when I can't put into words what I am feeling\nI have a playlist for everything",
+                  "We can’t always chose the music life plays for us,\nbut we can choose how we dance to it.",
+              "Some days I need the music\nand some days\nI need the lyrics",
+              "Let’s take a moment to thank earphones\nFor helping us to ignore\nall stupid people around us",
+              "Music is life\nThat’s why our hearts have beats",
+              "The earth has music for those who listen\nWhen words fail,\nmusic speaks",
+              "Behind every favorite song,\nthere is an untold story",
+              "I want to meet someone\nwho makes me feel the way music does",
+              "Music gives a soul to the universe\nwings to the mind,\nflight to the imagination\nand life to everything",
+              "I like my music so loud,\nI can’t hear my thoughts",
+              "No matter what people think of you,\nalways keep singing your own song"],
+    
+    "dancing&nil": ["Dancing is the hidden language of the soul of the body\nWhen I dance, I forget everything else and just feel completely happy",
+                    "I dance because there's no greater feeling in the world than moving to a piece of music and letting the rest of the world disappear",
+                    "Great dancers are not great because of their technique,\nthey are great because of passion",
+                    "The dance is a poem of which each movement is a word",
+                    "Never give a sword to a man who can't dance"
+                    ],
+    
+    "guitar&nil": ["You can be a singer, and you can be a guitar player, but putting them together is another animal.",
+                   "Lean your body forward slightly to support the guitar against your chest, for the poetry of the music should resound in your heart.",
+                   "I like jazz, but I could never play it. You just sit there with a guitar the size of a Chevy on your chest, wearing a stupid hat, playing the same solo for an hour.",
+                   "My guitar is not a thing.\nIt is an extension of myself.\nIt is who I am"],
+    
+    "piano&nil": ["This is a piano, don't play jazz on it",
+                  "Color is the keyboard, the eyes are the harmonies, \nthe soul is the piano with many strings, the artist is the hand that plays, \ntouching one key or another, to cause vibrations in the soul."],
+    
+    "violin&nil": ["The violin is my mistress, but the guitar is my master.",
+                   "A table, a chair, a bowl of fruit and a violin; what else does a man need to be happy?"],
+    
+    "instrument&@instrument": ["*Playing the #instrument and singing and whistling are just three different ways of making sound."],
+    
+    "shirt&nil": ["Nice shirt\nCan I take you out of it?\nI'll kiss you in the rain\nso you get twice as wet"],
+    
+    "hat&nil": ["Love is the magician that pulls man out of his own hat",
+                "Never wear a hat and sunglasses at the same time, because it looks like you're wearing a disguise."],
+    
+    "outdoors&exercise|fitness&nil": ["Run against the wind\nRun and feel you could fly\nRun till your breath’s lost",
+                                      "When your legs can’t run anymore,\nrun with your heart",
+                                  "Your lungs are burning\nYour legs are shredded\nYour heart is pounding\nKeep going",
+                                  "Slow down.Calm down\nDon’t worry. Don’t hurry\nTrust the process.Run on",
+                                  "If you quit once,\nit becomes a habit\nNever quit, keep running",
+                                  "Don’t limit your challenges\nChallenge your limits\nKeep going, run!",
+                                  "Your legs are not giving out.\nYour head is giving up\nKeep going, run!",
+                                  "Sometimes you gotta lose your breath to find your heartbeat.\nKeep running"],
+    
+    "athlete|sport|exercise&!outdoors&nil": ["I wish there was a way to donate fat \nlike you can donate blood.",
+                                         "Losing weight doesn’t seem to be working,\nSo I’m going to concentrate on\nGetting taller.",
+                                         "Don’t tell people your trainning plans\nshow them your results",
+                                         "Someone who is busier than you is trainning now.",
+                                         "Train like an athlete, eat like a nutritionist\nSleep like a baby,\nwin like a champion",
+                                         "Make time for it\nJust get it done\nNobody ever got strong or got in shape by thinking about it\nThey did it"],
+    
+    "swimming&nil": ["Swimming is my sport\nThe pool is my home\nThe water is my friend",
+                     "So soothing the warm hand\nwhich poises, glides across\nthe eddies of my soul\nand quiets the waters there.",
+                 "When your body gets tired,\nswim with your heart\nSwim now, breath later",
+                 "We don’t swim in your toilet\nso don’t pee in our pool",
+                 "My weapon is my body\nMy element is water\nMy world is swimming",
+                 "I can’t fly,\nbut swimming is the next thing\nThe water is my sky",
+                 "It’s amazing how I spend most of my day half-naked,\naround everyone and it’s just NATURAL"],
+    
+    "rain&nil": ["The rain is raining all around,\nIt falls on field and tree,\nIt rains on the umbrellas here,\nAnd on the ships at sea. ",
+                 "I like storms\nThey let me know that\neven the sky screams sometimes",
+             "Anyone can love you when the sun is shining.\nIn the storm you learn \nwho truely cares for you",
+             "When it rains, it pours…\nbut soon, the sun shines again.\nStay positive.\n Better days are on their way",
+             "Without rain nothing grows,\nlearn to embrace\nthe storms of you life",
+             "Life isn’t about waitting for the storm to pass,\nIt’s about learning to dance in the rain",
+             "Rain falls because the clouds can no longer handle the weight\nTears fall because the heart can no longer handle the rain"],
+    
+    "snow&nil": ["No breath of wind,\nNo gleam of sun –\nStill the white snow\nWhirls softly down\nTwig and bough",
+                 "Everything is magical when it snows\nEverything looks pretty",
+             "A snowflake is one of God’s most fragile creations,\nbut look what they can do when theystick together",
+             "Raindrops are tears from sky\nSnowflakes are kisses from Heaven. \nBe like snow, silent and cold.",
+             "It’s cold for us.\nBut, it’s never too cold for ice-cream.",
+             "Snowflakes, snowflakes, small and white, clean and bright"],
+    
+    "cloud&nil": ["Some people are like clouds.\nWhen they disappear,\nit’s a beautiful day.",
+              "Even if it is very cloudy\nthe blue sky is always there for us, above the clouds",
+              "So much marshmallow in the sky\nI want a big one, mommy.",
+              "Even when the sky is filled with clouds\nThe sun still shines above",
+              "There is a big blue sky\nwaiting just behind the clouds"
+              ],
+    
+    "sun&nature&nil": ["With every rising of the sun.\nThink of your life as just begun",
+                   "Turn your face to the sun \nand all of the shadows fall behind you",
+                   "When you can’t find the sunshine, be the sunshine",
+                   "There is a sun within every person",
+                   "Bathe me in sunlight,\nand pour your love on me,\nso my heart can bloom"],
+    
+    "mask&nil": ["People don’t want to hear the truth\nBecause they don’t want their illusions destroyed",
+             "Even the devil was once an angel",
+             "People have to pretend that you’re a bad person\nso they don’t feel guilty about the things\nthey did to you",
+             "Give a man a mask and he’ll become his true self",
+             "Sometimes it’s not the people who change, it’s the mask that falls off"],
+    
+    "restaurant&!birthday&@food": ["*I’m the type of person \nwho looks at the menu for five minutes \nbut ends up ordering the same exact #thing every time\n",
+                                   "*The moment of joy\nwhen you are in a restaurant and\nyou see your food coming\nHere comes my favorite #. #. #.",
+            "*In a restaurant choose a table near a waiter\nThen order my favorite #. #. #.",
+                   "*I went to a restaurant that serves 'breakfast at any time'. \nSo I ordered #something #. #. during the Renaissance.",
+                   "A great restaurant is one that \njust makes you feel like you're not sure \nwhether you went out or you came home and confuses you."
+                                   ],
+    
+    "food&!restaurant&@food": ["*Here comes #foods #. #. #. #. #. #. \nThey come from different places,\nbut have the same destination, my stomache!"],
+    
+    "train&nil": ["I’ve reached an age where\nmy train of thought often\nleaves the station without me.",
+              "You’re on the right track\nwhen you become uninterested in looking back.",
+              "The light at the end of the tunnel is a train.",
+              "Leave all your trouble\nLeave all your sorrow\nSet down your burden\nCome on, jump onto the train",
+              "Traveling leaves you speechless,\nthen turns you into a storyteller."],
+              
+    "bus&nil": ["I will  buy such a bus\nif I can live to 100.\nThen take my son, grandson, grandgrandson…to the edge of land,\n watching sunset",
+            "Leave all your trouble\nLeave all your sorrow\nSet down your burden\nCome on, jump onto the bus",
+            "Lots of people want to ride with you in the limo, \nbut what you want is someone \nwho will take the bus with you \nwhen the limo breaks down.",
+            "A bus ride is like being in another world"],
+    
+    "tram&nil": ["I’m a tram.\nYou may think I am as slow as a turtle\nBut I don’t have to suffer from traffic jam\nSo sometimes I beat car—the rabbit.",
+            "Tram is the literary and magical version of the train!",
+            "Cities who do not have trams \nalways look less literary, \nless poetic, and less mysterious!",
+            "Your mind is your tram; it will take you any station you wish!",
+            "A wrong tram cannot take you to home; \na wrong thought cannot take you to happiness!"],
+                      
+    "airplane&nil": ["The biggest and fastest bird on the earth\nI don’t eat worm, my food is oil\nI don’t have muscle, steel is my body",
+                "Please fasten your seat belt. \nAnd shut down the cellphone, if you don’t want me to dance.",
+                "When everything seems to be going against you,\nremember that the airplane takes off against the wind,\nnot with it",
+                "Ask any pilot how they started flying\nand you will hear a love story",
+                "The engine is the heart of an airplane,\nbut the pilot is its soul",
+                "Everything that now exists was once imagined.\nIt always seems impossible until it is done."],
+                                            
+    "house&!library|school|university|bathroom&nil": ["Money can buy a clock, but not time\nMoney can buy a house, but not a home",
+              "It’s not how big the house is,\nIts how happy the home is",
+              "Houses are cellular walls; they keep our problems from bleeding into everyone else's",
+              "Home wherever you leave everything you love\nand never question that it will be there when you return\n",
+              "A good laugh is sunshine in the house"],
+                                                      
+    "shopping&nil": ["Hold your wife’s hand in the mall\nbecause if you let go she’ll start shopping\nIt looks romantic, but it’s actually economic",
+                "Shopping is cheaper than therapy",
+                "I am not a shopaholic\nI am helping the economy",
+                "The quickest way to know a woman is to go shopping with her.",
+                "Live at the moment\nSpend the wage of next month"],
+                                                                   
+    "bag&nil": ["Life is short, buy the bag",
+                "This little bag I hope will prove\nTo be not vainly made —\nFor, if you should a needle want\nIt will afford you aid.",
+            "The bags under my eyes are CHANEL",
+            "I want someone to look at me the way I look at a CHANEL bag",
+            "Everyday is a new page of my fashion story"],
+                                                                           
+    "shoe&nil": ["Shoes are just a pedestal.\nWhat interests me is the power of the woman who wears them",
+             "Life is short\nBuy shoes",
+             "I make shoe contact before eye contact",
+             "Good shoes take you good places",
+             "Shoes are like ice-cream\nThere’s always room for more",
+             "High heels are pleasure with pain"]
+}
+
+
+
+

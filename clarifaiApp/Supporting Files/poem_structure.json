@@ -1,0 +1,47 @@
+{
+    "animal@animal": ["@0 #monster , with your eyes so @1 \nYou see the @2 so @3 and @4 \nTime to @5 , so much to @6"],
+    "room|office@furniture": ["A @0 room,\n with @0 #stock and @0 #towel tossed throughout.\nWhere does that @1 #sofa come from"],
+    "landscape@landscape": ["I @3 get @4 in the @0 #forest , it is so @0 \nHow @0 the #sky is\nI cannot take my mind off @0 #trees \n @1 the @0 #sky , @3 make it a @0 @2"],
+    "portrait@nil": ["@0 eyes @8 in the @1 face\n @2 hair @3 \n @4 lips under the @5 nose\nYour @6 eyelashes blooms like a @7"],
+    "party@nil": ["Music is @0 , light is @1 .\nWe are born to be @2 .\nLet’s @3 , let’s @4 ."],
+    "food@food": ["#Cheese and #cream @0 \n #Toast and #pie @1 \n #burger and #pizza make me @2 \n #Powder and #flour make me @3 for whole day"],
+    "car|train|bus|tram|boat|airplane|yacht|bike@nil": ["The * @0 , it has got to @1 !\nIt @2 , quite @3 !\nThe * @4 , it’s gonna @5"],
+    "athlete|sport|exercise@nil": ["@0 up a @1 , do some @2 .\n Keep @3 , run!\nBBQ you fat in the @4 , stay @5"],
+    "romantic|couple|romance@nil": ["My @0 , your @1 @2 my @3 .\n Still @4 the first time I @5 with you.\nYou are the @6 , my @7 @8 @9"],
+    "guitar|violin|piano@nil": ["The * always @0 me by\nthe @1 @2 it makes, when you @3 strum the strings!\nLife is short, buy the *"]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
