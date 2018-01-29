@@ -2,52 +2,62 @@
     "animal": [
                ["little", "adorable", "lovely", "cute", "smart", "energetic", "furry", "cuddly", "wild", "small", "large", "young", "poor", "domestic", "normal", "single", "intact", "noble", "strange", "beautiful", "sacred", "big", "dangerous", "huge", "fine", "live", "healthy", "stuffed", "blooded", "caged", "dumb", "frightened", "domesticated", "largest", "rabid", "carnivorous", "sick", "female", "hunted", "trapped", "intelligent", "powerful", "legged", "useful", "rare", "hungry", "marine", "mature", "gregarious", "favorite", "valuable", "magnificent", "curious", "perfect", "ferocious", "fierce", "footed", "faithful", "vertebrate", "aquatic", "dominant", "unclean", "susceptible", "savage", "nocturnal", "adult"
                 ],
-                ["cute", "shining", "dreamy", "bright", "watery", "blue", "dark", "brown", "black", "large", "green", "gray", "big", "wide", "closed", "beautiful", "grey", "open", "clear", "red", "pale", "keen", "deep", "sharp", "soft", "hazel", "sad", "cold", "round", "set", "bloodshot", "yellow", "downcast", "watchful", "fine", "light", "blind", "tired", "eager", "sunken", "sparkling", "lovely", "watery", "wild", "sore", "huge", "dull", "curious", "brilliant", "dry", "anxious", "frightened", "tearful", "beady", "intelligent", "expressive", "steady", "narrow", "golden", "fierce", "gentle", "weak", "quick", "angry", "weary", "dim", "mortal", "strange", "sleepy", "fiery", "innocent", "prominent", "luminous", "shrewd", "sweet", "mild", "hungry", "wet", "calm", "unseeing", "filled", "sightless"
+               ["cute", "shining", "dreamy", "bright", "watery", "blue", "dark", "brown", "black", "large", "green", "gray", "big", "wide", "closed", "beautiful", "grey", "open", "clear", "red", "pale", "keen", "deep", "sharp", "soft", "hazel", "sad", "cold", "round", "set", "bloodshot", "yellow", "downcast", "watchful", "fine", "light", "blind", "tired", "eager", "sunken", "sparkling", "lovely", "watery", "wild", "sore", "huge", "dull", "curious", "brilliant", "dry", "anxious", "frightened", "tearful", "beady", "intelligent", "expressive", "steady", "narrow", "golden", "fierce", "gentle", "weak", "quick", "angry", "weary", "dim", "mortal", "strange", "sleepy", "fiery", "innocent", "prominent", "luminous", "shrewd", "sweet", "mild", "hungry", "wet", "calm", "unseeing", "filled", "sightless"
                 ],
-                ["people", "world", "sky", "tree", "grass", "leaf", "cloud"],
-                ["sweet", "wonderful", "fantastic", "happy", "real", "new", "modern", "western", "natural", "ancient", "civilized", "spiritual", "free", "wide", "literary", "objective", "speaking", "phenomenal", "visible", "greek", "ideal", "industrial", "academic", "scientific", "strange", "commercial", "capitalist", "complex", "invisible", "intellectual", "mediterranean", "industrialized", "civilised", "corporate", "secular", "hostile", "unseen", "empirical", "sensible", "brave", "classical", "virtual", "fictional", "organic", "competitive", "fashionable"
+               ["people", "world", "sky", "tree", "grass", "leaf", "cloud"],
+               ["sweet", "wonderful", "fantastic", "happy", "real", "new", "modern", "western", "natural", "ancient", "civilized", "spiritual", "free", "wide", "literary", "objective", "speaking", "phenomenal", "visible", "greek", "ideal", "industrial", "academic", "scientific", "strange", "commercial", "capitalist", "complex", "invisible", "intellectual", "mediterranean", "industrialized", "civilised", "corporate", "secular", "hostile", "unseen", "empirical", "sensible", "brave", "classical", "virtual", "fictional", "organic", "competitive", "fashionable"
                 ],
-                ["marvellous", "breath-taking", "bright", "blue", "clear", "cloudless", "dark", "open", "black", "bright", "gray", "whole", "starry", "pale", "grey", "deep", "overcast", "cloudy", "azure", "red", "empty", "leaden", "cold", "brilliant", "wide", "beautiful", "stormy", "distant", "clouded", "vast", "starlit", "pure", "sunny", "serene", "hot", "dull", "green", "purple", "soft", "yellow", "unclouded", "twilight", "filled", "wintry", "golden", "light", "calm", "hazy", "gloomy", "starless", "luminous", "pink", "murky", "endless", "infinite", "colored", "boundless", "warm", "moonless", "tropical", "glorious", "crimson", "quiet", "silent", "sapphire", "threatening", "vaulted", "sullen", "angry", "windy", "radiant", "dim", "blank"
+               ["marvellous", "breath-taking", "bright", "blue", "clear", "cloudless", "dark", "open", "black", "bright", "gray", "whole", "starry", "pale", "grey", "deep", "overcast", "cloudy", "azure", "red", "empty", "leaden", "cold", "brilliant", "wide", "beautiful", "stormy", "distant", "clouded", "vast", "starlit", "pure", "sunny", "serene", "hot", "dull", "green", "purple", "soft", "yellow", "unclouded", "twilight", "filled", "wintry", "golden", "light", "calm", "hazy", "gloomy", "starless", "luminous", "pink", "murky", "endless", "infinite", "colored", "boundless", "warm", "moonless", "tropical", "glorious", "crimson", "quiet", "silent", "sapphire", "threatening", "vaulted", "sullen", "angry", "windy", "radiant", "dim", "blank"
                 ],
-                ["jump", "run", "go mad", "be crazy"],
-                ["laugh", "grin", "giggle", "eat", "taste"]
+               ["jump", "run", "go mad", "be crazy"],
+               ["laugh", "grin", "giggle", "eat", "taste"]
                ],
     
     "room|office": [
-             ["spacious", "splendid", "grand", "fabulous", "narrow", "retro", "appointed", "baronial", "impressive", "old-fashioned", "beachfront", "brick-built", "burnt-out", "carpeted", "dark", "cavernous", "comfortable", "condemned", "covered", "curtained-off", "dank", "derelict", "darkend", "detached", "dilapidated", "doric", "furnished", "gabled", "half-timbered", "handsome", "high-rise", "lofty", "long-stay", "low-rise", "moated", "modest", "non-residential", "palatial", "redbrick", "snug", "stark", "warm"
-              ],
-             ["wooden","cozy", "soft", "great", "amazing", "high-quality", "old", "new", "antique", "fine", "heavy", "modern", "little", "wooden", "upholstered", "beautiful", "french", "american", "rich", "comfortable", "expensive", "simple", "costly", "dark", "broken", "cheap", "elegant", "victorian", "original", "mental", "made", "domestic", "handsome", "movable", "carved", "household", "contemporary", "valuable", "solid", "overstuffed", "nice", "rustic", "massive", "fashioned", "traditional", "polished", "european", "ancient", "grave", "splendid", "plain", "scanty", "metal", "used", "functional", "shabby", "magnificent", "ornamental", "italian", "secondhand", "luxurious", "ornate", "lovely", "plastic", "handmade", "familiar", "suitable", "covered", "light"]
-            ],
-    
-    "landscape": [
-                  ["tropical", "dense", "thick", "primeval", "vast", "beautiful", "enchanting", "pretty", "unspoiled", "panoramic", "favoured", "exotic", "grand", "gorgeous", "beautiful", "natural", "magnificent", "wild", "picturesque", "spectacular", "romantic", "lovely", "rural", "grand", "alpine", "wonderful", "splendid", "charming", "varied", "glorious", "sublime", "rugged", "delightful", "tropical", "coastal", "elaborate", "rich", "gorgeous", "pretty", "dramatic", "attractive", "grandest", "interesting", "exquisite", "breathtaking", "majestic", "superb", "striking", "bold", "pleasant", "wildest", "theatrical", "mountainous", "stunning", "pastoral", "impressive", "sylvan", "realistic", "typical", "noble", "movable", "distant", "savage", "rocky", "familiar", "loveliest", "fantastic", "quiet", "remarkable", "strange", "australian", "flat", "wooded", "oriental", "celestial", "diversified", "exotic", "lush", "inspiring"
-                   ],
-                   ["Paint", "Depict", "Copy", "Portray", "Pack", "Zip", "Burn", "Roast", "Bake up", "Steal", "Take away", "Call", "Touch", "Hide", "Veil", "Conceal", "Hold", "Catch", "Cross", "Measure", "Order", "Build", "Draw", "Roll", "Wonder", "Climb", "Push", "Pull", "Raise", "Eat", "Dress", "Squeeze", "Tap", "Pick up"
+                    ["spacious", "splendid", "grand", "fabulous", "narrow", "retro", "appointed", "baronial", "impressive", "old-fashioned", "beachfront", "brick-built", "burnt-out", "carpeted", "dark", "cavernous", "comfortable", "condemned", "covered", "curtained-off", "dank", "derelict", "darkend", "detached", "dilapidated", "doric", "furnished", "gabled", "half-timbered", "handsome", "high-rise", "lofty", "long-stay", "low-rise", "moated", "modest", "non-residential", "palatial", "redbrick", "snug", "stark", "warm"
+                     ],
+                    ["wooden","cozy", "soft", "great", "amazing", "high-quality", "old", "new", "antique", "fine", "heavy", "modern", "little", "wooden", "upholstered", "beautiful", "french", "american", "rich", "comfortable", "expensive", "simple", "costly", "dark", "broken", "cheap", "elegant", "victorian", "original", "mental", "made", "domestic", "handsome", "movable", "carved", "household", "contemporary", "valuable", "solid", "overstuffed", "nice", "rustic", "massive", "fashioned", "traditional", "polished", "european", "ancient", "grave", "splendid", "plain", "scanty", "metal", "used", "functional", "shabby", "magnificent", "ornamental", "italian", "secondhand", "luxurious", "ornate", "lovely", "plastic", "handmade", "familiar", "suitable", "covered", "light"]
                     ],
-                   ["gift", "dish", "cake", "bread", "toast", "picture", "sculpture", "bowl", "belt", "cuisine", "cushion", "curtain", "map", "plate", "puzzle", "photo", "strip", "snack", "bed", "slice", "bottle", "container", "color", "sheet"],
-                   ["quietly", "simply", "gently", "quickly", "slowly", "swiftly", "amazingly", "graciously", "fairly", "politely", "genteelly", "gracefully"],
-                   ["stuck", "confused", "lost", "angry", "anxious", "frustrated", "excited", "frightened"]
-                  ],
+    
+    "landscape|sea": [
+                      ["tropical", "dense", "thick", "primeval", "vast", "beautiful", "enchanting", "pretty", "unspoiled", "panoramic", "favoured", "exotic", "grand", "gorgeous", "beautiful", "natural", "magnificent", "wild", "picturesque", "spectacular", "romantic", "lovely", "rural", "grand", "alpine", "wonderful", "splendid", "charming", "varied", "glorious", "sublime", "rugged", "delightful", "tropical", "coastal", "elaborate", "rich", "gorgeous", "pretty", "dramatic", "attractive", "grandest", "interesting", "exquisite", "breathtaking", "majestic", "superb", "striking", "bold", "pleasant", "wildest", "theatrical", "mountainous", "stunning", "pastoral", "impressive", "sylvan", "realistic", "typical", "noble", "movable", "distant", "savage", "rocky", "familiar", "loveliest", "fantastic", "quiet", "remarkable", "strange", "australian", "flat", "wooded", "oriental", "celestial", "diversified", "exotic", "lush", "inspiring"
+                       ],
+                      ["Paint", "Depict", "Copy", "Portray", "Pack", "Zip", "Burn", "Roast", "Bake up", "Steal", "Take away", "Call", "Touch", "Hide", "Veil", "Conceal", "Hold", "Catch", "Cross", "Measure", "Order", "Build", "Draw", "Roll", "Wonder", "Climb", "Push", "Pull", "Raise", "Eat", "Dress", "Squeeze", "Tap", "Pick up"
+                       ],
+                      ["gift", "dish", "cake", "bread", "toast", "picture", "sculpture", "bowl", "belt", "cuisine", "cushion", "curtain", "map", "plate", "puzzle", "photo", "strip", "snack", "bed", "slice", "bottle", "container", "color", "sheet"],
+                      ["quietly", "simply", "gently", "quickly", "slowly", "swiftly", "amazingly", "graciously", "fairly", "politely", "genteelly", "gracefully"],
+                      ["stuck", "confused", "lost", "angry", "anxious", "frustrated", "excited", "frightened"]
+                      ],
     
     "portrait": [
                  ["cute", "shining", "dreamy", "bright", "watery", "blue", "dark", "brown", "black", "large", "green", "gray", "big", "wide", "closed", "beautiful", "grey", "open", "clear", "red", "pale", "keen", "deep", "sharp", "soft", "hazel", "sad", "cold", "round", "set", "bloodshot", "yellow", "downcast", "watchful", "fine", "light", "blind", "tired", "eager", "sunken", "sparkling", "lovely", "watery", "wild", "sore", "huge", "dull", "curious", "brilliant", "dry", "anxious", "frightened", "tearful", "beady", "intelligent", "expressive", "steady", "narrow", "golden", "fierce", "gentle", "weak", "quick", "angry", "weary", "dim", "mortal", "strange", "sleepy", "fiery", "innocent", "prominent", "luminous", "shrewd", "sweet", "mild", "hungry", "wet", "calm", "unseeing", "filled", "sightless"
-                 ],
+                  ],
                  ["heart-shaped", "square", "round", "pale", "white", "handsome", "beautiful", "long", "round", "red", "pretty", "dark", "thin", "sweet", "familiar", "broad", "lovely", "straight", "fair", "full", "black", "sad", "wrinkled", "bright", "brown", "flushed", "smooth", "oval", "open", "serious", "grave", "happy", "flat", "pleasant", "narrow", "lean", "upturned", "wry", "haggard", "honest", "north", "ruddy", "bold", "calm", "friendly", "stern", "freckled", "bearded", "sallow", "pallid", "yellow", "fat", "anxious", "delicate", "gentle", "intelligent", "cheerful", "eager", "vertical", "tanned", "angry", "expressive", "expressionless", "brave", "pink", "tired"
-                 ],
+                  ],
                  ["long", "short", "curly", "straight", "brown", "black", "blond", "red", "long", "black", "dark", "brown", "red", "white", "blond", "curly", "gray", "short", "thick", "golden", "blonde", "fair", "grey", "light", "yellow", "wavy", "straight", "soft", "beautiful", "fine", "auburn", "facial", "thin", "coarse", "wet", "sandy", "bright", "colored", "matted", "silky", "reddish", "pale", "tangled", "glossy", "wild", "flaxen", "shaggy", "dishevelled", "loose", "smooth", "tousled", "damp", "woolly", "shiny", "braided", "abundant", "false", "bushy", "unkempt", "gold", "lovely", "unruly", "coloured", "sparse", "greasy", "kinky", "dyed", "back", "dry", "silvery", "frizzy", "disheveled", "wiry", "stiff", "axillary", "luxuriant", "powdered", "stringy", "sleek", "grizzled", "dirty", "bleached", "silken", "tawny", "wispy", "pretty", "uncombed", "rough", "untidy"
-                 ],
+                  ],
                  ["bursts into bloom", "thrusts into sky", "soars up into the sky", "flies up in the sky", "roars to the sky"],
                  ["thin", "red", "pink", "chapped", "full", "thick", "dry", "pale", "soft", "parched", "white", "sweet", "rosy", "closed", "tight", "warm", "cold", "unclean", "upper", "blue", "moist", "pink", "open", "wet", "beautiful", "pretty", "ruby", "bloodless", "chapped", "cracked", "firm", "fleshy", "big", "hot", "scarlet", "stiff", "sensuous", "loose", "wide", "silent", "pallid", "heavy", "outer", "lovely", "bright", "dark", "curved", "purple", "delicate", "sensitive", "fat", "dead", "narrow", "crimson", "puckered", "coral", "eager", "rounded", "luscious", "mobile", "bearded", "fresh", "ripe", "eloquent", "withered", "pouty", "parted", "mortal", "thirsty", "tremulous", "prominent", "swollen", "livid", "lateral", "colorless", "plump"
-                 ],
+                  ],
                  ["big", "small", "pointy", "crooked", "long", "aquiline", "large", "straight", "red", "big", "runny", "flat", "hooked", "little", "broken", "sharp", "prominent", "small", "bloody", "very", "pointed", "thin", "broad", "short", "crooked", "black", "bulbous", "external", "fine", "upturned", "round", "cold", "stuffy", "narrow", "blunt", "strong", "delicate", "wet", "wide", "like", "sensitive", "huge", "shaped", "thick", "pink", "soft", "keen", "curved", "false", "tiny", "beaked", "arched", "electronic", "aristocratic", "enormous", "blue", "fleshy", "freckled", "pretty", "pert", "perfect", "bony", "slender", "beaky", "ugly", "brown", "tilted", "grecian", "handsome", "pinched", "swollen", "rounded", "cute", "artificial", "fat", "funny", "shiny", "bent", "inquisitive", "cleft", "eagle"],
                  ["long", "short", "black", "brown", "blond", "red", "false", "dark", "black", "thick", "white", "wet", "fake", "heavy", "beautiful", "curly", "lower", "pale", "longest", "upper", "light", "blond", "artificial", "brown", "silky", "soft", "golden", "silken", "fair", "curved", "fine", "sandy", "lovely", "closed", "delicate", "straight", "inverted", "slender", "thin", "blonde", "sparse", "drooping", "huge", "enormous", "pretty", "inturned", "lush", "yellow", "downcast", "stiff", "fringed", "spiky", "longer", "feminine", "misdirected", "invisible", "ingrowing", "luxuriant", "scanty", "gray", "moist", "absent", "tiny", "mascaraed", "grey", "colored", "bottom", "damp", "coloured", "sentimental", "nice", "beaded", "pink", "auburn", "loose", "shaggy", "reddish", "gorgeous", "frozen", "sooty"],
                  ["rose", "lily", "sunflower", "cauliflower", "tulip", "calla lily", "hydrangeas", "peony", "ranunculus", "stephanotis", "sweet peas", "gardenia"],
                  ["embedded", "planted", "inserted", "nested", "rooted", "anchored", "buried"]
-                ],
+                 ],
     
     "party": [ ["energetic", "bluesy", "funky", "harmonious", "jazzy", "catchy"],  ["shining", "aureate", "illuminating", "radiant", "dim"],  ["wild", "crazy", "vivo", "active", "vibrant"],  ["chase", "move", "jump", "shake"],  ["dance", "sway", "swing", "rock", "laugh"]],
     
-    "food": [ ["make me dream", "hurt my head", "make me dizzy"],  ["make me die", "make me hoppy", "make me snort"],  ["crazy", "scream", "cry", "laugh", "yell", "shout", "roar"],  ["tired", "enegetic", "silly", "fatigued", "weary", "exhausted", "bored", "fagged", "burnt-out"]],
+    "food|drink": [
+                   ["bitter", "sweet", "dry", "moist", "bland", "spicy", "savoury", "rich", "salty", "tasty", "sugary", "greasy", "delicious", "scrumptious", "sour", "hot", "crunchy"
+                    ],
+                   ["softly", "calmly", "silently", "slightly", "lightly", "gently", "mildly", "unhurriedly", "quickly", "slowly", "smoothly", "gradually", "swiftly"
+                    ],
+                   ["melts", "burns", "boils", "bounces", "bumps", "beats"],
+                   ["belly", "mouth", "mind", "stomache", "heart", "hand"],
+                   ["good", "better", "happy", "fantastic", "fabulous", "brilliant", "perfect", "awesome"],
+                   ["cup", "bottle", "barrel", "dozen", "scoop", "box"],
+                   ["milk", "beer", "wine", "water", "soda water", "coffee", "tea", "vinegar", "oil", "soy sauce", "tomato sauce", "chili sauce", "cola", "spring water"]
+                   ],
     
     "car|train|bus|tram|boat|airplane|yacht|bike": [ ["rattles", "hums", "hisses", "bangs"],  ["go", "run", "fly", "rush", "jump"],  ["huffs", "puffs", "blows"],  ["sick", "awesome", "posh", "arrogant", "cocky"],  ["crackles", "whizzs", "coughs", "wheezes"],  ["stop", "sleep", "break down", "have a rest", "be dormant"]],
     
@@ -60,28 +70,40 @@
                             ["sweet", "charming", "different", "musical", "certain", "strange", "loud", "consonant", "sweet", "various", "vocal", "articulate", "soft", "faint", "natural", "individual", "familiar", "similar", "normal", "distant", "pitched", "muffled", "abnormal", "initial", "adventitious", "utter", "inarticulate", "elementary", "harsh", "audible", "complex", "distinct", "guttural", "environmental", "discordant", "nasal", "unusual", "mere", "pleasant", "separate", "beautiful", "mysterious", "harmonious", "sharp", "meaningless", "empty", "sure", "absent", "characteristic", "diminished", "peculiar", "bronchial", "unintelligible", "melodious", "electronic", "weird", "distinctive", "cardiac", "consonantal", "rhythmic", "vowel", "shrill", "fetal", "unfamiliar", "soothing"],
                             ["sounds", "echo", "noise", "voice", "audio", "tone", "pitch"],
                             ["rightly", "freely", "unmindful", "slowly", "gently", "passionately", "stormily", "fiercely", "violently", "vigorously"]
-                           ]
+                            ],
+    "music": [
+              ["Rock", "Jazz", "Blues", "Hip hop", "Pop", "Reggae", "Country", "Funk", "Folk", "Soul", "Popular", "Classical", "Rapping", "House", "Gospel", "Dance", "Trance"
+               ],
+              ["kills", "eliminates", "reduces", "removes", "relieves", "takes away", "erases", "murders", "wipes", "expels", "get rid of"],
+              ["anguish", "pain", "trouble", "annoyance", "ail", "ache", "grief", "sorrow", "agony", "soreness"],
+              ["speaks", "touches", "sings", "talks", "utters", "reacts", "responds", "connects", "relates", "whistles", "dances", "shouts", "chants", "performs"],
+              ["relieves", "reduces", "kills", "eliminates","removes", "relieves", "takes away", "erases", "murders", "wipes", "expels", "get rid of"],
+              ["my", "his", "her", "our", "their"],
+              ["stress", "strain", "distress", "fatigue", "tense", "anxiety", "pressure", "burden", "hardship", "exhaustion"]
+              ],
+    "shopping": [
+                 ["spacious", "splendid", "grand", "fabulous", "narrow", "retro", "appointed", "baronial", "impressive", "old-fashioned", "beachfront", "brick-built", "burnt-out", "carpeted", "dark", "cavernous", "comfortable", "condemned", "covered", "curtained-off", "dank", "derelict", "darkend", "detached", "dilapidated", "doric", "furnished", "gabled", "half-timbered", "handsome", "high-rise", "lofty", "long-stay", "low-rise", "moated", "modest", "non-residential", "palatial", "redbrick", "snug", "stark", "warm"
+                  ],
+                 ["mall", "plaza", "supermarket", "shopping mall", "shopping center"],
+                 ["many", "plenty of", "numerous", "lots of", "hundreds of", "thousands of", "countless", "innumerable"],
+                 ["stores", "boutiques", "shops", "booths", "stalls"],
+                 ["luxury", "plastic", "small", "large", "waterproof", "elegant", "luxurious", "posh", "expensive", "glamour", "high-end", "senior", "extraordinary", "deluxe", "premium", "pricey", "precious", "cheap", "priceless"],
+                 ["clothing", "shoes", "bags", "watches", "belts"],
+                 ["Rock", "Jazz", "Blues", "Hip hop", "Pop", "Reggae", "Country", "Funk", "Folk", "Soul", "Popular", "Classical", "Rapping", "House", "Gospel", "Dance", "Trance"
+                  ],
+                 ["bag", "coat", "T-shirt", "plants", "wallet", "belt", "pocket"],
+                 ["sweet", "wonderful", "amazing", "surprising", "interesting", "fantastic", "brilliant", "good", "happy", "nice", "fabulous", "awesome", "delightful"]
+                 ],
+    "skyscraper|cityscape": [
+                             ["marvellous", "breath-taking", "bright", "blue", "clear", "cloudless", "dark", "open", "black", "bright", "gray", "whole", "starry", "pale", "grey", "deep", "overcast", "cloudy", "azure", "red", "empty", "leaden", "cold", "brilliant", "wide", "beautiful", "stormy", "distant", "clouded", "vast", "starlit", "pure", "sunny", "serene", "hot", "dull", "green", "purple", "soft", "yellow", "unclouded", "twilight", "filled", "wintry", "golden", "light", "calm", "hazy", "gloomy", "starless", "luminous", "pink", "murky", "endless", "infinite", "colored", "boundless", "warm", "moonless", "tropical", "glorious", "crimson", "quiet", "silent", "sapphire", "threatening", "vaulted", "sullen", "angry", "windy", "radiant", "dim", "blank"
+                              ],
+                             ["tall", "marvelous", "lofty", "vast", "spacious", "wide", "tall", "modern", "ancient"
+                              ],
+                             ["tower", "skyscraper", "building", "plaza", "high-rise", "landmark"],
+                             ["Wind", "Storm", "Rain", "Thunder", "Hail", "Snow", "Typhoon"],
+                             ["harder", "viciously", "bloodily", "furiously", "brutally", "forcefully", "forcibly", "ferociously", "angrily", "harshly", "cruelly", "severely", "sharply", "strongly", "fiercely", "vigorously"],
+                             ["better", "beautiful", "charming", "enchanting", "attractive", "glorious", "exotic", "lovely"],
+                             ["bird", "eagle", "owl", "turkey", "pigeon", "seabird", "sparrow", "hawk", "airplane", "parrot", "goose", "seagull"]
+                             ]
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
