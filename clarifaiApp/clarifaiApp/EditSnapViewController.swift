@@ -407,14 +407,29 @@ UINavigationControllerDelegate {
             NSParagraphStyleAttributeName: paraStyle,
             NSForegroundColorAttributeName: selectedTextColor as Any,
             ] as [String : Any]
+        
+        // Put the image into a rectangle as large as the original image
         image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
 
-        let rect = CGRect(origin: point, size: image.size)
+        // get the bounding-box for the string
+        var stringSize = text.size(attributes: textFontAttributes)
+        
+        // draw in rect functions as whole numbers
+        stringSize.width = ceil(stringSize.width)
+        stringSize.height = ceil(stringSize.height)
+        
+        let rect = CGRect(origin: CGPoint.zero, size: image.size)
+
+        // Draw the text into an image
         text.draw(in: rect, withAttributes: textFontAttributes)
 
+        // Create a new image out of the images we have created
         savedImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        // End the context now that we have the image we need
         UIGraphicsEndImageContext()
-
+        
+        //Pass the image back up to the caller
         return savedImage!
     }
     
