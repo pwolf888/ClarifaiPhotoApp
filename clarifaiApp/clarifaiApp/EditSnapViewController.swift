@@ -91,6 +91,15 @@ UINavigationControllerDelegate {
         app = ClarifaiApp(apiKey: "ab5e1c0750f14e5685e24b243de99d27")
         
         recognizeImage(image: newImage)
+        
+        //hide buttons while API is being called
+        self.fontSize.isHidden = true
+        self.fontStyle.isHidden = true
+        self.textColour.isHidden = true
+        self.shareNavButton.isHidden = true
+        self.savePhoto.isHidden = true
+        
+        //Animate logo will API is creating poem
         snapoetryLoader.startAnimating()
     }
 
@@ -102,7 +111,6 @@ UINavigationControllerDelegate {
 
     // Recognize the Image with Clarifai
     func recognizeImage(image: UIImage) {
-        
         
         // Check that the application was initialized correctly.
         if let app = app {
@@ -148,9 +156,18 @@ UINavigationControllerDelegate {
                         
                         UIView.animate(withDuration: 0.2, animations: {
                             self.snapoetryLoader.alpha = 0
+                        
                         })
                         
+                        // show buttons to edit image once poem has loaded
+                        self.fontSize.isHidden = false
+                        self.fontStyle.isHidden = false
+                        self.textColour.isHidden = false
+                        self.shareNavButton.isHidden = false
+                        self.savePhoto.isHidden = false
                     }
+                    
+                    
                     
                 })
             })
@@ -205,7 +222,7 @@ UINavigationControllerDelegate {
         bringChangeColourToView()
     }
     
-    @IBAction func selectFontSize(_ sender: Any) {
+    @IBAction func selectFontSize(_ sender: UIButton) {
         
         //call function to present user with text colour options
         print("User has selected to change text size")
