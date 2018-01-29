@@ -21,7 +21,7 @@ class NewPoemGenerator{
     func readDataFromJsonFile(){
         var path = Bundle.main.path(forResource: "poem_structure", ofType: "json")
         var url = URL(fileURLWithPath: path!)
-
+        
         do{
             let data = try Data(contentsOf: url)
             let dic = try JSONDecoder().decode([String:[String]].self, from: data)
@@ -60,7 +60,7 @@ class NewPoemGenerator{
                 poem += processPoemStructure(index: i, subRule: subRules[0],topic: r.1, items: r.2) + "\n\n"
             }
         }
-    
+        
         return (poem != "" ? poem : "no poem")
     }
     
@@ -126,3 +126,4 @@ class NewPoemGenerator{
         return poem
     }
 }
+
