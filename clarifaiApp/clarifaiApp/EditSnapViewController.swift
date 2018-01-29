@@ -388,9 +388,12 @@ UINavigationControllerDelegate {
         
     func textToImage(drawText text: NSString, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
 
+        // set scale for font size in relation to image size
+        let mlpScale = image.size.height/photoTaken.frame.size.height
+        
         // pull the current user selected text format
         let selectedTextColor = poeticText.textColor
-        let fontToDraw = UIFont(name: selectedFont, size: (poeticText.font?.pointSize)!)!
+        let fontToDraw = UIFont(name: selectedFont, size: CGFloat(selectedFontSize).multiplied(by: mlpScale))!
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
 
@@ -398,7 +401,6 @@ UINavigationControllerDelegate {
         let paraStyle = NSMutableParagraphStyle()
         paraStyle.lineSpacing = 1.2
         paraStyle.alignment = NSTextAlignment.center;
-        
         
         let textFontAttributes = [
             NSFontAttributeName: fontToDraw,
