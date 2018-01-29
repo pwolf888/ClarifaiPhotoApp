@@ -111,12 +111,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ohS-uP-fMp">
-                                <rect key="frame" x="0.0" y="68" width="375" height="543"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="La8-zK-DMK">
                                 <rect key="frame" x="319" y="619" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -359,6 +353,13 @@
                                     <action selector="selectFontSize:" destination="VhA-dj-xHK" eventType="touchUpInside" id="QZ4-i1-qsG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTO-XW-ugl">
+                                <rect key="frame" x="16" y="68" width="343" height="543"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -386,7 +387,7 @@
                         <outlet property="largeText" destination="2F8-vV-hB4" id="ZAF-Wf-YDT"/>
                         <outlet property="mediumText" destination="bwe-JR-qJ4" id="J3o-68-PnE"/>
                         <outlet property="photoTaken" destination="iHg-yL-wS1" id="Get-ey-D5p"/>
-                        <outlet property="poeticText" destination="ohS-uP-fMp" id="7XM-O5-DjO"/>
+                        <outlet property="poeticText" destination="NTO-XW-ugl" id="H3E-fq-2Gg"/>
                         <outlet property="savePhoto" destination="jHV-HK-vqN" id="9Vn-mf-jgV"/>
                         <outlet property="shareNavButton" destination="WPt-0a-SLD" id="qdE-J8-6MV"/>
                         <outlet property="smallText" destination="Vvh-WX-1i3" id="vIG-nE-nd2"/>

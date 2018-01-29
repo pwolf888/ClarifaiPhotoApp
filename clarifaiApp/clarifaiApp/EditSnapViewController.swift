@@ -43,7 +43,8 @@ UINavigationControllerDelegate {
     @IBOutlet weak var savePhoto: UIButton!
     @IBOutlet weak var fontStyle: UIButton!
     @IBOutlet weak var textColour: UIButton!
-    @IBOutlet weak var poeticText: UITextView!
+
+    @IBOutlet weak var poeticText: UILabel!
     @IBOutlet weak var photoTaken: UIImageView!
     @IBOutlet weak var fontSize: UIButton!
     
@@ -484,6 +485,7 @@ UINavigationControllerDelegate {
 
         //*** POETIC TEXT
         photoTaken.addSubview(poeticText)
+        poeticText.numberOfLines = 0
         poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         poeticText.textAlignment = NSTextAlignment.center
         poeticText.textColor = .black
