@@ -78,6 +78,9 @@
                                 <rect key="frame" x="16" y="614" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="help"/>
+                                <connections>
+                                    <action selector="helpButton:" destination="j4Z-7c-M0g" eventType="touchUpInside" id="tex-Yd-3ha"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
