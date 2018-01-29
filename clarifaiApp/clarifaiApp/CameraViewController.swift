@@ -156,19 +156,16 @@ UINavigationControllerDelegate {
         }
     }
    
+    // Help button - gives info to user on how to user snapoetry
     @IBAction func helpButton(_ sender: UIButton) {
         
+        // Create icon for alert box
         let imageRect = UIImageView(frame: CGRect(x: 0, y: 0, width: 60, height: 55))
         let snapoetryIcon = UIImage(named: "snapoetryIcon.png")
         imageRect.image = snapoetryIcon
         
-        
-        
-        
-        print("User pressed back")
         let defaultAction = UIAlertAction(title: "Get Snappin'",
                                           style: .default) { (action) in
-                                            
                                             
         }
         
@@ -176,8 +173,11 @@ UINavigationControllerDelegate {
         let alert = UIAlertController(title: "How to Snapoetry",
                                       message: "< Take a photo with this",
                                       preferredStyle: .alert)
+        
         alert.addAction(defaultAction)
-        let icon = alert.view.addSubview(imageRect)
+        
+        // Add snapoetry icon to alert box
+        alert.view.addSubview(imageRect)
         
         self.present(alert, animated: true) {
             // The alert was presented
