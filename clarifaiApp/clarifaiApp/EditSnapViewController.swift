@@ -475,6 +475,7 @@ UINavigationControllerDelegate {
         //*** SHARE BUTTON
         contentView.addSubview(shareNavButton)
         contentView.bringSubview(toFront: shareNavButton)
+        addShadow(icon: shareNavButton)
         shareNavButton.snp.makeConstraints { (make) in
             make.top.equalTo(contentView).offset(20)
             make.right.equalTo(contentView).offset(-20)
@@ -485,6 +486,7 @@ UINavigationControllerDelegate {
         //*** BACK BUTTON
         contentView.addSubview(backNavButton)
         contentView.bringSubview(toFront: backNavButton)
+        addShadow(icon: backNavButton)
         backNavButton.snp.makeConstraints { (make) in
             make.left.equalTo(contentView).offset(10)
             make.centerY.equalTo(shareNavButton.snp.centerY)
@@ -495,6 +497,7 @@ UINavigationControllerDelegate {
         //*** SAVE BUTTON
         contentView.addSubview(savePhoto)
         contentView.bringSubview(toFront: savePhoto)
+        addShadow(icon: savePhoto)
         savePhoto.snp.makeConstraints { (make) in
             make.centerX.equalTo(photoTaken.snp.centerX)
             make.centerY.equalTo(shareNavButton.snp.centerY)
@@ -523,6 +526,7 @@ UINavigationControllerDelegate {
         //** CONFIGURE COLOUR BUTTON SINGLE
         contentView.addSubview(textColour)
         contentView.bringSubview(toFront: textColour)
+        addShadow(icon: textColour)
         textColour.snp.makeConstraints { (make) in
             make.bottom.equalTo(contentView.snp.bottom).offset(-15)
             make.right.equalTo(contentView.snp.right).offset(-10)
@@ -532,6 +536,7 @@ UINavigationControllerDelegate {
         //** CONFIGURE FONT BUTTON SINGLE
         contentView.addSubview(fontStyle)
         contentView.bringSubview(toFront: fontStyle)
+        addShadow(icon: fontStyle)
         fontStyle.snp.makeConstraints { (make) in
             make.bottom.equalTo(contentView.snp.bottom).offset(-15)
             make.right.equalTo(textColour.snp.left).offset(-10)
@@ -541,6 +546,7 @@ UINavigationControllerDelegate {
         //** CONFIGURE FONT SIZE BUTTON SINGLE
         contentView.addSubview(fontSize)
         contentView.bringSubview(toFront: fontSize)
+        addShadow(icon: fontSize)
         fontSize.snp.makeConstraints { (make) in
             make.bottom.equalTo(contentView.snp.bottom).offset(-15)
             make.right.equalTo(fontStyle.snp.left).offset(-10)
@@ -573,6 +579,7 @@ UINavigationControllerDelegate {
         changeFontView.addSubview(font1)
         changeFontView.bringSubview(toFront: font1)
         font1.setTitle("Aa", for: .normal)
+        addShadow(icon: font1)
         font1.snp.makeConstraints { (make) in
             make.right.equalTo(changeFontView.snp.right)
             make.bottom.equalTo(changeFontView.snp.bottom)
@@ -582,6 +589,7 @@ UINavigationControllerDelegate {
         changeFontView.addSubview(font2)
         changeFontView.bringSubview(toFront: font2)
         font2.setTitle("Aa", for: .normal)
+        addShadow(icon: font2)
         font2.snp.makeConstraints { (make) in
             make.right.equalTo(changeFontView.snp.right)
             make.bottom.equalTo(font1.snp.top)
@@ -591,6 +599,7 @@ UINavigationControllerDelegate {
         changeFontView.addSubview(font3)
         changeFontView.bringSubview(toFront: font3)
         font3.setTitle("Aa", for: .normal)
+        addShadow(icon: font3)
         font3.snp.makeConstraints { (make) in
             make.right.equalTo(changeFontView.snp.right)
             make.bottom.equalTo(font2.snp.top).offset(-5)
@@ -600,6 +609,7 @@ UINavigationControllerDelegate {
         changeFontView.addSubview(font4)
         changeFontView.bringSubview(toFront: font4)
         font4.setTitle("Aa", for: .normal)
+        addShadow(icon: font4)
         font4.snp.makeConstraints { (make) in
             make.right.equalTo(changeFontView.snp.right)
             make.bottom.equalTo(font3.snp.top).offset(-5)
@@ -609,6 +619,7 @@ UINavigationControllerDelegate {
         changeFontView.addSubview(font5)
         changeFontView.bringSubview(toFront: font5)
         font5.setTitle("Aa", for: .normal)
+        addShadow(icon: font5)
         font5.snp.makeConstraints { (make) in
             make.right.equalTo(changeFontView.snp.right)
             make.bottom.equalTo(font4.snp.top).offset(-5)
@@ -618,6 +629,7 @@ UINavigationControllerDelegate {
         changeFontView.addSubview(font6)
         changeFontView.bringSubview(toFront: font6)
         font6.setTitle("Aa", for: .normal)
+        addShadow(icon: font6)
         font6.snp.makeConstraints { (make) in
             make.right.equalTo(changeFontView.snp.right)
             make.bottom.equalTo(font5.snp.top).offset(-5)
@@ -642,6 +654,7 @@ UINavigationControllerDelegate {
         // lay out each colour within view
         changeFontSizeView.addSubview(smallText)
         changeFontSizeView.bringSubview(toFront: smallText)
+        addShadow(icon: smallText)
         smallText.setTitle("+", for: .normal)
         smallText.snp.makeConstraints { (make) in
             make.right.equalTo(changeFontSizeView.snp.right)
@@ -652,6 +665,7 @@ UINavigationControllerDelegate {
         changeFontSizeView.addSubview(mediumText)
         changeFontSizeView.bringSubview(toFront: mediumText)
         mediumText.setTitle("+", for: .normal)
+        addShadow(icon: mediumText)
         mediumText.snp.makeConstraints { (make) in
             make.right.equalTo(changeFontSizeView.snp.right)
             make.bottom.equalTo(smallText.snp.top).offset(-5)
@@ -660,6 +674,7 @@ UINavigationControllerDelegate {
         
         changeFontSizeView.addSubview(largeText)
         changeFontSizeView.bringSubview(toFront: largeText)
+        addShadow(icon: largeText)
         largeText.setTitle("+", for: .normal)
         largeText.snp.makeConstraints { (make) in
             make.right.equalTo(changeFontSizeView.snp.right)
@@ -687,6 +702,7 @@ UINavigationControllerDelegate {
         // lay out each colour within view
         changeColourView.addSubview(colourBlack)
         changeColourView.bringSubview(toFront: colourBlack)
+        addShadow(icon: colourBlack)
         colourBlack.snp.makeConstraints { (make) in
             make.right.equalTo(changeColourView.snp.right)
             make.bottom.equalTo(changeColourView.snp.bottom)
@@ -695,6 +711,7 @@ UINavigationControllerDelegate {
         
         changeColourView.addSubview(colourWhite)
         changeColourView.bringSubview(toFront: colourWhite)
+        addShadow(icon: colourWhite)
         colourWhite.snp.makeConstraints { (make) in
             make.right.equalTo(changeColourView.snp.right)
             make.bottom.equalTo(colourBlack.snp.top).offset(-5)
@@ -748,6 +765,19 @@ UINavigationControllerDelegate {
             make.bottom.equalTo(colourOrange.snp.top).offset(-5)
             make.height.width.equalTo(iconSize)
         }
+    }
+    
+    
+    // adds shadows to the UI buttons
+    func addShadow(icon: UIButton) {
+        if (icon == colourBlack) {
+            icon.layer.shadowColor = UIColor.white.cgColor
+        } else {
+            icon.layer.shadowColor = UIColor.black.cgColor
+        }
+        icon.layer.shadowOpacity = 0.9
+        icon.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        
     }
     
     /*

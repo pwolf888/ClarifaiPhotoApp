@@ -275,6 +275,7 @@ UINavigationControllerDelegate {
         //** CONFIGURE TAKE PHOTO BUTTON
         contentView.addSubview(takePhoto)
         contentView.bringSubview(toFront: takePhoto)
+        addShadow(icon: takePhoto)
         takePhoto.snp.makeConstraints { (make) in
             make.centerX.equalTo(previewView)
             make.height.equalTo(65)
@@ -285,6 +286,7 @@ UINavigationControllerDelegate {
         //** CONFIGURE SELECT PHOTO BUTTON
         contentView.addSubview(selectPhoto)
         contentView.bringSubview(toFront: selectPhoto)
+        addShadow(icon: selectPhoto)
         selectPhoto.snp.makeConstraints { (make) in
             make.bottom.equalTo(previewView).offset(-15)
             make.height.width.equalTo(iconSize)
@@ -294,6 +296,7 @@ UINavigationControllerDelegate {
         //** CONFIGURE HELP BUTTON
         contentView.addSubview(openHelp)
         contentView.bringSubview(toFront: openHelp)
+        addShadow(icon: openHelp)
         openHelp.snp.makeConstraints { (make) in
             make.bottom.equalTo(previewView).offset(-15)
             make.left.equalTo(contentView.snp.left).offset(15)
@@ -303,6 +306,7 @@ UINavigationControllerDelegate {
         //** CONFIGURE ROTATE CAMERA BUTTON
         contentView.addSubview(rotateCamera)
         contentView.bringSubview(toFront: rotateCamera)
+        addShadow(icon: rotateCamera)
         rotateCamera.snp.makeConstraints { (make) in
             make.top.equalTo(previewView).offset(20)
             make.left.equalTo(contentView.snp.left).offset(15)
@@ -310,5 +314,19 @@ UINavigationControllerDelegate {
         }
         
     }
-
+    
+    // adds shadows to the UI buttons
+    func addShadow(icon: UIButton) {
+        
+        if (icon == takePhoto) {
+            icon.layer.shadowColor = UIColor.white.cgColor
+            icon.layer.shadowOpacity = 0.4
+        } else {
+            icon.layer.shadowColor = UIColor.black.cgColor
+            icon.layer.shadowOpacity = 0.9
+        }
+        
+        icon.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        
+    }
 }
