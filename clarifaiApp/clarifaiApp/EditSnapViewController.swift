@@ -32,7 +32,7 @@ UINavigationControllerDelegate {
 //    var poemGenerator:PoemGenerator = PoemGenerator()
 //    var imageTags:[String] = []
     
-    var poemGenerator:NewPoemGenerator = NewPoemGenerator()
+    var poemGenerator:PoemGenerator = PoemGenerator()
     var imageTags:[String] = []
 
     @IBOutlet weak var snapoetryLoader: UIImageView!

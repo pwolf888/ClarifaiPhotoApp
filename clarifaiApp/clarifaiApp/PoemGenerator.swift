@@ -1,8 +1,8 @@
 //
-//  PoemGenerator.swift
+//  NewPoemGenerator1.swift
 //  clarifaiApp
 //
-//  Created by 李阳 on 24/1/18.
+//  Created by 李阳 on 29/1/18.
 //  Copyright © 2018 partywolfAPPS. All rights reserved.
 //
 
@@ -10,154 +10,161 @@ import Foundation
 
 class PoemGenerator{
     var rules:[String] = []
-    var sentenceArrays:[[String]] = [[]]
-    var sentenceIndexes:[Int] = []
-    var wordList:[String:[String]] = [:]
+    var poemStructures:[[String]] = [[]]
+    var partOfSentence:[String:[[String]]] = [:]
+    var nouns:[String : [String]] = [:]
+    var defaultPoemIndex = -1
+    var tagOne = ""
     
     init() {
         readDataFromJsonFile()
     }
     
     func readDataFromJsonFile(){
-        var path = Bundle.main.path(forResource: "sentences", ofType: "json")
+        var path = Bundle.main.path(forResource: "poem_structure1", ofType: "json")
         var url = URL(fileURLWithPath: path!)
         
         do{
             let data = try Data(contentsOf: url)
             let dic = try JSONDecoder().decode([String:[String]].self, from: data)
+            //print(dic)
             
             rules = Array(dic.keys)
-            sentenceArrays = Array(dic.values)
-            sentenceIndexes = Array(repeating: 0, count: rules.count)
+            poemStructures = Array(dic.values)
         }
         catch{}
         
-        path = Bundle.main.path(forResource: "wordlist", ofType: "json")
+        path = Bundle.main.path(forResource: "part_of_sentence1", ofType: "json")
         url = URL(fileURLWithPath: path!)
-        
         do{
             let data = try Data(contentsOf: url)
-            wordList = try JSONDecoder().decode([String:[String]].self, from: data)
+            partOfSentence = try JSONDecoder().decode([String:[[String]]].self, from: data)
+        }
+        catch{}
+        
+        path = Bundle.main.path(forResource: "noun", ofType: "json")
+        url = URL(fileURLWithPath: path!)
+        do{
+            let data = try Data(contentsOf: url)
+            nouns = try JSONDecoder().decode([String:[String]].self, from: data)
+            //print(nouns)
         }
         catch{}
     }
     
-    func checkSubRule(subRule: String, tags: [String]) -> Bool{
-        var subRuleCopy = subRule
-        var matchSubRule = true
+    func generateTopicalPoem(tags: [String])->String{
+        tagOne = (tags[0] == "no person" ? tags[1] : tags[0])     //only used for no poem
+        var tagsCopy = tags
+        var poem = ""
+        var poemOptions: [Int : String] = [:]
         
-        if(subRuleCopy[subRuleCopy.startIndex] == "!"){
-            matchSubRule = false
-            subRuleCopy.removeFirst()
-        }
-        
-        let words = subRuleCopy.components(separatedBy: "|")
-        for word in words{
-            if(tags.contains(word)){
-                return matchSubRule
+        tagsCopy.append("default")
+        for i in 0..<rules.count{
+            let r = checkRule(rule: rules[i], tags: tagsCopy)
+            
+            if(r.0){
+                let subRules = rules[i].components(separatedBy: "@")
+                poemOptions[r.1] = processPoemStructure(index: i ,subRule: subRules[1],topic: r.2, items: r.3) + "\n\n"
             }
         }
         
-        return (matchSubRule ? false : true)
-    }
-    
-    func checkWordList(tags:[String], category: String) -> [String]{
-        var words:[String] = []
+        for p in poemOptions.values{
+            print(p)
+        }
         
-        for tag in tags{
-            for word in wordList[category]!{
-                if(tag == word){
-                    words.append(word)
-                    break
-                }
+        var min = 100
+        for key in poemOptions.keys{
+            if(key<min){
+                min = key
             }
         }
         
-        return words
+        poem = poemOptions[min]!
+        
+        return poem
     }
     
-    func checkRule(rule: String, tags: [String]) -> (Bool, [String]){
-        var popularNouns:[String] = []
-        var subRules = rule.components(separatedBy: "&")
-        var category = subRules.removeLast()
+    func checkRule(rule: String, tags: [String]) -> (Bool, Int, String, [String]){
+        var subRules = rule.components(separatedBy: "@")
+        let priority = Int(subRules[0])
+        let subSubRules = subRules[1].components(separatedBy: "|")
+        let category = subRules[2]
+        var result:(Bool, Int, String, [String]) = (false, 0, "", [])
         
-        for subRule in subRules{
-            if(!checkSubRule(subRule: subRule, tags: tags)){
-                return (false, popularNouns)
+        for e in subSubRules{
+            if(tags.contains(e)){
+                result.0 = true
+                result.1 = priority!
+                result.2 = e
+                break
             }
         }
         
         if(category != "nil"){
-            category.removeFirst()
-            popularNouns = checkWordList(tags: tags, category: category)
-        }
-        
-        return (true, popularNouns)
-    }
-    
-    func processChosenSentence(chosenSentence: String, popularNouns: [String]) -> String{
-        var result = chosenSentence
-        let firstCharacter = chosenSentence[chosenSentence.startIndex]
-        
-        if(firstCharacter == "*"){
-            result.removeFirst()
-            
-            var partsOfSentence = result.components(separatedBy: " ")
-            var index = 0
-            
-            for i in 0..<partsOfSentence.count{
-                var part = partsOfSentence[i]
-                var flag = ""
-                
-                if(part != ""){
-                    flag = String(part[part.startIndex])
+            for item in nouns[category]!{
+                if(tags.contains(item)){
+                    result.3.append(item)
                 }
-                
-                if(flag == "@"){
-                    part.removeFirst()
-                    let optionalWords = part.components(separatedBy: "/")
-                    partsOfSentence[i] = optionalWords[Int(arc4random_uniform(UInt32(optionalWords.count)))]
-                }
-                else if(flag == "#"){
-                    part.removeFirst()
-                    
-                    if(index < popularNouns.count){
-                        partsOfSentence[i] = popularNouns[index]
-                        index += 1
-                    }
-                    else{
-                        partsOfSentence[i] = part
-                    }
-                }
-                
-                result = partsOfSentence.joined(separator: " ")
             }
         }
         
         return result
     }
     
-    func generateTopicalSentence(template: [[String]], index: Int, popularNouns: [String]) -> String{
-        var topicalSentence = ""
-        let subIndex = sentenceIndexes[index] % (sentenceArrays[index].count)
-        let chosenSentence = sentenceArrays[index][subIndex]
-        sentenceIndexes[index] += 1
-        topicalSentence = processChosenSentence(chosenSentence: chosenSentence, popularNouns: popularNouns)
-        
-        return topicalSentence
-    }
-    
-    func generateTopicalPoem(tags: [String]) -> String{
+    func processPoemStructure(index: Int, subRule:String, topic: String, items: [String]) -> String{
         var poem = ""
-        for i in 0..<rules.count{
-            let r = checkRule(rule: rules[i], tags: tags)
+        let temp = poemStructures[index]
+        let poemStructure = temp[Int(arc4random_uniform(UInt32(temp.count)))]
+        var partOfPoem = poemStructure.components(separatedBy: " ")
+        var counter = 0
+        
+        for i in 0..<partOfPoem.count{
+            var t = partOfPoem[i]
+            var firstCharacter = ""
             
-            if(r.0){
-                let popularNouns = r.1
-                poem += generateTopicalSentence(template: sentenceArrays, index: i, popularNouns: popularNouns) + "\n\n"
+            if(t != ""){
+                firstCharacter = String(t[t.startIndex])
+            }
+            
+            if(firstCharacter == "@"){
+                t.removeFirst()
+                let t1 = partOfSentence[subRule]![Int(t)!]
+                partOfPoem[i] = t1[Int(arc4random_uniform(UInt32(t1.count)))]
+            }
+            
+            if(firstCharacter == "*"){
+                partOfPoem[i] = topic
+            }
+            
+            if(firstCharacter == "#"){
+                t.removeFirst()
+                
+                if(counter < items.count){
+                    partOfPoem[i] = items[counter]
+                    counter += 1
+                }
+                else{
+                    let ch = t[t.startIndex]
+                    
+                    if(ch == "@"){
+                        t.removeFirst()
+                        let t1 = partOfSentence[subRule]![Int(t)!]
+                        partOfPoem[i] = t1[Int(arc4random_uniform(UInt32(t1.count)))]
+                    }
+                    else{
+                        partOfPoem[i].removeFirst()
+                    }
+                }
+            }
+            
+            //only for no poem
+            if(firstCharacter == "$"){
+                partOfPoem[i] = tagOne
             }
         }
         
-        return (poem != "" ? poem : "no poem")
+        poem = partOfPoem.joined(separator: " ")
+        
+        return poem
     }
 }
