@@ -21,7 +21,7 @@ class PoemGenerator{
     }
     
     func readDataFromJsonFile(){
-        var path = Bundle.main.path(forResource: "poem_structure1", ofType: "json")
+        var path = Bundle.main.path(forResource: "poem_structure", ofType: "json")
         var url = URL(fileURLWithPath: path!)
         
         do{
@@ -34,7 +34,7 @@ class PoemGenerator{
         }
         catch{}
         
-        path = Bundle.main.path(forResource: "part_of_sentence1", ofType: "json")
+        path = Bundle.main.path(forResource: "part_of_sentence", ofType: "json")
         url = URL(fileURLWithPath: path!)
         do{
             let data = try Data(contentsOf: url)
