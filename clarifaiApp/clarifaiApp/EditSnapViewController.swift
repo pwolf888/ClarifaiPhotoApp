@@ -394,8 +394,8 @@ UINavigationControllerDelegate {
         // pull the current user selected text format
         let selectedTextColor = poeticText.textColor
         let fontToDraw = UIFont(name: selectedFont, size: CGFloat(selectedFontSize).multiplied(by: mlpScale))!
-        let scale = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
+        let scale = 0.3
+        UIGraphicsBeginImageContextWithOptions(image.size, false, CGFloat(scale))
 
         //** code implemented to change text alignment to center, and add spacing between text
         let paraStyle = NSMutableParagraphStyle()
