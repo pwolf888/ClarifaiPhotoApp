@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5A249202201AA1D400B785B6 /* PoemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A249201201AA1D400B785B6 /* PoemGenerator.swift */; };
-		5AECF304202056CE00F8EA63 /* poem_structure.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AECF301202056CD00F8EA63 /* poem_structure.json */; };
-		5AECF305202056CE00F8EA63 /* noun.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AECF302202056CD00F8EA63 /* noun.json */; };
-		5AECF306202056CE00F8EA63 /* part_of_sentence.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AECF303202056CD00F8EA63 /* part_of_sentence.json */; };
 		5AEF25FC1F468E940068ECA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF25FB1F468E940068ECA7 /* AppDelegate.swift */; };
 		5AEF26011F468E940068ECA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF25FF1F468E940068ECA7 /* Main.storyboard */; };
 		5AEF26031F468E940068ECA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF26021F468E940068ECA7 /* Assets.xcassets */; };
@@ -18,7 +15,6 @@
 		5E859729936A055157D54DC7 /* Pods_clarifaiApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F382D3D0A891E60DD2E99957 /* Pods_clarifaiApp.framework */; };
 		801F10E1201D7B12007F303B /* poem_structure.json in Resources */ = {isa = PBXBuildFile; fileRef = 801F10DF201D7B12007F303B /* poem_structure.json */; };
 		801F10E2201D7B12007F303B /* part_of_sentence.json in Resources */ = {isa = PBXBuildFile; fileRef = 801F10E0201D7B12007F303B /* part_of_sentence.json */; };
-		801F10E4201D7B1C007F303B /* NewPoemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F10E3201D7B1C007F303B /* NewPoemGenerator.swift */; };
 		801F10E7201D7B27007F303B /* sentences.json in Resources */ = {isa = PBXBuildFile; fileRef = 801F10E5201D7B27007F303B /* sentences.json */; };
 		801F10E8201D7B27007F303B /* wordlist.json in Resources */ = {isa = PBXBuildFile; fileRef = 801F10E6201D7B27007F303B /* wordlist.json */; };
 		801F10EA201D7B41007F303B /* noun.json in Resources */ = {isa = PBXBuildFile; fileRef = 801F10E9201D7B41007F303B /* noun.json */; };
@@ -31,9 +27,6 @@
 		0DABCF46B0CF37F83EBC6E4A /* Pods-clarifaiApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clarifaiApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-clarifaiApp/Pods-clarifaiApp.release.xcconfig"; sourceTree = "<group>"; };
 		265763978DA521057E9E1FB2 /* Pods-clarifaiApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clarifaiApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clarifaiApp/Pods-clarifaiApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5A249201201AA1D400B785B6 /* PoemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemGenerator.swift; sourceTree = "<group>"; };
-		5AECF301202056CD00F8EA63 /* poem_structure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = poem_structure.json; path = ../../../../Downloads/new_code/poem_structure.json; sourceTree = "<group>"; };
-		5AECF302202056CD00F8EA63 /* noun.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = noun.json; path = ../../../../Downloads/new_code/noun.json; sourceTree = "<group>"; };
-		5AECF303202056CD00F8EA63 /* part_of_sentence.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = part_of_sentence.json; path = ../../../../Downloads/new_code/part_of_sentence.json; sourceTree = "<group>"; };
 		5AEF25F81F468E940068ECA7 /* clarifaiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = clarifaiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AEF25FB1F468E940068ECA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AEF26001F468E940068ECA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -42,7 +35,6 @@
 		5AEF26071F468E940068ECA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		801F10DF201D7B12007F303B /* poem_structure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = poem_structure.json; sourceTree = "<group>"; };
 		801F10E0201D7B12007F303B /* part_of_sentence.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = part_of_sentence.json; sourceTree = "<group>"; };
-		801F10E3201D7B1C007F303B /* NewPoemGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPoemGenerator.swift; sourceTree = "<group>"; };
 		801F10E5201D7B27007F303B /* sentences.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sentences.json; sourceTree = "<group>"; };
 		801F10E6201D7B27007F303B /* wordlist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wordlist.json; sourceTree = "<group>"; };
 		801F10E9201D7B41007F303B /* noun.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noun.json; sourceTree = "<group>"; };
@@ -97,9 +89,6 @@
 				5AEF25FB1F468E940068ECA7 /* AppDelegate.swift */,
 				5AEF25FF1F468E940068ECA7 /* Main.storyboard */,
 				80792438200F3EE900824C26 /* EditSnapViewController.swift */,
-				5AECF302202056CD00F8EA63 /* noun.json */,
-				5AECF303202056CD00F8EA63 /* part_of_sentence.json */,
-				5AECF301202056CD00F8EA63 /* poem_structure.json */,
 				5A249201201AA1D400B785B6 /* PoemGenerator.swift */,
 				80792436200F3EA900824C26 /* CameraViewController.swift */,
 				5AEF26021F468E940068ECA7 /* Assets.xcassets */,
@@ -115,7 +104,6 @@
 				801F10E0201D7B12007F303B /* part_of_sentence.json */,
 				801F10DF201D7B12007F303B /* poem_structure.json */,
 				80B99F341FCA5F640058B472 /* SafeColors.swift */,
-				801F10E3201D7B1C007F303B /* NewPoemGenerator.swift */,
 				801F10E5201D7B27007F303B /* sentences.json */,
 				801F10E6201D7B27007F303B /* wordlist.json */,
 				801F10E9201D7B41007F303B /* noun.json */,
@@ -206,14 +194,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AEF26061F468E940068ECA7 /* LaunchScreen.storyboard in Resources */,
-				5AECF305202056CE00F8EA63 /* noun.json in Resources */,
 				801F10EA201D7B41007F303B /* noun.json in Resources */,
-				5AECF306202056CE00F8EA63 /* part_of_sentence.json in Resources */,
 				5AEF26031F468E940068ECA7 /* Assets.xcassets in Resources */,
 				801F10E1201D7B12007F303B /* poem_structure.json in Resources */,
 				5AEF26011F468E940068ECA7 /* Main.storyboard in Resources */,
 				801F10E7201D7B27007F303B /* sentences.json in Resources */,
-				5AECF304202056CE00F8EA63 /* poem_structure.json in Resources */,
 				801F10E2201D7B12007F303B /* part_of_sentence.json in Resources */,
 				801F10E8201D7B27007F303B /* wordlist.json in Resources */,
 			);
@@ -283,7 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				80792439200F3EE900824C26 /* EditSnapViewController.swift in Sources */,
-				801F10E4201D7B1C007F303B /* NewPoemGenerator.swift in Sources */,
 				80792437200F3EA900824C26 /* CameraViewController.swift in Sources */,
 				5AEF25FC1F468E940068ECA7 /* AppDelegate.swift in Sources */,
 				5A249202201AA1D400B785B6 /* PoemGenerator.swift in Sources */,
