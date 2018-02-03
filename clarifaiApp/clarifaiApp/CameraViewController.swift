@@ -201,7 +201,7 @@ UINavigationControllerDelegate {
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
                     let dataProvider = CGDataProvider(data: imageData! as CFData)
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
-                    let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
+                    let image = UIImage(cgImage: cgImageRef!, scale: 0.1, orientation: UIImageOrientation.right)
                     
                     // Output image to imageView
                     self.photoTaken.image = image
