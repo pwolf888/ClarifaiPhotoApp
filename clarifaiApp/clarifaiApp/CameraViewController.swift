@@ -32,6 +32,30 @@ UINavigationControllerDelegate {
     let picker = UIImagePickerController()
     var captureDevice : AVCaptureDevice?
     var frontBack : Bool = false
+    
+    
+    //Check to see which device the app is running on to get the correct photo ratio for device
+    struct ScreenSize
+    {
+        static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
+        static let SCREEN_HEIGHT        = UIScreen.main.bounds.size.height
+        static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+        static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+    }
+    
+    struct DeviceType
+    {
+        static let IS_IPHONE            = UIDevice.current.userInterfaceIdiom == .phone
+        static let IS_IPHONE_4_OR_LESS  = IS_IPHONE && ScreenSize.SCREEN_MAX_LENGTH < 568.0
+        static let IS_IPHONE_5          = IS_IPHONE && ScreenSize.SCREEN_MAX_LENGTH == 568.0
+        static let IS_IPHONE_6_7_8      = IS_IPHONE && ScreenSize.SCREEN_MAX_LENGTH == 667.0
+        static let IS_IPHONE_6P_7P_8P   = IS_IPHONE && ScreenSize.SCREEN_MAX_LENGTH == 736.0
+        static let IS_IPHONE_X          = IS_IPHONE && ScreenSize.SCREEN_MAX_LENGTH == 812
+        
+        static let IS_IPAD              = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
+        static let IS_IPAD_PRO          = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1366.0
+    }
+    
 
     override func viewDidLoad() {
         
@@ -58,7 +82,13 @@ UINavigationControllerDelegate {
         
         // Setup Session to use camera inputs
         session = AVCaptureSession()
-        session!.sessionPreset = AVCaptureSessionPresetPhoto
+        
+        if DeviceType.IS_IPHONE {
+            session!.sessionPreset = AVCaptureSessionPreset1280x720
+        }
+        else if DeviceType.IS_IPAD, DeviceType.IS_IPAD_PRO {
+            session!.sessionPreset = AVCaptureSessionPresetPhoto
+        }
         
         let devices = AVCaptureDevice.devices()
         
@@ -191,7 +221,7 @@ UINavigationControllerDelegate {
     @IBAction func didTakePhoto(_ sender: UIButton) {
         
         if let videoConnection = stillImageOutput!.connection(withMediaType: AVMediaTypeVideo) {
-            
+
             // Take a still image from the stream
             stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) -> Void in
                 
