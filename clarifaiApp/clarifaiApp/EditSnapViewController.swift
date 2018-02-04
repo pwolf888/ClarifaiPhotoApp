@@ -353,13 +353,15 @@ UINavigationControllerDelegate {
         }
     }
     
-    
-    
+
     // Save the users photo
     @IBAction func savePhoto(_ sender: Any) {
         
+        //set CGPoint variable
+        let point = CGPoint(x: UIScreen.main.bounds.size.width*0.5,y: UIScreen.main.bounds.size.height*0.5)
+        
         //call function to combine text and image as one object
-        textToImage(drawText: poeticText.text! as NSString, inImage: newImage!, atPoint: CGPoint(x: UIScreen.main.bounds.size.width*0.5,y: UIScreen.main.bounds.size.height*0.5))
+        textToImage(drawText: poeticText.text! as NSString, inImage: newImage!, atPoint: point)
 
         do {
             let imageData = try UIImagePNGRepresentation(savedImage)
@@ -418,7 +420,7 @@ UINavigationControllerDelegate {
         stringSize.width = ceil(stringSize.width)
         stringSize.height = ceil(stringSize.height)
         
-        let rect = CGRect(origin: CGPoint.zero, size: image.size)
+        let rect = CGRect(x: 0, y: (image.size.width+stringSize.height)/2, width: image.size.width, height: stringSize.height)
 
         // Draw the text into an image
         text.draw(in: rect, withAttributes: textFontAttributes)
