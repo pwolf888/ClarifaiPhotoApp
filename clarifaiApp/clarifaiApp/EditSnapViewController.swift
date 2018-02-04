@@ -448,7 +448,10 @@ UINavigationControllerDelegate {
                                             //self.setupInitialUI()
                                             let cameraVC = self.storyboard!.instantiateViewController(withIdentifier: "cameraVC") as! CameraViewController
                                             
+                                            self.newImage = nil
+                                            self.poeticText.text = nil
                                             self.present(cameraVC, animated: true, completion: nil)
+                                            
 
         }
         let cancelAction = UIAlertAction(title: "Cancel",
