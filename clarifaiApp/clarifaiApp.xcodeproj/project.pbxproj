@@ -15,7 +15,6 @@
 		5E859729936A055157D54DC7 /* Pods_clarifaiApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F382D3D0A891E60DD2E99957 /* Pods_clarifaiApp.framework */; };
 		801F10E1201D7B12007F303B /* poem_structure.json in Resources */ = {isa = PBXBuildFile; fileRef = 801F10DF201D7B12007F303B /* poem_structure.json */; };
 		801F10E2201D7B12007F303B /* part_of_sentence.json in Resources */ = {isa = PBXBuildFile; fileRef = 801F10E0201D7B12007F303B /* part_of_sentence.json */; };
-		801F10E4201D7B1C007F303B /* NewPoemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F10E3201D7B1C007F303B /* NewPoemGenerator.swift */; };
 		801F10E7201D7B27007F303B /* sentences.json in Resources */ = {isa = PBXBuildFile; fileRef = 801F10E5201D7B27007F303B /* sentences.json */; };
 		801F10E8201D7B27007F303B /* wordlist.json in Resources */ = {isa = PBXBuildFile; fileRef = 801F10E6201D7B27007F303B /* wordlist.json */; };
 		801F10EA201D7B41007F303B /* noun.json in Resources */ = {isa = PBXBuildFile; fileRef = 801F10E9201D7B41007F303B /* noun.json */; };
@@ -36,7 +35,6 @@
 		5AEF26071F468E940068ECA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		801F10DF201D7B12007F303B /* poem_structure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = poem_structure.json; sourceTree = "<group>"; };
 		801F10E0201D7B12007F303B /* part_of_sentence.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = part_of_sentence.json; sourceTree = "<group>"; };
-		801F10E3201D7B1C007F303B /* NewPoemGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPoemGenerator.swift; sourceTree = "<group>"; };
 		801F10E5201D7B27007F303B /* sentences.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sentences.json; sourceTree = "<group>"; };
 		801F10E6201D7B27007F303B /* wordlist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wordlist.json; sourceTree = "<group>"; };
 		801F10E9201D7B41007F303B /* noun.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noun.json; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 				801F10E0201D7B12007F303B /* part_of_sentence.json */,
 				801F10DF201D7B12007F303B /* poem_structure.json */,
 				80B99F341FCA5F640058B472 /* SafeColors.swift */,
-				801F10E3201D7B1C007F303B /* NewPoemGenerator.swift */,
 				801F10E5201D7B27007F303B /* sentences.json */,
 				801F10E6201D7B27007F303B /* wordlist.json */,
 				801F10E9201D7B41007F303B /* noun.json */,
@@ -271,7 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				80792439200F3EE900824C26 /* EditSnapViewController.swift in Sources */,
-				801F10E4201D7B1C007F303B /* NewPoemGenerator.swift in Sources */,
 				80792437200F3EA900824C26 /* CameraViewController.swift in Sources */,
 				5AEF25FC1F468E940068ECA7 /* AppDelegate.swift in Sources */,
 				5A249202201AA1D400B785B6 /* PoemGenerator.swift in Sources */,

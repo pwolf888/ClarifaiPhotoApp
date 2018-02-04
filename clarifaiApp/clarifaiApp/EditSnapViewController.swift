@@ -32,7 +32,7 @@ UINavigationControllerDelegate {
 //    var poemGenerator:PoemGenerator = PoemGenerator()
 //    var imageTags:[String] = []
     
-    var poemGenerator:NewPoemGenerator = NewPoemGenerator()
+    var poemGenerator:PoemGenerator = PoemGenerator()
     var imageTags:[String] = []
 
     @IBOutlet weak var snapoetryLoader: UIImageView!
@@ -394,8 +394,8 @@ UINavigationControllerDelegate {
         // pull the current user selected text format
         let selectedTextColor = poeticText.textColor
         let fontToDraw = UIFont(name: selectedFont, size: CGFloat(selectedFontSize).multiplied(by: mlpScale))!
-        let scale = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
+        let scale = 0.3
+        UIGraphicsBeginImageContextWithOptions(image.size, false, CGFloat(scale))
 
         //** code implemented to change text alignment to center, and add spacing between text
         let paraStyle = NSMutableParagraphStyle()
@@ -448,7 +448,10 @@ UINavigationControllerDelegate {
                                             //self.setupInitialUI()
                                             let cameraVC = self.storyboard!.instantiateViewController(withIdentifier: "cameraVC") as! CameraViewController
                                             
+                                            self.newImage = nil
+                                            self.poeticText.text = nil
                                             self.present(cameraVC, animated: true, completion: nil)
+                                            
 
         }
         let cancelAction = UIAlertAction(title: "Cancel",
