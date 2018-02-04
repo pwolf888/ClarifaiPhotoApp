@@ -27,19 +27,19 @@
                 ["working", "playing", "studying", "reading"]
                 ],
     
-    "room|office": [
-                    ["spacious", "splendid", "grand", "fabulous", "narrow", "retro", "appointed", "baronial", "impressive", "old-fashioned", "beachfront", "brick-built", "burnt-out", "carpeted", "dark", "cavernous", "comfortable", "condemned", "covered", "curtained-off", "dank", "derelict", "darkend", "detached", "dilapidated", "doric", "furnished", "gabled", "half-timbered", "handsome", "high-rise", "lofty", "long-stay", "low-rise", "moated", "modest", "non-residential", "palatial", "redbrick", "snug", "stark", "warm"
-                     ],
-                    ["wooden","cozy", "soft", "great", "amazing", "high-quality", "old", "new", "antique", "fine", "heavy", "modern", "little", "wooden", "upholstered", "beautiful", "french", "american", "rich", "comfortable", "expensive", "simple", "costly", "dark", "broken", "cheap", "elegant", "victorian", "original", "mental", "made", "domestic", "handsome", "movable", "carved", "household", "contemporary", "valuable", "solid", "overstuffed", "nice", "rustic", "massive", "fashioned", "traditional", "polished", "european", "ancient", "grave", "splendid", "plain", "scanty", "metal", "used", "functional", "shabby", "magnificent", "ornamental", "italian", "secondhand", "luxurious", "ornate", "lovely", "plastic", "handmade", "familiar", "suitable", "covered", "light"],
-                    ["mirror","rug", "blanket", "washcloset","bathtub", "table", "desk", "chair", "window", "lamp", "lavatory", "wall", "bed","dresser","bookcase","cabinet","pillow","curtain","carpet"
-                     ],
-                    ["Sitting", "Standing", "Waiting", "Staying"],
-                    ["dark", "bright", "clean", "tidy", "beautiful", "classic", "mordern", "stylish", "fashion", "classy", "exquisite", "old-fashioned"],
-                    ["Dirty", "Clean", "Beautiful", "Classic", "Mordern", "Stylish", "Fashion", "Classy", "Exquisite", "Old", "New"],
-                    ["black", "white", "blue", "brown", "dark", "gold", "gray", "green", "orange", "red", "purple", "silver", "yellow"],
-                    ["blinds", "window", "table", "desk", "curtain", "door"],
-                    ["bed", "chair", "carpet"]
-                    ],
+    "room|office|meeting": [
+                            ["spacious", "splendid", "grand", "fabulous", "narrow", "retro", "appointed", "baronial", "impressive", "old-fashioned", "beachfront", "brick-built", "burnt-out", "carpeted", "dark", "cavernous", "comfortable", "condemned", "covered", "curtained-off", "dank", "derelict", "darkend", "detached", "dilapidated", "doric", "furnished", "gabled", "half-timbered", "handsome", "high-rise", "lofty", "long-stay", "low-rise", "moated", "modest", "non-residential", "palatial", "redbrick", "snug", "stark", "warm"
+                             ],
+                            ["wooden","cozy", "soft", "great", "amazing", "high-quality", "old", "new", "antique", "fine", "heavy", "modern", "little", "wooden", "upholstered", "beautiful", "french", "american", "rich", "comfortable", "expensive", "simple", "costly", "dark", "broken", "cheap", "elegant", "victorian", "original", "mental", "made", "domestic", "handsome", "movable", "carved", "household", "contemporary", "valuable", "solid", "overstuffed", "nice", "rustic", "massive", "fashioned", "traditional", "polished", "european", "ancient", "grave", "splendid", "plain", "scanty", "metal", "used", "functional", "shabby", "magnificent", "ornamental", "italian", "secondhand", "luxurious", "ornate", "lovely", "plastic", "handmade", "familiar", "suitable", "covered", "light"],
+                            ["mirror","rug", "blanket", "washcloset","bathtub", "table", "desk", "chair", "window", "lamp", "lavatory", "wall", "bed","dresser","bookcase","cabinet","pillow","curtain","carpet"
+                             ],
+                            ["Sitting", "Standing", "Waiting", "Staying"],
+                            ["dark", "bright", "clean", "tidy", "beautiful", "classic", "mordern", "stylish", "fashion", "classy", "exquisite", "old-fashioned"],
+                            ["Dirty", "Clean", "Beautiful", "Classic", "Mordern", "Stylish", "Fashion", "Classy", "Exquisite", "Old", "New"],
+                            ["black", "white", "blue", "brown", "dark", "gold", "gray", "green", "orange", "red", "purple", "silver", "yellow"],
+                            ["blinds", "window", "table", "desk", "curtain", "door"],
+                            ["bed", "chair", "carpet"]
+                            ],
     
     "landscape|sea|nature": [
                              ["tropical", "dense", "thick", "primeval", "vast", "beautiful", "enchanting", "pretty", "unspoiled", "panoramic", "favoured", "exotic", "grand", "gorgeous", "beautiful", "natural", "magnificent", "wild", "picturesque", "spectacular", "romantic", "lovely", "rural", "grand", "alpine", "wonderful", "splendid", "charming", "varied", "glorious", "sublime", "rugged", "delightful", "tropical", "coastal", "elaborate", "rich", "gorgeous", "pretty", "dramatic", "attractive", "grandest", "interesting", "exquisite", "breathtaking", "majestic", "superb", "striking", "bold", "pleasant", "wildest", "theatrical", "mountainous", "stunning", "pastoral", "impressive", "sylvan", "realistic", "typical", "noble", "movable", "distant", "savage", "rocky", "familiar", "loveliest", "fantastic", "quiet", "remarkable", "strange", "australian", "flat", "wooded", "oriental", "celestial", "diversified", "exotic", "lush", "inspiring"
@@ -67,7 +67,19 @@
                  ["embedded", "planted", "inserted", "nested", "rooted", "anchored", "buried"],
                  ["camera", "phone", "computer", "tablet", "laptop"],
                  ["sweetness", "sweet", "beautiful", "warm", "big", "bright", "charming", "wide", "broad", "happy", "lovely"],
-                 ["busy", "modern", "ordinary", "urban"]
+                 ["busy", "modern", "ordinary", "urban"],
+                 ["get", "take"],
+                 ["brilliant", "lovely", "boring", "dull", "dim", "awesome", "strange", "fantastic", "weird"],
+                 ["maybe", "perhaps", "probably", "Surely", "Undoubtedly", "Obviously"],
+                 ["worst", "best", "most perfect"],
+                 ["seen", "taken", "got", "existed"],
+                 ["ruins", "destroys", "damages", "kills", "devastates"],
+                 ["Internet", "website", "Instagram", "Facebook", "Twitter"],
+                 ["dark as chocolate", "dark as coffee", "dark as ink", "dark as coal", "dark as night", "shiny as ice", "shiny as sliver", "shiny as sugar", "brown as copper", "white as milk", "white as cloud", "white as paper", "white as wool", "white as cotton", "white as flour", "white as polar bear"
+                  ],
+                 ["blue like the ocean", "blue like the sky", "blue like the sea", "blue like the jeans", "blue like the Turkey"],
+                 ["bright as moon", "bright as moon", "bright as star", "bright as gem", "bright as pearl", "bright as diamond", "warm as fire", "warm as sunlight", "lovely as sunflower", "bright as sun"],
+                 ["sharp like a sword", "sharp like a knife", "sharp like scissors", "sharp like a needle", "sharp like teeth", "sharp like thorn", "sharp like a razor"]
                  ],
     
     "party": [
@@ -221,33 +233,12 @@
                    ],
     
     "default": [
+                ["old", "new", "pretty", "beautiful", "advanced", "amazing", "artistic", "awesome", "basic", "big", "cheap", "classic", "clumsy", "cute", "decent", "different", "expensive", "funny", "glossy", "small", "delicate", "exquisite", "modern", "old-fashioned", "ordinary", "outstanding"],
+                ["standing", "sitting", "laying"],
+                ["great","useful", "helpful", "convenient"],
                 ["neglect", "ignore", "forget", "overlook"],
                 ["simple", "convenient", "beautiful", "pretty", "elegant", "fashion", "delicate", "exquisite", "modern", "outstanding", "awesome", "advanced", "cute", "classic"],
                 ["helpful", "useful", "serviceable"],
                 ["essential", "significant", "vital", "important", "crucial"]
                 ]
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

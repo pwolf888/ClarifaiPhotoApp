@@ -79,7 +79,7 @@ class PoemGenerator{
             }
         }
         
-        poem = poemOptions[min]!
+        poem = formatPoem(rawPoem: poemOptions[min]!)
         
         return poem
     }
@@ -167,4 +167,22 @@ class PoemGenerator{
         
         return poem
     }
+    
+    func formatPoem(rawPoem: String) -> String{
+        var poem = ""
+        let arr = Array(rawPoem)
+        
+        for i in 0..<arr.count-1{
+            if(arr[i] == " " && ((arr[i+1] == ","||arr[i+1] == "." || arr[i+1] == "!") || arr[i - 1] == "\n")){
+                continue
+            }
+            else{
+                poem.append(arr[i])
+            }
+        }
+        poem.append(arr[arr.count-1])
+        
+        return poem
+    }
 }
+
