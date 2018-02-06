@@ -33,7 +33,6 @@ UINavigationControllerDelegate {
     var captureDevice : AVCaptureDevice?
     var frontBack : Bool = false
     
-    
     //Check to see which device the app is running on to get the correct photo ratio for device
     struct ScreenSize
     {
@@ -82,14 +81,16 @@ UINavigationControllerDelegate {
         
         // Setup Session to use camera inputs
         session = AVCaptureSession()
+        session!.sessionPreset = AVCaptureSessionPresetPhoto
         
-        if DeviceType.IS_IPHONE {
-            session!.sessionPreset = AVCaptureSessionPreset1280x720
-        }
-        else if DeviceType.IS_IPAD, DeviceType.IS_IPAD_PRO {
-            session!.sessionPreset = AVCaptureSessionPresetPhoto
-        }
-        
+ //** DISABLED CODE TO ENSURE CAN BE DEMO'D ON AN IPAD
+//        if DeviceType.IS_IPHONE {
+//            session!.sessionPreset = AVCaptureSessionPreset1280x720
+//        }
+//        else if DeviceType.IS_IPAD, DeviceType.IS_IPAD_PRO {
+//            session!.sessionPreset = AVCaptureSessionPresetPhoto
+//        }
+//
         let devices = AVCaptureDevice.devices()
         
         // Loop through all the capture devices on this phone
