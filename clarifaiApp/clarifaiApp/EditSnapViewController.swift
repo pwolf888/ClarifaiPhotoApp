@@ -486,10 +486,32 @@ UINavigationControllerDelegate {
         }
         
         //** CONFIGURE PHOTO DISPLAYED VIEW
+        
+        // Automatically resizes the height of the image
+        photoTaken.autoresizingMask = UIViewAutoresizing.flexibleHeight
+
+        // Scales the image to fit on the screen
+        photoTaken.contentMode = UIViewContentMode.scaleAspectFill //edited here
+
+        // Get Width and Height of Chosen Image
+        let imageWidth = newImage.size.width // edited here
+        let imageHeight = newImage.size.height // edited here
+
+        print(imageWidth)
+
+        // Create a new frame for the image to sit in
+        photoTaken.frame = CGRect(x: 0.0, y: 0.0, width: imageWidth, height: imageHeight)
+
+        print(photoTaken.frame)
+        
+        
+        //prevents the image from stretching once photo taken
+        self.photoTaken.clipsToBounds = true
+        
         contentView.addSubview(photoTaken)
         photoTaken.snp.makeConstraints { (make) in
-            make.top.bottom.equalTo(contentView)
-            make.left.right.equalTo(contentView)
+              make.edges.equalTo(contentView)
+              make.center.equalTo(contentView.snp.center)
         }
 
         //*** SHARE BUTTON
@@ -519,14 +541,14 @@ UINavigationControllerDelegate {
         contentView.bringSubview(toFront: savePhoto)
         addShadow(icon: savePhoto)
         savePhoto.snp.makeConstraints { (make) in
-            make.centerX.equalTo(photoTaken.snp.centerX)
+            make.centerX.equalTo(contentView.snp.centerX)
             make.centerY.equalTo(shareNavButton.snp.centerY)
             make.height.equalTo(40)
             make.width.equalTo(40)
         }
 
         //*** POETIC TEXT
-        photoTaken.addSubview(poeticText)
+        contentView.addSubview(poeticText)
         poeticText.numberOfLines = 0
         poeticText.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         poeticText.textAlignment = NSTextAlignment.center
@@ -535,11 +557,11 @@ UINavigationControllerDelegate {
         poeticText.layer.shadowOpacity = 0.9
         poeticText.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
 
-        photoTaken.bringSubview(toFront: poeticText)
+        contentView.bringSubview(toFront: poeticText)
         poeticText.snp.makeConstraints { (make) in
-            make.left.right.equalTo(photoTaken).inset(20)
-            make.top.equalTo(photoTaken).offset(40)
-            make.bottom.equalTo(photoTaken).offset(-40)
+            make.left.right.equalTo(contentView).inset(20)
+            make.top.equalTo(contentView).offset(40)
+            make.bottom.equalTo(contentView).offset(-40)
 
         }
 
