@@ -83,14 +83,6 @@ UINavigationControllerDelegate {
         session = AVCaptureSession()
         session!.sessionPreset = AVCaptureSessionPresetPhoto
         
- //** DISABLED CODE TO ENSURE CAN BE DEMO'D ON AN IPAD
-//        if DeviceType.IS_IPHONE {
-//            session!.sessionPreset = AVCaptureSessionPreset1280x720
-//        }
-//        else if DeviceType.IS_IPAD, DeviceType.IS_IPAD_PRO {
-//            session!.sessionPreset = AVCaptureSessionPresetPhoto
-//        }
-//
         let devices = AVCaptureDevice.devices()
         
         // Loop through all the capture devices on this phone
@@ -232,10 +224,17 @@ UINavigationControllerDelegate {
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
                     let dataProvider = CGDataProvider(data: imageData! as CFData)
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
-                    let image = UIImage(cgImage: cgImageRef!, scale: 0.3, orientation: UIImageOrientation.right)
+                    
+                    if self.frontBack == false {
+                       let image = UIImage(cgImage: cgImageRef!, scale: 0.3, orientation: UIImageOrientation.right)
+                        self.photoTaken.image = image
+                    } else if self.frontBack == true {
+                        let image = UIImage(cgImage: cgImageRef!, scale: 0.3, orientation: UIImageOrientation.leftMirrored)
+                        self.photoTaken.image = image
+                    }
                     
                     // Output image to imageView
-                    self.photoTaken.image = image
+                    //self.photoTaken.image = image
                     
                     let svc = self.storyboard!.instantiateViewController(withIdentifier: "editSnapVC") as! EditSnapViewController
                     svc.newImage = self.photoTaken.image
@@ -263,21 +262,22 @@ UINavigationControllerDelegate {
             // Set image to the UIImageView
             photoTaken.image = image
             
-            // Get Width and Height of Chosen Image
-            let imageWidth = image.size.width
-            let imageHeight = image.size.height
-            
-            // Create a new frame for the image to sit in
-            photoTaken.frame = CGRect(x: 0.0, y: 0.0, width: imageWidth, height: imageHeight)
-            
-            // Automatically resizes the height of the image
-            photoTaken.autoresizingMask = UIViewAutoresizing.flexibleHeight
-            
-            // Scales the image to fit on the screen
-            self.photoTaken.contentMode = UIViewContentMode.scaleAspectFill
-            
-            //prevents the image from stretching once photo taken
-            self.photoTaken.clipsToBounds = true
+//            // Automatically resizes the height of the image
+//            photoTaken.autoresizingMask = UIViewAutoresizing.flexibleHeight
+//
+//            // Scales the image to fit on the screen
+//            photoTaken.contentMode = UIViewContentMode.scaleAspectFit
+//
+//            // Get Width and Height of Chosen Image
+//            let imageWidth = image.size.width
+//            let imageHeight = image.size.height
+//
+//            // Create a new frame for the image to sit in
+//            photoTaken.frame = CGRect(x: 0.0, y: 0.0, width: imageWidth, height: imageHeight)
+//
+//
+//            //prevents the image from stretching once photo taken
+//            self.photoTaken.clipsToBounds = true
         
         }
         
