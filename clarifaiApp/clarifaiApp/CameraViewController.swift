@@ -224,10 +224,17 @@ UINavigationControllerDelegate {
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
                     let dataProvider = CGDataProvider(data: imageData! as CFData)
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
-                    let image = UIImage(cgImage: cgImageRef!, scale: 0.3, orientation: UIImageOrientation.right)
+                    
+                    if self.frontBack == false {
+                       let image = UIImage(cgImage: cgImageRef!, scale: 0.3, orientation: UIImageOrientation.right)
+                        self.photoTaken.image = image
+                    } else if self.frontBack == true {
+                        let image = UIImage(cgImage: cgImageRef!, scale: 0.3, orientation: UIImageOrientation.leftMirrored)
+                        self.photoTaken.image = image
+                    }
                     
                     // Output image to imageView
-                    self.photoTaken.image = image
+                    //self.photoTaken.image = image
                     
                     let svc = self.storyboard!.instantiateViewController(withIdentifier: "editSnapVC") as! EditSnapViewController
                     svc.newImage = self.photoTaken.image
