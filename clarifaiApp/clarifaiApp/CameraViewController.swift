@@ -133,32 +133,6 @@ UINavigationControllerDelegate {
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let screenSize = previewView.bounds.size
-        if let touchPoint = touches.first {
-            let x = touchPoint.location(in: previewView).y / screenSize.height
-            let y = 1.0 - touchPoint.location(in: previewView).x / screenSize.width
-            let focusPoint = CGPoint(x: x, y: y)
-            
-            if let device = captureDevice {
-                do {
-                    try device.lockForConfiguration()
-                    
-                    device.focusPointOfInterest = focusPoint
-                    //device.focusMode = .continuousAutoFocus
-                    device.focusMode = .autoFocus
-                    //device.focusMode = .locked
-                    device.exposurePointOfInterest = focusPoint
-                    device.exposureMode = AVCaptureExposureMode.continuousAutoExposure
-                    device.unlockForConfiguration()
-                }
-                catch {
-                    // just ignore
-                }
-            }
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         print("fire2")
         super.viewDidAppear(animated)
