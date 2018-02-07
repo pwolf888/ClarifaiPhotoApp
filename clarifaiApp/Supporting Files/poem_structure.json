@@ -3,7 +3,7 @@
     "16@library@nil": ["@0 @1 books around me.\n Not knowing what to @2 ,\n Should I chose this @3 , or @4 @3 ,\n Still @5 what I would like to read about...", "Walking towards the library\n A @6 box filled with @7 \n A mixture of smell of old and new world\nA @8 place full of @9 people @10"],
     "17@room|office|meeting@furniture": ["A @0 room,\n with @0 #@2 and @0 #@2 tossed throughout.\nWhere does that @1 #@2 come from", "@3 here, in this @4 room.\n @5 @6 @7 ,\n and a @8 runs through."],
     "18@landscape|sea|nature@landscape": ["I @3 get @4 in the @0 #landscape , it is so @0 \nHow @0 the #nature is\nI cannot take my mind off @0 #weather \n @1 the @0 #sky , @3 make it a @0 @2"],
-    "13@portrait@nil": ["@0 eyes @8 in the @1 face\n @2 hair @3 \n @4 lips under the @5 nose\nYour @6 eyelashes blooms like a @7", "So we hold the @9 , \n Face the lens, and give our @10 smiles. \n Is not a pic of oneself\n It is a golden moment in @11 life!", "I @12 a @13 selfie\n @14 the @15 one ever @16 \nPost it online today\nIt @17 @18", "My hair is as @19 \nMy eyes are @20 \nMy smile is as @21 \nMy mind is @22"],
+    "12@portrait@nil": ["@0 eyes @8 in the @1 face\n @2 hair @3 \n @4 lips under the @5 nose\nYour @6 eyelashes blooms like a @7", "So we hold the @9 , \n Face the lens, and give our @10 smiles. \n Is not a pic of oneself\n It is a golden moment in @11 life!", "I @12 a @13 selfie\n @14 the @15 one ever @16 \nPost it online today\nIt @17 @18", "My hair is as @19 \nMy eyes are @20 \nMy smile is as @21 \nMy mind is @22"],
     "10@party@nil": ["Music is @0 , light is @1 .\nWe are born to be @2 .\nLet’s @3 , let’s @4 ."],
     "9@food|drink@food|drink": ["@0 , @0 , @0 #food \n @1 , @1 , @1 @2 in my @3 \n It would be @4 ,\nif there is a @5 of @0 @6"],
     "8@train|tram|boat|airplane|yacht|bike@nil": ["The * @0 , it has got to @1 !\nIt @2 , quite @3 !\nThe * @4 , it’s gonna @5"],
@@ -11,7 +11,7 @@
     "3@athlete|sport|exercise@sport": ["@0 up a #@1 , do some @2 .\n Keep @3 , run!\nBBQ you fat in the @4 , stay @5"],
     "5@romantic|couple|romance@nil": ["My @0 , your @1 @2 my @3 .\n Still @4 the first time I @5 with you.\nYou are the @6 , my @7 @8 @9"],
     "2@guitar|violin|piano@nil": ["The * always @0 me by\nthe @1 @2 it makes, when you @3 strum the strings!\nLife is short, buy the *"],
-    "12@music@nil": ["@0 music @1 @5 @2 ,\n It @3 to my heart,\n It @4 @5 @6"],
+    "13@music@nil": ["@0 music @1 @5 @2 ,\n It @3 to my heart,\n It @4 @5 @6"],
     "4@shopping@nil": ["A @0 @1 with @2 @3 ,\n @4 @3 full of @5 \n @6 music around filling my @7 \n Such a @8 day", "@9 close to closing time\n Neat rows of @10 designed family packs\n 10000 square meters and me\n Sweet @11", "A parade of haircuts, chosen clothing\n we talk @12 talk at a distance\n @13 around filling our @14 \n the weather is mentioned, often"],
     "6@skyscraper|cityscape@nil": ["@0 sky and @1 @2 ,\n @3 blows @4 there\n But the view is @5 \n Sometimes a @6 flies over"],
     "11@birthday@nil": ["You were my gift,\n @0 , @1 , little one,\n Eyes of @2 and @3 \n Hills of creation, of shadow\n And bread."],
@@ -19,3 +19,40 @@
     "14@friendship@nil": ["A friend can make you @0 \n But a real friend can wipe @1 tears away\n A friend will walk with you even for a @2 \n But a real friend offers a home to @3", "And when you feel like you're @4 ,\n listen for my @5 \n I promise I'll be never be @6 \n Calling you @7 \n @8 you back to reality"],
     "19@default@nil": ["It was just an @0 $ , \n Kept @1 on the table\n The $ is @2 in many ways,\n but there it just lays.", "What do you think of this $ ,\n that you always @3 ,\n it is so @4 and @5 ,\n also very @6 ."]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
